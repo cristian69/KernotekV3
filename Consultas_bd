@@ -1,0 +1,49 @@
+==========================================================================
+CONSULTA SOLO POR FECHAS
+
+SELECT ticket, localshift, datesell, timeshell, rate, servicesdetail.cost
+FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid
+WHERE datesell BETWEEN STR_TO_DATE('2014-06-26', '%Y-%m-%d') AND STR_TO_DATE('2014-06-27','%Y-%m-%d');
+
+==========================================================================
+CONSULTA POR HORA
+
+SELECT ticket, localshift, datesell, timeshell, rate, servicesdetail.cost
+FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid
+WHERE timeshell BETWEEN TIME_FORMAT('13:50:00','%T') AND TIME_FORMAT('15:09:30','%T');
+
+==========================================================================
+CONSULTA GENERAL
+
+SELECT ticket, localshift, datesell, timeshell, rate, servicesdetail.cost
+FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid ORDER BY datesell, timeshell;
+
+==========================================================================
+CONSULTA ESPECIFICA
+
+SELECT ticket, localshift, datesell, timeshell, rate, servicesdetail.cost
+                FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid
+                WHERE datesell BETWEEN STR_TO_DATE('2014-06-26', '%Y-%m-%d') AND STR_TO_DATE('2014-06-27','%Y-%m-%d')
+                AND timeshell BETWEEN TIME_FORMAT('13:50:00','%T') AND TIME_FORMAT('15:09:30','%T');
+
+
+
+============================================================================
+CONSULTA PARA EL LOGIN
+SELECT username, AES_DECRYPT(password, 'ICT') AS password FROM users WHERE username = admin AND password = admin3;
+SELECT username FROM users WHERE username = admin AND AES_DECRYPT(password, 'ICT') = admin3;
+
+============================================================================
+INSERTAR USURIO
+INSERT INTO users VALUES (null, 'Jesus Adrian', 'Ramirez', 'Lopez', 'aramirez', AES_ENCRYPT('aramirez', 'I[t_[0n5u/71n&'), 'aramirez@ictc.com.mx', 'normal');
+============================================================================
+ESTADO DEL HOPPER
+SELECT rate, t_apertura, no_venta_act FROM config;
+
+REGISTRO DEL ESTADO DEL SISTEMA
+INSERT INTO config VALUES(null, '3.00', '20', '1', '1', '1', '1', '1', '1');
+
+CAMBIOS EN EL HOPPER
+
+============================================================================
+SELECT  ticket ,datetimesell as fecha,  rate as tarifa, deposit as Depositado,panel_shift_det_den.denomination as denominacion_moneda,panel_shift_det_den.quantity as cantidad_monedas FROM panelservices INNER JOIN panel_srv_det_den on  panelservices.panelservicesid =panel_srv_det_den.panelservicesid inner join servicesdetail on servicesdetail.panelservicesid=panelservices.panelservicesid INNER JOIN panel_shift_det_den on panel_shift_det_den.panelservicesid=panelservices.panelservicesid;
