@@ -72,15 +72,14 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + fecha_inicio + """ a """ + fecha_fin + """
             </div>
             <div class="tools">
-              <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
-              <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
-              <a href="javascript:;" class="collapse"></a>
+              <a href=" """+linkExcel+""" " class="blanc"><i class="fa fa-file-excel-o"></i></a>
+              <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
             </div>
           </div>
           <div class="portlet-body flip-scroll">
-            <table class="table table-bordered table-striped table-condensed flip-content table-hover">""")
+            <table class="table table-striped table-condensed table-hover">""")
 
-    codigo_tabla += str('<thead class="flip-content text-center c-blue">')  # Etiqueta de head para la tabla
+    codigo_tabla += str('<thead class="flip-content text-center">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras
     for cabezera in cabezerasDisponibles:
         codigo_tabla += str('<th width="20%"class="text-center">')
@@ -98,10 +97,10 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     else:
         for ventas in tabla_ventas:
             if bandera_color:
-                codigo_tabla += str('<tr class="info">')
+                codigo_tabla += str('<tr style="border-top:1px solid black; border-bottom: 1ps solid black;" class="">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr>')
+                codigo_tabla += str('<tr style="border-top:1px solid black; border-bottom: 1ps solid black;">')
                 bandera_color = True
             for venta in ventas:
                 if venta == 0:
