@@ -57,14 +57,14 @@
               <span class="arrow "></span>
             </a>
           </li>
-          <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li class="tooltips">
             <a href="javascript:;">
               <i class="fa fa-hdd-o"></i>
               <span class="title">Estado del Sistema</span>
               <span class="arrow"></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('estadoSistema') }}">
                   <i class="fa fa-laptop"></i>
                   <span class="title">Estado del Equipo</span>
@@ -79,19 +79,19 @@
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('verUsuarios') }}">
                   <i class="fa fa-eye"></i>
                   <span class="title">Ver Cuentas</span>
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('borrarUsuario') }}">
                   <i class="fa fa-trash-o"></i>
                   <span class="title">Borrar Cuentas</span>
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('activarCuentas') }}">
                   <i class="fa fa-check"></i>
                   <span class="title">Activar Cuentas</span>
@@ -106,22 +106,22 @@
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteGeneral') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte General
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteEspecifico') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Específico
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteDetallado') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Detallado
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteTurno') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
                 </a>
@@ -181,12 +181,12 @@
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="Configuración avanzada Reporte General">
+              <li class="tooltips">
                 <a href="{{ url_for('configReporte') }}">
                    <i class="fa fa-cogs"></i>Reporte Específico
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="Configuracion del Reporte específico">
+              <li class="tooltips">
                 <a href="{{ url_for('configSistema') }}">
                   <i class="fa fa-cogs"></i>Sistema
                 </a>
@@ -220,7 +220,7 @@
         </article>
         <article class="row">
           <article class="col-md-12">
-            <article class="portlet box green">
+            <article class="portlet light bordered">
               <article class="portlet-title">
                 <article class="caption">
                   <i class="fa fa-database"></i>Bitácora del Sistema

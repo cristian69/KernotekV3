@@ -61,14 +61,14 @@
               <span class="arrow"></span>
             </a>
           </li>
-          <li class="" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li class=>
             <a href="">
               <i class="fa fa-hdd-o"></i>
               <span class="title">Estado del Sistema</span>
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('estadoSistema') }}">
                   <i class="fa fa-laptop"></i>
                   <span class="title">Estado del equipo</span>
@@ -77,26 +77,26 @@
             </ul>
           </li>
           {% if session['typeuser'] == 'Administrador'%}
-          <li  class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li  class="tooltips">
             <a href="javascript:;">
               <i class="fa fa-users"></i>
               <span class="title">Gestión de Usuarios</span>
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('verUsuarios') }}">
                   <i class="fa fa-eye"></i>
                   <span class="title">Ver Cuentas</span>
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('borrarUsuario') }}">
                   <i class="fa fa-trash-o"></i>
                   <span class="title">Borrar Cuentas</span>
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('activarCuentas') }}">
                   <i class="fa fa-check"></i>
                   <span class="title">Activar Cuentas</span>
@@ -105,29 +105,29 @@
             </ul>
           </li>
           {% endif %}
-          <li  class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li  class="tooltips">
             <a href="javascript:;">
               <i class="fa fa-line-chart"></i>
               <span class="title">Reportes</span>
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteGeneral') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte General
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteEspecifico') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Específico
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteDetallado') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Detallado
                 </a>
               </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+              <li class="tooltips">
                 <a href="{{ url_for('reporteTurno') }}">
                   <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
                 </a>
@@ -149,7 +149,7 @@
             </ul>
           </li>
           {% if session['typeuser'] == 'Administrador'%}
-          <li  class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li  class="tooltips">
             <a href="javascript:;">
               <i class="fa fa-database"></i>
               <span class="title">Bitácora</span>
@@ -182,20 +182,20 @@
             </ul>
           </li>
           {% endif %}
-          <li  class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+          <li  class="tooltips">
             <a href="javascript:;">
               <i class="fa fa fa-wrench"></i>
               <span class="title">Configuración</span>
               <span class="arrow "></span>
             </a>
             <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="Configuración avanzada Reporte Especifico">
+              <li class="tooltips">
                 <a href="{{ url_for('configReporte') }}">
                    <i class="fa fa-cogs"></i>Reporte Específico
                 </a>
               </li>
               {% if session['typeuser'] == 'Administrador'%}
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="Configuracion del Sistema">
+              <li class="tooltips">
                 <a href="{{ url_for('configSistema') }}">
                   <i class="fa fa-cogs"></i>Sistema
                 </a>
@@ -248,7 +248,7 @@
           </article>
           <section class="col-md-3"></section>
           <article class="col-md-6">
-            <article class="portlet box green">
+            <article class="portlet light bordered">
               <article class="portlet-title">
                 <article class="caption">
                   <i class="fa fa-key"></i>Registro de Datos.

@@ -1,4 +1,4 @@
-/*   
+op/*   
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
 Version: 2.0.2
 Author: KeenThemes
@@ -1857,7 +1857,7 @@ Custom icon buttons
 
 .dropdown-menu.extended li a:hover {
   background-image: none;
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   color: #000;
   filter:none;
 }
