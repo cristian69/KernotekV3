@@ -1,15 +1,15 @@
 
 body {
-  background-color: #3d3d3d !important;
+  background-color: #fff !important;/*3d3d3d*/
 }
 
 .header {
   filter: none !important;
   background-image: none !important;
-  background-color: #212121 !important;/*E5E5E5*/
+  background-color: #e5e5e5 !important;/*212121*/
 }
 .header .btn-navbar {
-  background-color: #212121 !important;/*E5E5E5*/
+  background-color: #e5e5e5 !important;/*212121*/
 }
 .header .navbar-nav .dropdown-toggle:hover,
 .header .navbar-nav .dropdown.open .dropdown-toggle {
@@ -128,7 +128,7 @@ Mega Menu
 Page sidebar
 ***/
 .page-sidebar {
-  background-color: #3d3d3d;
+  background-color: #FFFFFF;/*3d3d3d*/
 }
 ul.page-sidebar-menu > li > a {
   border-top: 1px solid #5c5c5c !important;
