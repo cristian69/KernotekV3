@@ -60,7 +60,7 @@ Hor menu
 .header .hor-menu ul.nav li.active > a,
 .header .hor-menu ul.nav li.active > a:hover {
   color: #fff;
-  background: #e02222 !important; 
+  background: #fff !important; 
 }
 
 .header .hor-menu ul.nav li.current > a,
@@ -181,7 +181,7 @@ ul.page-sidebar-menu > li.active i {
   display: none;
 }
 ul.page-sidebar-menu > li.active > a{
-  background: #28b779 !important;
+  background: #bfbfbf !important;
   border-top-color: transparent !important;
   color:#fff !important;
 }  
@@ -272,7 +272,7 @@ Footer
   color: #333333;
 }
 .footer .footer-tools .go-top {
-  background-color: #666666;
+  background-color: #fafafa;
 }
 .footer .footer-tools .go-top:hover {
   opacity: 0.7;
