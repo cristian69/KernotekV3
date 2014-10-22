@@ -43,7 +43,7 @@ def turnosDisponibles(fecha):
         htmlTurnos += '<h1 align="center"><strong>No Hay Cortes de Turnos en esa Fecha</strong></h1>'
     else:
         htmlTurnos += """
-        <article class="portlet box green">
+        <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
@@ -84,7 +84,7 @@ def tablaReporte(registros):
     linkExcel = "../static/download/"+session['username']+"/Reporte por Turno.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte por Turno.pdf"
     codigoTabla = """
-                    <article class="portlet box green">
+                    <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno

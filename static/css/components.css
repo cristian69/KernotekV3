@@ -1901,7 +1901,7 @@ Dropdown Menu
   }
   .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:active {
-    ackground-color: #eee;
+    background-color: #fff;
   }
 }
 /***
@@ -5425,7 +5425,7 @@ Blue Default
 }
 .dashboard-stat.blue .visual > i {
   color: white;
-  opacity: 0.1;
+  opacity: 0.5;
   filter: alpha(opacity=10);
 }
 .dashboard-stat.blue .details .number {

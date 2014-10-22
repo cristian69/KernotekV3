@@ -500,7 +500,7 @@ Header and header elements.
 }
 
 .header.navbar .navbar-nav > li.dropdown .dropdown-menu > li > a > i {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .header.navbar .navbar-nav > li.dropdown.user .dropdown-toggle {
@@ -512,14 +512,14 @@ Header and header elements.
 }
 
 .header.navbar .navbar-nav > li.dropdown.user .dropdown-toggle .username {
-  color: #ddd;
+  color: #000;
 }
 
 .header.navbar .navbar-nav > li.dropdown.user .dropdown-toggle i {
   display: inline-block;
   margin-top: 5px;
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .header.navbar .navbar-nav > li.dropdown.user .dropdown-menu i {

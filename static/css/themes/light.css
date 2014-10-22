@@ -21,7 +21,7 @@ Page header
 }
 .header .navbar-nav .dropdown-toggle:hover,
 .header .navbar-nav .dropdown.open .dropdown-toggle {
-  background-color: #4f4f4f !important;
+  background-color: #f2f2f2; !important;
 }
 .header .navbar-nav li.dropdown .dropdown-toggle i {
   color: #808080 !important;
@@ -396,7 +396,7 @@ Landscape phone to portrait tablet
   }
   ul.page-sidebar-menu > li.active > a {
     color: #ffffff !important;
-    background-color: #28b779 !important;
+    background-color: #bfbfbf !important;
   }
 
   ul.page-sidebar-menu ul.sub-menu > li > a {

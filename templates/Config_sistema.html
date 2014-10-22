@@ -1,807 +1,809 @@
-<!DOCTYPE html>
 
+
+<!DOCTYPE html>
 <html lang="es" class="no-js">
-<head>
-  <meta charset="utf-8"/>
-  <title>KERNOTEK</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <link href="../static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/plugins/iCheck-master/skins/square/blue.css" rel="stylesheet">
-  <link href="../static/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/css/style-metronic.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/css/style.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/css/themes/light.css" rel="stylesheet" type="text/css"/>
-  <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
-  <link rel="shortcut icon" href="../static/img/favicon.ico"/>
-</head>
-<body class="page-header-fixed" onload="estadoActualSistema('Desactivo'), mostrarVentanas('{{bandera}}}');">
-  <section class="header navbar navbar-fixed-top">
-    <article class="header-inner">
-      <a class="navbar-brand" href="#">
+  <head>
+    <meta charset="utf-8"/>
+    <title>KERNOTEK</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link href="../static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/iCheck-master/skins/square/blue.css" rel="stylesheet">
+    <link href="../static/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/components.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/themes/light.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+  </head>
+  <body class="page-header-fixed" onload="estadoActualSistema('Desactivo'), mostrarVentanas('{{bandera}}}');">
+    <section class="header navbar navbar-fixed-top">
+      <article class="header-inner">
+        <a class="navbar-brand" href="#">
         <img src="../static/img/Kernotek.png" alt="logo" class="img-responsive"/>
-      </a>
-      <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        </a>
+        <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <img src="../static/img/menu-toggler.png" alt=""/>
-      </a>
-      <ul class="nav navbar-nav pull-right">
-        <li class="dropdown user">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        </a>
+        <ul class="nav navbar-nav pull-right">
+          <li class="dropdown user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
             <span class="username">{{ session['fullname'] }}</span>
             <i class="fa fa-chevron-down"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="{{ url_for('perfil') }}"><i class="fa fa-user"></i>Perfil</a>
-            </li>
-            <li>
-              <a href="{{ url_for('logout') }}"><i class="fa fa-key"></i>Salir</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </article>
-  </section>
-  <section class="page-container">
-    <article class="page-sidebar-wrapper">
-      <article class="page-sidebar navbar-collapse collapse">
-        <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-          <li class="sidebar-toggler-wrapper">
-            <article class="sidebar-toggler hidden-phone"></article>
-          </li>
-          <li class="sidebar-search-wrapper"></li>
-          <li>
-            <a href="{{ url_for('home') }}">
-              <i class="fa fa-home"></i>
-              <span class="title">Inicio</span>
-              <span class="arrow "></span>
             </a>
-          </li>
-          <li class="tooltips">
-            <a href="javascript:;">
-              <i class="fa fa-hdd-o"></i>
-              <span class="title">Estado del Sistema</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="tooltips">
-                <a href="{{ url_for('estadoSistema') }}">
-                  <i class="fa fa-laptop"></i>
-                  <span class="title">Estado del Equipo</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-users"></i>
-              <span class="title">Gestión de Usuarios</span>
-              <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="tooltips">
-                <a href="{{ url_for('verUsuarios') }}">
-                  <i class="fa fa-eye"></i>
-                  <span class="title">Ver Cuentas</span>
-                </a>
-              </li>
-              <li class="tooltips">
-                <a href="{{ url_for('borrarUsuario') }}">
-                  <i class="fa fa-trash-o"></i>
-                  <span class="title">Borrar Cuentas</span>
-                </a>
-              </li>
-              <li class="tooltips">
-                <a href="{{ url_for('activarCuentas') }}">
-                  <i class="fa fa-check"></i>
-                  <span class="title">Activar Cuentas</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-line-chart"></i>
-              <span class="title">Reportes</span>
-              <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
-                </a>
-              </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
-                </a>
-              </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
-                </a>
-              </li>
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-calendar-o"></i>
-               <span class="title">Turno</span>
-              <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
+            <ul class="dropdown-menu">
               <li>
-                <a href="{{ url_for('corteTurno') }}">
-                  <i class="fa fa-clock-o"></i>Corte de Turno
-                </a>
-              </li>
-            </ul>
-          </li>
-          {% if session['typeuser'] == 'Administrador' %}
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-database"></i>
-              <span class="title">Bitácora</span>
-              <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-              <a href="{{ url_for('bitacora') }}">
-                <i class="fa fa-book"></i>Bitácora del Sistema
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="javascript:;">
-              <i class="fa fa-key"></i>
-              <span class="title">Llaves del Sistema</span>
-              <span class="arrow "></span>
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="{{url_for('nuevaLlave')}}">
-                  <i class="fa fa-plus"></i>Nueva Llave
-                </a>
+                <a href="{{ url_for('perfil') }}"><i class="fa fa-user"></i>Perfil</a>
               </li>
               <li>
-                <a href="{{ url_for('editarLlave') }}">
-                  <i class="fa fa-pencil"></i>Editar Llave
-                </a>
+                <a href="{{ url_for('logout') }}"><i class="fa fa-key"></i>Salir</a>
               </li>
-            </ul>
-          </li>
-          {% endif %}
-          <li class="start active">
-            <a href="javascript:;">
-              <i class="fa fa fa-wrench"></i>
-              <span class="title">Configuración</span>
-            </a>
-            <ul class="sub-menu">
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('configReporte') }}">
-                   <i class="fa fa-cogs"></i>Reporte Específico
-                </a>
-              </li>
-              {% if session['typeuser'] == 'Administrador' %}
-              <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
-                <a href="{{ url_for('configSistema') }}">
-                  <i class="fa fa-cogs"></i>Sistema
-                </a>
-              </li>
-              {% endif %}
             </ul>
           </li>
         </ul>
       </article>
-    </article>
-    <article class="page-content-wrapper">
+    </section>
+    <section class="page-container">
+      <article class="page-sidebar-wrapper">
+        <article class="page-sidebar navbar-collapse collapse">
+          <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+            <li class="sidebar-toggler-wrapper">
+              <article class="sidebar-toggler hidden-phone"></article>
+            </li>
+            <li class="sidebar-search-wrapper"></li>
+            <li>
+              <a href="{{ url_for('home') }}">
+              <i class="fa fa-home"></i>
+              <span class="title">Inicio</span>
+              <span class="arrow "></span>
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="javascript:;">
+              <i class="fa fa-hdd-o"></i>
+              <span class="title">Estado del Sistema</span>
+              <span class="arrow"></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="tooltips">
+                  <a href="{{ url_for('estadoSistema') }}">
+                  <i class="fa fa-laptop"></i>
+                  <span class="title">Estado del Equipo</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+              <i class="fa fa-users"></i>
+              <span class="title">Gestión de Usuarios</span>
+              <span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="tooltips">
+                  <a href="{{ url_for('verUsuarios') }}">
+                  <i class="fa fa-eye"></i>
+                  <span class="title">Ver Cuentas</span>
+                  </a>
+                </li>
+                <li class="tooltips">
+                  <a href="{{ url_for('borrarUsuario') }}">
+                  <i class="fa fa-trash-o"></i>
+                  <span class="title">Borrar Cuentas</span>
+                  </a>
+                </li>
+                <li class="tooltips">
+                  <a href="{{ url_for('activarCuentas') }}">
+                  <i class="fa fa-check"></i>
+                  <span class="title">Activar Cuentas</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+              <i class="fa fa-line-chart"></i>
+              <span class="title">Reportes</span>
+              <span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('reporteGeneral') }}">
+                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  </a>
+                </li>
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('reporteEspecifico') }}">
+                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  </a>
+                </li>
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('reporteDetallado') }}">
+                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  </a>
+                </li>
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('reporteTurno') }}">
+                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+              <i class="fa fa-calendar-o"></i>
+              <span class="title">Turno</span>
+              <span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="{{ url_for('corteTurno') }}">
+                  <i class="fa fa-clock-o"></i>Corte de Turno
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {% if session['typeuser'] == 'Administrador' %}
+            <li>
+              <a href="javascript:;">
+              <i class="fa fa-database"></i>
+              <span class="title">Bitácora</span>
+              <span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="{{ url_for('bitacora') }}">
+                  <i class="fa fa-book"></i>Bitácora del Sistema
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:;">
+              <i class="fa fa-key"></i>
+              <span class="title">Llaves del Sistema</span>
+              <span class="arrow "></span>
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="{{url_for('nuevaLlave')}}">
+                  <i class="fa fa-plus"></i>Nueva Llave
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ url_for('editarLlave') }}">
+                  <i class="fa fa-pencil"></i>Editar Llave
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {% endif %}
+            <li class="start active">
+              <a href="javascript:;">
+              <i class="fa fa fa-wrench"></i>
+              <span class="title">Configuración</span>
+              </a>
+              <ul class="sub-menu">
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('configReporte') }}">
+                  <i class="fa fa-cogs"></i>Reporte Específico
+                  </a>
+                </li>
+                {% if session['typeuser'] == 'Administrador' %}
+                <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="">
+                  <a href="{{ url_for('configSistema') }}">
+                  <i class="fa fa-cogs"></i>Sistema
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </li>
+          </ul>
+        </article>
+      </article>
+      <article class="page-content-wrapper">
       <article class="page-content">
-        <article class="row">
-          <article class="col-md-12">
-            <article class="modal fade bs-example-modal-sm" tabindex="-1" aria-hidden="true" style="display:bolck;" id="mdlestadoSistema">
-              <article class="modal-dialog">
-                <form action="" method="" id="">
-                  <article class="modal-content">
-                    <article class="modal-header text-center">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h3 class="modal-title">¿Decea Cambiar el estado Actual del Sistema?</h3>
-                    </article>
-                    <article class="modal-body text-center">
-                      <button type="submit" class="btn blue group-form" name="submit" value="">Aceptar</button>
-                      <button type="button" data-dismiss="modal" class="btn default group-form">Cancelar</button>
-                    </article>
+      <article class="row">
+        <article class="col-md-12">
+          <article class="modal fade bs-example-modal-sm" tabindex="-1" aria-hidden="true" style="display:bolck;" id="mdlestadoSistema">
+            <article class="modal-dialog">
+              <form action="" method="" id="">
+                <article class="modal-content">
+                  <article class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h3 class="modal-title">¿Decea Cambiar el estado Actual del Sistema?</h3>
                   </article>
-                </form>
-              </article>
+                  <article class="modal-body text-center">
+                    <button type="submit" class="btn blue group-form" name="submit" value="">Aceptar</button>
+                    <button type="button" data-dismiss="modal" class="btn default group-form">Cancelar</button>
+                  </article>
+                </article>
+              </form>
             </article>
           </article>
-          <article id="Sistema" class="modal fade" tabindex="-1" aria-hidden="true">
-            <form action="{{ url_for('configSistema') }}" method="post">
-              <article class="modal-dialog">
-                <article class="modal-content">
-                  <article class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 class="modal-title">Configuración Estado del Sistema</h3>
-                  </article>
-                  <article class="modal-body">
-                    <article class="scroller" style="height:360px" data-always-visible="1" data-rail-visible1="1">
-                      <article class="row">
-                        <article class="col-md-12">
-                          <article class="form-group col-md-12 has-success">
-                            <label class="control-label col-md-5">Número Serie</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['numSerie']}}" name="numSerie"/>
-                            </article>
+        </article>
+        <article id="Sistema" class="modal fade" tabindex="-1" aria-hidden="true">
+          <form action="{{ url_for('configSistema') }}" method="post">
+            <article class="modal-dialog">
+              <article class="modal-content">
+                <article class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 class="modal-title">Configuración Estado del Sistema</h3>
+                </article>
+                <article class="modal-body">
+                  <article class="scroller" style="height:360px" data-always-visible="1" data-rail-visible1="1">
+                    <article class="row">
+                      <article class="col-md-12">
+                        <article class="form-group col-md-12 has-success">
+                          <label class="control-label col-md-5">Número Serie</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['numSerie']}}" name="numSerie"/>
                           </article>
-                          <article class="form-group col-md-12 has-success">
-                            <label class="control-label col-md-5">Tarifa</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['rate']}}" name="tarifa"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-success">
+                          <label class="control-label col-md-5">Tarifa</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['rate']}}" name="tarifa"/>
                           </article>
-                          <article class="form-group col-md-12 has-success">
-                            <label class="control-label col-md-5">Tiempo de Apertura</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['t_apertura']}}" name="tiempoApertura"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-success">
+                          <label class="control-label col-md-5">Tiempo de Apertura</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['t_apertura']}}" name="tiempoApertura"/>
                           </article>
-                          <article class="form-group col-md-12 has-error">
-                            <label class="control-label col-md-5">Última Venta</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['ticket_actual']}}"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-error">
+                          <label class="control-label col-md-5">Última Venta</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['ticket_actual']}}"/>
                           </article>
-                          <article class="form-group col-md-12 has-error">
-                            <label class="control-label col-md-5">Turno</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['turno']}}"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-error">
+                          <label class="control-label col-md-5">Turno</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['turno']}}"/>
                           </article>
-                          <article class="form-group col-md-12 has-success">
-                            <label class="control-label col-md-5">No. Serie Monedero</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_hopper']}}" name="monederoSerie"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-success">
+                          <label class="control-label col-md-5">No. Serie Monedero</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_hopper']}}" name="monederoSerie"/>
                           </article>
-                          <article class="form-group col-md-12 has-success">
-                            <label class="control-label col-md-5">No. Billetero</label>
-                            <article class="input-icon col-md-7">
-                              <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_payout']}}" name="billeteroSerie"/>
-                            </article>
+                        </article>
+                        <article class="form-group col-md-12 has-success">
+                          <label class="control-label col-md-5">No. Billetero</label>
+                          <article class="input-icon col-md-7">
+                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_payout']}}" name="billeteroSerie"/>
                           </article>
                         </article>
                       </article>
                     </article>
                   </article>
-                  <article class="modal-footer">
-                    <button type="submit" class="btn blue" value="cambioSistema" name="submit">Aceptar</button>
-                    <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
+                </article>
+                <article class="modal-footer">
+                  <button type="submit" class="btn blue" value="cambioSistema" name="submit">Aceptar</button>
+                  <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
+                </article>
+              </article>
+            </article>
+        </article>
+        </form>
+        <article id="Monedero" class="modal fade" tabindex="-1" aria-hidden="true">
+          <form action="{{ url_for('configSistema') }}" method="post">
+            <article class="modal-dialog">
+              <article class="modal-content">
+                <article class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 class="modal-title">Configuración Monedero</h3>
+                </article>
+                <article class="modal-body">
+                  <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                    <article class="row">
+                      <article class="form-group col-md-12">
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m10" name="m10"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m5" name="m5"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m2" name="m2"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m1" name="m1"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m05" name="m05"/>
+                      </article>
+                      <article class="col-md-12 form-group">
+                        <table class="table table-responsive text-center">
+                          <tr>
+                            <td></td>
+                            <td>
+                              <label for="Activo">
+                              <strong>
+                              Activo
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <label for="Desactivado">
+                              <strong>
+                              Desactivado
+                              </strong>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              10.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda10" id="activoMoneda10" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda10" id="desactivoMoneda10" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              5.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda5" id="activoMoneda5" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda5" id="desactivoMoneda5" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              2.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda2" id="activoMoneda2" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda2" id="desactivoMoneda2" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              1.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda1" id="activoMoneda1" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda1" id="desactivoMoneda1" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              0.50 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda05" id="activoMoneda05" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioMoneda05" id="desactivoMoneda05" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                        </table>
+                      </article>
+                    </article>
                   </article>
+                </article>
+                <article class="modal-footer">
+                  <button type="submit" class="btn blue" value="cambioMonedero" id="EnviarMonedero" name="submit">Aceptar</button>
+                  <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
                 </article>
               </article>
             </article>
           </form>
-          <article id="Monedero" class="modal fade" tabindex="-1" aria-hidden="true">
-            <form action="{{ url_for('configSistema') }}" method="post">
-              <article class="modal-dialog">
-                <article class="modal-content">
-                  <article class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 class="modal-title">Configuración Monedero</h3>
-                  </article>
-                  <article class="modal-body">
-                    <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
-                      <article class="row">
-                        <article class="form-group col-md-12">
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m10" name="m10"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m5" name="m5"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m2" name="m2"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m1" name="m1"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="m05" name="m05"/>
-                        </article>
-                        <article class="col-md-12 form-group">
-                          <table class="table table-responsive text-center">
-                            <tr>
-                              <td></td>
-                              <td>
-                                <label for="Activo">
-                                  <strong>
-                                    Activo
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <label for="Desactivado">
-                                  <strong>
-                                    Desactivado
-                                  </strong>
-                                </label>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    10.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda10" id="activoMoneda10" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda10" id="desactivoMoneda10" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    5.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda5" id="activoMoneda5" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda5" id="desactivoMoneda5" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    2.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda2" id="activoMoneda2" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda2" id="desactivoMoneda2" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    1.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda1" id="activoMoneda1" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda1" id="desactivoMoneda1" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    0.50 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda05" id="activoMoneda05" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioMoneda05" id="desactivoMoneda05" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                          </table>
-                        </article>
+        </article>
+        <article id="Billetero" class="modal fade" tabindex="-1" aria-hidden="true">
+          <form action="{{ url_for('configSistema') }}" method="post">
+            <article class="modal-dialog">
+              <article class="modal-content">
+                <article class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                  <h3 class="modal-title">Configuración Billetero</h3>
+                </article>
+                <article class="modal-body">
+                  <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
+                    <article class="row">
+                      <article class="form-group col-md-12">
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b500" name="b500"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b200" name="b200"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b100" name="b100"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b50" name="b50"/>
+                        <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b20" name="b20"/>
+                      </article>
+                      <article class="col-md-12 form-group">
+                        <table class="table table-responsive text-center">
+                          <tr>
+                            <td></td>
+                            <td>
+                              <label for="Activo">
+                              <strong>
+                              Activo
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <label for="Desactivado">
+                              <strong>
+                              Desactivado
+                              </strong>
+                              </label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              500.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete500" id="activoBillete500" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete500" id="desactivoBillete500" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              200.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete200" id="activoBillete200" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete200" id="desactivoBillete200" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              100.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete100" id="activoBillete100" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete100" id="desactivoBillete100" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              50.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete50" id="activoBillete50" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete50" id="desactivoBillete50" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <label for="2">
+                              <strong>
+                              20.00 Pesos
+                              </strong>
+                              </label>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete20" id="activoBillete20" value="1">
+                              </article>
+                            </td>
+                            <td>
+                              <article class="iradio" id="" >
+                                <input type="radio" name="radioBillete20" id="desactivoBillete20" value="0">
+                              </article>
+                            </td>
+                          </tr>
+                        </table>
                       </article>
                     </article>
                   </article>
-                  <article class="modal-footer">
-                    <button type="submit" class="btn blue" value="cambioMonedero" id="EnviarMonedero" name="submit">Aceptar</button>
-                    <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
-                  </article>
+                </article>
+                <article class="modal-footer">
+                  <button type="submit" class="btn blue" value="cambioBilletero" id="EnviarBilletero" name="submit">Aceptar</button>
+                  <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
                 </article>
               </article>
-            </form>
-          </article>
-          <article id="Billetero" class="modal fade" tabindex="-1" aria-hidden="true">
-            <form action="{{ url_for('configSistema') }}" method="post">
-              <article class="modal-dialog">
-                <article class="modal-content">
-                  <article class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 class="modal-title">Configuración Billetero</h3>
-                  </article>
-                  <article class="modal-body">
-                    <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
-                      <article class="row">
-                        <article class="form-group col-md-12">
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b500" name="b500"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b200" name="b200"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b100" name="b100"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b50" name="b50"/>
-                          <input class="form-control placeholder-no-fix hidden" type="text" placeholder="" value="" id="b20" name="b20"/>
-                        </article>
-                        <article class="col-md-12 form-group">
-                          <table class="table table-responsive text-center">
-                            <tr>
-                              <td></td>
-                              <td>
-                                <label for="Activo">
-                                  <strong>
-                                    Activo
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <label for="Desactivado">
-                                  <strong>
-                                    Desactivado
-                                  </strong>
-                                </label>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    500.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete500" id="activoBillete500" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete500" id="desactivoBillete500" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    200.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete200" id="activoBillete200" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete200" id="desactivoBillete200" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    100.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete100" id="activoBillete100" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete100" id="desactivoBillete100" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    50.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete50" id="activoBillete50" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete50" id="desactivoBillete50" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <label for="2">
-                                  <strong>
-                                    20.00 Pesos
-                                  </strong>
-                                </label>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete20" id="activoBillete20" value="1">
-                                </article>
-                              </td>
-                              <td>
-                                <article class="iradio" id="" >
-                                  <input type="radio" name="radioBillete20" id="desactivoBillete20" value="0">
-                                </article>
-                              </td>
-                            </tr>
-                          </table>
-                        </article>
-                      </article>
-                    </article>
-                  </article>
-                  <article class="modal-footer">
-                    <button type="submit" class="btn blue" value="cambioBilletero" id="EnviarBilletero" name="submit">Aceptar</button>
-                    <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
-                  </article>
-                </article>
-              </article>
-            </form>
-          </article>
-          <article class="col-md-12">
-            <article class="page-breadcrumb breadcrumb row">
-              <article class="col-lg-4 col-md-4 col-sm-5 col-xs-12 text-left">
-                <i class="fa fa-home"></i>
-                <a href="{{ url_for('home') }}">Inicio</a>
-                <i class="fa fa-angle-right"></i>
-                <a href="{{ url_for('configSistema') }}">Sistema</a>
-              </article>
-              <article class="col-lg-8 col-md-8 col-sm-7 col-xs-12  text-right">
-                <i class="fa fa-calendar"></i>
-                <script type="text/javascript">
+            </article>
+          </form>
+        </article>
+        <article class="col-md-12">
+          <article class="page-breadcrumb breadcrumb row">
+            <article class="col-lg-4 col-md-4 col-sm-5 col-xs-12 text-left">
+              <i class="fa fa-home"></i>
+              <a href="{{ url_for('home') }}">Inicio</a>
+              <i class="fa fa-angle-right"></i>
+              <a href="{{ url_for('configSistema') }}">Sistema</a>
+            </article>
+            <article class="col-lg-8 col-md-8 col-sm-7 col-xs-12  text-right">
+              <i class="fa fa-calendar"></i>
+              <script type="text/javascript">
                 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
                 var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
                 var f=new Date(); document.write(diasSemana[f.getDay()] + " " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                </script>
-              </article>
+              </script>
             </article>
           </article>
-          <article class="row">
-            <article class="col-md-12">
-              <article class="alert alert-danger hidden" id="noDisponible">
-                <button class="close" data-close="alert"></button>
-                <span>El servicio no se encuentra disponible.</span>
-              </article>
-              <article class="alert alert-info hidden" id="cambioConfiguracion">
-                <button class="close" data-close="alert"></button>
-                <span>La configuración del sistema se guardó exitosamente.</span>
-              </article>
-              <article class="alert alert-info hidden" id="cambioMonedero">
-                <button class="close" data-close="alert"></button>
-                <span>La configuración del monedero se guardó exitosamente.</span>
-              </article>
-              <article class="alert alert-info hidden" id="cambioBilletero">
-                <button class="close" data-close="alert"></button>
-                <span>La configuración del billetero se guardó exitosamente.</span>
+        </article>
+        <article class="row">
+          <article class="col-md-12">
+            <article class="alert alert-danger hidden" id="noDisponible">
+              <button class="close" data-close="alert"></button>
+              <span>El servicio no se encuentra disponible.</span>
+            </article>
+            <article class="alert alert-info hidden" id="cambioConfiguracion">
+              <button class="close" data-close="alert"></button>
+              <span>La configuración del sistema se guardó exitosamente.</span>
+            </article>
+            <article class="alert alert-info hidden" id="cambioMonedero">
+              <button class="close" data-close="alert"></button>
+              <span>La configuración del monedero se guardó exitosamente.</span>
+            </article>
+            <article class="alert alert-info hidden" id="cambioBilletero">
+              <button class="close" data-close="alert"></button>
+              <span>La configuración del billetero se guardó exitosamente.</span>
+            </article>
+          </article>
+          <article class="col-md-12">
+            <article class="col-md-4">
+              <article class="portlet light bordered">
+                <article class="portlet-title">
+                  <article class="caption">
+                    <i class="fa fa-desktop"></i>Configuración del Sistema
+                  </article>
+                </article>
+                <article class="portlet-body flip-scroll text-center">
+                  <form class="form-horizontal" role="form">
+                    <article class="form-body row responsivoEstado">
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label">
+                        Número de Serie
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-barcode"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['numSerie'] }}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        Tarifa
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-usd"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{datos_sistema ['rate'] }}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        Tiempo de Apertura
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-clock-o"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['t_apertura']}}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        Última venta
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-ticket"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['ticket_actual']}}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        Turno
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-bell"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['turno']}}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        No. Serie del Monedero
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-usd"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['num_hopper']}}"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article class="form-group col-md-12">
+                        <label class="col-md-5 control-label ">
+                        No. Serie del Billetero
+                        </label>
+                        <article class="col-lg-7">
+                          <article class="input-group">
+                            <span class="input-group-addon">
+                            <i class="fa fa-money"></i>
+                            </span>
+                            <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['num_payout']}}"></input>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="form-actions text-right">
+                      <a href="#Sistema" class="btn blue" data-toggle="modal">Editar</a>
+                    </article>
+                  </form>
+                </article>
               </article>
             </article>
-            <article class="col-md-12">
-              <article class="col-md-4">
-                <article class="portlet light bordered">
-                  <article class="portlet-title">
-                    <article class="caption">
-                      <i class="fa fa-desktop"></i>Configuración del Sistema
-                    </article>
+            <article class="col-md-4">
+              <article class="portlet light bordered">
+                <article class="portlet-title">
+                  <article class="caption">
+                    <i class="fa fa-usd"></i>Monedero
                   </article>
-                  <article class="portlet-body flip-scroll text-center">
-                    <form class="form-horizontal" role="form">
-                      <article class="form-body row responsivoEstado">
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label">
-                            Número de Serie
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-barcode"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['numSerie'] }}"></input>
-                            </article>
-                          </article>
+                </article>
+                <article class="portlet-body flip-scroll text-center">
+                  <form class="form-horizontal" role="form">
+                    <article class="form-body row responsivoEstado">
+                      <article class="form-group" id="Valores">
+                        <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[10.0] }}" id="dm_10"></input>
+                        <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[5.0] }}" id="dm_5"></input>
+                        <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[2.0] }}" id="dm_2"></input>
+                        <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[1.0] }}" id="dm_1"></input>
+                        <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[0.5] }}" id="dm_05"></input>
+                        <article class="col-md-12">
+                          <label class="col-md-5 control-label alinerCentro"><strong>Canal</strong></label>
+                          <label class="col-md-7  control-label alinerCentro"><strong>Estado</strong></label>
                         </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            Tarifa
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-usd"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{datos_sistema ['rate'] }}"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            Tiempo de Apertura
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['t_apertura']}}"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            Última venta
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-ticket"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['ticket_actual']}}"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            Turno
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-bell"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['turno']}}"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            No. Serie del Monedero
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-usd"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['num_hopper']}}"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12">
-                          <label class="col-md-5 control-label ">
-                            No. Serie del Billetero
-                          </label>
-                          <article class="col-lg-7">
-                            <article class="input-group">
-                              <span class="input-group-addon">
-                                <i class="fa fa-money"></i>
-                              </span>
-                              <input class="form-control" type="" placeholder="" disabled value="{{ datos_sistema['num_payout']}}"></input>
-                            </article>
+                      </article>
+                      <article class="form-group col-md-12" id="form_10">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        10.00
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_10"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_10"></input>
                           </article>
                         </article>
                       </article>
-                      <article class="form-actions text-right">
-                        <a href="#Sistema" class="btn blue" data-toggle="modal">Editar</a>
+                      <article class="form-group col-md-12" id="form_5">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        5.00
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_5"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_5"></input>
+                          </article>
+                        </article>
                       </article>
-                    </form>             
-                  </article>
-                </article>          
-              </article>
-              <article class="col-md-4">
-                <article class="portlet light bordered">
-                  <article class="portlet-title">
-                    <article class="caption">
-                      <i class="fa fa-usd"></i>Monedero
-                    </article>
-                  </article>
-                  <article class="portlet-body flip-scroll text-center">
-                    <form class="form-horizontal" role="form">
-                      <article class="form-body row responsivoEstado">
-                        <article class="form-group" id="Valores">
-                          <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[10.0] }}" id="dm_10"></input>
-                          <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[5.0] }}" id="dm_5"></input>
-                          <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[2.0] }}" id="dm_2"></input>
-                          <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[1.0] }}" id="dm_1"></input>
-                          <input class="form-control hidden" type="text" disabled value="{{ estado_monedero[0.5] }}" id="dm_05"></input>
-                          <article class="col-md-12">
-                            <label class="col-md-5 control-label alinerCentro"><strong>Canal</strong></label>
-                            <label class="col-md-7  control-label alinerCentro"><strong>Estado</strong></label>
+                      <article class="form-group col-md-12" id="form_2">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        2.00
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_2"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_2"></input>
                           </article>
                         </article>
-                        <article class="form-group col-md-12" id="form_10">
-                          <label class="col-md-5 control-label alinerCentro">
-                            <i class="fa fa-usd"></i>
-                            10.00
-                          </label>
-                          <article class="col-md-7">
-                            <article class="input-icon right">
-                              <i class="fa" id="i_10"></i>
-                              <input class="form-control" type="text" disabled value="" id="input_10"></input>
-                            </article>
+                      </article>
+                      <article class="form-group col-md-12" id="form_1">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        1.00
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_1"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_1"></input>
                           </article>
                         </article>
-                        <article class="form-group col-md-12" id="form_5">
-                          <label class="col-md-5 control-label alinerCentro">
-                            <i class="fa fa-usd"></i>
-                            5.00
-                          </label>
-                          <article class="col-md-7">
-                            <article class="input-icon right">
-                              <i class="fa" id="i_5"></i>
-                              <input class="form-control" type="text" disabled value="" id="input_5"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12" id="form_2">
-                          <label class="col-md-5 control-label alinerCentro">
-                            <i class="fa fa-usd"></i>
-                            2.00
-                          </label>
-                          <article class="col-md-7">
-                            <article class="input-icon right">
-                              <i class="fa" id="i_2"></i>
-                              <input class="form-control" type="text" disabled value="" id="input_2"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12" id="form_1">
-                          <label class="col-md-5 control-label alinerCentro">
-                            <i class="fa fa-usd"></i>
-                            1.00
-                          </label>
-                          <article class="col-md-7">
-                            <article class="input-icon right">
-                              <i class="fa" id="i_1"></i>
-                              <input class="form-control" type="text" disabled value="" id="input_1"></input>
-                            </article>
-                          </article>
-                        </article>
-                        <article class="form-group col-md-12" id="form_05">
-                          <label class="col-md-5 control-label alinerCentro">
-                            <i class="fa fa-usd"></i>
-                           .50
-                         </label>
-                         <article class="col-md-7">
+                      </article>
+                      <article class="form-group col-md-12" id="form_05">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        .50
+                        </label>
+                        <article class="col-md-7">
                           <article class="input-icon right">
                             <i class="fa" id="i_05"></i>
                             <input class="form-control" type="text" disabled value="" id="input_05"></input>
@@ -812,9 +814,9 @@
                     <article class="form-actions text-right">
                       <a href="#Monedero" class="btn blue" data-toggle="modal" id="ModalMonedero">Editar</a>
                     </article>
-                  </form>             
+                  </form>
                 </article>
-              </article>          
+              </article>
             </article>
             <article class="col-md-4">
               <article class="portlet light bordered">
@@ -837,86 +839,86 @@
                           <label class="col-md-7  control-label alinerCentro "><strong>Estado</strong></label>
                         </article>
                       </article>
-                    <article id="form_500" class="form-group col-md-12">
-                      <label class="col-md-5 control-label alinerCentro">
+                      <article id="form_500" class="form-group col-md-12">
+                        <label class="col-md-5 control-label alinerCentro">
                         <i class="fa fa-usd"></i>
                         500.00
-                      </label>
-                      <article class="col-md-7">
-                        <article class="input-icon right">
-                          <i class="fa" id="i_500"></i>
-                          <input class="form-control" type="text" disabled value="" id="input_500"></input>
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_500"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_500"></input>
+                          </article>
                         </article>
                       </article>
-                    </article>
-                    <article id="form_200" class="form-group col-md-12">
-                      <label class="col-md-5 control-label alinerCentro">
+                      <article id="form_200" class="form-group col-md-12">
+                        <label class="col-md-5 control-label alinerCentro">
                         <i class="fa fa-usd"></i>
                         200.00
-                      </label>
-                      <article class="col-md-7">
-                        <article class="input-icon right">
-                          <i class="fa" id="i_200"></i>
-                          <input class="form-control" type="text" disabled value="" id="input_200"></input>
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_200"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_200"></input>
+                          </article>
                         </article>
                       </article>
-                    </article>
-                    <article id="form_100" class="form-group col-md-12">
-                      <label class="col-md-5 control-label alinerCentro">
+                      <article id="form_100" class="form-group col-md-12">
+                        <label class="col-md-5 control-label alinerCentro">
                         <i class="fa fa-usd"></i>
                         100.00
-                      </label>
-                      <article class="col-md-7">
-                        <article class="input-icon right">
-                          <i class="fa" id="i_100"></i>
-                          <input class="form-control" type="text" disabled value="" id="input_100"></input>
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_100"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_100"></input>
+                          </article>
                         </article>
                       </article>
-                    </article>
-                    <article id="form_50" class="form-group col-md-12">
-                      <label class="col-md-5 control-label alinerCentro">
+                      <article id="form_50" class="form-group col-md-12">
+                        <label class="col-md-5 control-label alinerCentro">
                         <i class="fa fa-usd"></i>
                         50.00
-                      </label>
-                      <article class="col-md-7">
-                        <article class="input-icon right">
-                          <i class="fa" id="i_50"></i>
-                          <input class="form-control" type="text" disabled value="" id="input_50"></input>
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_50"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_50"></input>
+                          </article>
+                        </article>
+                      </article>
+                      <article id="form_20"class="form-group col-md-12">
+                        <label class="col-md-5 control-label alinerCentro">
+                        <i class="fa fa-usd"></i>
+                        20.00
+                        </label>
+                        <article class="col-md-7">
+                          <article class="input-icon right">
+                            <i class="fa" id="i_20"></i>
+                            <input class="form-control" type="text" disabled value="" id="input_20"></input>
+                          </article>
                         </article>
                       </article>
                     </article>
-                    <article id="form_20"class="form-group col-md-12">
-                     <label class="col-md-5 control-label alinerCentro">
-                       <i class="fa fa-usd"></i>
-                       20.00
-                     </label>
-                     <article class="col-md-7">
-                       <article class="input-icon right">
-                          <i class="fa" id="i_20"></i>
-                          <input class="form-control" type="text" disabled value="" id="input_20"></input>
-                        </article>
-                      </article>
+                    <article class="form-actions text-right">
+                      <a href="#Billetero" class="btn blue" data-toggle="modal">Editar</a>
                     </article>
-                  </article>
-                  <article class="form-actions text-right">
-                    <a href="#Billetero" class="btn blue" data-toggle="modal">Editar</a>
-                  </article>
-                </form>             
+                  </form>
+                </article>
               </article>
-            </article>          
+            </article>
           </article>
         </article>
       </article>
-    </article>
-  </section>
-  <article class="footer">
-    <article class="footer-inner">2014 &copy; KERNOTEK</article>
-    <article class="footer-tools">
-      <span class="go-top">
+    </section>
+    <article class="footer">
+      <article class="footer-inner">2014 &copy; KERNOTEK</article>
+      <article class="footer-tools">
+        <span class="go-top">
         <i class="fa fa-angle-up"></i>
-      </span>
+        </span>
+      </article>
     </article>
-  </article>
     <script src="../static/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="../static/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
     <script src="../static/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
@@ -936,6 +938,6 @@
           increaseArea: '80%'
         });
       });
-</script>
-</body>
+    </script>
+  </body>
 </html>
