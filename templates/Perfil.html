@@ -56,21 +56,6 @@
               <span class="title">Inicio</span>
             </a>
           </li>
-          <li class="tooltips">
-            <a href="javascript:;">
-              <i class="fa fa-hdd-o"></i>
-              <span class="title">Estado del sistema</span>
-              <span class="arrow"></span>
-            </a>
-            <ul class="sub-menu">
-              <li class="tooltips">
-                <a href="{{ url_for('estadoSistema') }}">
-                  <i class="fa fa-laptop"></i>
-                  <span class="title">Estado del equipo</span>
-                </a>
-              </li>
-            </ul>
-          </li>
           {% if session['typeuser'] == 'Administrador'%}
           <li>
             <a href="javascript:;">

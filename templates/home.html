@@ -59,21 +59,6 @@
               <span class="title">Inicio</span>
               </a>
             </li>
-            <li class="tooltips">
-              <a href="javascript:;">
-              <i class="fa fa-hdd-o"></i>
-              <span class="title">Estado del Sistema</span>
-              <span class="arrow"></span>
-              </a>
-              <ul class="sub-menu">
-                <li class="tooltips">
-                  <a href="{{ url_for('estadoSistema') }}">
-                  <i class="fa fa-laptop"></i>
-                  <span class="title">Estado del Equipo</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
             {% if session['typeuser'] == 'Administrador'%}
             <li>
               <a href="javascript:;">
@@ -230,6 +215,58 @@
             </article>
           </article>
           <article class="row">
+            <article class="col-me-12">
+              <article id="static" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Ingresa nueva tarifa.</h4>
+                  </article>
+                  <article class="modal-body">
+                    <article class="row">
+                      <article class="col-md-4">
+                        <ul class="nav nav nav-pills nav-stacked" role="tablist" style="dorder:1px solid black;">
+                          <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+                          <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                          <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+                          <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+                        </ul> 
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                            60%
+                          </div>
+                        </div>
+                      </article>
+                      <article class="col-md-8">
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="home">ContenidoHome
+                            <input type="text" class="form-control" placeholder="Tarifa">
+                          </div>
+                          <div class="tab-pane" id="profile">ContenidoProfile
+                            <input type="text" class="form-control" placeholder="Tarifa">
+                          </div>
+                          <div class="tab-pane" id="messages">ContenidoMessages
+                            <input type="text" class="form-control" placeholder="Tarifa">
+                          </div>
+                          <div class="tab-pane" id="settings">ContenidoSettings
+                            <input type="text" class="form-control" placeholder="Tarifa">
+                          </div>
+                        </div>
+                      </article>  
+                    </article> 
+                    <p>
+                      
+                    </p>
+                  </article>
+                  <article class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn default">Cancel</button>
+                    <button type="button" data-dismiss="modal" class="btn green">Continue Task</button>
+                  </article>
+                </article>
+              </article>
+            </article>
+            </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 " id="alerta">
               <article class="dashboard-stat blue responsivoHome">
                 <article class="visual">
@@ -264,12 +301,14 @@
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
-              <article class="dashboard-stat blue responsivoHome">
+              <article class="dashboard-stat blue responsivoHome" data-toggle="modal" onclick="$('#static').modal('show');">
                 <article class="visual">
                   <i class="fa fa-money"></i>
                 </article>
                 <article class="details">
-                  <article class="number">Tarifa.</article>
+                  <article class="number">
+                     Tarifa.
+                  </article>
                   <article class="desc"><strong>$ {{ dic_home['tarifa'] }}0</strong></article>
                 </article>
               </article>
