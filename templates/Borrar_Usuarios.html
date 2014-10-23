@@ -86,6 +86,20 @@
                   <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
                   </a>
                 </li>
+                <li>
+                  <a href="javascript:;">
+                  <i class="fa fa-database"></i>
+                  <span class="title">Bitácora</span>
+                  <span class="arrow "></span>
+                  </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="{{ url_for('bitacora') }}">
+                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li>
@@ -102,21 +116,7 @@
                 </li>
               </ul>
             </li>
-            <li>
-              <a href="javascript:;">
-              <i class="fa fa-database"></i>
-              <span class="title">Bitácora</span>
-              <span class="arrow "></span>
-              </a>
-              <ul class="sub-menu">
-                <li>
-                  <a href="{{ url_for('bitacora') }}">
-                  <i class="fa fa-book"></i>Bitácora del Sistema
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
+            <li class="start active ">
               <a href="javascript:;">
               <i class="fa fa fa-wrench"></i>
               <span class="title">Configuración</span>

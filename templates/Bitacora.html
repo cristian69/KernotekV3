@@ -59,7 +59,7 @@
               <span class="arrow "></span>
               </a>
             </li>
-            <li>
+            <li class="active">
               <a href="javascript:;">
               <i class="fa fa-line-chart"></i>
               <span class="title">Reportes</span>
@@ -86,6 +86,20 @@
                   <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
                   </a>
                 </li>
+                <li>
+                  <a href="javascript:;">
+                  <i class="fa fa-database"></i>
+                  <span class="title">Bitácora</span>
+                  <span class="arrow "></span>
+                  </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="{{ url_for('bitacora') }}">
+                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </li>
             <li>
@@ -98,19 +112,6 @@
                 <li>
                   <a href="{{ url_for('corteTurno') }}">
                   <i class="fa fa-clock-o"></i>Corte de Turno
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="start active">
-              <a href="javascript:;">
-              <i class="fa fa-database"></i>
-              <span class="title">Bitácora</span>
-              </a>
-              <ul class="sub-menu">
-                <li>
-                  <a href="{{ url_for('bitacora') }}">
-                  <i class="fa fa-book"></i>Bitácora del Sistema
                   </a>
                 </li>
               </ul>
