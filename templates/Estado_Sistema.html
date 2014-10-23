@@ -62,33 +62,6 @@
               </a>
             </li>
             {% if session['typeuser'] == 'Administrador'%}
-            <li  class="tooltips">
-              <a href="javascript:;">
-              <i class="fa fa-users"></i>
-              <span class="title">Gestión de Usuarios</span>
-              <span class="arrow "></span>
-              </a>
-              <ul class="sub-menu">
-                <li class="tooltips">
-                  <a href="{{ url_for('verUsuarios') }}">
-                  <i class="fa fa-eye"></i>
-                  <span class="title">Ver Cuentas</span>
-                  </a>
-                </li>
-                <li class="tooltips">
-                  <a href="{{ url_for('borrarUsuario') }}">
-                  <i class="fa fa-trash-o"></i>
-                  <span class="title">Borrar Cuentas</span>
-                  </a>
-                </li>
-                <li class="tooltips">
-                  <a href="{{ url_for('activarCuentas') }}">
-                  <i class="fa fa-check"></i>
-                  <span class="title">Activar Cuentas</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
             {% endif %}
             <li  class="tooltips">
               <a href="javascript:;">
@@ -185,6 +158,32 @@
                   <a href="{{ url_for('configSistema') }}">
                   <i class="fa fa-cogs"></i>Sistema
                   </a>
+                </li>
+                <li class="start ">
+                  <a href="javascript:;">
+                    <i class="fa fa-users"></i>
+                    <span class="title">Gestión de Usuarios</span>
+                  </a>
+                  <ul class="sub-menu">
+                    <li class="tooltips">
+                      <a href="{{ url_for('verUsuarios') }}">
+                      <i class="fa fa-eye"></i>
+                      <span class="title">Ver Cuentas</span>
+                      </a>
+                    </li>
+                    <li class="tooltips">
+                      <a href="{{ url_for('borrarUsuario') }}">
+                      <i class="fa fa-trash-o"></i>
+                      <span class="title">Borrar Cuentas</span>
+                      </a>
+                    </li>
+                    <li class="tooltips">
+                      <a href="{{ url_for('activarCuentas') }}">
+                      <i class="fa fa-check"></i>
+                      <span class="title">Activar Cuentas</span>
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 {% endif %}
               </ul>
