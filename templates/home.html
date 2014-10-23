@@ -117,25 +117,6 @@
                 </li>
               </ul>
             </li>
-            <li>
-              <a href="javascript:;">
-              <i class="fa fa-key"></i>
-              <span class="title">Llaves del Sistema</span>
-              <span class="arrow "></span>
-              </a>
-              <ul class="sub-menu">
-                <li>
-                  <a href="{{ url_for('nuevaLlave') }}">
-                  <i class="fa fa-plus"></i>Nueva Llave
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ url_for('editarLlave') }}">
-                  <i class="fa fa-pencil"></i>Editar Llave
-                  </a>
-                </li>
-              </ul>
-            </li>
             {% endif %}
             <li>
               <a href="javascript:;">
@@ -155,9 +136,10 @@
                   <i class="fa fa-cogs"></i>Sistema
                   </a>
                 </li>
-                <li class="start ">
+                <li>
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
+                    <span class="arrow "></span>
                     <span class="title">Gestión de Usuarios</span>
                   </a>
                   <ul class="sub-menu">
@@ -177,6 +159,25 @@
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
                       <span class="title">Activar Cuentas</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="javascript:;">
+                  <i class="fa fa-key"></i>
+                  <span class="title">Llaves del Sistema</span>
+                  <span class="arrow "></span>
+                  </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="{{url_for('nuevaLlave')}}">
+                      <i class="fa fa-plus"></i>Nueva Llave
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url_for('editarLlave') }}">
+                      <i class="fa fa-pencil"></i>Editar Llave
                       </a>
                     </li>
                   </ul>
