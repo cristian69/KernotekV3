@@ -71,22 +71,22 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  <i class="fa fa-bar-chart-o"></i>Reporte general
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  <i class="fa fa-bar-chart-o"></i>Reporte específico
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  <i class="fa fa-bar-chart-o"></i>Reporte detallado
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  <i class="fa fa-bar-chart-o"></i>Reporte por turno
                   </a>
                 </li>
                 <li>
@@ -98,7 +98,7 @@
                   <ul class="sub-menu">
                     <li>
                       <a href="{{ url_for('bitacora') }}">
-                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      <i class="fa fa-book"></i>Bitácora del sistema
                       </a>
                     </li>
                   </ul>
@@ -114,7 +114,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{ url_for('corteTurno') }}">
-                  <i class="fa fa-clock-o"></i>Corte de Turno
+                  <i class="fa fa-clock-o"></i>Corte de turno
                   </a>
                 </li>
               </ul>
@@ -127,7 +127,7 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('configReporte') }}">
-                  <i class="fa fa-cogs"></i>Reporte Específico
+                  <i class="fa fa-cogs"></i>Reporte específico
                   </a>
                 </li>
                 {% if session['typeuser'] == 'Administrador' %}
@@ -140,25 +140,25 @@
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
                     <span class="arrow "></span>
-                    <span class="title">Gestión de Usuarios</span>
+                    <span class="title">Gestión de usuarios</span>
                   </a>
                   <ul class="sub-menu">
                     <li class="tooltips">
                       <a href="{{ url_for('verUsuarios') }}">
                       <i class="fa fa-eye"></i>
-                      <span class="title">Ver Cuentas</span>
+                      <span class="title">Ver cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('borrarUsuario') }}">
                       <i class="fa fa-trash-o"></i>
-                      <span class="title">Borrar Cuentas</span>
+                      <span class="title">Borrar cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
-                      <span class="title">Activar Cuentas</span>
+                      <span class="title">Activar cuentas</span>
                       </a>
                     </li>
                   </ul>
@@ -166,18 +166,18 @@
                 <li>
                   <a href="javascript:;">
                   <i class="fa fa-key"></i>
-                  <span class="title">Llaves del Sistema</span>
+                  <span class="title">Llaves del sistema</span>
                   <span class="arrow "></span>
                   </a>
                   <ul class="sub-menu">
                     <li>
                       <a href="{{url_for('nuevaLlave')}}">
-                      <i class="fa fa-plus"></i>Nueva Llave
+                      <i class="fa fa-plus"></i>Nueva llave
                       </a>
                     </li>
                     <li>
                       <a href="{{ url_for('editarLlave') }}">
-                      <i class="fa fa-pencil"></i>Editar Llave
+                      <i class="fa fa-pencil"></i>Editar llave
                       </a>
                     </li>
                   </ul>
@@ -198,7 +198,7 @@
                 <article class="modal-content">
                   <article class="modal-header text-center">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h3 class="modal-title">¿Decea Cambiar el estado Actual del Sistema?</h3>
+                    <h3 class="modal-title">¿Desea guardar los cambios realizados?</h3>
                   </article>
                   <article class="modal-body text-center">
                     <button type="submit" class="btn blue group-form" name="submit" value="">Aceptar</button>
@@ -215,7 +215,7 @@
               <article class="modal-content">
                 <article class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                  <h3 class="modal-title">Configuración Estado del Sistema</h3>
+                  <h3 class="modal-title">Configuración del Ssstema</h3>
                 </article>
                 <article class="modal-body">
                   <article class="scroller" style="height:360px" data-always-visible="1" data-rail-visible1="1">
@@ -224,43 +224,43 @@
                         <article class="form-group col-md-12 has-success">
                           <label class="control-label col-md-5">Número Serie</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['numSerie']}}" name="numSerie"/>
+                            <i class="fa fa-check"></i><input class="form-control" type="text" value="{{ datos_sistema['numSerie']}}" name="numSerie"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-success">
                           <label class="control-label col-md-5">Tarifa</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['rate']}}" name="tarifa"/>
+                            <i class="fa fa-check"></i><input class="form-control" type="text" value="{{ datos_sistema['rate']}}" name="tarifa"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-success">
                           <label class="control-label col-md-5">Tiempo de Apertura</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text" placeholder="" value="{{ datos_sistema['t_apertura']}}" name="tiempoApertura"/>
+                            <i class="fa fa-check"></i><input class="form-control" type="text" value="{{ datos_sistema['t_apertura']}}" name="tiempoApertura"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-error">
                           <label class="control-label col-md-5">Última Venta</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['ticket_actual']}}"/>
+                            <i class="fa fa-times"></i><input class="form-control" type="text" disabled value="{{ datos_sistema['ticket_actual']}}"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-error">
                           <label class="control-label col-md-5">Turno</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-times"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" disabled value="{{ datos_sistema['turno']}}"/>
+                            <i class="fa fa-times"></i><input class="form-control" type="text" disabled value="{{ datos_sistema['turno']}}"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-success">
                           <label class="control-label col-md-5">No. Serie Monedero</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_hopper']}}" name="monederoSerie"/>
+                            <i class="fa fa-check"></i><input class="form-control" type="text" value="{{ datos_sistema['num_hopper']}}" name="monederoSerie"/>
                           </article>
                         </article>
                         <article class="form-group col-md-12 has-success">
                           <label class="control-label col-md-5">No. Billetero</label>
                           <article class="input-icon col-md-7">
-                            <i class="fa fa-check"></i><input class="form-control placeholder-no-fix" type="text"  placeholder="" value="{{ datos_sistema['num_payout']}}" name="billeteroSerie"/>
+                            <i class="fa fa-check"></i><input class="form-control" type="text" value="{{ datos_sistema['num_payout']}}" name="billeteroSerie"/>
                           </article>
                         </article>
                       </article>
@@ -281,7 +281,7 @@
               <article class="modal-content">
                 <article class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                  <h3 class="modal-title">Configuración Monedero</h3>
+                  <h3 class="modal-title">Configuración monedero</h3>
                 </article>
                 <article class="modal-body">
                   <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
@@ -426,7 +426,7 @@
               <article class="modal-content">
                 <article class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                  <h3 class="modal-title">Configuración Billetero</h3>
+                  <h3 class="modal-title">Configuración billetero</h3>
                 </article>
                 <article class="modal-body">
                   <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
@@ -607,7 +607,7 @@
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-desktop"></i>Configuración del Sistema
+                    <i class="fa fa-desktop"></i>Configuración del sistema.
                   </article>
                 </article>
                 <article class="portlet-body flip-scroll text-center">
@@ -615,7 +615,7 @@
                     <article class="form-body row responsivoEstado">
                       <article class="form-group col-md-12">
                         <label class="col-md-5 control-label">
-                        Número de Serie
+                        Número de serie
                         </label>
                         <article class="col-lg-7">
                           <article class="input-group">
@@ -641,7 +641,7 @@
                       </article>
                       <article class="form-group col-md-12">
                         <label class="col-md-5 control-label ">
-                        Tiempo de Apertura
+                        Tiempo de apertura
                         </label>
                         <article class="col-lg-7">
                           <article class="input-group">
@@ -680,7 +680,7 @@
                       </article>
                       <article class="form-group col-md-12">
                         <label class="col-md-5 control-label ">
-                        No. Serie del Monedero
+                        No. serie del monedero
                         </label>
                         <article class="col-lg-7">
                           <article class="input-group">
@@ -693,7 +693,7 @@
                       </article>
                       <article class="form-group col-md-12">
                         <label class="col-md-5 control-label ">
-                        No. Serie del Billetero
+                        No. serie del billetero
                         </label>
                         <article class="col-lg-7">
                           <article class="input-group">
@@ -716,7 +716,7 @@
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-usd"></i>Monedero
+                    <i class="fa fa-usd"></i>Monedero.
                   </article>
                 </article>
                 <article class="portlet-body flip-scroll text-center">

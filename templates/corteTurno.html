@@ -71,22 +71,22 @@
             <ul class="sub-menu">
              <li class="tooltips">
                 <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  <i class="fa fa-bar-chart-o"></i>Reporte general
                 </a>
               </li>
               <li class="tooltips">
                 <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  <i class="fa fa-bar-chart-o"></i>Reporte específico
                 </a>
               </li>
               <li class="tooltips">
                 <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  <i class="fa fa-bar-chart-o"></i>Reporte detallado
                 </a>
               </li>
               <li class="tooltips">
                 <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  <i class="fa fa-bar-chart-o"></i>Reporte por turno
                 </a>
               </li>
               <li>
@@ -98,7 +98,7 @@
                 <ul class="sub-menu">
                   <li>
                     <a href="{{ url_for('bitacora') }}">
-                    <i class="fa fa-book"></i>Bitácora del Sistema
+                    <i class="fa fa-book"></i>Bitácora del sistema
                     </a>
                   </li>
                 </ul>
@@ -113,7 +113,7 @@
             <ul class="sub-menu">
               <li>
               <a href="{{ url_for('corteTurno') }}">
-                <i class="fa fa-clock-o"></i>Corte de Turno
+                <i class="fa fa-clock-o"></i>Corte de turno
                 </a>
               </li>
             </ul>
@@ -127,7 +127,7 @@
             <ul class="sub-menu">
               <li class="tooltips">
                 <a href="{{ url_for('configReporte') }}">
-                  <i class="fa fa-cogs"></i>Reporte Específico
+                  <i class="fa fa-cogs"></i>Reporte específico
                 </a>
               </li>
               {% if session['typeuser'] == 'Administrador' %}
@@ -140,25 +140,25 @@
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
                     <span class="arrow "></span>
-                    <span class="title">Gestión de Usuarios</span>
+                    <span class="title">Gestión de usuarios</span>
                   </a>
                   <ul class="sub-menu">
                     <li class="tooltips">
                       <a href="{{ url_for('verUsuarios') }}">
                       <i class="fa fa-eye"></i>
-                      <span class="title">Ver Cuentas</span>
+                      <span class="title">Ver cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('borrarUsuario') }}">
                       <i class="fa fa-trash-o"></i>
-                      <span class="title">Borrar Cuentas</span>
+                      <span class="title">Borrar cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
-                      <span class="title">Activar Cuentas</span>
+                      <span class="title">Activar cuentas</span>
                       </a>
                     </li>
                   </ul>
@@ -166,18 +166,18 @@
                 <li>
                   <a href="javascript:;">
                   <i class="fa fa-key"></i>
-                  <span class="title">Llaves del Sistema</span>
+                  <span class="title">Llaves del sistema</span>
                   <span class="arrow "></span>
                   </a>
                   <ul class="sub-menu">
                     <li>
                       <a href="{{url_for('nuevaLlave')}}">
-                      <i class="fa fa-plus"></i>Nueva Llave
+                      <i class="fa fa-plus"></i>Nueva llave
                       </a>
                     </li>
                     <li>
                       <a href="{{ url_for('editarLlave') }}">
-                      <i class="fa fa-pencil"></i>Editar Llave
+                      <i class="fa fa-pencil"></i>Editar llave
                       </a>
                     </li>
                   </ul>
@@ -240,7 +240,7 @@
                 <i class="fa fa-home"></i>
                 <a href="{{ url_for('home') }}">Inicio</a>
                 <i class="fa fa-angle-right"></i>
-                <a href="">Corte de Turno</a>
+                <a href="">Corte de turno</a>
               </article>
               <article class="col-lg-10 col-md-8 col-sm-8 col-xs-12  text-right">
                 <i class="fa fa-calendar"></i>
@@ -268,7 +268,7 @@
                 <i class="fa fa-calendar"></i>
               </article>
               <article class="details">
-                <article class="number">Inicio de Turno</article>
+                <article class="number">Inicio de turno</article>
                 <article class="desc">
                   <strong>
                      <p>{{ dicTurno['fechaInicio'] }}&nbsp &nbsp &nbsp{{dicTurno['horaInicio']}}</p>
@@ -284,7 +284,7 @@
               </article>
               <article class="details">
                 <article class="number">
-                  Turno Actual
+                  Turno actual
                 </article>
                 <article class="desc">
                   <strong>
@@ -300,7 +300,7 @@
                 <i class="fa fa-usd"></i>
               </article>
               <article class="details">
-                <article class="number">Ventas del Turno</article>
+                <article class="number">Ventas del turno</article>
                 <article class="desc"><strong>{{ dicTurno['ventasTurno'] }}</strong></article>
               </article>
             </article>
@@ -310,7 +310,7 @@
             <article class="portlet light bordered" id="cambioConfiguracion">
               <article class="portlet-title">
                 <article class="caption">
-                  <i class="fa fa-reorder"></i>Corte de Turno
+                  <i class="fa fa-reorder"></i>Corte de turno.
                 </article>
               </article>
               <article class="portlet-body form text-center">
@@ -318,14 +318,14 @@
                   <article class="form-body text-right">
                     <article>
                       <a style="cursor:pointer;" id="enlaceConfigurar" onclick="cambiarEstado('cambioTipo');">
-                        <i class="fa fa-pencil"></i>  Editar Información
+                        <i class="fa fa-pencil"></i>  Editar información
                       </a>
                     </article>
                     <table class="table table-responsive text-center">
                       <thead class="thead1">
                         <tr >
                           <td class="text-center" colspan="2">
-                            <h3>Tipo de Corte de Turno Actual<br></h3>
+                            <h3>Tipo de corte de turno actual<br></h3>
                           </td>
                         </tr>
                         <tr>
@@ -339,11 +339,11 @@
                       </thead>
                       <tbody class="hidden" id="seleccionTurno">
                         <tr>
-                          <td colspan="2"><h4>Selecciona El Tipo De Corte De Turno</h4></td>
+                          <td colspan="2"><h4>Selecciona el tipo de corte de turno</h4></td>
                         </tr>
                         <tr>
-                          <td><label>Corte de Turno Manual</label></td>
-                          <td><label>Corte de Turno Automático</label></td>
+                          <td><label>Corte de turno manual</label></td>
+                          <td><label>Corte de turno Aautomático</label></td>
                         </tr>
                         <tr>
                           <td>
@@ -377,7 +377,7 @@
             <article class="portlet light bordered">
               <article class="portlet-title">
                 <article class="caption">
-                  <i class="fa fa-reorder"></i>Configuración del Turno Automático
+                  <i class="fa fa-reorder"></i>Configuración del turno automático.
                 </article>
               </article>
               <article class="portlet-body form text-center">
@@ -391,13 +391,13 @@
                           </a>
                         </article>
                         <article class="col-md-12 form-group text-center">
-                          <h3 class="tituloCambioConfig hidden">Selecciona el lapso de Tiempo<br></h3>
-                          <h3 class="tituloConfigActual">Configuracion Actual Del Corte Automático<br></h3>  
+                          <h3 class="tituloCambioConfig hidden">Selecciona el lapso de tiempo<br></h3>
+                          <h3 class="tituloConfigActual">Configuración actual del corte automático<br></h3>  
                         </article>
                         <article class="col-md-12 form-group text-center">
                           <label for="" class="lblIngresarValores hidden">
                             <strong>
-                              Ingresa Los Valores Correpondientes.
+                              Ingresa los valores correpondientes.
                             </strong>
                           </label>
                         </article>
@@ -407,9 +407,9 @@
                             <input class="form-control diaCorte hidden" type="text" value="{{ dicTurno['diaCorte'] }}">
                             <input class="form-control horaCorte hidden" type="text" value="{{ dicTurno['horaCorte'] }}">
                             <select class="form-control" name="tipoLapso" id="Lapso" disabled>
-                              <option value="cadaDia">Cada Dia</option>
-                              <option value="cadaSemana">Cada Semana</option>
-                              <option value="cadaMes">Cada Mes</option>
+                              <option value="cadaDia">Diario</option>
+                              <option value="cadaSemana">Semenel</option>
+                              <option value="cadaMes">Mensual</option>
                               <option value="cadaDetHora">Hora Especifica</option>
                             </select>
                           </article>

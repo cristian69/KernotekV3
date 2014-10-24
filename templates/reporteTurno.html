@@ -69,22 +69,22 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  <i class="fa fa-bar-chart-o"></i>Reporte general
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  <i class="fa fa-bar-chart-o"></i>Reporte específico
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  <i class="fa fa-bar-chart-o"></i>Reporte detallado
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  <i class="fa fa-bar-chart-o"></i>Reporte por turno
                   </a>
                 </li>
                 <li>
@@ -96,7 +96,7 @@
                   <ul class="sub-menu">
                     <li>
                       <a href="{{ url_for('bitacora') }}">
-                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      <i class="fa fa-book"></i>Bitácora del sistema
                       </a>
                     </li>
                   </ul>
@@ -112,7 +112,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{ url_for('corteTurno') }}">
-                  <i class="fa fa-clock-o"></i>Corte de Turno
+                  <i class="fa fa-clock-o"></i>Corte de turno
                   </a>
                 </li>
               </ul>
@@ -126,7 +126,7 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('configReporte') }}">
-                  <i class="fa fa-cogs"></i>Reporte Específico
+                  <i class="fa fa-cogs"></i>Reporte específico
                   </a>
                 </li>
                 {% if session['typeuser'] == 'Administrador'%}
@@ -139,25 +139,25 @@
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
                     <span class="arrow "></span>
-                    <span class="title">Gestión de Usuarios</span>
+                    <span class="title">Gestión de usuarios</span>
                   </a>
                   <ul class="sub-menu">
                     <li class="tooltips">
                       <a href="{{ url_for('verUsuarios') }}">
                       <i class="fa fa-eye"></i>
-                      <span class="title">Ver Cuentas</span>
+                      <span class="title">Ver cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('borrarUsuario') }}">
                       <i class="fa fa-trash-o"></i>
-                      <span class="title">Borrar Cuentas</span>
+                      <span class="title">Borrar cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
-                      <span class="title">Activar Cuentas</span>
+                      <span class="title">Activar cuentas</span>
                       </a>
                     </li>
                   </ul>
@@ -165,18 +165,18 @@
                 <li>
                   <a href="javascript:;">
                   <i class="fa fa-key"></i>
-                  <span class="title">Llaves del Sistema</span>
+                  <span class="title">Llaves del sistema</span>
                   <span class="arrow "></span>
                   </a>
                   <ul class="sub-menu">
                     <li>
                       <a href="{{url_for('nuevaLlave')}}">
-                      <i class="fa fa-plus"></i>Nueva Llave
+                      <i class="fa fa-plus"></i>Nueva llave
                       </a>
                     </li>
                     <li>
                       <a href="{{ url_for('editarLlave') }}">
-                      <i class="fa fa-pencil"></i>Editar Llave
+                      <i class="fa fa-pencil"></i>Editar llave
                       </a>
                     </li>
                   </ul>
@@ -196,7 +196,7 @@
                   <i class="fa fa-home"></i>
                   <a href="{{ url_for('home') }}">Inicio</a>
                   <i class="fa fa-angle-right"></i>
-                  <a href="">Reporte Por Turno</a>
+                  <a href="">Reporte por turno</a>
                 </article>
                 <article class="col-lg-8 col-md-7 col-sm-7 col-xs-12  text-right">
                   <i class="fa fa-calendar"></i>
@@ -217,7 +217,7 @@
                     <article class="modal-content">
                       <article class="modal-header text-center">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 class="modal-title">¿Generar el Reporte del Turno Seleccionado?</h3>
+                        <h3 class="modal-title">¿Generar el reporte del turno seleccionado?</h3>
                         <input class="form-control group-form hidden"type="text" value="" id="turnoSeleccionado" name="turnoSeleccionado">
                         <input class="form-control group-form hidden"type="text" value="" id="fechaInicial" name="fechaInicial">
                         <input class="form-control group-form hidden"type="text" value="" id="fechaFinal" name="fechaFinal">
@@ -243,14 +243,14 @@
                 <article class="portlet light bordered">
                   <article class="portlet-title">
                     <article class="caption">
-                      <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                      <i class="fa fa-bar-chart-o"></i>Reporte por turno.
                     </article>
                   </article>
                   <article class="portlet-body form text-center" >
                     <form action="{{ url_for('reporteTurno') }}" class="form-horizontal" method="post">
                       <article class="form-body">
                         <article class="row form-group">
-                          <label class="control-label col-md-5">Fecha del Turno</label>
+                          <label class="control-label col-md-5">Fecha del turno</label>
                           <article class="col-md-7">
                             <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                               <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio" value="">

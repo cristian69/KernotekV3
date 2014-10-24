@@ -18,7 +18,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="refrescar(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="refrescar('si'), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <a class="navbar-brand" href="#">
@@ -68,22 +68,22 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  <i class="fa fa-bar-chart-o"></i>Reporte general
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  <i class="fa fa-bar-chart-o"></i>Reporte específico
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  <i class="fa fa-bar-chart-o"></i>Reporte detallado
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  <i class="fa fa-bar-chart-o"></i>Reporte por turno
                   </a>
                 </li>
                 <li>
@@ -95,7 +95,7 @@
                   <ul class="sub-menu">
                     <li>
                       <a href="{{ url_for('bitacora') }}">
-                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      <i class="fa fa-book"></i>Bitácora del sistema
                       </a>
                     </li>
                   </ul>
@@ -111,7 +111,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{ url_for('corteTurno') }}">
-                  <i class="fa fa-clock-o"></i>Corte de Turno
+                  <i class="fa fa-clock-o"></i>Corte de turno
                   </a>
                 </li>
               </ul>
@@ -125,7 +125,7 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('configReporte') }}">
-                  <i class="fa fa-cogs"></i>Reporte Específico
+                  <i class="fa fa-cogs"></i>Reporte específico
                   </a>
                 </li>
                 {% if session['typeuser'] == 'Administrador' %}
@@ -138,25 +138,25 @@
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
                     <span class="arrow "></span>
-                    <span class="title">Gestión de Usuarios</span>
+                    <span class="title">Gestión de usuarios</span>
                   </a>
                   <ul class="sub-menu">
                     <li class="tooltips">
                       <a href="{{ url_for('verUsuarios') }}">
                       <i class="fa fa-eye"></i>
-                      <span class="title">Ver Cuentas</span>
+                      <span class="title">Ver cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('borrarUsuario') }}">
                       <i class="fa fa-trash-o"></i>
-                      <span class="title">Borrar Cuentas</span>
+                      <span class="title">Borrar cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
-                      <span class="title">Activar Cuentas</span>
+                      <span class="title">Activar cuentas</span>
                       </a>
                     </li>
                   </ul>
@@ -164,7 +164,7 @@
                 <li>
                   <a href="javascript:;">
                   <i class="fa fa-key"></i>
-                  <span class="title">Llaves del Sistema</span>
+                  <span class="title">Llaves del sistema</span>
                   <span class="arrow "></span>
                   </a>
                   <ul class="sub-menu">
@@ -175,7 +175,7 @@
                     </li>
                     <li>
                       <a href="{{ url_for('editarLlave') }}">
-                      <i class="fa fa-pencil"></i>Editar Llave
+                      <i class="fa fa-pencil"></i>Editar llave
                       </a>
                     </li>
                   </ul>
@@ -294,7 +294,7 @@
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
-              <article class="dashboard-stat blue responsivoHome" data-toggle="modal" onclick="$('#static').modal('show');">
+              <article class="dashboard-stat blue responsivoHome" data-toggle="modal" onclick="refrescar('no'), $('#static').modal('show');">
                 <article class="visual">
                   <i class="fa fa-money"></i>
                 </article>

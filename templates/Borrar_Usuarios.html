@@ -68,22 +68,22 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('reporteGeneral') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte General
+                  <i class="fa fa-bar-chart-o"></i>Reporte general
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteEspecifico') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Específico
+                  <i class="fa fa-bar-chart-o"></i>Reporte específico
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteDetallado') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Detallado
+                  <i class="fa fa-bar-chart-o"></i>Reporte detallado
                   </a>
                 </li>
                 <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
-                  <i class="fa fa-bar-chart-o"></i>Reporte Por Turno
+                  <i class="fa fa-bar-chart-o"></i>Reporte por turno
                   </a>
                 </li>
                 <li>
@@ -95,7 +95,7 @@
                   <ul class="sub-menu">
                     <li>
                       <a href="{{ url_for('bitacora') }}">
-                      <i class="fa fa-book"></i>Bitácora del Sistema
+                      <i class="fa fa-book"></i>Bitácora del sistema
                       </a>
                     </li>
                   </ul>
@@ -111,7 +111,7 @@
               <ul class="sub-menu">
                 <li>
                   <a href="{{ url_for('corteTurno') }}">
-                  <i class="fa fa-clock-o"></i>Corte de Turno
+                  <i class="fa fa-clock-o"></i>Corte de turno
                   </a>
                 </li>
               </ul>
@@ -125,7 +125,7 @@
               <ul class="sub-menu">
                 <li class="tooltips">
                   <a href="{{ url_for('configReporte') }}">
-                  <i class="fa fa-cogs"></i>Reporte Específico
+                  <i class="fa fa-cogs"></i>Reporte específico
                   </a>
                 </li>
                 <li class="tooltips">
@@ -137,13 +137,13 @@
                   <a href="javascript:;">
                     <i class="fa fa-users"></i>
                     <span class="arrow "></span>
-                    <span class="title">Gestión de Usuarios</span>
+                    <span class="title">Gestión de usuarios</span>
                   </a>
                   <ul class="sub-menu">
                     <li class="tooltips">
                       <a href="{{ url_for('verUsuarios') }}">
                       <i class="fa fa-eye"></i>
-                      <span class="title">Ver Cuentas</span>
+                      <span class="title">Ver cuentas</span>
                       </a>
                     </li>
                     <li class="tooltips">
@@ -155,7 +155,7 @@
                     <li class="tooltips">
                       <a href="{{ url_for('activarCuentas') }}">
                       <i class="fa fa-check"></i>
-                      <span class="title">Activar Cuentas</span>
+                      <span class="title">Activar cuentas</span>
                       </a>
                     </li>
                   </ul>
@@ -163,18 +163,18 @@
                 <li>
                   <a href="javascript:;">
                   <i class="fa fa-key"></i>
-                  <span class="title">Llaves del Sistema</span>
+                  <span class="title">Llaves del sistema</span>
                   <span class="arrow "></span>
                   </a>
                   <ul class="sub-menu">
                     <li>
                       <a href="{{url_for('nuevaLlave')}}">
-                      <i class="fa fa-plus"></i>Nueva Llave
+                      <i class="fa fa-plus"></i>Nueva llave
                       </a>
                     </li>
                     <li>
                       <a href="{{ url_for('editarLlave') }}">
-                      <i class="fa fa-pencil"></i>Editar Llave
+                      <i class="fa fa-pencil"></i>Editar llave
                       </a>
                     </li>
                   </ul>
@@ -193,7 +193,7 @@
                   <i class="fa fa-home"></i>
                   <a href="{{ url_for('home') }}">Inicio</a>
                   <i class="fa fa-angle-right"></i>
-                  <a href="{{ url_for('borrarUsuario') }}">Borrar Cuentas</a>
+                  <a href="{{ url_for('borrarUsuario') }}">Borrar cuentas</a>
                 </article>
                 <article class="col-lg-9 col-md-8 col-sm-8 col-xs-12  text-right">
                   <i class="fa fa-calendar"></i>
@@ -214,7 +214,7 @@
                   <span aria-hidden="true">&times;</span>
                   <span class="sr-only">Close</span>
                   </button>
-                  <p><strong>La cuenta se eliminó exitosamente.</strong></p>
+                  <p><strong>La cuenta se eliminó exitosamente la cuenta de usuario.</strong></p>
                 </article>
               </article>
             </article>
@@ -225,14 +225,14 @@
                     <article class="modal-content">
                       <article class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h3 class="modal-title">Borrar Cuenta de Usuario</h3>
+                        <h3 class="modal-title">¿Seguro que desea borrar la cuenta de usuario?</h3>
                       </article>
                       <article class="modal-body">
                         <article class="scroller" style="height:300px" data-always-visible="1" data-rail-visible1="1">
                           <article class="row">
                             <article class="col-md-12">
                               <article class="form-group col-md-12 has-error">
-                                <label class="control-label col-md-5"><strong>Nombre de Usuario</strong></label>
+                                <label class="control-label col-md-5"><strong>Nombre de usuario</strong></label>
                                 <article class="input-icon col-md-7">
                                   <i class="fa fa-user"></i>
                                   <input class="form-control placeholder-no-fix hidden" type="text" id="Busuario" name="Busuario" readonly />
@@ -247,14 +247,14 @@
                                 </article>
                               </article>
                               <article class="form-group col-md-12 has-error">
-                                <label class="control-label col-md-5"><strong>Apellido Paterno</strong></label>
+                                <label class="control-label col-md-5"><strong>Apellido paterno</strong></label>
                                 <article class="input-icon col-md-7">
                                   <i class="fa fa-location-arrow"></i>
                                   <input class="form-control placeholder-no-fix" type="text" id="Bpaterno" disabled readonly/>
                                 </article>
                               </article>
                               <article class="form-group col-md-12 has-error">
-                                <label class="control-label col-md-5"><strong>Apellido Materno</strong></label>
+                                <label class="control-label col-md-5"><strong>Apellido materno</strong></label>
                                 <article class="input-icon col-md-7">
                                   <i class="fa fa-location-arrow"></i>
                                   <input class="form-control placeholder-no-fix" type="text" id="Bmaterno" disabled readonly/>
@@ -268,7 +268,7 @@
                                 </article>
                               </article>
                               <article class="form-group col-md-12 has-error">
-                                <label class="control-label col-md-5"><strong>Tipo de Cuenta</strong></label>
+                                <label class="control-label col-md-5"><strong>Tipo de cuenta</strong></label>
                                 <article class="input-icon col-md-7">
                                   <i class="fa fa-sitemap"></i>
                                   <input class="form-control placeholder-no-fix" type="text" id="Bpermisos" disabled readonly/>
@@ -289,7 +289,7 @@
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-users"></i>Cuentas de Usuarios
+                    <i class="fa fa-users"></i>Cuentas de usuarios.
                   </article>
                 </article>
                 <article class="portlet-body flip-scroll text-center">
@@ -303,7 +303,7 @@
                           <td>Username</td>
                           <td>Permisos</td>
                           <td>Email</td>
-                          <td>Fecha de Alta</td>
+                          <td>Fecha de alta</td>
                           <td>Estado</td>
                         </tr>
                       </thead>

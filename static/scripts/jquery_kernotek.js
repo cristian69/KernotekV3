@@ -21,11 +21,20 @@ function redireccionar(valor, direccion){
 }
 
 
-function refrescar(){
-	setTimeout(function(){
-		window.location.reload(true);
-	}, 20000);
-}
+function refrescar(valor){
+	this.valor=valor;
+	if(valor=="si"){
+		setTimeout(function(){
+			window.location.reload(true);
+		}, 20000);	
+	}
+	if(valor=="no"){
+		setTimeout(function(){
+			window.location.reload(true);
+		},1000000);
+	}
+	valor=""
+;}
 
 
 function Mensajes(valor){
