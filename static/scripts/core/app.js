@@ -223,15 +223,11 @@ $(function(){
         tllave=$(ruta).next().next().next().next().text();
         cllave=$(ruta).next().next().next().next().next().text();
         ellave=$(ruta).next().next().next().next().next().next().text();
+        $('#tipoLlave > option[value="'+tllave+'"]').attr('selected', 'selected');
+        $('#estadoLlave > option[value="'+ellave+'"]').attr('selected', 'selected');
+        $("#estadoLlave").select2({});
+        $("#tipoLlave").select2({});
         $("#codigLlave").val(cllave);
-        document.getElementById("lblNombre").innerHTML="<strong>"+nombre+"</strong>";
-        document.getElementById("lblPaterno").innerHTML="<strong>"+apaterno+"</strong>";
-        document.getElementById("lblMaterno").innerHTML="<strong>"+apmaterno+"</strong>";
-        document.getElementById("lblGrupo").innerHTML="<strong>"+grupo+"</strong>";
-        document.getElementById("lblTllave").innerHTML="<strong>"+tllave+"</strong>";
-        document.getElementById("lblCllave").innerHTML="<strong>"+cllave+"</strong>";
-        document.getElementById("lblEllave").innerHTML="<strong>"+ellave+"</strong>";
-
         if(ellave=="Desactivada"){
             $("#Desactivada").prop('selected');
         }
@@ -250,7 +246,6 @@ $(function(){
         $("#grupo").val(grupo);
         $("#llaveCodigo").val(cllave);
         $(".editarLlave").removeClass("hidden");
-        $(".informacionUsuario").removeClass("hidden");
         $(".tablaLlaves").addClass("hidden");
 
     });
