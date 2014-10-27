@@ -46,7 +46,7 @@ def tablaReporte(datos):
     linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
     codigoTabla = """
-                    <article class="portlet light bordered">
+                    <article class="portlet light bordered" id="apartadoReporteGeneral">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte General

@@ -89,6 +89,8 @@ var ValidarReporteG= function(){
         else{
             document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
             $("#cargando").removeClass("hidden");
+            $("#apartadoReporteGeneral").addClass("hidden");
+            $("#apartadoReporteEspecifico").addClass("hidden");
         }
     });
     $("#generarReporteTurno").click(function(){

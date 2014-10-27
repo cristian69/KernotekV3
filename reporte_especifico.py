@@ -66,7 +66,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     cabezerasDisponibles = class_db.columnas_habilitadas()
     codigo_tabla = ""
     bandera_color = True
-    codigo_tabla += str('<div class="portlet light bordered">')  # Código del div
+    codigo_tabla += str('<div class="portlet light bordered" id="apartadoReporteEspecifico">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + fecha_inicio + """ a """ + fecha_fin + """
