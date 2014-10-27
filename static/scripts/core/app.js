@@ -77,7 +77,7 @@ var App = function () {
     var responsiveHandlers = [];
 
 var ValidarReporteG= function(){
-    $("#AceptarReporteG").click(function(e){
+    $("#AceptarReporte").click(function(e){
         if($("#fecha_inicio").val()=="" && $("#fecha_fin").val()=="" && $("#hora_inicio").val()=="" && $("#hora_fin").val()==""){
             alert("Ingresa los valores correspondientes");
             return e.preventDefault();
@@ -86,7 +86,17 @@ var ValidarReporteG= function(){
             alert("Verifica que ningun campo requerido este vacio");
             return e.preventDefault();
         }
+        else{
+            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader.gif' alt='Cargando...'>"
+            $("#cargando").removeClass("hidden");
+        }
     });
+    $("#generarReporteTurno").click(function(){
+        $("#reporteTurno").modal("hide");
+        $("#cortesDia").addClass("hidden");
+        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader.gif' alt='Cargando...'>"
+        $("#cargando").removeClass("hidden");
+});
 }
 
 

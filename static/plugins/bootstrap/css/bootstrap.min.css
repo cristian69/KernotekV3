@@ -177,3 +177,8 @@
 		margin-top: 99px !important;
 	}
  }
+
+
+ .imgLoading{
+ 	background: url('loader.gif') no-repeat;
+ }

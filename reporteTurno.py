@@ -43,13 +43,13 @@ def turnosDisponibles(fecha):
         htmlTurnos += '<h1 align="center"><strong>No Hay Cortes de Turnos en esa Fecha</strong></h1>'
     else:
         htmlTurnos += """
-        <article class="portlet light bordered">
+        <article class="portlet light bordered" id="cortesDia">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
               </article>
             </article>
-            <article class="portlet-body flip-scroll">
+            <article class="portlet-body">
               <table class="table table-striped table-condensed" id="tablaTurno">
                 <thead class="flip-content text-center">
                   <tr>

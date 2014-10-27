@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
@@ -265,7 +263,7 @@
                           </article>
                         </article>
                         <section class="form-actions text-right">
-                          <input type="submit" class="btn blue" name="AceptarRepoteE" value="Aceptar" id="AceptarReporteE">
+                          <input type="submit" class="btn blue" name="AceptarRepoteE" value="Aceptar" id="AceptarReporte">
                         </section>
                       </article>
                     </form>
@@ -276,6 +274,9 @@
             </article>
           </article>
           <section class="row " id="TablaReporteEspecifico">
+            <article class="col-md-12 text-center hidden" id="cargando">
+              
+            </article>
             <section class="col-md-12">
               {{ codigo_tabla | safe }}
               {{ codigo_paginacion | safe}}

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es" class="no-js">
   <head>
@@ -226,7 +224,7 @@
                         <article  data-always-visible="1" data-rail-visible="1">
                           <article class="row">
                             <article class="col-md-12">
-                              <button type="submit" class="btn blue" name="submit" value="generarReporteTurno">Aceptar</button>
+                              <button type="submit" class="btn blue" name="submit" value="generarReporteTurno" id="generarReporteTurno">Aceptar</button>
                               <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
                             </article>
                           </article>
@@ -272,6 +270,9 @@
               <article class="col-md-4"></article>
             </article>
             <article class="col-md-12">
+              <article class="col-md-12 text-center hidden" id="cargando">
+              
+              </article>
               {{ htmlTabla | safe}}
             </article>
           </article>

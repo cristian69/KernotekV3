@@ -61,6 +61,7 @@ function Mensajes(valor){
 	}
 }
 
+
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
 		$("#semana").addClass("hidden");
