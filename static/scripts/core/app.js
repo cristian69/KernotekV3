@@ -87,7 +87,7 @@ var ValidarReporteG= function(){
             return e.preventDefault();
         }
         else{
-            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
+            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loading-spinner-blue.gif' alt='Cargando...'>"
             $("#cargando").removeClass("hidden");
             $("#apartadoReporteGeneral").addClass("hidden");
             $("#apartadoReporteEspecifico").addClass("hidden");
@@ -96,7 +96,7 @@ var ValidarReporteG= function(){
     $("#generarReporteTurno").click(function(){
         $("#reporteTurno").modal("hide");
         $("#cortesDia").addClass("hidden");
-        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
+        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loading-spinner-blue.gif' alt='Cargando...'>"
         $("#cargando").removeClass("hidden");
 });
 }
