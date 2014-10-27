@@ -562,7 +562,7 @@ Gritter notification modify
 }
 
 .gritter-title {
-  font-family:  'Open Sans' ;
+  font-family:  sans-serif, Monospace;
   font-size: 18px ;
   font-weight: 300 ;
 }
@@ -950,11 +950,11 @@ Bootstrap  Datetimepicker
 
 .datetimepicker table td {
   font-weight: 300  !important;
-  font-family: 'Open Sans' !important;
+  font-family: sans-serif, Monospace;
 }
 
 .datetimepicker table th {
-  font-family: 'Open Sans' !important;
+  font-family: sans-serif, Monospace;
   font-weight: 400  !important;
 }
 
@@ -1039,11 +1039,11 @@ Bootstrap Datepicker
 
 .datepicker table td {
   font-weight: 300  !important;
-  font-family: 'Open Sans' !important;
+  font-family: sans-serif, Monospace;
 }
 
 .datepicker table th {
-  font-family: 'Open Sans' !important;
+  font-family: sans-serif, Monospace;
   font-weight: 400  !important;
 }
 
@@ -1255,7 +1255,7 @@ Bootstrap Markdown
 Bootstrap Datepaginator
 ***/
 .datepaginator a {
-  font-family: 'Open Sans';
+  font-family: sans-serif, Monospace;
   font-size: 13px;
   font-weight: 300;
 }
@@ -1471,7 +1471,7 @@ Bootstrap Select
 
 .bootstrap-select.btn-group .dropdown-menu > li > dt > .text {
   font-weight: 600;
-  font-family: 'Open Sans';
+  font-family: sans-serif, Monospace;
   font-size: 14px;
 }
 
