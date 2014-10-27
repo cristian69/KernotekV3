@@ -87,14 +87,14 @@ var ValidarReporteG= function(){
             return e.preventDefault();
         }
         else{
-            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader.gif' alt='Cargando...'>"
+            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader3.gif' alt='Cargando...'>"
             $("#cargando").removeClass("hidden");
         }
     });
     $("#generarReporteTurno").click(function(){
         $("#reporteTurno").modal("hide");
         $("#cortesDia").addClass("hidden");
-        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader.gif' alt='Cargando...'>"
+        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loader3.gif' alt='Cargando...'>"
         $("#cargando").removeClass("hidden");
 });
 }
