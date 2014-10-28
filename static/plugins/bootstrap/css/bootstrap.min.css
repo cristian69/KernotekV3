@@ -9,8 +9,21 @@
 	background-color:rgb(39,169,227);
 }.color{color: rgb(255,255,255);}
 
+.scrolbarr{
+}
 
+@media(max-width: 1300px){
 
+	.scrolbarr{
+		overflow-x: scroll;
+		}
+}
+
+@media (max-width: 1442px) and (min-width: 1263px){
+	.scrolbar{
+		height:435px;
+		}
+	}
 
 
 @media (min-width: 1752px){

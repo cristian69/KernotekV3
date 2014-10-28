@@ -3181,7 +3181,7 @@ Notes
 Customized Bootstrap Pagination
 ***/
 .pagination {
-  margin: 10px 0;
+  margin: 0 0;
 }
 .pagination.pagination-circle > li:first-child > a {
   border-radius: 25px 0 0 25px !important;

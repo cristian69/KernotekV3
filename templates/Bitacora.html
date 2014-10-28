@@ -206,7 +206,7 @@
                     <i class="fa fa-database"></i>Bitácora del sistema.
                   </article>
                 </article>
-                <article class="portlet-body">
+                <article class="portlet-body scrolbarr">
                   <table class="table  table-striped  table-responsive text-center">
                     <thead>
                       <tr  style="border-bottom:2px solid #eee">
@@ -219,11 +219,11 @@
                       {{ tabla_bitacora | safe }}
                     </tbody>
                   </table>
-                  <article class="text-right">
-                    <ul class="pagination pagination">
-                      {{ indice_paginacion | safe }}
-                    </ul>
-                  </article>
+                </article>
+                <article class="form-actions text-right">
+                  <ul class="pagination pagination">
+                    {{ indice_paginacion | safe }}
+                  </ul>
                 </article>
               </article>
             </article>

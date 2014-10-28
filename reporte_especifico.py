@@ -76,8 +76,8 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
               <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
             </div>
           </div>
-          <div class="portlet-body flip-scroll">
-            <table class="table table-striped table-condensed table-hover">""")
+          <div class="portlet-body scrolbarr">
+            <table class="table table-striped table-condensed table-responsive">""")
 
     codigo_tabla += str('<thead class="flip-content text-center">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras
@@ -97,10 +97,10 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     else:
         for ventas in tabla_ventas:
             if bandera_color:
-                codigo_tabla += str('<tr style="border-top:1px solid black; border-bottom: 1ps solid black;" class="">')
+                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;" class="">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr style="border-top:1px solid black; border-bottom: 1ps solid black;">')
+                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;">')
                 bandera_color = True
             for venta in ventas:
                 if venta == 0:
@@ -109,7 +109,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
             codigo_tabla += str("</tr>")
 
     codigo_tabla += str('</tbody>')  #Fin del contenido de la tabla
-    codigo_tabla += str('</table>')  # Fin de la tabla
+    codigo_tabla += str('</table>''</div>')  # Fin de la tabla
     return codigo_tabla
 
 

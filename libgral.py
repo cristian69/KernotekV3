@@ -165,7 +165,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
     count = 0
     num_pagina = 1
     codigo_pag += str("""
-                        <article class="text-right">
+                        <article class=" form-actions text-right">
               <ul class="pagination">
                       """)
     if int(pag_activa) != 1:

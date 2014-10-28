@@ -284,7 +284,7 @@
                     <i class="fa fa-users"></i>Cuentas de usuarios.
                   </article>
                 </article>
-                <article class="portlet-body text-center">
+                <article class="portlet-body text-center scrolbarr">
                   <form class="form-horizontal" role="form">
                     <table class="table table-responsive table-striped table-hover table-condensed" id="TablaBorrar">
                       <thead>
@@ -303,12 +303,14 @@
                         {{ tabla_usuarios | safe}}
                       </tbody>
                     </table>
-                    <article class="text-right">
-                      <ul class="pagination">
-                        {{ indice_paginacion | safe }}
-                      </ul>
-                    </article>
                   </form>
+                </article>
+                <article class="form-actions text-right">
+                  <article class="text-right">
+                    <ul class="pagination">
+                      {{ indice_paginacion | safe }}
+                    </ul>
+                  </article>
                 </article>
               </article>
             </article>
