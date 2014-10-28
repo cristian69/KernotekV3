@@ -4,10 +4,10 @@ var fechaSistema=function(){
     var f = new Date();
     var fe= new Date();
     fe=(diasSemana[fe.getDay()] + " " + fe.getDate() + " de " + meses[fe.getMonth()] + " de " + fe.getFullYear());
-    fechas=(f.getFullYear() +"-"+ (f.getMonth() +1)) + "-" + f.getDate();
-    $("#fechaActual").val(fe);
-    $("#fecha_inicio").val(fechas);
-    $("#fecha_fin").val(fechas);
+    f=(f.getFullYear() +"-"+ (f.getMonth() +1)) + "-" + f.getDate();
+    $("#fecha_inicio").val(f);
+    $("#fecha_fin").val(f);
+    document.getElementById("fechaActual").innerHTML="<i class='fa fa-calendar'></i> "+ " " +fe;
 }
 
 var __alertas__=function(estado){
