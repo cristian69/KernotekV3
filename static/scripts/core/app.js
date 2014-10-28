@@ -1,3 +1,15 @@
+var fechaSistema=function(){
+    var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+    var f = new Date();
+    var fe= new Date();
+    fe=(diasSemana[fe.getDay()] + " " + fe.getDate() + " de " + meses[fe.getMonth()] + " de " + fe.getFullYear());
+    fechas=(f.getFullYear() +"-"+ (f.getMonth() +1)) + "-" + f.getDate();
+    $("#fechaActual").val(fe);
+    $("#fecha_inicio").val(fechas);
+    $("#fecha_fin").val(fechas);
+}
+
 var __alertas__=function(estado){
     nombre=estado;
     $("article."+nombre).show();
@@ -87,7 +99,7 @@ var ValidarReporteG= function(){
             return e.preventDefault();
         }
         else{
-            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loading-spinner-blue.gif' alt='Cargando...'>"
+            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
             $("#cargando").removeClass("hidden");
             $("#apartadoReporteGeneral").addClass("hidden");
             $("#apartadoReporteEspecifico").addClass("hidden");
@@ -96,7 +108,7 @@ var ValidarReporteG= function(){
     $("#generarReporteTurno").click(function(){
         $("#reporteTurno").modal("hide");
         $("#cortesDia").addClass("hidden");
-        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/loading-spinner-blue.gif' alt='Cargando...'>"
+        document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
         $("#cargando").removeClass("hidden");
 });
 }
@@ -1458,6 +1470,7 @@ var valoresTurno =function(){
             //IMPORTANT!!!: Do not modify the core handlers call order.
 
             //core handlers
+            fechaSistema();
             valoresTurno();
             __alertas__();
             valoresReporte();
