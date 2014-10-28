@@ -93,7 +93,7 @@
                   <ul class="sub-menu">
                     <li>
                       <a href="{{ url_for('bitacora') }}">
-                      <i class="fa fa-book"></i>Bitácora del sistema
+                      <i class="fa fa-book"></i>Bitácora de eventos
                       </a>
                     </li>
                   </ul>
@@ -209,51 +209,68 @@
                   <article class="modal-content">
                     <article class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                      <h4 class="modal-title">Corte de turno</h4>
+                      <h4 class="modal-title">Tarifa del sistema</h4>
                     </article>
                     <article class="modal-body">
                       <article class="row">
                         <article class="col-md-4">
                           <ul class="nav nav nav-pills nav-stacked" role="tablist" style="dorder:1px solid black;">
-                            <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-                            <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-                            <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-                            <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+                            <li class="active"><a href="#Tarifa" role="tab" data-toggle="tab">Tarifa</a></li>
+                            <li><a href="#cambiarTarifa" role="tab" data-toggle="tab" class="hidden">CambiarTarifa</a></li>
                           </ul> 
                           <article class="progress">
-                            <article class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                              60%
+                            <article class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                              30%
                             </article>
                           </article>
                         </article>
                         <article class="col-md-8">
                           <article class="tab-content">
-                            <article class="tab-pane active" id="home">ContenidoHome
-                              <input type="text" class="form-control" placeholder="Tarifa">
+                            <article class="col-md-12 form-group text-right">
+                              <a href="">Cambiar Tarifa</a>
                             </article>
-                            <article class="tab-pane" id="profile">ContenidoProfile
-                              <input type="text" class="form-control" placeholder="Tarifa">
+                            <article class="tab-pane active" id="Tarifa">
+                              <article class="col-md-12 form-group">
+                                <label for="" class="label-control">Campo1</label>
+                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
+                              </article>
+                              <article class="col-md-12 form-group">
+                                <label for="" class="label-control">Campo1</label>
+                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
+                              </article>
+                              <article class="col-md-12 form-group">
+                                <label for="" class="label-control">Campo1</label>
+                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
+                              </article>
+                              <article class="col-md-12 form-group">
+                                <label for="" class="label-control">Campo1</label>
+                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
+                              </article>
+                              <article class="col-md-12 form-group">
+                                <label for="" class="label-control">Campo1</label>
+                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
+                              </article>
                             </article>
-                            <article class="tab-pane" id="messages">ContenidoMessages
-                              <input type="text" class="form-control" placeholder="Tarifa">
-                            </article>
-                            <article class="tab-pane" id="settings">ContenidoSettings
-                              <input type="text" class="form-control" placeholder="Tarifa">
+                            <article class="tab-pane" id="cambiarTarifa">
+                              <article class="col-md-12 form-group">
+                                <label for="">Ingresa lanueva tarifa del sistema</label>
+                                <input type="text" class="form-control">
+                              </article>
                             </article>
                           </article>
                         </article>  
                       </article> 
                     </article>
                     <article class="modal-footer">
-                      <button type="button" data-dismiss="modal" class="btn default">Cancel</button>
-                      <button type="button" data-dismiss="modal" class="btn green">Continue Task</button>
+                      <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
+                      <button type="button" data-dismiss="modal" class="btn blue">Aceptar</button>
                     </article>
                   </article>
                 </article>
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 " id="alerta">
-              <article class="dashboard-stat blue responsivoHome">
+              <article class="dashboard-stat blue responsivoHome times">
                 <article class="visual">
                   <i class="fa fa-ticket"></i>
                 </article>
@@ -264,7 +281,7 @@
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
-              <article class="dashboard-stat blue responsivoHome">
+              <article class="dashboard-stat blue responsivoHome times">
                 <article class="visual">
                   <i class="fa fa-usd"></i>
                 </article>
@@ -275,7 +292,7 @@
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
-              <article class="dashboard-stat blue responsivoHome">
+              <article class="dashboard-stat blue responsivoHome times">
                 <article class="visual">
                   <i class="fa fa-history"></i>
                 </article>
@@ -286,7 +303,7 @@
               </article>
             </article>
             <article class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
-              <article class="dashboard-stat blue responsivoHome" data-toggle="modal" onclick="refrescar('no'), $('#static').modal('show');">
+              <article class="dashboard-stat blue responsivoHome times" data-toggle="modal" onclick="refrescar('no'), $('#static').modal('show');">
                 <article class="visual">
                   <i class="fa fa-money"></i>
                 </article>
