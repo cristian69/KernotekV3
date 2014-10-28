@@ -93,23 +93,23 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     cabezerasDisponibles = class_db.columnas_habilitadas()
     codigo_tabla = ""
     bandera_color = True
-    codigo_tabla += str('<div class="portlet box green">')         # Código del div
+    codigo_tabla += str('<div class="portlet light bordered">')         # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
               <i class="fa fa-bar-chart-o"></i>Ventas del día
             </div>
           </div>
-          <div class="portlet-body flip-scroll">
-            <table class="table table-bordered table-striped table-condensed flip-content table-hover">""")
+          <div class="portlet-body scrolbarr">
+            <table class="table table-responsive table-condensed" style='font-size:12px'>""")
 
-    codigo_tabla += str('<thead class="flip-content text-center c-blue">')  # Etiqueta de head para la tabla
+    codigo_tabla += str('<thead class="text-center">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')                                             # Inicio de las cabezeras
     for cabezera in cabezerasDisponibles:
-        codigo_tabla += str('<th width="20%"class="text-center">')
+        codigo_tabla += str('<th class="text-center">')
         codigo_tabla += dicCabezeras[cabezera]
         codigo_tabla += str('</th>')
 
-    codigo_tabla += str('</tr>')            # Fin de las cebezeras
+    codigo_tabla += str('</tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;">')            # Fin de las cebezeras
     codigo_tabla += str('</thead>')         # Fin de head
 
     codigo_tabla += str('<tbody class="text-center">')                   # Inicio del contenido de la tabla
@@ -120,10 +120,10 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     else:
         for ventas in tabla_ventas:
             if bandera_color:
-                codigo_tabla += str('<tr class="info">')
+                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr>')
+                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;">')
                 bandera_color = True
             for venta in ventas:
                 if venta == 0:
@@ -135,4 +135,3 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     codigo_tabla += str('</table>')   # Fin de la tabla
 
     return codigo_tabla
-

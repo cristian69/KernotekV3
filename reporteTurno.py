@@ -49,9 +49,9 @@ def turnosDisponibles(fecha):
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
               </article>
             </article>
-            <article class="portlet-body">
-              <table class="table table-striped table-condensed" id="tablaTurno">
-                <thead class="flip-content text-center">
+            <article class="portlet-body scrolbarr">
+              <table class="table table-responsive table-condensed" id="tablaTurno" style="font-size:12px">
+                <thead class=" text-center">
                   <tr>
                     <th class="text-center">
                        Número de Corte
@@ -94,8 +94,8 @@ def tablaReporte(registros):
                 <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
               </article>
             </article>
-            <article class="portlet-body">
-              <table class="table table-striped table-condensed">
+            <article class="portlet-body scrolbarr">
+              <table class="table table-responsive table-condensed">
                 <thead class=" text-center">
                   <tr>
                     <th class="text-center">

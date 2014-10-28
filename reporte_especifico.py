@@ -77,7 +77,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
             </div>
           </div>
           <div class="portlet-body scrolbarr">
-            <table class="table table-striped table-condensed table-responsive">""")
+            <table class="table table-condensed table-responsive" style="font-size:12px">""")
 
     codigo_tabla += str('<thead class="flip-content text-center">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras

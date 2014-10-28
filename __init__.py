@@ -51,7 +51,7 @@ from editarLlave import EditarLlave
 
 app = flask.Flask(__name__)
 ######### Inicializacion del servidor ####################
-__SERVER__ = '0.0.0.0'
+__SERVER__ = '192.168.0.76'
 __PORT__ = 8000
 app.debug = True
 

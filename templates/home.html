@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="es" class="no-js">
   <head>
     <meta charset="utf-8"/>
@@ -14,13 +14,13 @@
     <link href="../static/css/components.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/themes/light.css" rel="stylesheet" type="text/css"/>
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="../static/img/favicon.ico"/>
+    <link rel="shortcut icon" href="../static/img/favicon.ico"/>  
   </head>
   <body class="page-header-fixed" onload="problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <a class="navbar-brand" href="#">
-        <img src="../static/img/Kernotek.png" alt="logo" class="img-responsive"/>
+        <img src="../static/img/logotipo_negro2.png" alt="logo" class="img-responsive"/>
         </a>
         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <img src="../static/img/menu-toggler.png" alt=""/>
@@ -238,18 +238,6 @@
                                 <label for="" class="label-control">Campo1</label>
                                 <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
                               </article>
-                              <article class="col-md-12 form-group">
-                                <label for="" class="label-control">Campo1</label>
-                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
-                              </article>
-                              <article class="col-md-12 form-group">
-                                <label for="" class="label-control">Campo1</label>
-                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
-                              </article>
-                              <article class="col-md-12 form-group">
-                                <label for="" class="label-control">Campo1</label>
-                                <input type="text" class="form-control" value="<awzsexdrcftvgybhunjimko,lp.ñ">
-                              </article>
                             </article>
                             <article class="tab-pane" id="cambiarTarifa">
                               <article class="col-md-12 form-group">
@@ -317,8 +305,10 @@
             </article>
           </article>
           <article class="row">
-            {{ dic_home['tabla_ventas'] | safe}}
-            {{ codigo_paginacion | safe}}
+            <article class="col-md-12">
+              {{ dic_home['tabla_ventas'] | safe}}
+              {{ codigo_paginacion | safe}}
+            </article>
           </article>
         </article>
       </article>

@@ -421,7 +421,7 @@ Header and header elements.
   border: 0px;
   padding: 0px; 
   box-shadow: none;
-  height: 55px; 
+  height: 67px; 
   min-height: 42px;
 }
 
@@ -441,7 +441,7 @@ Header and header elements.
 
 .header.navbar .navbar-brand img {
   margin-left: 20px;
-  margin-top: -20px;
+  margin-top: -13px;
 }
 
 .header.navbar .navbar-brand.text-logo {
@@ -474,6 +474,7 @@ Header and header elements.
 .header.navbar .navbar-nav > li {
   margin: 0px;
   padding: 0px;
+  padding-top: 15px;
 }
 
 .header.navbar .navbar-nav > li.dropdown, 

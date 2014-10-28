@@ -56,8 +56,8 @@ def tablaReporte(datos):
                 <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
               </article>
             </article>
-            <article class="portlet-body ">
-              <table class="table table-striped table-condensed flip-content">
+            <article class="portlet-body scrolbarr">
+              <table class="table table-condensed table-responsive" style="font-size:12px">
                 <thead class="text-center">
                   <tr>
                     <th class="text-center">
