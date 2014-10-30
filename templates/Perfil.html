@@ -188,17 +188,21 @@
     <article class="page-content-wrapper">
       <article class="page-content">
         <article class="row">
-          <article class="col-md-12">
-            <article class="page-breadcrumb breadcrumb row" >
-              <article class="col-lg-4 col-md-4 col-sm-5 col-xs-12 text-left">
-                <i class="fa fa-home"></i>
-                <a href="{{ url_for('home') }}">Inicio</a>
-              </article>
-              <article class="col-lg-8 col-md-8 col-sm-7 col-xs-12  text-right" id="fechaActual">
+            <article class="col-md-12">
+              <article class="page-breadcrumb breadcrumb row">
+                <article class="col-lg-2 col-md-4 col-sm-4 col-xs-12 text-left">
+                  <i class="fa fa-home"></i>
+                  <a href="{{ url_for('home') }}">Inicio</a>
+                  <input style="display:none;" type="text" name="socketPython" id="socketPython" size="50" maxlength="100" value="El Socket de Python no Responde" />
+                  <input style="display:none;" type="text" name="socketC" id="socketC" size="50" maxlength="100" value="El Socket de C no Responde" />
+                  <input style="display:none;" type="text" name="pythonActivo" id="pythonActivo" size="50" maxlength="100" value="Socket Python Activo" />
+                  <input style="display:none;" type="text" name="cActivo" id="cActivo" size="50" maxlength="100" value="Socket C Activo" />
+                </article>
+                <article class="col-lg-10 col-md-8 col-sm-8 col-xs-12  text-right" id="fechaActual">
+                </article>
               </article>
             </article>
           </article>
-        </article>
         <article class="row">
           <article class="col-md-12">
             <article class="col-md-6">

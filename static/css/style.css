@@ -421,7 +421,7 @@ Header and header elements.
   border: 0px;
   padding: 0px; 
   box-shadow: none;
-  height: 67px; 
+  height: 30px; 
   min-height: 42px;
 }
 
@@ -474,7 +474,8 @@ Header and header elements.
 .header.navbar .navbar-nav > li {
   margin: 0px;
   padding: 0px;
-  padding-top: 15px;
+  padding-top: 5px;
+  font-size: 15px;
 }
 
 .header.navbar .navbar-nav > li.dropdown, 
@@ -959,7 +960,8 @@ Sidebar toggler(show/hide)
 }
 
 .page-sidebar .sidebar-toggler {
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-left: 175px;
 }
 

@@ -4,13 +4,12 @@ Login page
 
 /* logo page */
 .login {
-  background-color: #444 !important;
+  background-color: #e5e5e5 !important;
 }
 
 .login .logo {
   margin: 0 auto;   
-  margin-top:60px;
-  padding: 15px;
+  margin-top:150px;
   text-align: center;
 }  
 
@@ -18,11 +17,9 @@ Login page
   background-color:#fff; 
   margin: 0 auto; 
   margin-bottom: 0px;
-  padding: 30px;  
-  padding-top: 80px;  
-  padding-bottom: 15px; 
-  width: 350px;
-  height: 380px;
+  padding: 30px;
+  width: 450px;
+  height: 300px;
 }
 
 .login{
@@ -47,7 +44,7 @@ Login page
 }
 
 .login .content .input-icon {
-  border-left: 2px solid #35aa47 !important;
+  border-left: 2px solid #f27a20 !important;
 }
 
 .login .content .input-icon .form-control {

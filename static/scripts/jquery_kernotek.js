@@ -1,3 +1,17 @@
+$("#fechasReporte").click(function(){
+	if($("#fecha_fin").val() == "" || $("#fecha_inicio").val() == "" || $("#hora_fin").val() == "" || $("#hora_inicio").val() == 
+		""){
+		$("#errorFechas").removeClass("hidden");
+	}
+	else{
+		$("#reportepaso1").removeClass('active');
+		$("#reportetab1").removeClass('active');
+		$("#reportepaso2").addClass('active');
+		$("#reportetab2").addClass('active');
+		document.getElementById('btnReportes').innerHTML="<li><button type='button' class='btn' id='anteriorReporte'>Anterior</button></li><p><><li><button type='button' class='btn' id='siguienteReporte'>Siguiente</button></li>";
+	}
+});
+
 
 $(".ocultarApartado").click(function(){
 	$(".editarLlave").addClass("hidden");
@@ -199,6 +213,12 @@ function CSistema(Nvalor){
 		$("#billetero50").select2();
 		$("#billetero20").select2();	
 	}
+}
+
+function tipoReporte(){
+	$("#tipoReporte").select2({
+		placeholder:"Tipo de reporte"
+	});
 }
 
 function llavesSistema(){

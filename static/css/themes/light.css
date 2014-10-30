@@ -14,14 +14,14 @@ Page header
 .header {
   filter: none !important;
   background-image: none !important;
-  background-color: #f2f2f2 !important;
+  background-color: #009de0 !important;
 }
 .header .btn-navbar {
   background-color: #f2f2f2 !important;
 }
 .header .navbar-nav .dropdown-toggle:hover,
 .header .navbar-nav .dropdown.open .dropdown-toggle {
-  background-color: #f2f2f2; !important;
+  background-color: #009de9 !important;
 }
 .header .navbar-nav li.dropdown .dropdown-toggle i {
   color: #808080 !important;

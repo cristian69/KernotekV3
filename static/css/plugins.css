@@ -193,8 +193,8 @@ Form wizard
 }
 
 .form-wizard .steps {
-  padding: 10px 0;
-  margin-bottom: 15px;
+  padding: 0 0;
+  margin-bottom: 0;
 }
 
 .form-wizard .steps {  

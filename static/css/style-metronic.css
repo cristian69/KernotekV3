@@ -122,7 +122,7 @@ Buttons & Dropdown Buttons
 .btn.blue {
   color: white;  
   text-shadow: none;	
-  background-color: #4d90fe;
+  background-color: #009de0;
 }
 .btn.blue:hover, 
 .btn.blue:focus, 
@@ -130,13 +130,13 @@ Buttons & Dropdown Buttons
 .btn.blue.active,
 .btn.blue[disabled],
 .btn.blue.disabled {  
-  background-color: #0362fd !important;
+  background-color: #007cc0 !important;
   color: #fff !important;
   outline: none !important;
 }
 
 .btn-group .btn.blue.dropdown-toggle {
-  background-color: #4d90fe !important;
+  background-color: #009de0 !important;
 }
 .btn-group .btn.blue:hover, 
 .btn-group .btn.blue:focus, 
@@ -144,7 +144,7 @@ Buttons & Dropdown Buttons
 .btn-group .btn.blue.active, 
 .btn-group .btn.blue.disabled,
 .btn-group .btn.blue[disabled] { 
-  background-color: #0362fd !important;
+  background-color: #007cc0 !important;
   color: #fff !important;
   outline: none !important;
 }

@@ -5326,7 +5326,7 @@ Blue Default
 /* Button */
 .blue.btn {
   color: white;
-  background-color: #4b8df8;
+  background-color: #009de0;
   border-color: "";
 }
 .blue.btn:hover, .blue.btn:focus, .blue.btn:active, .blue.btn.active {
@@ -5418,7 +5418,7 @@ Blue Default
 
 /* Statistic Block */
 .dashboard-stat.blue {
-  background-color: #4b8df8;
+  background-color: #009de0;
 }
 .dashboard-stat.blue.dashboard-stat-light:hover {
   background-color: #3781f7;
