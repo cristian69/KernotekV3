@@ -20,20 +20,20 @@
     <section class="logo">
       <img class="img-responsive" src="../static/img/Kernotek.png" alt=""/>
     </section>
-    <section class="content">
+    <section class="content" id="contenidoLogin">
       <form class="login-form" action="{{ url_for('login') }}" method="post">
         <article class="alert alert-danger hidden " id="UsuarioInvalido">
-          <button class="close" data-close="alert"></button>
+          <button id="cerrarAlertaLogin" class="close" data-close="alert"></button>
           <span>La dirección de correo electrónico o la contraseña que has introducido no son correctas.</span>
         </article>
-        <h3>Ingresar</h3>
+        <h3 style="margin-top:0px !important;">Ingresar</h3>
         <article class="form-group">
           <article class="input-icon">
             <i class="fa fa-user"></i>
             <input class="form-control NombreUsuario txtBox" type="text" autocomplete="off" placeholder="Nombre de Usuario" name="username" id="username" onfocus="this.value=''"/>
           </article>
         </article>
-        <article class="form-group" style="padding-bottom:25px;">
+        <article class="form-group" style="padding-bottom:15px;">
           <article class="input-icon">
             <i class="fa fa-lock"></i>
             <input class="form-control txtBox" type="password" autocomplete="off" placeholder="Contraseña" name="password" onfocus="this.value=''"/>

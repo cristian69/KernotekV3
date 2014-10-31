@@ -299,7 +299,14 @@ $("#aceptarCodigo").click(function(){
 function mostrarVentanas(parametro){
 	this.nombreVentana=parametro;
 	$("#"+nombreVentana).removeClass("hidden");
+	if(nombreVentana=="UsuarioInvalido"){
+		$("#contenidoLogin").addClass("errorLogin");
+	}
 }
+
+$("#cerrarAlertaLogin").click(function(){
+	$("#contenidoLogin").removeClass("errorLogin");
+});
 
 
 function corteActual(entrada){
