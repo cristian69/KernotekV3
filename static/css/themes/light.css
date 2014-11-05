@@ -154,7 +154,7 @@ ul.page-sidebar-menu > li:last-child > a {
 }
 
 ul.page-sidebar-menu > li a i {
-  color: #bbb !important;
+  color: #bbb;
 }
 ul.page-sidebar-menu > li.open > a,
 ul.page-sidebar-menu > li > a:hover,

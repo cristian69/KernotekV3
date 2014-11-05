@@ -47,7 +47,8 @@ body {
 }
 
 .header-inner{
-  padding-top: 19px;
+  padding-top: 14px;
+  padding-left: 30px;
 }
 
 
@@ -484,7 +485,7 @@ Header and header elements.
   padding: 0px; 
   box-shadow: none;
   height: 40px; 
-  min-height: 54px;
+  min-height: 42px;
 }
 
 .header.navbar.navbar-fixed-top {
@@ -782,7 +783,7 @@ Page sidebar
 }
 
 .page-sidebar-menu > li > a i {
-  font-size: 16px;
+  font-size: 17px;
   margin-right: 5px;
   text-shadow:none; 
 }
@@ -4471,4 +4472,7 @@ UI Loading
 .cabeceraTarjeta{
   color:#007CC0;
   font-size: 20px !important;
+}
+.colorAzul{
+  color:#009de0;
 }

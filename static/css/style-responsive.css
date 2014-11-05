@@ -499,12 +499,7 @@ Up To Medium Devices
 	/***
  	Page header
  	***/
- 	.header.navbar {
- 		padding: 0 20px 0 20px;
- 		position: relative;
- 		clear: both;
- 	}
-
+ 	
  	.page-header-fixed.page-header-fixed-mobile .navbar-fixed-top {
  		position: fixed;
  	}
