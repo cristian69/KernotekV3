@@ -1,3 +1,4 @@
+
 $("#fechasReporte").click(function(){
 	if($("#fecha_fin").val() == "" || $("#fecha_inicio").val() == "" || $("#hora_fin").val() == "" || $("#hora_inicio").val() == 
 		""){
@@ -386,3 +387,61 @@ function cambiarEstado(parametro){
 	}
 
 }
+
+
+function graficas(){
+		var lineChartData2 = {
+			labels : ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+			datasets : [
+				{
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [90,30,10,80,15,5,15]
+				}
+			]
+
+		}
+		var lineChartData3 = {
+			labels : ["Semana 1","Semana 2","Semana 3","Semana 4"],
+			datasets : [
+				{
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [90,30,10,80,15,5,15]
+				}
+			]
+
+		}
+		var lineChartData1 = {
+			labels : ["1","2","3","4","5","6","7" ,"8" ,"9" ,"10" ,"11", "12","13" ,"14" ,"15" ,"16" ,"17" ,"18" ,"19" ,"20", "21", "22", "23", "24"],
+			datasets : [
+				{
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [150,300,100,800,150,50,150,123, 145, 167, 177, 199, 199, 112, 111, 100, 200, 500, 300, 300, 100, 105, 300, 400,]
+				}
+			]
+
+		}
+		var ctx1 = document.getElementById("graficaDia").getContext("2d");
+		window.myPie = new Chart(ctx1).Line(lineChartData1);
+		var ctx2 = document.getElementById("graficaSemana").getContext("2d");
+		window.myPie = new Chart(ctx2).Line(lineChartData2);
+		var ctx3 = document.getElementById("graficaMes").getContext("2d");
+		window.myPie = new Chart(ctx3).Line(lineChartData3);
+	}

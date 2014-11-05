@@ -1,4 +1,4 @@
-op/*   
+/*   
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
 Version: 2.0.2
 Author: KeenThemes
@@ -40,6 +40,23 @@ body {
   margin: 0px !important;
   font-size:13px; 
   direction: ltr;
+}
+
+.tarjetas{
+  margin-top: 45px;
+}
+
+.header-inner{
+  padding-top: 19px;
+}
+
+
+.grafica{
+  height: 700px !important;
+}
+
+.configuracion{
+  height: 337px;
 }
 
 /*
@@ -149,6 +166,51 @@ Fix link outlines after click
 a,a:focus, a:hover, a:active {
   outline: 0;
 }
+
+/* unvisited link */
+.header-inner a:link {
+    color: #FFFFFF;
+}
+
+/* visited link */
+.header-inner a:visited {
+    color: #FFFFFF;
+}
+
+/* mouse over link */
+.header-inner a:hover {
+    color: #FFFFFF;
+}
+
+/* selected link */
+.header-inner a:active {
+    color: #FFFFFF;
+}
+
+
+.header-inner .dropdown-menu a:link {
+    color: #000000;
+}
+
+/* visited link */
+.header-inner .dropdown-menu a:visited {
+    color: #000000;
+}
+
+/* mouse over link */
+.header-inner .dropdown-menu a:hover {
+    color: #000000;
+}
+
+/* selected link */
+.header-inner .dropdown-menu a:active {
+    color: #000000;
+}
+
+
+
+
+
 
 /***
 General backgrounds. Can be applied to any block or panel
@@ -421,8 +483,8 @@ Header and header elements.
   border: 0px;
   padding: 0px; 
   box-shadow: none;
-  height: 30px; 
-  min-height: 42px;
+  height: 40px; 
+  min-height: 54px;
 }
 
 .header.navbar.navbar-fixed-top {
@@ -435,13 +497,13 @@ Header and header elements.
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
-  width: 225px;
+  width: 80px;
   height: 42px;
 }
 
 .header.navbar .navbar-brand img {
   margin-left: 20px;
-  margin-top: -13px;
+  margin-top: -34px;
 }
 
 .header.navbar .navbar-brand.text-logo {
@@ -474,7 +536,7 @@ Header and header elements.
 .header.navbar .navbar-nav > li {
   margin: 0px;
   padding: 0px;
-  padding-top: 5px;
+  padding-top: 11px;
   font-size: 15px;
 }
 
@@ -490,6 +552,7 @@ Header and header elements.
 
 .header.navbar .navbar-nav > li.dropdown:last-child {
    padding-right: 2px;
+   margin-top: -43px
 }
 
 .header.navbar .navbar-nav > li.dropdown .dropdown-toggle {
@@ -985,7 +1048,7 @@ Page content
     padding: 20px;
     margin-left: 225px; 
     margin-top: 0px;
-    min-height: 760px;
+    min-height: 1200px;
 }
 
 .ie8 .page-sidebar-fixed .page-content {
@@ -1118,7 +1181,7 @@ Footer
 
 .footer {
   padding: 8px 20px 5px 20px; 
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .footer:after,
@@ -2853,7 +2916,7 @@ Dashboard stats
   letter-spacing: -1px;
   margin-bottom: 5px;
   font-weight: 300;
-  color: #fff;
+  color: #F27020;
 }
 
 .dashboard-stat .details .desc {
@@ -4376,4 +4439,36 @@ UI Loading
 }
 .times{
   cursor:pointer;
+}
+
+
+.valorSistema{
+  height: 195px;
+  border: 1px solid #e1e1e1;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  background-color: #F7F7F7;
+}
+
+.valorSistema .visual {
+  width: 70px;
+  height: 100px;
+  display: block;
+  float: left;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  font-size: 35px;
+  line-height: 35px;
+}
+.valorSistema .visual > i {
+  margin-left: -50px;
+  font-size: 100px;
+  line-height: 100px;
+  color: white;
+  opacity: 0.5;
+}
+
+.cabeceraTarjeta{
+  color:#007CC0;
+  font-size: 20px !important;
 }

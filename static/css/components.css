@@ -1737,7 +1737,7 @@ Dropdown Menu
   list-style: none;
   text-shadow: none;
   padding: 0px;
-  margin: 10px  0px 0px 0px;
+  margin: 15px  0px 0px 15px;
   background-color: #fffff;
   box-shadow: 5px 5px rgba(102, 102, 102, 0.1);
   border: 1px solid #eee;
@@ -3769,7 +3769,7 @@ Portlets
   padding: 2px 0 13px 0;
 }
 .portlet.light > .portlet-title > .tools {
-  padding: 10px 0 13px 0;
+  padding: 0px 0px 0;
   margin-top: 2px;
 }
 .portlet.light > .portlet-title > .nav-tabs > li {
@@ -3898,31 +3898,20 @@ Dashboard stats
 .portlet .dashboard-stat:last-child {
   margin-bottom: 0;
 }
-.dashboard-stat .visual {
-  width: 80px;
-  height: 80px;
-  display: block;
-  float: left;
-  padding-top: 10px;
-  padding-left: 15px;
-  margin-bottom: 15px;
-  font-size: 35px;
-  line-height: 35px;
-}
+
 .dashboard-stat .visual > i {
-  margin-left: -35px;
-  font-size: 110px;
-  line-height: 110px;
+  margin-left: -37px;
+  font-size: 95px;
+  line-height: 190px;
 }
 .dashboard-stat .details {
-  position: absolute;
   right: 15px;
   padding-right: 15px;
 }
 .dashboard-stat .details .number {
-  padding-top: 25px;
-  text-align: right;
-  font-size: 34px;
+  padding-top: 50px;
+  text-align: center;
+  font-size: 35px;
   line-height: 36px;
   letter-spacing: -1px;
   margin-bottom: 0px;
@@ -4714,7 +4703,7 @@ Customized Bootstrap Tabs
 /* Tabs and pills */
 .nav-tabs,
 .nav-pills {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .nav-tabs > li > a,
 .nav-pills > li > a {

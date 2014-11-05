@@ -6,7 +6,7 @@ light theme
 Reset and overrides  
 ***/
 body {
-  background-color: #fafafa !important;
+  background-color: #E5E5E5 !important;
 }
 /***
 Page header
@@ -24,7 +24,7 @@ Page header
   background-color: #009de9 !important;
 }
 .header .navbar-nav li.dropdown .dropdown-toggle i {
-  color: #808080 !important;
+  color: #ffffff !important;
 }
 /***
 Header Search
@@ -269,33 +269,33 @@ Sidebar toggler
 Footer 
 ***/
 .footer .footer-inner {
-  color: #333333;
+  color: #009DE0;
 }
 .footer .footer-tools .go-top {
-  background-color: #fafafa;
+  background-color: #E5E5E5;
 }
 .footer .footer-tools .go-top:hover {
   opacity: 0.7;
   filter: alpha(opacity=70);
 }
 .footer .footer-tools .go-top i {
-  color: #999999;
+  color: #009DE0;
 }
 /***
 Footer Layouts (new in v1.3)
 ***/
 /* begin:fixed footer */
 .page-footer-fixed .footer {
-  background-color: #434343;
+  background-color: #e5e5e5;
 }
 .page-footer-fixed .footer .footer-inner {
-  color: #aaaaaa;
+  color: #009DE0;
 }
 .page-footer-fixed .footer .footer-tools .go-top {
-  background-color: #666666;
+  background-color: #E5E5E5;
 }
 .page-footer-fixed .footer .footer-tools .go-top i {
-  color: #aaaaaa;
+  color: #009DE0;
 }
 /* end:fixed footer */
 /***
@@ -332,6 +332,16 @@ Gritter Notifications
 .gritter-item-wrapper a:hover {
   color: #0b6694;
 }
+ .menuTop{
+  margin-left:0px;
+  padding-top: 20px;
+   color:#fff;
+   text-decoration: none;
+ }
+
+ .menuTop a:hover{
+  color:#FFFFFF;
+ }
 /* begin: boxed page */
 @media (min-width: 992px) {
   .page-boxed {
@@ -358,7 +368,7 @@ Gritter Notifications
     border-left: 0; 
   }
   .page-boxed.page-sidebar-fixed.page-footer-fixed .footer {
-    background-color: #E8E8E8 !important;
+    background-color: #e5e5e5 !important;
   }
 }
 /* end: boxed page */
@@ -433,22 +443,22 @@ Landscape phone to portrait tablet
   ***/
   
   .footer {
-    background-color: #434343;
+    background-color: #e5e5e5;
   }
 
   .footer .footer-inner {
-    color: #cccccc;
+    color: #009DE0;
   }
   .footer .footer-tools .go-top {
-    background-color: #666666;
+    background-color: #E5E5E5;
   }
   .footer .footer-tools .go-top i {
-    color: #999999;
+    color: #009DE0;
   }
 }
 
 @media (max-width: 767px) {
   body {
-    background-color: #333 !important;
+    background-color: #E5E5E5 !important;
   }
 }
