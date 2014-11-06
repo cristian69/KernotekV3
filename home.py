@@ -9,7 +9,7 @@ import logger
 import time 
 import datetime 
 from calendar import monthrange
-
+from datetime import date, timedelta
 
 class Home(flask.views.MethodView):
     def get(self):
@@ -22,6 +22,24 @@ class Home(flask.views.MethodView):
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
             return redirect(url_for('login'))
 
+
+
+def inicioSemana(year, numSemana):
+    d = date(year, 1 , 1)
+    delta_dias = d.isoweekday() - 1
+    delta_semanas = numSemana
+    if year == d.isocalendar()[0]:
+        delta_semanas -= 1
+    delta = timedelta(days=-delta_dias, weeks=delta_semanas)
+    fecha =  str(d + delta) 
+    fecha = fecha.split('-')
+    mes = int(fecha[1])
+    m =  datetime.datetime(2014, mes, 1)
+    mes = m.strftime('%b')
+    mes = nombreMes(str(mes))
+    dia = int(fecha[2])
+    fecha = mes +" "+ str(dia)
+    return fecha
 
 
 def graficaMes():
@@ -55,6 +73,9 @@ def graficaMes():
     return meses, ventas
 
 def graficaSemana():
+    year = datetime.date.today()
+    year = int(year.strftime('%Y'))
+
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
     listaSemanas = []
     listaVentas = []
@@ -64,21 +85,22 @@ def graficaSemana():
     for i in range(0,7):
         for semana in datos:
             if int(semana[0]) == semanaActual:
-                listaSemanas.append(semanaActual)
+                listaSemanas.append(inicioSemana(year, semanaActual + 1))
                 listaVentas.append(semana[1])
             else:
-                listaSemanas.append(semanaActual)
+                listaSemanas.append(inicioSemana(year, semanaActual + 1))
                 listaVentas.append(float(0))
         semanaActual -= 1
         if semanaActual == 0:
             semanaActual = 51
+            year -= 1
 
     semanas = []
     ventas = []
 
     for indice in range(len(listaSemanas)-1, -1, -1):
         ventas.append(listaVentas[indice])
-        semanas.append("Semana " + str(listaSemanas[indice] + 1))
+        semanas.append(listaSemanas[indice])
 
     return semanas, ventas
 
@@ -98,11 +120,11 @@ def graficaDia():
         for dia in datos:
             if int(dia[0]) == diaActual:
                 d = datetime.datetime(year, mes, diaActual)
-                listaDias.append(nombreDias(str(d.strftime('%A'))))
+                listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
                 listaVentas.append(float(dia[1]))
             else:
                 d = datetime.datetime(year, mes, diaActual)
-                listaDias.append(nombreDias(str(d.strftime('%A'))))
+                listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
                 listaVentas.append(float(0))
         diaActual -= 1
         if diaActual == 0:
