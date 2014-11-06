@@ -20,7 +20,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="graficas(), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="graficas({{dic_home['dias']}}, {{dic_home['valoresDia']}}, {{dic_home['semanas']}}, {{dic_home['valoresSemana']}}, {{dic_home['meses']}}, {{dic_home['valoresMes']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <div class="dropdown">
@@ -190,10 +190,8 @@
                               <article class="col-md-12">
                                 <select class="form-control" name="tipoReporte" id="tipoReporte">
                                   <option value=""></option>
-                                  <option value="cadaDia">Resumen de ventas</option>
-                                  <option value="cadaSemana">Reporte específico</option>
-                                  <option value="cadaMes">Reporte detallado</option>
-                                  <option value="cadaDetHora">Reporte por turno</option>
+                                  <option value="">Por turno.</option>
+                                  <option value="">Por fechas.</option>
                                 </select>
                               </article>
                             </article>

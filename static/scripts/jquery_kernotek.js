@@ -186,51 +186,51 @@ function cambiarEstado(parametro){
 }
 
 
-function graficas(){
-		var lineChartData2 = {
-			labels : ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, datosMeses){
+		var lineChartData1 = {
+			labels : [labelDias[0],labelDias[1],labelDias[2],labelDias[3],labelDias[4],labelDias[5],labelDias[6]],
 			datasets : [
 				{
 					label: "Primera serie de datos",
 					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#6b9dfa",
-					pointColor : "#1e45d7",
+					strokeColor : "#009DE0",
+					pointColor : "#AB218E",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [90,30,10,80,15,5,15]
+					pointHighlightStroke : "rgba(247,247,247,1)",
+					data : [datosDias[0],datosDias[1],datosDias[2],datosDias[3],datosDias[4],datosDias[5],datosDias[6]]
+				}
+			]
+
+		}
+		var lineChartData2 = {
+			labels : [labelSemanas[0], labelSemanas[1], labelSemanas[2], labelSemanas[3], labelSemanas[4], labelSemanas[5], labelSemanas[6]],
+			datasets : [
+				{
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#F0AB00",
+					pointColor : "#AB218E",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(242,242,242,1)",
+					data : [datosSemanas[0], datosSemanas[1], datosSemanas[2], datosSemanas[3], datosSemanas[4], datosSemanas[5], datosSemanas[6]]
 				}
 			]
 
 		}
 		var lineChartData3 = {
-			labels : ["Semana 1","Semana 2","Semana 3","Semana 4"],
+			labels : [labelMeses[0], labelMeses[1], labelMeses[2], labelMeses[3], labelMeses[4], labelMeses[5], labelMeses[6]],
 			datasets : [
 				{
 					label: "Primera serie de datos",
 					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#6b9dfa",
-					pointColor : "#1e45d7",
+					strokeColor : "#F27020",
+					pointColor : "#AB218E",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [90,30,10,80]
-				}
-			]
-
-		}
-		var lineChartData1 = {
-			labels : ["1","2","3","4","5","6","7" ,"8" ,"9" ,"10" ,"11", "12","13" ,"14" ,"15" ,"16" ,"17" ,"18" ,"19" ,"20", "21", "22", "23", "24"],
-			datasets : [
-				{
-					label: "Primera serie de datos",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#6b9dfa",
-					pointColor : "#1e45d7",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [150,300,100,800,150,50,150,123, 145, 167, 177, 199, 199, 112, 111, 100, 200, 500, 300, 300, 100, 105, 300, 400,]
+					pointHighlightStroke : "rgba(229,229,229,1)",
+					data : [datosMeses[0], datosMeses[1], datosMeses[2], datosMeses[3], datosMeses[4], datosMeses[5], datosMeses[6]]
 				}
 			]
 
