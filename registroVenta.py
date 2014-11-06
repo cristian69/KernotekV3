@@ -7,7 +7,7 @@ import logger
 
 values = []
 check_sum = 0
-DEBUG = 0
+DEBUG = 1
 
 
 
@@ -92,11 +92,11 @@ def main(sell):
                 if DEBUG:
                     print "El total no es correcto"
                 status = "1"
-                logger.error('04| El total es incorrecto ticket ' + str(ticket))
+                logger.error('04| El total es incorrecto ticket total' + str(ticket))
 
 
             # ---- Verifica si hay cambio y comprueba que sea correcto ----
-            # 
+            
             if len(values_sell) == 12:
                 existChange = True
                 change = values_sell[11]
@@ -118,7 +118,8 @@ def main(sell):
             panelcat = "INSERT INTO panelcat(shiftno, serialnumber)"\
             "VALUES('" + str(shift) + "', '" + str(numSerie) + "');"
 
-            servicesdetail = "INSERT INTO servicesdetail(rate, multiplier, cost) VALUES(" \
+            servicesdetail = "INSERT INTO servicesdetail(panelservicesid, rate, multiplier, cost) VALUES(" \
+	    "'" + str(class_db.idpanelServices()) + "', " \
             "'" + str(rate) + "', " \
             "'" + str(multiplier) + "'," \
             "'" + str(cost) + "');"
@@ -142,16 +143,16 @@ def main(sell):
 
             
             if existChange:
+		class_db.insertar_venta(panelservices)
                 class_db.insertar_venta(panelcat)
                 class_db.insertar_venta(servicesdetail)
-                class_db.insertar_venta(panelservices)
                 class_db.insertar_venta(config)
                 insertDeposit(ticket, denomDeposit)
                 insertChange(ticket, change)
             else:
+		class_db.insertar_venta(panelservices)
                 class_db.insertar_venta(panelcat)
                 class_db.insertar_venta(servicesdetail)
-                class_db.insertar_venta(panelservices)
                 class_db.insertar_venta(config)
                 insertDeposit(ticket, denomDeposit)
             

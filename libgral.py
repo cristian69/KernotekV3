@@ -2,9 +2,56 @@
 import datetime
 import class_db
 from datetime import date
+from flask import session
+import os
+import signal
+import time
 
 
 registros_pagina = 50 # El número de registros tiene que ser multiplo de la variable de clase db en la consulta
+
+def terminarProceso():
+    for proceso in os.popen("ps xa"):
+        proceso = proceso.split()
+        for valor in proceso:
+            valor = valor.split('/')
+            for valor2 in valor:
+                if valor2 == "BasicValidator" or valor2 == "servidor.py":
+                    pid = int(proceso[0])
+                    try:
+                        os.kill(pid, signal.SIGKILL)
+                    except:
+                        print "No se pude terminar el proceso"
+
+
+def iniciarProceso():
+    START = "service appserver start"
+    try:
+        os.system(START)
+
+    except:
+        print "No se puede iniciar"
+
+
+def reiniciarProceso():
+    terminarProceso()
+    time.sleep(1)
+    iniciarProceso()
+
+def revisarProceso():
+    socketPython = False
+    socketC = False
+    for vuelta in range(0,1):
+        for proceso in os.popen("ps xa"):
+            proceso = proceso.split()
+            for valor in proceso:
+                valor = valor.split('/')
+                for valor2 in valor:
+                    if valor2 == "BasicValidator":
+                        socketC = True
+                    if valor2 == "servidor.py":
+                        socketPython = True
+    return socketC, socketPython
 
 
 def generarProximoCorte(tiempo1):
@@ -13,7 +60,7 @@ def generarProximoCorte(tiempo1):
     minutos1 = valoresTiempo1[1]
     segundos1 = valoresTiempo1[2]
 
-    tiempo2 = str(ObtnerHora())
+    tiempo2 = str(ObtenerHora())
 
     valoresTiempo2 = tiempo2.split(':')
     horas2 = valoresTiempo2[0]
@@ -61,26 +108,68 @@ def calcularTiempo(totalHoras, totalMinutos, totalSegundos):
     return tiempo
 
 
+
+def nombreDias(dia):
+    if dia == "Monday":
+        return "Lunes"
+    elif dia == "Tuesday":
+        return "Martes"
+    elif dia == "Wednesday":
+        return "Miercoles"
+    elif dia == "Thursday":
+        return "Jueves"
+    elif dia == "Friday":
+        return "Viernes"
+    elif dia == "Saturday":
+        return "Sabado"
+    elif dia == "Sunday":
+        return "Domingo"
+
+# Pendiente modificar para adaptarlo a la clase servidor
+
 def obtenerNombreDia():
     dia = datetime.datetime.now()
     dia = dia.strftime("%A")
-    if dia == "Moday":
-        dia = "Lunes"
-    elif dia == "Tusday":
-        dia = "Martes"
+    if dia == "Monday":
+        return "Lunes"
+    elif dia == "Tuesday":
+        return "Martes"
     elif dia == "Wednesday":
-        dia = "Miercoles"
+        return "Miercoles"
     elif dia == "Thursday":
-        dia = "Jueves"
+        return "Jueves"
     elif dia == "Friday":
-        dia = "Viernes"
+        return "Viernes"
     elif dia == "Saturday":
-        dia = "Sabado"
+        return "Sabado"
     elif dia == "Sunday":
-        dia == "Domingo"
-    else:
-        return False
-    return dia
+        return "Domingo"
+
+def nombreMes(mes):
+    if mes == "Jan":
+        return "Enero"
+    elif mes == "Feb":
+        return "Febrero"
+    elif mes == "Mar":
+        return "Marzo"
+    elif mes == "Apr":
+        return "Abril"
+    elif mes == "May":
+        return "Mayo"
+    elif mes == "Jun":
+        return "Junio"
+    elif mes == "Jul":
+        return "Julio"
+    elif mes == "Aug":
+        return "Agosto"
+    elif mes == "Sep":
+        return "Septiembre"
+    elif mes == "Oct":
+        return "Octubre"
+    elif mes == "Nov":
+        return "Noviembre"
+    elif mes == "Dec":
+        return "Diciembre"
 
 
 def obtenerDia():
@@ -89,12 +178,12 @@ def obtenerDia():
     dia = str(dia)
     return dia
 
-def ObtnerFecha():
+def ObtenerFecha():
     fecha = str(datetime.date.today())
     return fecha
 
 
-def ObtnerHora():
+def ObtenerHora():
     hora = str(datetime.datetime.now())
     hora = hora.split(' ') 
     hora = hora[1]  
@@ -111,11 +200,21 @@ def FechaHora():
 
 
 def generar_tabla(datos, modal, bandera):
+    columnas = str(class_db.consultaColumnas()).split('-')
+    bandera_tarifa = False
+    bandera_deposito = False
+    switch = True
+
+    if columnas[5] == '1':
+        bandera_deposito = True
+    if columnas[4] == '1':
+        bandera_tarifa =  True
+
     bandera_activa = bandera   # Sirve para camabiar a activa o desactiva las cuentas y que no afecte a los reportes
     bandera_color = True
     codigo_tabla = ""
     bandera_td = True
-    id_fila=0
+    id_fila = 0
     if datos is None:
         msg = False
         return msg
@@ -123,21 +222,23 @@ def generar_tabla(datos, modal, bandera):
         for fila_datos in datos:
             id_fila = id_fila+1
             bandera_td = True
+            bandera_tocket = True
             if bandera_color:
-                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;" id="'+str(id_fila)+'" class="'+str(id_fila)+'">')
+                codigo_tabla += str('<tr id="'+str(id_fila)+'" class="info '+str(id_fila)+'">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;" id= "'+str(id_fila)+'" class="'+str(id_fila)+'">')
+                codigo_tabla += str('<tr id= "'+str(id_fila)+'" class="'+str(id_fila)+'">')
                 bandera_color = True
             for dato in fila_datos:
-
+		
                 if bandera_activa:
                     if dato == 1:
                             dato = "Activa"
                     if dato == 0:
                             dato = "Desactiva"
-                if dato == 0:
-                    dato = "Token" # Pendiente revisar
+		if dato == 0:
+		    dato = "Cortesía"
+
                 if bandera_td:
                     if modal is "":
                         codigo_tabla += str('<td id="key" class="'+str(id_fila)+'">') + str(dato) + str("</td>")
@@ -165,7 +266,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
     count = 0
     num_pagina = 1
     codigo_pag += str("""
-                        <article class=" form-actions text-right">
+                        <article class="text-right">
               <ul class="pagination">
                       """)
     if int(pag_activa) != 1:
@@ -283,7 +384,7 @@ def paginacion(pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA 
     return codigo_pag
 
 # if __name__ == "__main__":
-#     print ObtnerFecha()
+#     print ObtenerFecha()
 #     print ObtnerHora()
 #     print FechaHora()
 #     print obtenerNombreDia()

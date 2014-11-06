@@ -24,7 +24,7 @@ class reporteTurno(flask.views.MethodView):
             
             excel.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
 
-            pdf.crearHTMLReporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
+            pdf.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
             
             return render_template('reporteTurno.html', htmlTabla=htmlTabla)
 
@@ -43,15 +43,18 @@ def turnosDisponibles(fecha):
         htmlTurnos += '<h1 align="center"><strong>No Hay Cortes de Turnos en esa Fecha</strong></h1>'
     else:
         htmlTurnos += """
-        <article class="portlet light bordered" id="cortesDia">
+        <article class="portlet box green">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
               </article>
+              <article class="tools">
+                <a href="javascript:;" class="collapse"></a>
+              </article>
             </article>
-            <article class="portlet-body scrolbarr">
-              <table class="table table-responsive table-condensed" id="tablaTurno" style="font-size:12px">
-                <thead class=" text-center">
+            <article class="portlet-body flip-scroll">
+              <table class="table table-bordered table-striped table-condensed flip-content" id="tablaTurno">
+                <thead class="flip-content text-center c-blue">
                   <tr>
                     <th class="text-center">
                        Número de Corte
@@ -84,19 +87,20 @@ def tablaReporte(registros):
     linkExcel = "../static/download/"+session['username']+"/Reporte por Turno.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte por Turno.pdf"
     codigoTabla = """
-                    <article class="portlet light bordered">
+                    <article class="portlet box green">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno
               </article>
               <article class="tools">
-                <a href=" """+linkExcel+""" " class="blanc"><i class="fa fa-file-excel-o"></i></a>
-                <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+                <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
+                <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+                <a href="javascript:;" class="collapse"></a>
               </article>
             </article>
-            <article class="portlet-body scrolbarr">
-              <table class="table table-responsive table-condensed">
-                <thead class=" text-center">
+            <article class="portlet-body flip-scroll">
+              <table class="table table-bordered table-striped table-condensed flip-content">
+                <thead class="flip-content text-center c-blue">
                   <tr>
                     <th class="text-center">
                        Ticket
@@ -114,7 +118,7 @@ def tablaReporte(registros):
                        Total
                     </th>
                     <th class="text-center">
-                       Deposito
+                       Depósito
                     </th>
                   </tr>
                 </thead>

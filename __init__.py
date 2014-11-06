@@ -4,12 +4,22 @@
     DEPENDENCIAS
 
     * Instalar pip con el archivo get-pip.py
+    * pip install flask
     * sudo apt-get install python-mysqldb
     * pip install flask-mysql
     * pip install xlsxwriter
     * apt-get install python-dev
     * pip install xhtml2pdf
+    * pip install python-flup
     
+
+    NUEVA LIBRERIA PARA EXPORTAR A PDF
+    
+    * urpmi libffi-devel   - mageia
+    * apt-get install libffi-dev - Ubuntu
+    * apt-get install python-lxml
+    * pip install WeasyPrint
+
     CODIFICACION
 
     Para corregir el error de la codificacción 
@@ -51,7 +61,7 @@ from editarLlave import EditarLlave
 
 app = flask.Flask(__name__)
 ######### Inicializacion del servidor ####################
-__SERVER__ = '192.168.0.76'
+__SERVER__ = '0.0.0.0'
 __PORT__ = 8000
 app.debug = True
 
@@ -70,7 +80,7 @@ def logout():
     if len(session) > 1:
         session['endsession'] = str(datetime.today())
         class_db.registro_bitacora(session['username'], session['startsession'], session['endsession'])
-        shutil.rmtree("static/download/"+session['username'])
+        shutil.rmtree("/var/www/demoFlask/static/download/"+session['username'])
         session.clear()
 
         return flask.render_template('cerrarSesion.html')

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'aramirez'
 
@@ -11,6 +12,8 @@ import select
 import os
 import class_db
 import InhibirMDB
+from libErrores import registroError
+import libgral
 
 
 IP_UDP = "127.0.0.1"
@@ -22,7 +25,7 @@ tiempoActual = 0  # Tiempo de apertura actual
 turnoActual = 0
 
 maxIntentos = 4
-DEBUG = 0
+DEBUG = 1
 
 #BasicValidator = "/home/linaro/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
 BasicValidator = "/home/odroid/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
@@ -89,7 +92,8 @@ def Socket():
             mensajeSocket = ""
             mensajeSocket, direccion = sock.recvfrom(1024)
             if DEBUG:
-                print "RX: ", mensajeSocket
+		if mensajeSocket != "P|x":
+                    print "RX: ", mensajeSocket
 
             if cambioMonedero:
                 if DEBUG:
@@ -137,11 +141,11 @@ def Socket():
                 if mensajeSocket.startswith('\x02') and len(mensajeSocket) > 70:
                     if DEBUG:
                         print "VENTA ENTRANTE: ", mensajeSocket
-                    try:
-                        hilo_venta = threading.Thread(target=venta(mensajeSocket))
-                        hilo_venta.start()
-                    except:
-                        print "No se puede iniciar el registro de la venta"
+                    #try:
+                    hilo_venta = threading.Thread(target=venta(mensajeSocket))
+                    hilo_venta.start()
+                    #except:
+                    #    print "No se puede iniciar el registro de la venta"
                         
                         #logger.error("ERROR CON LAS FOREING KEY")
 
@@ -172,7 +176,7 @@ def hacerCorteAutomatico():
     banderaTiempo = class_db.consultarTipoTiempo()
     if banderaTiempo == "cadaDia":
         horaCorte = class_db.consultarTiempo()
-        horaActual = libgral.ObtnerHora()
+        horaActual = libgral.ObtenerHora()
         if horaCorte == horaActual:
             hacerCorte = True
 
@@ -182,7 +186,7 @@ def hacerCorteAutomatico():
         dia = diaHora[0]
         hora = diaHora[1]
         diaActual = libgral.obtenerNombreDia()
-        horaActual = libgral.ObtnerHora()
+        horaActual = libgral.ObtenerHora()
         if dia == diaActual and hora == horaActual:
             hacerCorte = True
 
@@ -192,14 +196,14 @@ def hacerCorteAutomatico():
         dia = diaHora[0]
         hora = diaHora[1]
         diaActual = libgral.obtenerDia()
-        horaActual = libgral.ObtnerHora()
+        horaActual = libgral.ObtenerHora()
         if dia == diaActual and hora == horaActual:
             hacerCorte = True
 
     if banderaTiempo == "cadaDetHora":
         hora = class_db.consultProxCorte()
         hora  = hora[:-3]
-        horaActual = libgral.ObtnerHora()
+        horaActual = libgral.ObtenerHora()
         hora2 = class_db.consultarTiempo()
         horaActual = horaActual[:-3]
         if hora == horaActual:
@@ -213,7 +217,7 @@ def hacerCorteAutomatico():
         class_db.activarCorteTurno()
 
 
-
+"""
 def registroError(msgError):
     msgError = msgError.split('|')
     msgError = msgError[1]
@@ -321,7 +325,7 @@ def registroError(msgError):
     else:
         logger.error(msgError)
         return 
-
+"""
 def venta(msg):
     registroVenta.main(msg)
 
@@ -428,12 +432,15 @@ def totalMonto(entrada):
 
 
 if __name__ == '__main__':
+    """
+    time.sleep(0.100)
     try:
         iniciarThread()
     except (KeyboardInterrupt, SystemExit):
         if DEBUG:
             print "REGISTRANDO EL ESTADO DEL SOCKET DE C EN INACTIVO"
         class_db.estadoSocketC('0')
+    """
     try:
         Socket()
     except KeyboardInterrupt:

@@ -20,5 +20,9 @@ class NuevaLlave(flask.views.MethodView):
 		tipoLlave = request.form.getlist('tipoLlave')
 		llave = request.form['llave']
 		estado = request.form.getlist('estadoLlave')
-		class_db.registroLlave(nombre, apPaterno, apMaterno, grupo, tipoLlave[0], llave.upper(), estado[0])
-		return render_template('llaveNueva.html', bandera='registroExitoso') 
+		estadoLlave = class_db.existeLlave(llave.upper())
+		if not estadoLlave:
+			class_db.registroLlave(nombre, apPaterno, apMaterno, grupo, tipoLlave[0], llave.upper(), estado[0])
+			return render_template('llaveNueva.html', bandera='registroExitoso')
+		else:
+			return render_template('llaveNueva.html', bandera='llaveRegistrada')			 

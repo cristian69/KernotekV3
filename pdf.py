@@ -1,270 +1,163 @@
 # -*- coding:utf-8 -*-
-from xhtml2pdf import pisa
+# from xhtml2pdf import pisa
 import class_db
 import datetime
 from flask import session
+from weasyprint import HTML
+import time
 
 
+style="""
+        @page{@top-left {content: url("file:/home/aramirez/Escritorio/reporte.png");}@bottom-right {content: "Página " counter(page) " de " counter(pages);font-size: .75em;padding-bottom: 6mm;}}
+        img{border: 0;left: 50px;width: 180px;top: 20px;height: 60px;}
+        .active{background-color: #f9f9f9;}
+        .text-left {text-align: left;}
+        .text-right {text-align: right;}
+        .table > thead > tr .centrar{text-align:center;}
+        .text-center {text-align: center;}
+        .text-justify {text-align: justify;}
+        table {background-color: transparent;}
+        .table {width: 100%;max-width: 100%;margin-bottom: 20px;}
+        h1 {margin: .67em 0;font-size: 2em;padding: 0;padding-bottom:0;}
+        td{font: 100% sans-serif;text-align: center;padding: 1px;padding-top: 1px;}
+        th{font: 100% sans-serif;background-color: #428BCA;color: white;padding-top: 1px;padding: 1px;text-align: center;}
+        p{padding:0;padding-top:0;}
+      """
 
-def crearHTMLEspecifico(datos, fechaInicio, fechaFin):
-    fechaReporte = str(datetime.datetime.today().strftime('%d-%b-%Y'))
+def reporteEspecifico(datos, fechaInicio, fechaFin): 
+    ruta = "/var/www/demoFlask/static/download/"+session['username']+"/"
+    fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
+    tiempo0 = time.time()
     codigoHTML = """
-<html>
-    <head>
-        <style>
-             @page {
-                size: a4 portrait;
-                @frame header_frame {           /* Static Frame */
-                    -pdf-frame-content: header_content;
-                    -pdf-frame-content: header_content;
-                    left: 50pt; width: 512pt; top: 50pt; height: 40pt;
-                }
-                @frame content_frame {          /* Content Frame */
-                    left: 50pt; width: 512pt; top: 90pt; height: 632pt;
-                }
-                @frame footer_frame {           /* Another static Frame */
-                    -pdf-frame-content: footer_content;
-                    left: 50pt; width: 512pt; top: 772pt; height: 20pt;
-                }
-            }
-            h1{
-                font-family: "Tahoma";
-            }
-            table{
-                    aling: center;
-                    border: 1px solid gray;
-                    text-align: center;
-            }
-            td{
-                font: 100% sans-serif;
-                align: center;
-                text-align: center;
-                padding: 1px;
-                padding-top: 1px;
-
-            }
-            th{
-                font: 100% sans-serif;
-                align: center;
-                background-color: #428BCA;
-                color: white;
-                padding-top: 1px;
-                padding: 1px;
-            }
-        </style>
-    </head>
-
-    <body>
-        <!-- Static Frame 'cabezera' -->
-        <div id="header_content">
-            <img src="reporte.jpg"/>
-        </div>
-
-
-        <!-- Static Frame 'pie de página' -->
-        <div id="footer_content" align="right">p&aacute;gina  <pdf:pagenumber>
-            de <pdf:pagecount>
-        </div>
-
-        <!-- Contenido HTML -->
-
-        <div display="inline-block" id="content_frame">
-            <strong><h2 align="right">FECHA: """+fechaReporte+"""</h2></strong>
-        </div>
-        <div align="center">
-            <strong><h1>REPORTE DE VENTAS</h1></strong>
-        </div>
-        <div align="center">
-            <strong><h1>De la fecha """+fechaInicio+""" a la fecha """+fechaFin+"""</h1></strong>
-        </div>
-"""
-    dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
-                    'deposit': 'Deposito'}
+                    <html>
+                    <head>
+                    <style>
+                    """+style+"""
+                    </style>
+                    </head>
+                    <body>
+                    <div class="text-right">"""+fecha+"""</div>
+                    <div align="center">
+                    <strong><h1 class="text-center">Resumen de ventas.</h1></strong>
+                    <p class="text-center">de la fecha """+fechaInicio+"""  a la fecha """+fechaFin+"""</p>
+                    </div>
+                 """
+    dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa','deposit': 'Depósito'}
     cabezerasDisponibles = class_db.columnas_habilitadas()
-    banderaTabla = True  # Indica cuando inicia una tabla
-    contador = 1  # Identifica cuantos registros estan en la tabla
-    codigoTabla = ""
-    banderaImagen = False  # Indica cuando poner la imagen de kernotek
-    registrosPagina = 38  # Cuantos registros por pagina
+
+    # Inicio de la tabla
+    codigoHTML += """<table class="table">"""
+
+    # Agregando las cabezera
+    codigoHTML += """<thead>"""
+    codigoHTML += """<tr>"""
+    for cabezera in cabezerasDisponibles:
+        codigoHTML += str("<th>")
+        codigoHTML += dicCabezeras[cabezera]
+        codigoHTML += str("</th>")
+        
+    codigoHTML += str("</tr>")
+    codigoHTML += str("</thead>")
+
+    # inicio del cuerpo de la tabla
+    codigoHTML += str('<tbody class="text-center">')
+    codigo = ""
+    banderaFila = False
 
     for fila in datos:
-        contador += 1
-        if banderaTabla:
-            if banderaImagen:
-                registrosPagina = 40
-                codigoTabla += """
-                                 <img src="reporte.jpg" height="50"/>
-                               """
-                banderaImagen = False
-
-            codigoTabla += """
-                             <table align="center">
-                             <thead>
-                          """
-            codigoTabla += str('<tr>')
-            for cabezera in cabezerasDisponibles:
-                codigoTabla += str('<th>')
-                codigoTabla += dicCabezeras[cabezera]
-                codigoTabla += str('</th>')
-
-            codigoTabla += str('</tr>')  # Fin de las cebezeras
-            codigoTabla += str('</thead>')
-            codigoTabla += str('<tbody class="text-center">')
-
-            banderaTabla = False
-
-        codigoTabla += str('<tr>')
-
+        if banderaFila:
+            codigo += ('<tr class="active">')
+            banderaFila = False
+        else:
+            codigo += ('<tr>')
+            banderaFila = True
         for dato in fila:
             if dato == 0:
-                dato ="Token"
-            codigoTabla += str("<td>") + str(dato) + str("</td>")
+                dato = "Cortesía"
+            codigo += str('<td>') + str(dato) + str("</td>")
 
-        codigoTabla += str("</tr>")
+        codigo += ("</tr>")
 
-        if contador == registrosPagina:
-            codigoTabla += str('</tbody>')   # Fin del contenido de la tabla
-            codigoTabla += str('</table>')   # Fin de la tabla
-            banderaTabla = True
-            contador = 0
-            banderaImagen = True
+    codigoHTML+= codigo
+   
+    # Etiquetas de cierre de la tabla
+    codigoHTML += str("</tbody>")
+    codigoHTML += str("</table>")
 
-    codigoHTML += codigoTabla
-    codigoHTML += """
-                    </body>
-                    </html>
-                  """
-    outputFilename = "static/download/"+session['username']+ "/Reporte de Ventas.pdf"
-    pisa.showLogging()
-    convertHtmlToPdf(codigoHTML, outputFilename)
+    # Etiquetas de cierre del html
+    codigoHTML += str("</html>")
+   
+    HTML(string=codigoHTML).write_pdf(ruta + "Resumen de ventas.pdf")
+    print time.time() - tiempo0 
 
-
-def crearHTMLGeneral(datos, fechaInicio, fechaFin):
-    outputFilename = "static/download/"+session['username']+"/Reporte General de Ventas.pdf"
-    fechaReporte = str(datetime.datetime.today().strftime('%d-%b-%Y'))
+def reporteGeneral(datos, fechaInicio, fechaFin):
+    ruta = "/var/www/demoFlask/static/download/"+session['username']+"/"
+    fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
     cabezeras = ['Tarifa', 'Número de Ventas', 'Total Acumulado']
     codigoHTML = """
-<html>
-    <head>
-        <style>
-             @page {
-                size: a4 portrait;
-                @frame header_frame {           /* Static Frame */
-                    -pdf-frame-content: header_content;
-                    left: 50pt; width: 512pt; top: 50pt; height: 40pt;
-                }
-                @frame content_frame {          /* Content Frame */
-                    left: 50pt; width: 512pt; top: 90pt; height: 632pt;
-                }
-                @frame footer_frame {           /* Another static Frame */
-                    -pdf-frame-content: footer_content;
-                    left: 50pt; width: 512pt; top: 772pt; height: 20pt;
-                }
-            }
-            h1{
-                font-family: "Tahoma";
-            }
-            table{
-                    aling: center;
-                    border: 1px solid gray;
-                    text-align: center;
-            }
-            td{
-                font: 150% sans-serif;
-                align: center;
-                text-align: center;
-                padding: 2px;
-                padding-top: 3px;
+                    <html>
+                    <head>
+                    <style>
+                    """+style+"""
+                    </style>
+                    </head>
+                    <body>
+                    <div class="text-right">"""+fecha+"""</div>
+                    <div align="center">
+                    <strong><h1 class="text-center">Reporte general.</h1></strong>
+                    <p class="text-center">De la fecha """+fechaInicio+"""  a la fecha """+fechaFin+""".</p>
+                    </div>
+                 """
+    
+    # Inicio de la tabla
+    codigoHTML += """<table class="table">"""
 
-            }
-            th{
-                font: 150% sans-serif;
-                align: center;
-                background-color: #428BCA;
-                color: white;
-                padding-top: 3px;
-                padding: 2px;
-            }
-        </style>
-    </head>
+    # Agregando las cabezera
+    codigoHTML += """<thead>"""
+    codigoHTML += """<tr>"""
+    for cabezera in cabezeras:
+        codigoHTML += str("<th>")
+        codigoHTML += cabezera
+        codigoHTML += str("</th>")
+        
+    codigoHTML += str("</tr>")
+    codigoHTML += str("</thead>")
 
-    <body>
-        <!-- Static Frame 'cabezera' -->
-        <div id="header_content">
-            <img src="reporte.jpg"/>
-        </div>
+    # inicio del cuerpo de la tabla
+    codigoHTML += str('<tbody class="text-center">')
+    codigo = ""
+    banderaFila = False
 
-
-        <!-- Static Frame 'pie de página' -->
-        <div id="footer_content" align="right">p&aacute;gina  <pdf:pagenumber>
-            de <pdf:pagecount>
-        </div>
-
-        <!-- Contenido HTML -->
-
-        <div display="inline-block" id="content_frame">
-            <strong><h2 align="right">FECHA: """+fechaReporte+"""</h2></strong>
-        </div>
-        <div align="center">
-            <strong><h1>REPORTE GENERAL DE VENTAS</h1></strong>
-        </div>
-        <div align="center">
-            <strong><h1>De la fecha """+fechaInicio+""" a la fecha """+fechaFin+"""</h1></strong>
-        </div>
-"""
-    banderaTabla = True  # Indica cuando inicia una tabla
-    contador = 1  # Identifica cuantos registros estan en la tabla
-    codigoTabla = ""
-    banderaImagen = False  # Indica cuando poner la imagen de kernotek
-    registrosPagina = 26  # Cuantos registros por pagina
     for fila in datos:
-        contador += 1
-        if banderaTabla:
-            if banderaImagen:
-                registrosPagina = 27
-                codigoTabla += """
-                                 <img src="reporte.jpg" height="50"/>
-                               """
-                banderaImagen = False
-
-            codigoTabla += """
-                             <table align="center">
-                             <thead>
-                          """
-            codigoTabla += str('<tr>')
-            for cabezera in cabezeras:
-                codigoTabla += str('<th>')
-                codigoTabla += cabezera
-                codigoTabla += str('</th>')
-
-            codigoTabla += str('</tr>')  # Fin de las cebezeras
-            codigoTabla += str('</thead>')
-            codigoTabla += str('<tbody class="text-center">')
-
-            banderaTabla = False
-
-        codigoTabla += str('<tr>')
-
+        if banderaFila:
+            codigo += ('<tr class="active">')
+            banderaFila = False
+        else:
+            codigo += ('<tr>')
+            banderaFila = True
         for dato in fila:
-            codigoTabla += str("<td>") + str(dato) + str("</td>")
+            if dato == 0:
+                dato = "Cortesía"
+            codigo += str('<td>') + str(dato) + str("</td>")
 
-        codigoTabla += str("</tr>")
+        codigo += ("</tr>")
 
-        if contador == registrosPagina:
-            codigoTabla += str('</tbody>')   # Fin del contenido de la tabla
-            codigoTabla += str('</table>')   # Fin de la tabla
-            banderaTabla = True
-            contador = 0
-            banderaImagen = True
+    codigoHTML+= codigo
+   
+    # Etiquetas de cierre de la tabla
+    codigoHTML += str("</tbody>")
+    codigoHTML += str("</table>")
 
-    codigoTabla += str('</tbody>')   # Fin del contenido de la tabla
-    codigoTabla += str('</table>')   # Fin de la tabla
+    # Calcula los totales de ventas y acumulado
+    totales = class_db.totales(fechaInicio, fechaFin)  
 
-    totales = class_db.totales(fechaInicio, fechaFin)  #Calcula los totales de ventas y acumulado
-    codigoTabla += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
-    codigoTabla += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
-    codigoTabla += """
-                    <table>
+    # Saltos de linea
+    # codigoHTML += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
+    # codigoHTML += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
+
+    # Agredo de la tabla para los datos totales
+    codigoHTML += """
+                    <table class="table">
                     <th colspan=2>TOTALES</th>
                     <tr>
                         <td color="white">Total de ventas</td>
@@ -276,143 +169,92 @@ def crearHTMLGeneral(datos, fechaInicio, fechaFin):
                     </tr>
                     </table>
                     """
-    codigoHTML += codigoTabla
-    codigoHTML += """
-                    </body>
-                    </html>
-                  """
-    pisa.showLogging()
-    convertHtmlToPdf(codigoHTML, outputFilename)
+
+    # Etiquetas de cierre de la tabla de totales
+    codigoHTML += str("</tbody>")
+    codigoHTML += str("</table>")
+
+    # Etiquetas de cierre del html
+    codigoHTML += str("</html>")
+    HTML(string=codigoHTML).write_pdf(ruta+'Reporte General.pdf')
 
 
 
-def crearHTMLReporteTurno(datos, fechaInicio, fechaFin, numTurno):
-    outputFilename = "static/download/"+session['username']+"/Reporte por Turno.pdf"
+def reporteTurno(datos, fechaInicio, fechaFin, numTurno):
+    ruta = "/var/www/demoFlask/static/download/"+session['username']+"/"
     fechaReporte = str(datetime.datetime.today().strftime('%d-%b-%Y'))
-    cabezeras = ['Ticket', 'Fecha', 'Tarifa', 'Mult', 'Total', 'Deposito']
+    cabezeras = ['Ticket', 'Fecha', 'Tarifa', 'Multi.', 'Total', 'Depósito']
+
     codigoHTML = """
-<html>
-    <head>
-        <style>
-             @page {
-                size: a4 portrait;
-                @frame header_frame {           /* Static Frame */
-                    -pdf-frame-content: header_content;
-                    -pdf-frame-content: header_content;
-                    left: 50pt; width: 512pt; top: 50pt; height: 40pt;
-                }
-                @frame content_frame {          /* Content Frame */
-                    left: 50pt; width: 512pt; top: 90pt; height: 632pt;
-                }
-                @frame footer_frame {           /* Another static Frame */
-                    -pdf-frame-content: footer_content;
-                    left: 50pt; width: 512pt; top: 772pt; height: 20pt;
-                }
-            }
-            h1{
-                font-family: "Tahoma";
-            }
-            table{
-                    aling: center;
-                    border: 1px solid gray;
-                    text-align: center;
-            }
-            td{
-                font: 100% sans-serif;
-                align: center;
-                text-align: center;
-                padding: 1px;
-                padding-top: 1px;
+                    <html>
+                    <head>
+                    <style>
+                    """+style+"""
+                    </style>
+                    </head>
+                    <body>
+                    <div class="text-right">"""+fecha+"""</div>
+                    <div align="center">
+                    <strong><h1 class="text-center">Reporte del turno """+str(numTurno)+""".</h1></strong>
+                    <p class="text-center">De la fecha """+fechaInicio+"""  a la fecha """+fechaFin+""".</p>
+                    </div>
+                 """
 
-            }
-            th{
-                font: 100% sans-serif;
-                align: center;
-                background-color: #428BCA;
-                color: white;
-                padding-top: 1px;
-                padding: 1px;
-            }
-        </style>
-    </head>
+    # Inicio de la tabla
+    codigoHTML += """<table class="table">"""
 
-    <body>
-        <!-- Static Frame 'cabezera' -->
-        <div id="header_content">
-            <img src="reporte.jpg"/>
-        </div>
+    # Agregando las cabezera
+    codigoHTML += """<thead>"""
+    codigoHTML += """<tr>"""
+    for cabezera in cabezeras:
+        codigoHTML += str("<th>")
+        codigoHTML += cabezera
+        codigoHTML += str("</th>")
+
+    # Etiquetas de cierre de la cabezera
+    codigoHTML += str("</tr>")
+    codigoHTML += str("</thead>")
 
 
-        <!-- Static Frame 'pie de página' -->
-        <div id="footer_content" align="right">p&aacute;gina  <pdf:pagenumber>
-            de <pdf:pagecount>
-        </div>
+    # inicio del cuerpo de la tabla
+    codigoHTML += str('<tbody class="text-center">')
+    codigo = ""
+    count = 0
+    banderaFila = False
 
-        <!-- Contenido HTML -->
-
-        <div display="inline-block" id="content_frame">
-            <strong><h2 align="right">FECHA: """+fechaReporte+"""</h2></strong>
-        </div>
-        <div align="center">
-            <strong><h1>REPORTE DEL TURNO NÚMERO """+numTurno+"""</h1></strong>
-        </div>
-        <div align="center">
-            <strong><h1>De la Fecha """+fechaInicio+""" a la Fecha """+fechaFin+"""</h1></strong>
-        </div>
-"""
-    banderaTabla = True  # Indica cuando inicia una tabla
-    contador = 1  # Identifica cuantos registros estan en la tabla
-    codigoTabla = ""
-    banderaImagen = False  # Indica cuando poner la imagen de kernotek
-    registrosPagina = 38  # Cuantos registros por pagina
     for fila in datos:
-        contador += 1
-        if banderaTabla:
-            if banderaImagen:
-                registrosPagina = 40
-                codigoTabla += """
-                                 <img src="reporte.jpg" height="50"/>
-                               """
-                banderaImagen = False
-
-            codigoTabla += """
-                             <table align="">
-                             <thead>
-                          """
-            codigoTabla += str('<tr>')
-            for cabezera in cabezeras:
-                codigoTabla += str('<th>')
-                codigoTabla += cabezera
-                codigoTabla += str('</th>')
-
-            codigoTabla += str('</tr>')  # Fin de las cebezeras
-            codigoTabla += str('</thead>')
-            codigoTabla += str('<tbody class="text-center">')
-
-            banderaTabla = False
-
-        codigoTabla += str('<tr>')
-
+        if banderaFila:
+            codigo += ('<tr class="active">')
+            banderaFila = False
+        else:
+            codigo += ('<tr>')
+            banderaFila = True
+        count += 1
         for dato in fila:
-            codigoTabla += str("<td>") + str(dato) + str("</td>")
+            if dato == 0:
+                dato = "Cortesía"
+            codigo += str('<td>') + str(dato) + str("</td>")
 
-        codigoTabla += str("</tr>")
+        codigo += ("</tr>")
+        if count == 1000:
+            break
 
-        if contador == registrosPagina:
-            codigoTabla += str('</tbody>')   # Fin del contenido de la tabla
-            codigoTabla += str('</table>')   # Fin de la tabla
-            banderaTabla = True
-            contador = 0
-            banderaImagen = True
+    codigoHTML+= codigo
+   
+    # Etiquetas de cierre de la tabla
+    codigoHTML += str("</tbody>")
+    codigoHTML += str("</table>")
 
-    codigoTabla += str('</tbody>')   # Fin del contenido de la tabla
-    codigoTabla += str('</table>')   # Fin de la tabla
-
+    # Datos del total del turno
     montos = class_db.montosTurno(numTurno)
-    codigoTabla += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
-    codigoTabla += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
-    codigoTabla += """
-                    <table>
+
+    # Saltos de linea 
+    # codigoHTML += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
+    # codigoHTML += str('<font color="white">salto del linea</font><font color="white">salto de linea</font>')
+    
+    # Agreagdo de la tabla de totales del turno 
+    codigoHTML += """
+                    <table class="table">
                     <th colspan=2>INFO. MONTO</th>
                     <tr>
                         <td color="white">Monto Inicial</td>
@@ -424,23 +266,11 @@ def crearHTMLReporteTurno(datos, fechaInicio, fechaFin, numTurno):
                     </tr>
                     </table>
                     """
-    codigoHTML += codigoTabla
-    codigoHTML += """
-                    </body>
-                    </html>
-                  """
-    pisa.showLogging()
-    convertHtmlToPdf(codigoHTML, outputFilename)
 
+    # Etiquetas de cierre de la tabla de totales del turno
+    codigoHTML += str("</tbody>")
+    codigoHTML += str("</table>")
 
-
-def convertHtmlToPdf(sourceHtml, outputFilename):
-    resultFile = open(outputFilename, "w+b")
-
-    # convert HTML to PDF
-    pisaStatus = pisa.CreatePDF(
-        sourceHtml,  # the HTML to convert
-        dest=resultFile)  # file handle to recieve result
-
-    # close output file
-    resultFile.close()  # close output file
+    # Etiquetas de cierre del html
+    codigoHTML += str("</html>")
+    HTML(string=codigoHTML).write_pdf(ruta+'Reporte del turno '+str(numTurno)+'.pdf')

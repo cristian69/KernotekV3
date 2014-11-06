@@ -4,7 +4,7 @@ from distutils.archive_util import make_tarball
 __author__ = 'adrian'
 from flaskext.mysql import MySQL
 import flask
-from libgral import ObtnerFecha, FechaHora
+from libgral import ObtenerFecha, FechaHora
 import sys
 from flask import session
 
@@ -27,17 +27,17 @@ except:
 
 
 def crear_conexion():
-	global db 
-	global cursor
-	db = mysql.connect()
-	cursor = db.cursor()
+    global db 
+    global cursor
+    db = mysql.connect()
+    cursor = db.cursor()
 
 
 def matar_conexion():
-	global db
-	global cursor
-	db.close()
-	cursor.close()
+    global db
+    global cursor
+    db.close()
+    cursor.close()
 
 
 #########################################################
@@ -83,7 +83,7 @@ def modificar_reporte(nuevoEstado):
 def total_registros(dateStart, dateEnd):
     crear_conexion()
     query = "SELECT count(ticket) FROM panelservices " \
-                "WHERE datetimesell BETWEEN '"+dateStart+"' AND '"+dateEnd+"' ;"
+                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\");"
     cursor.execute(query)
     num_registros = cursor.fetchall()
     matar_conexion()
@@ -105,14 +105,13 @@ def paginacion(dateStart, dateEnd, inicio):
     else:
         crear_conexion()
         query = query[:-2] + " FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
-                "WHERE datetimesell BETWEEN '"+dateStart+"'AND '"+dateEnd+"' ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 50;"
+                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 50;"
         cursor.execute(query)
         data = cursor.fetchall()
         matar_conexion()
         return data
 
 #============================= REPORTE ESPECIFICO ===========================================
-
 
 def reporte_especifico(dateStart, dateEnd):
     crear_conexion()
@@ -126,8 +125,9 @@ def reporte_especifico(dateStart, dateEnd):
         return data
     else:
         crear_conexion()
+
         query = query[:-2] + " FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
-                "WHERE datetimesell BETWEEN '"+dateStart+"'AND '"+dateEnd+"' ORDER BY datetimesell;"
+                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"',\"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell;"
         cursor.execute(query)
         data = cursor.fetchall()
         matar_conexion()
@@ -138,8 +138,8 @@ def reporte_especifico(dateStart, dateEnd):
 
 def reporte_general(fechaInicio, fechaFin):
     crear_conexion()
-    query = "SELECT rate, count(rate), SUM(cost) FROM servicesdetail " \
-            " WHERE  updatetime BETWEEN '"+fechaInicio+"' AND '"+fechaFin+"'GROUP BY rate ;"
+    query = "SELECT cost, count(cost), SUM(cost) FROM panelservices " \
+            " WHERE  deposit != 0 AND updatetime BETWEEN STR_TO_DATE('"+fechaInicio+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+fechaFin+"', \"%Y-%m-%d %H:%i:%s\") GROUP BY cost ;"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -158,7 +158,7 @@ def state_report_gral():
 
 def totales(fechaInicio, fechaFin):
     crear_conexion()
-    query = "SELECT COUNT(rate), SUM(cost) FROM servicesdetail WHERE updatetime BETWEEN '"+fechaInicio+"' AND '"+fechaFin+"';"
+    query = "SELECT COUNT(cost), SUM(cost) FROM panelservices WHERE  deposit != 0 AND updatetime BETWEEN STR_TO_DATE('"+fechaInicio+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+fechaFin+"', \"%Y-%m-%d %H:%i:%s\");"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -170,7 +170,7 @@ def reportDetallado(dateStart, dateEnd):
     query = "SELECT ticket, localshift, datetimesell, rate,multiplier, servicesdetail.cost, deposit " \
             "FROM panelservices INNER JOIN servicesdetail " \
             "ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
-            "WHERE datetimesell BETWEEN '"+dateStart+"'AND '"+dateEnd+"' ORDER BY datetimesell;"
+            "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell;"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -179,7 +179,7 @@ def reportDetallado(dateStart, dateEnd):
 #============================= REPORTE POR TURNO ===========================================
 def turnosDisponibles(fecha):
     crear_conexion()
-    query = "SELECT shiftno, datestart, dateend FROM panelshifthead WHERE dateend BETWEEN '"+fecha+" 00:00:00' AND '"+fecha+" 23:59:59';"
+    query = "SELECT shiftno, datestart, dateend FROM panelshifthead WHERE dateend BETWEEN STR_TO_DATE('"+fecha+" 00:00:00', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+fecha+" 23:59:59', \"%Y-%m-%d %H:%i:%s\");"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -213,6 +213,17 @@ def montosTurno(numTurno):
 #                     LLAVES                            #
 #                                                       #
 #########################################################
+
+
+def existeLlave(llave):
+    crear_conexion()
+    query = "SELECT idKeys FROM llaves WHERE llave = '"+llave+"'"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    if len(data) == 0:
+        return False
+    else:
+        return True
 
 def registroLlave(nombre, apPaterno, apMaterno, grupo, tipoLlave, llave, estado):
     numSerie = numSerieAcceso()
@@ -248,7 +259,7 @@ def editarLlave(nombre, apPaterno, apMaterno, grupo, tipoLlave, llave, estado):
     query = "UPDATE llaves SET "\
             "nombre = '"+str(nombre)+"', appaterno='"+str(apPaterno)+"', apmaterno='"+str(apMaterno)+"', grupo='"+str(grupo)+"', llave='"+str(llave)+"',"\
                 " estado='"+str(estado)+"', tipo_llave='"+str(tipoLlave)+"' WHERE llave= '"+str(llave)+"'"
-    print query
+    
     cursor.execute(query)
     db.commit()
     matar_conexion()
@@ -282,7 +293,11 @@ def consultarCerradura():
     cursor.execute(query)
     data =  cursor.fetchall()
     matar_conexion()
-    print data
+    data = data[0][0]
+    if data == 1:
+        return "Activo"
+    else:
+        return "Inactivo"
 
 
 def consultKey(key):
@@ -292,9 +307,9 @@ def consultKey(key):
     data = cursor.fetchall()
     matar_conexion()
     if len(data) != 0:
-    	data = data[0][0]
-    	if data == 'Activa':
-	    return True
+        data = data[0][0]
+        if data == 'Activa':
+            return True
     return False
 
 
@@ -618,6 +633,30 @@ def activarCuenta(username):
 #########################################################
 
 
+def ventasDia():
+    crear_conexion()
+    query = "select day(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 day) group by day(datetimesell);" 
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    return data
+
+def ventasSemana():
+    crear_conexion()
+    query = "select week(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 week) group by {fn week(datetimesell)};" 
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    return data
+
+def ventasMes():
+    crear_conexion()
+    query = " select month(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 1 month) group by month(datetimesell);"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    return data
+
 def ticket_actual():
     crear_conexion()
     query = "SELECT ticket FROM panelservices WHERE panelservicesid = (SELECT MAX(panelservicesid) FROM panelservices);"
@@ -634,11 +673,11 @@ def ticket_actual():
 def ventas_del_dia():
     crear_conexion()
     total = '$ '
-    fecha_inicio = ObtnerFecha()
+    fecha_inicio = ObtenerFecha()
     fecha2 = fecha_inicio.split('-')
     fecha2[0] = int(fecha2[0]) + 1
     fecha_fin = '-'.join(str(x) for x in fecha2)
-    query = "SELECT SUM(cost) FROM servicesdetail  WHERE updatetime BETWEEN '"+fecha_inicio+"' AND '"+fecha_fin+"';"
+    query = "SELECT SUM(cost) FROM panelservices  WHERE  deposit != 0 AND updatetime BETWEEN '"+fecha_inicio+"' AND '"+fecha_fin+"';"
     cursor.execute(query)
     data = cursor.fetchone()
     data = data[0]
@@ -679,7 +718,7 @@ def consultaSocketPython():
     if data[0] == 1:
         return "Activo"
     else:
-        return "inactivo"
+        return "Inactivo"
 
 
 # Consulta si el socket de C esta activo
@@ -692,7 +731,7 @@ def consultaSocketC():
     if data[0] == 1:
         return "Activo"
     else:
-        return "inactivo"
+        return "Inactivo"
 
 
 
@@ -894,6 +933,19 @@ def consultarTicket():
     matar_conexion()
     return data[0][0]
 
+def idpanelServices():
+    crear_conexion()
+    query = "SELECT servicesdetailid from servicesdetail  ORDER BY servicesdetailid DESC limit 1;"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    if len(data) == 0:
+        data = '0'
+    else:
+        data = data[0][0]
+        matar_conexion()
+        data = int(data) +  1
+    return data
+
 
 def insertar_venta(query):
     crear_conexion()
@@ -920,7 +972,7 @@ def registro_bitacora(usuario, inicio_sesion, fin_sesion):
 
 def consulta_bitacora(indice):
     crear_conexion()
-    query="SELECT username, startsesion, endsesion FROM bitacora limit "+str(indice)+" , 15;"
+    query="SELECT username, startsesion, endsesion FROM bitacora limit "+str(indice)+" , 50;"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()

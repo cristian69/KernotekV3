@@ -7,7 +7,7 @@ from libgral import generar_tabla
 import excel
 import flask
 import threading
-from pdf import crearHTMLGeneral
+import pdf
 
 
 class reporteGeneral(flask.views.MethodView):
@@ -21,7 +21,7 @@ class reporteGeneral(flask.views.MethodView):
         fechaFin = fechaFin + " " + horaFin
         datos = reporte_general(fechaInicio, fechaFin)
         reporte = tablaReporte(datos)
-        excel.reporteGeneral(datos, fechaInicio, fechaFin)
+        #excel.reporteGeneral(datos, fechaInicio, fechaFin)
         PDF = threading.Thread(target=hiloPDF(datos, fechaInicio, fechaFin))
         PDF.start()
 
@@ -35,7 +35,7 @@ class reporteGeneral(flask.views.MethodView):
 
 
 def hiloPDF(datos, fechaInicio, fechaFin):
-    crearHTMLGeneral(datos, fechaInicio, fechaFin)
+    pdf.reporteGeneral(datos, fechaInicio, fechaFin)
 
 
 def tablaReporte(datos):
@@ -46,19 +46,20 @@ def tablaReporte(datos):
     linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
     codigoTabla = """
-                    <article class="portlet light bordered" id="apartadoReporteGeneral">
+                    <article class="portlet box green">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte General
               </article>
               <article class="tools">
-                <a href=" """+linkExcel+""" " class="blanc"><i class="fa fa-file-excel-o"></i></a>
-                <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+                <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
+                <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+                <a href="javascript:;" class="collapse"></a>
               </article>
             </article>
-            <article class="portlet-body scrolbarr">
-              <table class="table table-condensed table-responsive" style="font-size:12px">
-                <thead class="text-center">
+            <article class="portlet-body flip-scroll">
+              <table class="table table-bordered table-striped table-condensed flip-content">
+                <thead class="flip-content text-center c-blue">
                   <tr>
                     <th class="text-center">
                        Tarifa

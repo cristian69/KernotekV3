@@ -6,52 +6,109 @@ from flask import render_template, redirect, session, request, url_for
 from estado_sistema import monedero, billetero, sistema
 from class_db import cambiar_estado_sistema
 import class_db
+from libgral import terminarProceso, revisarProceso, iniciarProceso, reiniciarProceso
+import InhibirMDB
+import time
+
+
+DETENER = "False"
+ACTIVAR = "True"
+REINICIAR = 'Reiniciar'
+
 
 class ConfigSistema(flask.views.MethodView):
     def post(self):
-        bandera = request.form['submit']
-        if bandera == 'cambioSistema':
-            cambioSistema()
-            datos_sistema = sistema()
-            estado_monedero = monedero()
-            estado_billetero = billetero()
-            return render_template('Config_sistema.html',
-                                   datos_sistema=datos_sistema,
-                                   estado_monedero=estado_monedero,
-                                   estado_billetero=estado_billetero)
-        elif bandera == 'cambioMonedero':
-            cambioMonedero()
-            datos_sistema = sistema()
-            estado_monedero = monedero()
-            estado_billetero = billetero()
-            return render_template('Config_sistema.html',
-                                   datos_sistema=datos_sistema,
-                                   estado_monedero=estado_monedero,
-                                   estado_billetero=estado_billetero)
-        elif bandera == 'cambioBilletero':
-            cambioBilletero()
-            datos_sistema = sistema()
-            estado_monedero = monedero()
-            estado_billetero = billetero()
-            return render_template('Config_sistema.html',
-                                   datos_sistema=datos_sistema,
-                                  estado_monedero=estado_monedero,
-                                   estado_billetero=estado_billetero)
+        socketPython = class_db.consultaSocketPython()
+        socketC = class_db.consultaSocketC()
+        if socketPython == 'Activo' and socketC == 'Activo':
+            bandera = request.form['submit']
+            if bandera == 'cambioSistema':
+                cambioSistema()
+                datos_sistema = sistema()
+                estado_monedero = monedero()
+                estado_billetero = billetero()
+                botonSistema = estadoSistema()
+                return render_template('Config_sistema.html',
+                                       datos_sistema=datos_sistema,
+                                       estado_monedero=estado_monedero,
+                                       estado_billetero=estado_billetero,
+                                       botonSistema= botonSistema)
+            elif bandera == 'cambioMonedero':
+                cambioMonedero()
+                datos_sistema = sistema()
+                estado_monedero = monedero()
+                estado_billetero = billetero()
+                botonSistema = estadoSistema()
+                return render_template('Config_sistema.html',
+                                       datos_sistema=datos_sistema,
+                                       estado_monedero=estado_monedero,
+                                       estado_billetero=estado_billetero,
+                                       botonSistema= botonSistema)
+            elif bandera == 'cambioBilletero':
+                cambioBilletero()
+                datos_sistema = sistema()
+                estado_monedero = monedero()
+                estado_billetero = billetero()
+                botonSistema = estadoSistema()
+                return render_template('Config_sistema.html',
+                                       datos_sistema=datos_sistema,
+                                       estado_monedero=estado_monedero,
+                                       estado_billetero=estado_billetero,
+                                       botonSistema= botonSistema)
+            elif bandera == "botonSistema":
+                estadoBoton = request.form['btnSistema']
+                if estadoBoton == DETENER:
+                    terminarProceso()
+                    InhibirMDB.main()
+                elif estadoBoton == ACTIVAR:
+                    iniciarProceso()
+                elif estadoBoton == REINICIAR:
+                    reiniciarProceso()
+        
+                datos_sistema = sistema()
+                estado_monedero = monedero()
+                estado_billetero = billetero()
+		time.sleep(0.5)
+                botonSistema = estadoSistema()
+                return render_template('Config_sistema.html',
+                                       datos_sistema=datos_sistema,
+                                       estado_monedero=estado_monedero,
+                                       estado_billetero=estado_billetero,
+                                       botonSistema= botonSistema)
+            else:
+                return redirect(url_for('login'))
         else:
-            return redirect(url_for('login'))
+            datos_sistema = sistema()
+            estado_monedero = monedero()
+            estado_billetero = billetero()
+            botonSistema = estadoSistema()
+            return render_template('Config_sistema.html',
+                                   datos_sistema=datos_sistema,
+                                   estado_monedero=estado_monedero,
+                                   estado_billetero=estado_billetero,
+                                   bandera = "noDisponible",
+                                   botonSistema= botonSistema)
 
     def get(self):
         if len(session) > 1:
             datos_sistema = sistema()
             estado_monedero = monedero()
             estado_billetero = billetero()
+            botonSistema = estadoSistema()
             return render_template('Config_sistema.html',
                                    datos_sistema=datos_sistema,
                                    estado_monedero=estado_monedero,
-                                   estado_billetero=estado_billetero)
+                                   estado_billetero=estado_billetero,
+                                   botonSistema= botonSistema)
         else:
             return redirect(url_for('login'))
 
+
+def estadoSistema():
+    python, C = revisarProceso()
+    if python and C:
+        return True
+    return False
 
 def cambioSistema():
     numSerie = request.form['numSerie']

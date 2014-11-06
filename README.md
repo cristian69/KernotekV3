@@ -1,5 +1,4 @@
-demoFlask
-
+KERNOTEK V2.0
 =========
 @AUTOR Jesús Adrián Ramírez López 
 @EMAIL jadrianramirezl@gmail.com

@@ -17,7 +17,7 @@ def export_excel(data, date_start, date_end):
     date_report = datetime.date.today()
     columns = class_db.columnas_habilitadas()
 
-    rute_and_name = "static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
+    rute_and_name = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -57,7 +57,7 @@ def export_excel(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
@@ -72,7 +72,7 @@ def export_excel(data, date_start, date_end):
         data2 = []
         for sell in sells:
             if sell == 0:
-                sell = "Token"
+                sell = "Cortesía"
             data2.append(sell)
         data.append(data2)
 
@@ -140,7 +140,7 @@ def reporteGeneral(data, date_start, date_end):
 
     columns = ['Tarifa', 'Número de Ventas', 'Total Acumulado']
 
-    rute_and_name = "static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
+    rute_and_name = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -175,7 +175,7 @@ def reporteGeneral(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'SERVICIO SECA S.A DE C.V', string_format)
@@ -245,7 +245,7 @@ def reporteDetallado(data, date_start, date_end):
     date_report = datetime.date.today()
     columns = ['Ticket', 'Turno', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "static/download/" + session['username'] + "/Reporte Detallado de Ventas.xlsx"
+    rute_and_name = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte Detallado de Ventas.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -285,7 +285,7 @@ def reporteDetallado(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
@@ -467,7 +467,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
 
     columns = ['Ticket', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "static/download/" + session['username'] + "/Reporte por Turno.xlsx"
+    rute_and_name = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte por Turno.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -508,7 +508,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('C4:D4', 'SERVICIO SECA S.A DE C.V', string_format)
@@ -524,7 +524,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
         data2 = []
         for sell in sells:
             if sell == 0:
-                sell = "Token"
+                sell = "Cortesía"
             data2.append(sell)
         data.append(data2)
 

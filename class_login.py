@@ -29,7 +29,7 @@ class Login(flask.views.MethodView):
                 session['typeuser'] = typeuser
                 session['startsession'] = str(datetime.datetime.today())
                 session['fullname'] = class_db.nombre_completo_usuario(usuario)
-                carpetaPersonal = "static/download/"+session['username']+"/"
+                carpetaPersonal = "/var/www/demoFlask/static/download/"+session['username']+"/"
                 if not os.path.exists(carpetaPersonal):
                     os.makedirs(carpetaPersonal)
                 return flask.redirect(flask.url_for('home'))

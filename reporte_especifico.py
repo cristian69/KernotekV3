@@ -30,12 +30,13 @@ class reporteEspecifico(flask.views.MethodView):
             return render_template('Reporte_Especifico.html', codigo_tabla=codigo_tabla)
         else:
             datos_reporte = class_db.reporte_especifico(fecha_inicio, fecha_fin)
-            thread_excel = threading.Thread(target=hilo_excel(datos_reporte, fecha_inicio, fecha_fin))
-            thread_excel.start()
-
-            if banderaPDF:
-                thread_pdf = threading.Thread(target=hiloPDF(datos_reporte, fecha_inicio, fecha_fin))
-                thread_pdf.start()
+            #thread_excel = threading.Thread(target=hilo_excel(datos_reporte, fecha_inicio, fecha_fin), name="hilo Excel")
+            #thread_excel.start()
+            pdf.reporteEspecifico(datos_reporte, fecha_inicio, fecha_fin)
+            #if banderaPDF:
+        #pass
+                #thread_pdf = threading.Thread(target=hiloPDF(datos_reporte, fecha_inicio, fecha_fin), name="hilo PDF")
+                #thread_pdf.start()
 
             return render_template('Reporte_Especifico.html', codigo_paginacion=codigo_paginacion,
                                    codigo_tabla=codigo_tabla)
@@ -59,31 +60,34 @@ class reporteEspecifico(flask.views.MethodView):
 
 
 def cod_tabla(fecha_inicio, fecha_fin, inicio):
-    linkExcel = "../static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
-    linkPDF = "../static/download/" + session['username'] + "/Reporte de Ventas.pdf"
+    linkExcel = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
+    linkPDF = "../static/download/"+ session['username'] + "/Reporte de Ventas.pdf"
     dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
-                    'deposit': 'Deposito'}
+                    'deposit': 'Depósito'}
     cabezerasDisponibles = class_db.columnas_habilitadas()
     codigo_tabla = ""
     bandera_color = True
-    codigo_tabla += str('<div class="portlet light bordered" id="apartadoReporteEspecifico">')  # Código del div
+    codigo_tabla += str('<div class="portlet box green">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + fecha_inicio + """ a """ + fecha_fin + """
             </div>
             <div class="tools">
-              <a href=" """+linkExcel+""" " class="blanc"><i class="fa fa-file-excel-o"></i></a>
-              <a href=" """+linkPDF+""" " class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+              <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
+              <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+              <a href="javascript:;" class="collapse"></a>
             </div>
           </div>
-          <div class="portlet-body scrolbarr">
-            <table class="table table-condensed table-responsive" style="font-size:12px">""")
+          <div class="portlet-body flip-scroll">
+            <table class="table table-bordered table-striped table-condensed flip-content table-hover">""")
 
-    codigo_tabla += str('<thead class="flip-content text-center">')  # Etiqueta de head para la tabla
+    codigo_tabla += str('<thead class="flip-content text-center c-blue">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras
+    dicVenta = []
     for cabezera in cabezerasDisponibles:
         codigo_tabla += str('<th width="20%"class="text-center">')
         codigo_tabla += dicCabezeras[cabezera]
+        dicVenta.append( dicCabezeras[cabezera] )
         codigo_tabla += str('</th>')
 
     codigo_tabla += str('</tr>')  # Fin de las cebezeras
@@ -97,19 +101,19 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     else:
         for ventas in tabla_ventas:
             if bandera_color:
-                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;" class="">')
+                codigo_tabla += str('<tr class="info">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr style="border-top:1px solid #eee; border-bottom:1px solid #eee;">')
+                codigo_tabla += str('<tr>')
                 bandera_color = True
-            for venta in ventas:
-                if venta == 0:
-                    venta = "Token"
+            for venta, columna in zip(ventas, dicVenta):
+                if columna == "Depósito"and venta == 0:
+                    venta = "Cortesía"
                 codigo_tabla += str("<td>") + str(venta) + str("</td>")
             codigo_tabla += str("</tr>")
 
     codigo_tabla += str('</tbody>')  #Fin del contenido de la tabla
-    codigo_tabla += str('</table>''</div>')  # Fin de la tabla
+    codigo_tabla += str('</table>')  # Fin de la tabla
     return codigo_tabla
 
 

@@ -17,51 +17,66 @@ class corteTurno(flask.views.MethodView):
 			return redirect(url_for('login'));
 
 	def post(self):
-		bandera = request.form['submit']
-		if bandera == "hacerCorte":
-			class_db.activarCorteTurno()
-			time.sleep(2)  # Espera a que el corte de turno se ejecute
+		socketPython = class_db.consultaSocketPython()
+		socketC = class_db.consultaSocketC()
+		if socketPython == 'Activo' and socketC == 'Activo':
+			bandera = request.form['submit']
+			if bandera == "hacerCorte":
+				class_db.activarCorteTurno()
+				time.sleep(2)  # Espera a que el corte de turno se ejecute
+				dicTurno = datosTurno()
+				bandera = "corteExitoso"
+				
+			if bandera == "aceptarTipoCorte":
+				tipoCorte = request.form['tipoCorte']
+				class_db.cambiarTipoCorte(tipoCorte)
+				dicTurno = datosTurno()
+				bandera = "cambioExitoso"
+
+			if bandera == 'tiempoCorteAutomatico':
+
+				#tipoCorte = request.form['tipoCorte']
+				#print tipoCorte
+				class_db.cambiarTipoCorte('1')
+				dicTurno = datosTurno()
+
+				tipoLapso = request.form.getlist('tipoLapso')
+				tipoLapso = tipoLapso[0]
+				tiempo = ""
+				proxCorte = ""
+				bandera = "configuracionExitosa"
+
+				if tipoLapso == 'cadaDia':
+					hora = request.form['hora']
+					tiempo = str(hora)
+					class_db.registroProxCorteAuto("")
+				elif tipoLapso == 'cadaSemana':
+					diaSem = request.form.getlist('diaSem')
+					diaSem =  diaSem[0]
+					hora = request.form['hora']
+					tiempo = diaSem + "|" + str(hora)
+					class_db.registroProxCorteAuto("")
+				elif tipoLapso == 'cadaMes':
+					diaMes = request.form.getlist('diaMes')
+					diaMes = diaMes[0]
+					hora = request.form['hora']
+					tiempo = str(diaMes) + "|" + str(hora)
+					class_db.registroProxCorteAuto("")
+				elif tipoLapso == 'cadaDetHora':
+					hora = request.form['hora']
+					tiempo = str(hora)
+					proxCorte = libgral.generarProximoCorte(tiempo)
+					class_db.registroProxCorteAuto(proxCorte)
+				
+				class_db.tipoTiempoAutomatico(tipoLapso)
+				class_db.tiempoCorteAuto(tiempo)
+				
+
 			dicTurno = datosTurno()
-			
-		if bandera == "aceptarTipoCorte":
-			tipoCorte = request.form['tipoCorte']
-			class_db.cambiarTipoCorte(tipoCorte)
+			return render_template('corteTurno.html', dicTurno = dicTurno, bandera = bandera)
+		else:
 			dicTurno = datosTurno()
-
-		if bandera == 'tiempoCorteAutomatico':
-			tipoLapso = request.form.getlist('tipoLapso')
-			tipoLapso = tipoLapso[0]
-			tiempo = ""
-			proxCorte = ""
-
-			if tipoLapso == 'cadaDia':
-				hora = request.form['hora']
-				tiempo = str(hora)
-				class_db.registroProxCorteAuto("")
-			elif tipoLapso == 'cadaSemana':
-				diaSem = request.form.getlist('diaSem')
-				diaSem =  diaSem[0]
-				hora = request.form['hora']
-				tiempo = diaSem + "|" + str(hora)
-				class_db.registroProxCorteAuto("")
-			elif tipoLapso == 'cadaMes':
-				diaMes = request.form.getlist('diaMes')
-				diaMes = diaMes[0]
-				hora = request.form['hora']
-				tiempo = str(diaMes) + "|" + str(hora)
-				class_db.registroProxCorteAuto("")
-			elif tipoLapso == 'cadaDetHora':
-				hora = request.form['hora']
-				tiempo = str(hora)
-				proxCorte = libgral.generarProximoCorte(tiempo)
-				class_db.registroProxCorteAuto(proxCorte)
-			
-			class_db.tipoTiempoAutomatico(tipoLapso)
-			class_db.tiempoCorteAuto(tiempo)
-			
-
-		dicTurno = datosTurno()
-		return render_template('corteTurno.html', dicTurno = dicTurno)
+			return render_template('corteTurno.html', bandera = "noDisponible", dicTurno = dicTurno)
 
 
 # Regresa un diccionario con los datos del turno actual
@@ -111,7 +126,7 @@ def datosTurno():
 	else:
 		dicTurno['estadoAutomatico'] = 'checked'
 
-	print dicTurno
+	#print dicTurno
 		
 	return dicTurno
 	

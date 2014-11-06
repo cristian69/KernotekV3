@@ -6,6 +6,8 @@ import logging.handlers
 import os
 import sys
 import threading
+import time
+
 
 __PATH__ = "/var/log/KERNOTEK"
 
@@ -28,8 +30,11 @@ def cerradura(msg):
         logger.addHandler(handler)
         logger.error(msg)
 	pathCerradura = '/var/log/KERNOTEK/cerradura.log'
-        hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args=( pathCerradura, ) )
-        hilo.start()
+	try:
+            hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args=( pathCerradura, ) )
+            hilo.start()
+	except:
+	    pass #Error de IO muchos archivos abiertos
 
 
 def error(msg):
@@ -43,8 +48,11 @@ def error(msg):
         logger.addHandler(handler)
         logger.error(msg)
 	pathError = '/var/log/KERNOTEK/error.log'
-        hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args= (pathError, ) )
-        hilo.start()
+	try:
+            hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args= (pathError, ) )
+            hilo.start()
+	except:
+	    pass
 
 
 def warning(msg):
@@ -72,6 +80,7 @@ def warning(msg):
 #         handler.setFormatter(formatter)
 #         logger.addHandler(handler)
 #         logger.error(msg)
+
 
 def debug(msg):
     if validatePath(__PATH__):
@@ -105,16 +114,22 @@ def seguridad(msg):
 
 
 def limpiarLog(ruta):
-    cursor = open(ruta,'r')
-    listaLog = cursor.readlines()
-    cursor.close()
-    cursor = open(ruta, "w")
-    linea1 = ""
-    for linea in listaLog:
-        if linea1 != linea:
-            cursor.write(linea)
-        linea1 = linea
-    cursor.close()
+    try:
+	cursor = open(ruta,'r')
+    	listaLog = cursor.readlines()
+    	cursor.close()
+    except:
+	pass # Error al leer el archivo 
+    try:
+    	cursor = open(ruta, "w")
+    	linea1 = ""
+        for linea in listaLog:
+            if linea1 != linea:
+                cursor.write(linea)
+            linea1 = linea
+        cursor.close()
+    except:
+	pass # Error al escribir en el archivo
 
 
 def validatePath(strpath):
