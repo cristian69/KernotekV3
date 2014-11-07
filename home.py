@@ -15,7 +15,7 @@ class Home(flask.views.MethodView):
     def get(self):
         if len(session) > 1:
             dic_home = datos_home()
-            print dic_home
+            #print dic_home
             return render_template('home.html',dic_home=dic_home)
         else:
             ip = request.remote_addr
