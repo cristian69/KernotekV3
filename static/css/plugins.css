@@ -246,6 +246,10 @@ Form wizard
   background-color: #35aa47;
   color: #fff;
 }
+.form-wizard .correcto .step .number {
+  background-color: #f27020;
+  color: #fff;
+}
 
 .form-wizard .active .step .desc {
   color: #333;

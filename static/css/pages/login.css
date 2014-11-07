@@ -11,6 +11,7 @@ Login page
   margin: 0 auto;   
   margin-top:150px;
   text-align: center;
+  margin-bottom: -10px;
 }  
 
 .login .content {

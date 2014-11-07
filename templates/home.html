@@ -20,7 +20,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="graficas({{dic_home['dias']}}, {{dic_home['valoresDia']}}, {{dic_home['semanas']}}, {{dic_home['valoresSemana']}}, {{dic_home['meses']}}, {{dic_home['valoresMes']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="home(),graficas({{dic_home['dias']}}, {{dic_home['valoresDia']}}, {{dic_home['semanas']}}, {{dic_home['valoresSemana']}}, {{dic_home['meses']}}, {{dic_home['valoresMes']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <div class="dropdown">
@@ -64,62 +64,69 @@
       <article class="page-content">
         <article class="row tarjetas">
           <article class="col-me-12">
-            <article id="static" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+            <article id="modalTarifa" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
               <article class="modal-dialog">
                 <article class="modal-content">
                   <article class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Tarifa del sistema</h4>
+                    <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
                   <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body">
-                          <ul class="nav nav-pills nav-justified steps">
-                            <li class="active" id="paso1">
-                              <a href="#tab1" class="step disabled">
-                                <span class="number">
-                                   1
-                                </span>
-                                <span class="desc">
-                                  <i class="fa fa-check"></i> Cambio de tarifa.
-                                </span>
-                              </a>
-                            </li>
-                          </ul>
-                          <article class="tab-content">
-                            <article class="alert alert-danger display-none" id="errorFormato">
-                              <button class="close" data-dismiss="alert"></button>
-                              El formato de los números es incorrecto, el numero debe de ser entero o solo contener dos digitos decimales
+                          <article class="col-md-12">
+                            <article class="col-md-5">
+                              <label for="Ingresa" class="control-label label-control">
+                                <strong>
+                                  Ingresa la nueva tarifa
+                                </strong>
+                              </label>
                             </article>
-                            <article class="tab-pane active" id="tab1">
-                              <article class="progress">
-                                <article class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100" style="width: 5%">
-                                  <span class="sr-only">5% Completado</span>
-                                </article>
-                              </article>
-                              <article class="col-md-12 form-group">
-                                <label for="Nueva" class="label-control col-md-5">Nueva tarifa</label>
-                                <article class="col-md-7">
-                                  <input type="text" class="form-control"  id="nTarifa">
-                                </article>
-                              </article>                              
-                            </article>
-                            <article class="tab-pane" id="tab2">
-                              <article class="progress">
-                                <article class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-                                  <span class="sr-only">85% Completado</span>
-                                </article>
-                              </article>
+                            <article class="col-md-7 input-icon">
+                              <i class="fa fa-dollar"></i><input class="form-control" type="text"/>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <ul class="pager" id="btnTarifa">
-                        <li><button type="button" class="btn" onclick="validarNumeros('nTarifa');">Siguiente</button></li>
-                      </ul>
+                      <button type="submit" class="btn blue" id="aceptarApertura">Aceptar</button>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-me-12">
+            <article id="modalAcceso" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Cambiar tiempo de apertura</h4>
+                  </article>
+                  <form action="#" class="form-horizontal" id="submit_form">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body">
+                          <article class="col-md-12">
+                            <article class="col-md-5">
+                              <label for="">
+                                <strong>
+                                  Nuevo tiempo de apertura
+                                </strong>
+                              </label>
+                            </article>
+                            <article class="col-md-7 input-icon">
+                              <i class="fa fa-history"></i><input type="text" class="form-control">
+                            </article>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <button type="submit" class="btn blue hidden" id="aceptarAcceso">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -325,13 +332,13 @@
                           <i class="fa fa-dollar"></i>Sistema.
                         </article>
                       </article>
-                      <article class="portlet-body form text-center times" onclick=" $('#static').modal('show');">
+                      <article class="portlet-body form text-center">
                         <form  class="form-horizontal" >
                           <article class="form-body">
                             <article class="row">
                               <article class="col-md-12">
                                 <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
                                    <h4 class="cabeceraTarjeta">Tarifa actual.</h4>
                                    <article class="col-md-4 visual"><i class="fa fa-dollar"></i></article>
                                     <article class="col-md-8 details text-center">
@@ -340,7 +347,7 @@
                                   </article>
                                 </article>
                                 <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
                                    <h4 class="cabeceraTarjeta">Tiempo de apertura.</h4>
                                    <article class="col-md-4 visual"><i class="fa fa-history"></i></article>
                                     <article class="col-md-8 details text-center">

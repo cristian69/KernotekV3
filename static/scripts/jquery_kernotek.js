@@ -1,39 +1,4 @@
 
-$("#fechasReporte").click(function(){
-	if($("#fecha_fin").val() == "" || $("#fecha_inicio").val() == "" || $("#hora_fin").val() == "" || $("#hora_inicio").val() == 
-		""){
-		$("#errorFechas").removeClass("hidden");
-	}
-	else{
-		$("#reportepaso1").removeClass('active');
-		$("#reportetab1").removeClass('active');
-		$("#reportepaso2").addClass('active');
-		$("#reportetab2").addClass('active');
-		document.getElementById('btnReportes').innerHTML="<li><button type='button' class='btn' id='anteriorReporte'>Anterior</button></li><p><><li><button type='button' class='btn' id='siguienteReporte'>Siguiente</button></li>";
-	}
-});
-
-
-$(".ocultarApartado").click(function(){
-	$(".editarLlave").addClass("hidden");
-	$(".informacionUsuario").addClass("hidden");
-	$(".tablaLlaves").removeClass("hidden");
-});
-
-$("#buscarTurnos").click(function(){
-	if($("#fecha_inicio").val()==""){
-		alert("El campo de Fecha de Inicio es Requerido");
-		return false;
-	}
-});
-
-function redireccionar(valor, direccion){
-	if(valor=='si'){
-		setTimeout(function(){
-			window.location.href=direccion;
-		},30);
-	}
-}
 
 
 
@@ -71,7 +36,6 @@ $("#ReportesAceptar").click(function(){
 
 function reporteTurno(sa){
 	$("#valorTurno").select2();
-	alert(sa);
 }
 
 

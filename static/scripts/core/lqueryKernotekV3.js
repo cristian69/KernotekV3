@@ -1,3 +1,47 @@
+function home(){
+	$("#accionRealizar").select2({
+		placeholder:"Tipo de reporte"
+	});
+}
+
+function wizardTarifa(){
+	opcipon=$("#accionRealizar").val();
+	if(opcipon=="tarifa"){
+		$("#tarifaPaso2").removeClass("hidden");
+		$("#tarifaPaso2").addClass("active");
+		$("#tarifaPaso1").removeClass("active");
+		$("#tarifaPaso1").addClass("correcto");
+		$("#tarifaPaso3").addClass("hidden");
+		$("#tarifa1").removeClass("active");
+		$("#tarifa2").addClass("active");
+		$("#tarifa3").removeClass("active");
+		$("#aceptarTarifa").removeClass("hidden");
+		$("#anteriorTarifa").removeClass("hidden");
+		$("#siguienteTarifa").addClass("hidden");
+	}
+	if(opcipon=="corte"){
+		$("#tarifaPaso3").removeClass("hidden");
+		$("#tarifaPaso3").addClass("active");
+		$("#tarifaPaso1").removeClass("active");
+		$("#tarifaPaso2").addClass("hidden");
+		$("#tarifa1").removeClass("active");
+		$("#tarifa3").addClass("active");
+		$("#tarifa3").removeClass("active");
+		$("#aceptarTarifa").removeClass("hidden");
+		$("#anteriorTarifa").removeClass("hidden");
+		$("#siguienteTarifa").addClass("hidden");
+	}
+}
+
+
+
+
+
+
+
+
+
+
 function regresarTarifa(){
 	$("#paso2").removeClass("active");
 	$("#paso1").addClass("active");
