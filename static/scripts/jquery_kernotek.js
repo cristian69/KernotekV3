@@ -194,10 +194,10 @@ function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, 
 					label: "Primera serie de datos",
 					fillColor : "rgba(220,220,220,0.2)",
 					strokeColor : "#009DE0",
-					pointColor : "#AB218E",
+					pointColor : "rgba(151,187,205,1)",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(247,247,247,1)",
+					pointHighlightStroke : "rgba(0,247,247,1)",
 					data : [datosDias[0],datosDias[1],datosDias[2],datosDias[3],datosDias[4],datosDias[5],datosDias[6]]
 				}
 			]
@@ -208,12 +208,12 @@ function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, 
 			datasets : [
 				{
 					label: "Primera serie de datos",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#F0AB00",
-					pointColor : "#AB218E",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(242,242,242,1)",
+					fillColor: "rgba(151,187,205,0.2)",
+		            strokeColor: "#009DE0",
+		            pointColor: "rgba(151,187,205,1)",
+		            pointStrokeColor: "#fff",
+		            pointHighlightFill: "#fff",
+		            pointHighlightStroke: "rgba(151,187,205,1)",
 					data : [datosSemanas[0], datosSemanas[1], datosSemanas[2], datosSemanas[3], datosSemanas[4], datosSemanas[5], datosSemanas[6]]
 				}
 			]
@@ -224,12 +224,12 @@ function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, 
 			datasets : [
 				{
 					label: "Primera serie de datos",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#F27020",
-					pointColor : "#AB218E",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(229,229,229,1)",
+					fillColor: "rgba(220,220,220,0.2)",
+		            strokeColor: "#009DE0",
+		            pointColor: "rgba(151,187,205,1)",
+		            pointStrokeColor: "#fff",
+		            pointHighlightFill: "#fff",
+		            pointHighlightStroke: "rgba(220,220,220,1)",
 					data : [datosMeses[0], datosMeses[1], datosMeses[2], datosMeses[3], datosMeses[4], datosMeses[5], datosMeses[6]]
 				}
 			]
