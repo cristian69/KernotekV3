@@ -2,53 +2,58 @@ function home(){
 	$("#accionRealizar").select2({
 		placeholder:"Tipo de reporte"
 	});
+	
 }
 
-function wizardTarifa(){
-	opcipon=$("#accionRealizar").val();
-	if(opcipon=="tarifa"){
-		$("#tarifaPaso2").removeClass("hidden");
-		$("#tarifaPaso2").addClass("active");
-		$("#tarifaPaso1").removeClass("active");
-		$("#tarifaPaso1").addClass("correcto");
-		$("#tarifaPaso3").addClass("hidden");
-		$("#tarifa1").removeClass("active");
-		$("#tarifa2").addClass("active");
-		$("#tarifa3").removeClass("active");
-		$("#aceptarTarifa").removeClass("hidden");
-		$("#anteriorTarifa").removeClass("hidden");
-		$("#siguienteTarifa").addClass("hidden");
+
+
+
+$("#siguienteReporte").click(function(){
+	if($("#tipoReporte").val()=="fechas"){
+		$("#reportetab2").addClass("active");
+		$("#reportepaso2").addClass("active");
+		$("#reportetab1").removeClass("active");
+		$("#reportepaso1").removeClass("active");
+		$("#reportepaso2 .step").removeClass("hidden");
+		$("#aceptarReporte").removeClass("hidden");
+		$("#anteriorReporte").removeClass("hidden");
+		$("#siguienteReporte").addClass("hidden");
 	}
-	if(opcipon=="corte"){
-		$("#tarifaPaso3").removeClass("hidden");
-		$("#tarifaPaso3").addClass("active");
-		$("#tarifaPaso1").removeClass("active");
-		$("#tarifaPaso2").addClass("hidden");
-		$("#tarifa1").removeClass("active");
-		$("#tarifa3").addClass("active");
-		$("#tarifa3").removeClass("active");
-		$("#aceptarTarifa").removeClass("hidden");
-		$("#anteriorTarifa").removeClass("hidden");
-		$("#siguienteTarifa").addClass("hidden");
+	if($("#tipoReporte").val()=="turno"){
+		$("#reportetab2").addClass("active");
+		$("#reportepaso2").addClass("active");
+		$("#reportetab1").removeClass("active");
+		$("#reportepaso1").removeClass("active");
+		$("#reportepaso2 .step").removeClass("hidden");
+		$("#reportepaso3 .step").removeClass("hidden");
+		$("#anteriorReporte").removeClass("hidden");
 	}
-}
+});
+
+
+$("#anteriorReporte").click(function(){
+	$("#reportetab2").removeClass("active");
+	$("#reportepaso2").removeClass("active");
+	$("#reportetab1").addClass("active");
+	$("#reportepaso1").addClass("active");
+	$("#reportepaso2 .step").addClass("hidden");
+	$("#reportepaso3 .step").addClass("hidden");
+	$("#aceptarReporte").addClass("hidden");
+	$("#anteriorReporte").addClass("hidden");
+	$("#siguienteReporte").removeClass("hidden");
+});
 
 
 
+$("#aceptarReporte").click(function(){
+	if($("#hora_inicio").val()=="" || $("#fecha_inicio").val()=="" || $("#hora_fin").val()=="" || $("#fecha_fin").val()==""){
+		$("#errorFechas").removeClass("hidden");
+		return false;
+	}
+});
 
 
 
-
-
-
-
-function regresarTarifa(){
-	$("#paso2").removeClass("active");
-	$("#paso1").addClass("active");
-	$("#tab2").removeClass("active");
-	$("#tab1").addClass("active");
-	document.getElementById("btnTarifa").innerHTML="<li><button type='button' class='btn' onclick='validarNumeros();'>Siguiente</button></li>"
-}
 
 function validarNumeros(){
 	numeroValidar=$("#nTarifa").val();

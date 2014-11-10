@@ -8,6 +8,9 @@
     <link href="../static/plugins/jquery-notific8/jquery.notific8.min.css" rel="stylesheet" media="screen">
     <link href="../static/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="../static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../static/plugins/iCheck-master/skins/square/blue.css" rel="stylesheet">
     <link href="../static/plugins/select2/select2.css" rel="stylesheet" type="text/css" />
     <link href="../static/plugins/select2/select2-metronic.css" rel="stylesheet" type="text/css"/>
     <link href="../static/plugins/bootstrap-datepicker/css/datepicker.css" rel="stylesheet" type="text/css"/>
@@ -64,6 +67,129 @@
       <article class="page-content">
         <article class="row tarjetas">
           <article class="col-me-12">
+            <article id="generarReportes" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Generar reporte</h4>
+                  </article>
+                  <form action="#" class="form-horizontal" id="submit_form">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body row">
+                          <ul class="nav nav-pills nav-justified steps">
+                            <li class="active" id="reportepaso1">
+                              <a href="#reportetab1" class="step disabled">
+                                <span class="number">
+                                   1
+                                </span>
+                                <span class="desc">
+                                  <i class="fa fa-check"></i> Tipo de reporte.
+                                </span>
+                              </a>
+                            </li>
+                            <li id="reportepaso2">
+                              <a href="#reportetab2" class="step disabled hidden">
+                                <span class="number">
+                                   2
+                                </span>
+                                <span class="desc">
+                                  <i class="fa fa-check"></i>Fechas.
+                                </span>
+                              </a>
+                            </li>
+                            <li id="reportepaso3">
+                              <a href="#reportetab3" class="step disabled hidden">
+                                <span class="number">
+                                   3
+                                </span>
+                                <span class="desc">
+                                  <i class="fa fa-check"></i>Seleccionar turno.
+                                </span>
+                              </a>
+                            </li>
+                          </ul>
+                          <article class="tab-content">
+                            <article class="tab-pane active" id="reportetab1">
+                              <article class="col-md-12">
+                                <select class="form-control" name="tipoReporte" id="tipoReporte">
+                                  <option value=""></option>
+                                  <option value="turno">Por turno.</option>
+                                  <option value="fechas">Por fechas.</option>
+                                </select>
+                              </article>
+                            </article>
+                            <article class="tab-pane" id="reportetab2">
+                              <article class="alert alert-danger hidden" id="errorFechas">
+                                <button class="close" data-dismiss="alert"></button>
+                                Existen campos vacíos en el formulario.
+                              </article>
+                              <article class="row">
+                                <article class="group-form col-md-12">
+                                  <article class="col-md-12 form-group">
+                                  <label class="control-label col-md-5">Fecha de inicio</label>
+                                  <article class="col-md-7 form-group">
+                                    <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                      <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
+                                      <span class="input-group-btn">
+                                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span>
+                                    </article>
+                                  </article>
+                                  <label class="control-label col-md-5">Hora</label>
+                                  <article class="col-md-7 form-group">
+                                    <article class="input-group">
+                                      <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
+                                      <span class="input-group-btn">
+                                      <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                      </span>
+                                    </article>
+                                  </article>
+                                </article>
+                                <article class="col-md-12 form-group">
+                                  <label class="control-label col-md-5">Fecha final</label>
+                                  <article class="col-md-7 form-group">
+                                    <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                      <input type="text" class="form-control times"  name="fecha_fin" id="fecha_fin">
+                                      <span class="input-group-btn">
+                                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                      </span>
+                                    </article>
+                                  </article>
+                                  <label class="control-label col-md-5">Hora</label>
+                                  <article class="col-md-7 form-group">
+                                    <article class="input-group">
+                                      <input type="text" class="form-control timepicker timepicker-24 times" name="hora_fin" id="hora_fin" value="23:59:59">
+                                      <span class="input-group-btn">
+                                      <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                      </span>
+                                    </article>
+                                  </article>
+                                </article>
+                                </article>
+                              </article>
+                            </article>
+                            <article class="tab-pane" id="reportetab3">
+
+                            </article>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <ul class="pager" id="btnReportes">
+                        <li><button type="button" class="btn hidden" id="anteriorReporte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
+                        <li><button type="button" class="btn" id="siguienteReporte">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
+                        <li><button type="submit" class="btn blue hidden" id="aceptarReporte">Aceptar</button></li>
+                      </ul>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-me-12">
             <article id="modalTarifa" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
               <article class="modal-dialog">
                 <article class="modal-content">
@@ -109,7 +235,7 @@
                   <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
-                        <article class="form-body">
+                        <article class="form-body row">
                           <article class="col-md-12">
                             <article class="col-md-5">
                               <label for="">
@@ -126,7 +252,7 @@
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue hidden" id="aceptarAcceso">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarAcceso">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -134,142 +260,116 @@
             </article>
           </article>
           <article class="col-me-12">
-            <article id="generarReportes" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+            <article id="modarReporteTurno" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
               <article class="modal-dialog">
                 <article class="modal-content">
                   <article class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Generar reporte</h4>
+                    <h4 class="modal-title">Reporte por turno</h4>
                   </article>
                   <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
-                        <article class="form-body">
+                        <article class="form-body row">
                           <ul class="nav nav-pills nav-justified steps">
                             <li class="active" id="reportepaso1">
-                              <a href="#reportetab1" class="step disabled">
+                              <a href="#reporteTurno1" class="step disabled">
                                 <span class="number">
                                    1
                                 </span>
                                 <span class="desc">
-                                  <i class="fa fa-check"></i> Tipo de reporte.
+                                  <i class="fa fa-check"></i> Seleccionar fecha.
                                 </span>
                               </a>
                             </li>
-                            <li id="reportepaso2">
+                            <li id="reporteTurno2">
                               <a href="#reportetab2" class="step disabled">
                                 <span class="number">
                                    2
-                                </span>
-                                <span class="desc">
-                                  <i class="fa fa-check"></i>Fechas.
-                                </span>
-                              </a>
-                            </li>
-                            <li id="reportepaso3">
-                              <a href="#reportetab3" class="step disabled">
-                                <span class="number">
-                                   3
                                 </span>
                                 <span class="desc">
                                   <i class="fa fa-check"></i>Seleccionar turno.
                                 </span>
                               </a>
                             </li>
-                            <li id="reportepaso4">
-                              <a href="#reportetab4" class="step disabled">
-                                <span class="number">
-                                   4
-                                </span>
-                                <span class="desc">
-                                  <i class="fa fa-check"></i>Confirmar.
-                                </span>
-                              </a>
-                            </li>
                           </ul>
                           <article class="tab-content">
-                            <article class="tab-pane active" id="reportetab1">
-                              <article class="progress">
-                                <article class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" style="width: 35%">
-                                  <span class="sr-only">5% Completado</span>
-                                </article>
-                              </article>
+                            <article class="tab-pane" id="reporteTurno1">
                               <article class="col-md-12">
-                                <select class="form-control" name="tipoReporte" id="tipoReporte">
-                                  <option value=""></option>
-                                  <option value="">Por turno.</option>
-                                  <option value="">Por fechas.</option>
-                                </select>
-                              </article>
-                            </article>
-                            <article class="tab-pane" id="reportetab2">
-                              <article class="progress">
-                                <article class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%">
-                                  <span class="sr-only">35% Completado</span>
-                                </article>
-                              </article>
-                              <article class="alert alert-danger hidden" id="errorFechas">
-                                <button class="close" data-dismiss="alert"></button>
-                                Existen campos vacíos en el formulario.
-                              </article>
-                              <article class="row">
-                                <article class="col-md-12 form-group">
-                                  <label class="control-label col-md-5">Fecha de inicio</label>
-                                  <article class="col-md-7 form-group">
-                                    <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                                      <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
-                                      <span class="input-group-btn">
-                                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                      </span>
-                                    </article>
-                                  </article>
-                                  <label class="control-label col-md-5">Hora</label>
-                                  <article class="col-md-7 form-group">
-                                    <article class="input-group">
-                                      <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
-                                      <span class="input-group-btn">
-                                      <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                      </span>
-                                    </article>
-                                  </article>
-                                </article>
-                                <article class="col-md-12 form-group">
-                                  <label class="control-label col-md-5">Fecha final</label>
-                                  <article class="col-md-7 form-group">
-                                    <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                                      <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_fin">
-                                      <span class="input-group-btn">
-                                      <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                      </span>
-                                    </article>
-                                  </article>
-                                  <label class="control-label col-md-5">Hora</label>
-                                  <article class="col-md-7 form-group">
-                                    <article class="input-group">
-                                      <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
-                                      <span class="input-group-btn">
-                                      <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                      </span>
-                                    </article>
+                                <label class="control-label col-md-5">Fecha de inicio</label>
+                                <article class="col-md-7 form-group">
+                                  <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                    <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
+                                    <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
                                   </article>
                                 </article>
                               </article>
                             </article>
-                            <article class="tab-pane" id="reportetab3">
-                              <article class="progress">
-                                <article class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
-                                  <span class="sr-only">75% Completado</span>
-                                </article>
+                            <article class="tab-pane active" id="reporteTurno2">
+                              <article class="col-md-12">
+
                               </article>
+                            </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <ul class="pager" id="btnReportes">
+                        <li><button type="button" class="btn" id="">Siguiente</button></li>
+                      </ul>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-me-12">
+            <article id="modalTurno" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Corte de turno.</h4>
+                  </article>
+                  <form action="#" class="form-horizontal" id="submit_form">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body row">
+                          <article class="col-md-12">
+                            <article class="col-md-12 text-center">
+                              <label for="Selecciona" class="label-control"><strong>Selecciona la operacion a realizar</strong></label>
+                            </article>
+                            <article class="col-md-12 text-center">
+                              <table class="table table-responsive">
+                                <thead></thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Realizar corte de turno</td>
+                                    <td>cambiar tipo de corte de turno</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <article class="iradio">
+                                        <input type="radio" name="valor" id="valor1" value="0"> 
+                                      </article>
+                                    </td>
+                                    <td>
+                                      <article class="iradio">
+                                        <input type="radio" name="valor" id="valor1" value="0"> 
+                                      </article>
+                                    </td>
+                                  </tr> 
+                                </tbody>
+                              </table>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <ul class="pager" id="btnReportes">
-                        <li><button type="button" class="btn" id="fechasReporte">Siguiente</button></li>
-                      </ul>
+                      <button type="submit" class="btn blue hidden" id="aceptarAcceso">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -379,7 +479,7 @@
                             <article class="row">
                               <article class="col-md-12 text-center">
                                 <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modarReporteTurno').modal('show');">
                                     <h4 class="cabeceraTarjeta">Ventas del turno.</h4>
                                      <article class="col-md-4 visual"><i class="fa fa-ticket"></i></article>
                                     <article class="col-md-8 details text-center">
@@ -388,7 +488,7 @@
                                   </article>
                                 </article>
                                 <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTurno').modal('show');">
                                     <h4 class="cabeceraTarjeta">Tipo de corte.</h4>
                                      <article class="col-md-4 visual"><i class="fa fa-calendar"></i></article>
                                      <article class="col-md-8 details text-center">
@@ -436,9 +536,15 @@
     <script src="../static/plugins/jquery-notific8/jquery.notific8.min.js"></script> 
     <script>
       $(document).ready(function() {    
-          App.init();
-          ComponentsPickers.init();
-          FormWizard.init();
+        App.init();
+        ComponentsPickers.init();
+        FormWizard.init();
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '80%'
+        });
+       
       });
     </script>
   </body>
