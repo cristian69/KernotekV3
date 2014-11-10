@@ -165,7 +165,8 @@ def datos_home():
 
     datosTurno = class_db.datosTurnoActual()
     numTurno = datosTurno[0]
-    dic_home['ventasTurno'] = int(class_db.ventasTurno(str(numTurno)))
+
+    dic_home['ventasTurno'] = class_db.acumuladoTurno(str(numTurno))
 
     dic_home['meses'], dic_home['valoresMes'] = graficaMes()
     dic_home['semanas'], dic_home['valoresSemana'] = graficaSemana()

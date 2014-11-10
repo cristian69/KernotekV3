@@ -267,7 +267,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
     num_pagina = 1
     codigo_pag += str("""
                         <article class="text-right">
-              <ul class="pagination">
+              <ul class="dataTables_paginate paging_bootstrap_full_number">
                       """)
     if int(pag_activa) != 1:
         back_pag = int(pag_activa) - 1

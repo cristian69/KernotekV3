@@ -453,6 +453,17 @@ def ventasTurno(numTurno):
     matar_conexion()
     return data[0]
 
+def acumuladoTurno(numTurno):
+    crear_conexion()
+    query = "SELECT SUM(cost) FROM panelservices WHERE deposit != 0 AND localshift = "+numTurno+";"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    if data[0][0] == 'None':
+        return float(0)
+    else:
+        return float(data[0][0])
+
 # Crea un nuevo turno
 def iniciarTurno(numTurno, fechaIncio, montoInicial):
     crear_conexion()
