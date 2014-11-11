@@ -5,6 +5,9 @@ function home(){
 	$("#Lapso").select2();
 	$("#semana").select2();
 	$("#mes").select2();
+	$("#tiposCortes").select2({
+		placeholder: "Selecciona el tipo de dorte de turno"
+	});
 	$("#seleccionarAccion").select2({
 		placeholder:"seleccionar acción"
 	});
@@ -117,6 +120,23 @@ $("#siguienteCorte").click(function(){
 		$("#ConfirmarAccion").removeClass("hidden");
 		$("#siguienteCorte").addClass("hidden");
 	}
+	if($("#seleccionarAccion").val()=="cambiar"){
+		$("#pasoTurno2a").addClass("active");
+		$("#pasoTurno2a .step").removeClass("hidden");
+		$("#Turno2a").addClass("active");
+		$("#pasoTurno1").removeClass("active");
+		$("#Turno1").removeClass("active");	
+		$("#anteriorCorte").removeClass("hidden");	
+	}
+	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+		$("#pasoTurno2a").removeClass("active");
+		$("#Turno2a").removeClass("active");		
+		$("#pasoTurno3a").addClass("active");
+		$("#pasoTurno3a .step").removeClass("hidden");
+		$("#turno2").addClass("active");
+		$("#siguienteCorte").addClass("hidden");
+		$("#ConfirmarAccion").removeClass("hidden");
+	}
 	
 });
 
@@ -144,6 +164,21 @@ $("#anteriorCorte").click(function(){
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
+	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+		
+	}
+
+	if($("#seleccionarAccion").val()=="cambiar"){
+		$("#pasoTurno2a").removeClass("active");
+		$("#pasoTurno2a .step").addClass("hidden");
+		$("#Turno2a").removeClass("active");
+		$("#pasoTurno1").addClass("active");
+		$("#Turno1").addClass("active");	
+		$("#anteriorCorte").addClass("hidden");
+		$("#ConfirmarAccion").addClass("hidden");
+		$("#siguienteCorte").removeClass("hidden");
+	}
+	
 });
 
 
@@ -165,21 +200,33 @@ function validarNumeros(){
 	}
 }
 
-
+$("#Turno2a").mouseover(function(){
+	if($("#tiposCortes").val()=="manual"){
+		$("#ConfirmarAccion").removeClass("hidden");
+		$("#siguienteCorte").addClass("hidden");
+	}
+	else{
+		$("#ConfirmarAccion").addClass("hidden");
+		$("#siguienteCorte").removeClass("hidden");
+	}
+});
 
 
 $("#turno2").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
+		document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
+		document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
+		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
@@ -187,11 +234,12 @@ $("#turno2").mouseover(function(){
 });
 
 
-var valoresTurnoh =function(){
+var valoresTurnoh=function(){
 		valorLapso=$(".tipoLapsoh").val();
     	valorSemana=$(".diaCorteh").val();
     	valorHora=$(".horaCorteh").val();
     	if(valorLapso=='cadaMes'){
+    		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
         	$('#Lapso > option[value="cadaMes"]').attr('selected', 'selected');
 	        $('#mes > option[value="'+valorSemana+'"]').attr('selected','selected');
 	        $('#horaC').val(valorHora);
@@ -200,6 +248,7 @@ var valoresTurnoh =function(){
 	        $('#semana').addClass('hidden');
 	    }
 	    if(valorLapso=='cadaSemana'){
+	    	document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
 	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
 	        $('#semana > option[value="'+valorSemana+'"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
@@ -208,17 +257,18 @@ var valoresTurnoh =function(){
 	        $('#mes').addClass('hidden');
 	    }
 	    if(valorLapso=='cadaDia'){
+	    	document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
 	        $('#Lapso > option[value="cadaDia"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
 	        $('.contenedorFecha').removeClass('col-md-6');        
 	    }
 	    if(valorLapso=='cadaDetHora'){
+	    	document.getElementById("labelTipoCorte").innerHTML = "Seleccionar cada cuantas horas se realizara el corte de turno";
 	        $('#Lapso > option[value="cadaDetHora"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
 	        $('.contenedorFecha').removeClass('col-md-6');            
 	    }
-	    if( valorLapso!=="cadaMes" && valorLapso!=="cadaSemana" && valorLapso!=="cadaDia" && valorLapso!="cadaDetHora"){
-	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
+	    if( valorLapso!=="cadaMes" && valorLapso!=="cadaSemana" && valorLapso!=="cadaDia" && valorLapso!="cadaDetHora"){$('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
 	        $('#semana > option[value="Domingo"]').attr('selected', 'selected');
 	        $('#horaC').val("23:59:59");
 	        $('.contenedorFecha').addClass('col-md-6');

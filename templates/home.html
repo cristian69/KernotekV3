@@ -30,7 +30,7 @@
           <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bars" style="font-size:25px;"></i>
           </a>
-          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel">
+          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
             <li class="tooltips usuario">
               <i class="fa fa-user"></i>{{ session['fullname']}}
             </li>
@@ -453,6 +453,9 @@
                             <article class="tab-pane" id="turno2">
                               <article class="row">
                                 <article class="col-md-12 form-group">
+                                  <article class="col-md-12 text-center">
+                                    <h4 id="labelTipoCorte"></h4>
+                                  </article>
                                   <article class="col-md-4">
                                     <input class="form-control tipoLapsoh hidden" type="text" value="cadaMes">
                                     <input class="form-control diaCorteh hidden" type="text" value="12">
@@ -461,7 +464,6 @@
                                       <option value="cadaDia">Diario</option>
                                       <option value="cadaSemana">Semanal</option>
                                       <option value="cadaMes">Mensual</option>
-                                      <option value="cadaDetHora">Personalizado</option>
                                     </select>
                                   </article>
                                   <article class="col-md-8 form-group group-form">
@@ -514,6 +516,19 @@
                                         </span>
                                       </article>
                                     </article>
+                                  </article>
+                                </article>
+                              </article>  
+                            </article>
+                            <article class="tab-pane" id="Turno2a">
+                              <article class="row">
+                                <article class="col-md-12 group-form">
+                                  <article class="col-md-12 text-center">
+                                    <select class="form-control" name="" id="tiposCortes">
+                                      <option value=""></option>
+                                      <option value="manual">Corte manual.</option>
+                                      <option value="automatico">Corte automático</option>
+                                    </select>
                                   </article>
                                 </article>
                               </article>  
