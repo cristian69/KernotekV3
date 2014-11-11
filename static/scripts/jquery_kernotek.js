@@ -150,13 +150,7 @@ function cambiarEstado(parametro){
 }
 
 
-function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, datosMeses){
-alert(labelDias);
-alert(datosDias);
-alert(datosSemanas);
-alert(datosSemanas);
-alert(datosMeses);
-alert(datosMeses);		
+function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, datosMeses){		
 var lineChartData1 = {
 			labels : [labelDias[0],labelDias[1],labelDias[2],labelDias[3],labelDias[4],labelDias[5],labelDias[6]],
 			datasets : [
