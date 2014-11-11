@@ -7,6 +7,8 @@ var fechaSistema=function(){
     f=(f.getFullYear() +"-"+ (f.getMonth() +1)) + "-" + f.getDate();
     $("#fecha_inicio").val(f);
     $("#fecha_fin").val(f);
+    $("#fecha_inicio2").val(f);
+    $("#fecha_fin2").val(f);
 }
 
 var __alertas__=function(estado){

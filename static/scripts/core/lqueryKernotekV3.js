@@ -2,7 +2,17 @@ function home(){
 	$("#accionRealizar").select2({
 		placeholder:"Tipo de reporte"
 	});
-	
+	$("#Lapso").select2();
+	$("#semana").select2();
+	$("#mes").select2();
+	$("#seleccionarAccion").select2({
+		placeholder:"seleccionar acción"
+	});
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue',
+		increaseArea: '80%'
+	});
 }
 
 
@@ -30,7 +40,6 @@ $("#siguienteReporte").click(function(){
 	}
 });
 
-
 $("#anteriorReporte").click(function(){
 	$("#reportetab2").removeClass("active");
 	$("#reportepaso2").removeClass("active");
@@ -43,12 +52,97 @@ $("#anteriorReporte").click(function(){
 	$("#siguienteReporte").removeClass("hidden");
 });
 
-
-
 $("#aceptarReporte").click(function(){
 	if($("#hora_inicio").val()=="" || $("#fecha_inicio").val()=="" || $("#hora_fin").val()=="" || $("#fecha_fin").val()==""){
 		$("#errorFechas").removeClass("hidden");
 		return false;
+	}
+});
+
+
+
+
+
+$("#reporteTurnoSiguiente").click(function(){
+	if($("#hora_inicio2").val()=="" || $("#fecha_inicio2").val()=="" || $("#hora_fin2").val()=="" || $("#fecha_fin2").val()==""){
+		$("#errorFechas2").removeClass("hidden");
+		return false;
+	}
+	else{
+		$("#reporteTurno1").removeClass("active");
+		$("#reportetabTurno1").removeClass("active");
+		$("#reporteTurno2").addClass("active");
+		$("#reportetabTurno2").addClass("active");
+		$("#reporteTurnoAnterior").removeClass("hidden");
+		$("#reporteTurnoSiguiente").addClass("hidden");
+		$("#reporteTurnoAceptar").removeClass("hidden");		
+	}
+});
+
+$("#reporteTurnoAnterior").click(function(){
+	$("#reporteTurno1").addClass("active");
+		$("#reportetabTurno1").addClass("active");
+		$("#reporteTurno2").removeClass("active");
+		$("#reportetabTurno2").removeClass("active");
+		$("#reporteTurnoAnterior").addClass("hidden");
+		$("#reporteTurnoSiguiente").removeClass("hidden");
+		$("#reporteTurnoAceptar").addClass("hidden");
+});
+
+
+
+
+/*Acciones que se realiara si se selecciona la opcion de corte,
+configureacion o cambiar tipo de corte de turno*/
+
+$("#siguienteCorte").click(function(){
+	if($("#seleccionarAccion").val()=="corte"){
+		$("#AceptarCorte").removeClass("hidden");
+		$("#CancelarCorte").removeClass("hidden");
+		$("#siguienteCorte").addClass("hidden");
+		$("#pasoTurno2b .step").removeClass("hidden");
+		$("#pasoTurno2b").addClass("active");
+		$("#pasoTurno1").removeClass("active");
+		$("#Turno1").removeClass("active");
+		$("#Turno2b").addClass("active");
+
+	}
+	if($("#seleccionarAccion").val()=="configurar"){
+		$("#pasoTurno2").addClass("active");
+		$("#pasoTurno1").removeClass("active");
+		$("#turno2").addClass("active");
+		$("#Turno1").removeClass("active");
+		$("#pasoTurno2 .step").removeClass("hidden");
+		$("#anteriorCorte").removeClass("hidden");
+		$("#ConfirmarAccion").removeClass("hidden");
+		$("#siguienteCorte").addClass("hidden");
+	}
+	
+});
+
+$("#CancelarCorte").click(function(){
+	if($("#seleccionarAccion").val()=="corte"){
+		$("#AceptarCorte").addClass("hidden");
+		$("#CancelarCorte").addClass("hidden");
+		$("#siguienteCorte").removeClass("hidden");
+		$("#pasoTurno2b .step").addClass("hidden");
+		$("#pasoTurno2b").removeClass("active");
+		$("#pasoTurno1").addClass("active");
+		$("#Turno1").addClass("active");
+		$("#Turno2b").removeClass("active");
+	}
+});
+
+$("#anteriorCorte").click(function(){
+	if($("#seleccionarAccion").val()=="configurar"){
+		$("#pasoTurno2").removeClass("active");
+		$("#pasoTurno1").addClass("active");
+		$("#turno2").removeClass("active");
+		$("#Turno1").addClass("active");
+		$("#pasoTurno2 .step").addClass("hidden");
+		$("#anteriorCorte").addClass("hidden");
+		$("#ConfirmarAccion").addClass("hidden");
+		$("#siguienteCorte").removeClass("hidden");
 	}
 });
 
@@ -71,3 +165,64 @@ function validarNumeros(){
 	}
 }
 
+
+
+
+$("#turno2").mouseover(function(){
+	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
+		$("#semana").addClass("hidden");
+		$("#mes").addClass("hidden");
+		$(".contenedorFecha").removeClass("col-md-6");
+	}
+	if($("#Lapso").val()=="cadaSemana"){
+		$("#semana").removeClass("hidden");
+		$("#mes").addClass("hidden");
+		$(".contenedorFecha").addClass("col-md-6");
+	}
+	if($("#Lapso").val()=="cadaMes"){
+		$("#semana").addClass("hidden");
+		$("#mes").removeClass("hidden");
+		$(".contenedorFecha").addClass("col-md-6");
+	}
+});
+
+
+var valoresTurnoh =function(){
+		valorLapso=$(".tipoLapsoh").val();
+    	valorSemana=$(".diaCorteh").val();
+    	valorHora=$(".horaCorteh").val();
+    	if(valorLapso=='cadaMes'){
+        	$('#Lapso > option[value="cadaMes"]').attr('selected', 'selected');
+	        $('#mes > option[value="'+valorSemana+'"]').attr('selected','selected');
+	        $('#horaC').val(valorHora);
+	        $('.contenedorFecha').addClass('col-md-6');
+	        $('#mes').removeClass('hidden');
+	        $('#semana').addClass('hidden');
+	    }
+	    if(valorLapso=='cadaSemana'){
+	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
+	        $('#semana > option[value="'+valorSemana+'"]').attr('selected', 'selected');
+	        $('#horaC').val(valorHora);
+	        $('.contenedorFecha').addClass('col-md-6');
+	        $('#semana').removeClass('hidden');
+	        $('#mes').addClass('hidden');
+	    }
+	    if(valorLapso=='cadaDia'){
+	        $('#Lapso > option[value="cadaDia"]').attr('selected', 'selected');
+	        $('#horaC').val(valorHora);
+	        $('.contenedorFecha').removeClass('col-md-6');        
+	    }
+	    if(valorLapso=='cadaDetHora'){
+	        $('#Lapso > option[value="cadaDetHora"]').attr('selected', 'selected');
+	        $('#horaC').val(valorHora);
+	        $('.contenedorFecha').removeClass('col-md-6');            
+	    }
+	    if( valorLapso!=="cadaMes" && valorLapso!=="cadaSemana" && valorLapso!=="cadaDia" && valorLapso!="cadaDetHora"){
+	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
+	        $('#semana > option[value="Domingo"]').attr('selected', 'selected');
+	        $('#horaC').val("23:59:59");
+	        $('.contenedorFecha').addClass('col-md-6');
+	        $('#semana').removeClass('hidden');
+	        $('#mes').addClass('hidden');   
+	    }
+	}
