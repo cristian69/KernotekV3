@@ -646,7 +646,7 @@ def activarCuenta(username):
 
 def ventasDia():
     crear_conexion()
-    query = "select day(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 day) group by day(datetimesell);" 
+    query = "select day(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 day) group by day(datetimesell) desc;" 
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -654,7 +654,7 @@ def ventasDia():
 
 def ventasSemana():
     crear_conexion()
-    query = "select week(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 week) group by {fn week(datetimesell)};" 
+    query = "select week(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 week) group by {fn week(datetimesell)} desc;" 
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
