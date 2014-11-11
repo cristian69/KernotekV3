@@ -164,10 +164,6 @@ $("#anteriorCorte").click(function(){
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
-	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
-		
-	}
-
 	if($("#seleccionarAccion").val()=="cambiar"){
 		$("#pasoTurno2a").removeClass("active");
 		$("#pasoTurno2a .step").addClass("hidden");
@@ -178,6 +174,18 @@ $("#anteriorCorte").click(function(){
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
+	
+	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+			$("#pasoTurno2a").addClass("active");
+			$("#Turno2a").addClass("active");		
+			$("#pasoTurno3a").removeClass("active");
+			$("#pasoTurno3a .step").addClass("hidden");
+			$("#turno2").removeClass("active");
+			$("#siguienteCorte").removeClass("hidden");
+			$("#ConfirmarAccion").addClass("hidden");
+			$("#tiposCortes").val()="";
+		}
+	
 	
 });
 
