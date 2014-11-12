@@ -4451,6 +4451,10 @@ UI Loading
   background-color: #F7F7F7;
 }
 
+.valorSistema:hover{
+  background-color: #F2F2F2;
+}
+
 .valorSistema .visual {
   width: 70px;
   height: 100px;
@@ -4468,6 +4472,7 @@ UI Loading
   color: white;
   opacity: 0.5;
 }
+
 
 .cabeceraTarjeta{
   color:#007CC0;
