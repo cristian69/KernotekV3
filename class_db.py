@@ -80,14 +80,14 @@ def modificar_reporte(nuevoEstado):
     matar_conexion()
 
 
-def total_registros(dateStart, dateEnd):
+def total_registros(dateStart, dateEnd, inicio):
     crear_conexion()
-    query = "SELECT count(ticket) FROM panelservices " \
-                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\");"
+    query = "SELECT ticket FROM panelservices " \
+                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500;"
     cursor.execute(query)
     num_registros = cursor.fetchall()
     matar_conexion()
-    return num_registros
+    return len(num_registros)
 
 
 def paginacion(dateStart, dateEnd, inicio):
@@ -177,9 +177,9 @@ def reportDetallado(dateStart, dateEnd):
     return data
 
 #============================= REPORTE POR TURNO ===========================================
-def turnosDisponibles(fecha):
+def turnosDisponibles(startDate, endDate):
     crear_conexion()
-    query = "SELECT shiftno, datestart, dateend FROM panelshifthead WHERE dateend BETWEEN STR_TO_DATE('"+fecha+" 00:00:00', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+fecha+" 23:59:59', \"%Y-%m-%d %H:%i:%s\");"
+    query = "SELECT shiftno, datestart, dateend FROM panelshifthead WHERE dateend BETWEEN STR_TO_DATE('"+startDate+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+endDate+"', \"%Y-%m-%d %H:%i:%s\");"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
@@ -708,6 +708,21 @@ def ventas_del_dia():
 #                       SISTEMA                         #
 #                                                       #
 #########################################################
+
+def cambiarTarifa(tarifa):
+    crear_conexion()
+    query = "UPDATE config SET rate = '"+tarifa+"';"
+    cursor.execute(query)
+    db.commit()
+    matar_conexion() 
+
+
+def cambiarTiempoApertura(tiempo):
+    crear_conexion()
+    query = "UPDATE config SET t_apertura = '"+tiempo+"';"
+    cursor.execute(query)
+    db.commit()
+    matar_conexion()
 
 
 def numSerieAcceso():

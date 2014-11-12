@@ -36,8 +36,8 @@ class reporteTurno(flask.views.MethodView):
             return redirect(url_for('login'))
 
 
-def turnosDisponibles(fecha):
-    turnos = class_db.turnosDisponibles(fecha)
+def turnosDisponibles(startDate, endDate):
+    turnos = class_db.turnosDisponibles(startDate, endDate)
     htmlTurnos = ""
     if len(turnos) == 0:
         htmlTurnos += '<h1 align="center"><strong>No Hay Cortes de Turnos en esa Fecha</strong></h1>'
