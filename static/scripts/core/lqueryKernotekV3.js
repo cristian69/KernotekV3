@@ -243,6 +243,42 @@ $("#modalTurno").mouseover(function(){
 	}
 });
 
+$(".configuracionCortes").mouseover(function(){
+	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
+		document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
+		$("#semana").addClass("hidden");
+		$("#mes").addClass("hidden");
+		$(".contenedorFecha").removeClass("col-md-6");
+	}
+	if($("#Lapso").val()=="cadaSemana"){
+		document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
+		$("#semana").removeClass("hidden");
+		$("#mes").addClass("hidden");
+		$(".contenedorFecha").addClass("col-md-6");
+	}
+	if($("#Lapso").val()=="cadaMes"){
+		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
+		$("#semana").addClass("hidden");
+		$("#mes").removeClass("hidden");
+		$(".contenedorFecha").addClass("col-md-6");
+	}
+});
+
+$(".configuracionCortes").mouseover(function(){
+	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="manual" && $("#banderaPosicion").val()=="2"){
+		$("#cancelarAccion").removeClass("hidden");
+		$("#aceptarAccion").removeClass("hidden");
+		$("#nextTurno").addClass("hidden");
+		$("#backTurno").addClass("hidden");
+	}
+	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+		$("#cancelarAccion").addClass("hidden");
+		$("#aceptarAccion").addClass("hidden");
+		$("#nextTurno").removeClass("hidden");	
+		$("#backTurno").removeClass("hidden");
+	}
+});
+
 
 var valoresTurnoh=function(){
 		valorLapso=$(".tipoLapsoh").val();
@@ -286,3 +322,103 @@ var valoresTurnoh=function(){
 	        $('#mes').addClass('hidden');   
 	    }
 	}
+
+
+	$("#nextTurno").click(function(){
+		if($("#seleccionarAccion").val()=="corte"){
+			$("#aceptarAccion").removeClass("hidden");
+			$("#cancelarAccion").removeClass("hidden");
+			$("#nextTurno").addClass("hidden");
+			$("#mturno2").addClass("active");
+			$("#paso2").addClass("active");
+			$("#mturno1").removeClass("active");
+			$("#paso1").removeClass("active");
+			$("#paso2").removeClass("hidden");
+		}
+		if($("#seleccionarAccion").val()=="configurar"){
+			$("#paso4").removeClass("hidden");
+			$("#paso4").addClass("active");
+			$("#mturno4").addClass("active");
+			$("#mturno1").removeClass("active");
+			$("#paso1").removeClass("active");
+			$("#aceptarAccion").removeClass("hidden");
+			$("#cancelarAccion").removeClass("hidden");
+			$("#nextTurno").addClass("hidden");
+		}
+		if($("#seleccionarAccion").val()=="cambiar"){
+			$("#paso3").addClass("active");
+			$("#paso3").removeClass("hidden");
+			$("#mturno3").addClass("active");
+			$("#paso1").removeClass("active");
+			$("#mturno1").removeClass("active");
+			$("#backTurno").removeClass("hidden");
+			$("#banderaPosicion").val("2");
+		}
+
+		if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+			$("#paso3").removeClass("active");
+			$("#mturno3").removeClass("active");
+			$("#paso4").addClass("active");
+			$("#paso4").removeClass("hidden");
+			$("#mturno4").addClass("active");
+			$("#nextTurno").addClass("hidden");
+			$("#aceptarAccion").removeClass("hidden");
+			$("#banderaPosicion").val("3");
+		}
+	});
+
+
+
+
+
+
+	/*Cancelar el corte manual*/
+	$("#cancelarAccion").click(function(){
+		if($("#seleccionarAccion").val()=="corte"){
+			$("#aceptarAccion").addClass("hidden");
+			$("#cancelarAccion").addClass("hidden");
+			$("#nextTurno").removeClass("hidden");
+			$("#mturno2").removeClass("active");
+			$("#paso2").removeClass("active");
+			$("#mturno1").addClass("active");
+			$("#paso1").addClass("active");
+			$("#paso2").addClass("hidden");
+		}
+		if($("#seleccionarAccion").val()=="configurar"){
+			$("#paso4").addClass("hidden");
+			$("#paso4").removeClass("active");
+			$("#mturno4").removeClass("active");
+			$("#mturno1").addClass("active");
+			$("#paso1").addClass("active");
+			$("#aceptarAccion").addClass("hidden");
+			$("#cancelarAccion").addClass("hidden");
+			$("#nextTurno").removeClass("hidden");	
+		}
+	});
+
+
+	$("#backTurno").click(function(){
+		if($("#seleccionarAccion").val()=="cambiar" && $("#banderaPosicion").val()=="2"){
+			$("#paso3").removeClass("active");
+			$("#paso3").addClass("hidden");
+			$("#mturno3").removeClass("active");
+			$("#mturno3").removeClass("active");
+			$("#paso1").addClass("active");
+			$("#mturno1").addClass("active");
+			$("#backTurno").addClass("hidden");
+			$("#banderaPosicion").val("1")
+		}
+		if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico" && $("#banderaPosicion").val()!="1"){
+			$("#paso3").addClass("active");
+			$("#mturno3").addClass("active");
+			$("#paso4").removeClass("active");
+			$("#paso4").addClass("hidden");
+			$("#mturno4").removeClass("active");
+			$("#nextTurno").removeClass("hidden");
+			$("#aceptarAccion").addClass("hidden");
+			$('#tiposCortes > option[value=""]').attr('selected', 'selected');
+			$("#banderaPosicion").val("2");
+		}
+
+		
+	});
