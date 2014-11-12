@@ -259,69 +259,162 @@ def tabla_usuarios(indice, modal):
 
 
 def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN
-    codigo_pag = ""
-    indice_next = int(indice) + registros_pagina
-    indice_back = int(indice) - registros_pagina
-    total_registro = class_db.total_registros(fecha_inicio, fecha_fin)
-    count = 0
-    num_pagina = 1
-    codigo_pag += str("""
-                        <article class="text-right">
-              <ul class="dataTables_paginate paging_bootstrap_full_number">
-                      """)
-    if int(pag_activa) != 1:
-        back_pag = int(pag_activa) - 1
-        codigo_pag += str('<li class="enable"><a href="/'+direccion+'/?'
-                         'indice=' + str(indice_back) + ''
-                         '&fecha1=' + fecha_inicio + ''
-                         '&fecha=' + fecha_fin + ''
-                         '&num_pagina=' + str(back_pag) + '"><strong>&laquo;</strong></a></li>')
+    
+    startDate = fecha_inicio
+    endDate = fecha_fin
+    actualPage = int(pag_activa)
+    index = int(indice)
+    link = direccion 
+    code = ""
+    
+    indexBlock = 0
+    indexNextBlock = 0
+    indexBackBlock = 0
+
+    backPage = actualPage - 1
+    nextPage = actualPage + 1
+
+    indexNextPage = index + 50
+    indexBackPage = index - 50
+
+    indexBlock = index - 500
+    
+
+
+   
+    if indexBlock <= 0:
+        indexBackBlock = 0
+        indexNextBlock = 500
     else:
-        codigo_pag += str('<li class="disabled"><a href="#">&laquo;</a></li>')
-    if int(pag_activa) == 1:
-        codigo_pag += str('<li class="active" id = "pag' + str(num_pagina) + '">')
+        indexBackBlock = index - 550
+        indexNextBlock = index + 450 
+
+    indexPage = indexNextBlock - 500
+
+    # if indexPage <= 0:
+    #     indexPage = 0
+
+    # print "Index page: ", indexPage
+    # print "Actual page: ", actualPage
+    # print "Index Block: ", indexBlock
+    # print "Index Back Block: ", indexBackBlock
+    # print "Index Next Block: ", indexNextBlock
+
+    totalSales = class_db.total_registros(startDate, endDate, indexBackBlock)
+    # print "total sales: ", totalSales
+    if totalSales == 500:
+        totalPages = totalSales / 50
     else:
-        codigo_pag += str('<li id = "pag' + str(num_pagina) + '">')
+        totalPages = (totalSales - 500) / 50
+    # print "Total pages: ", totalPages
+    # index = 500.0
+    # print "index: ", index
+    # testIndex = float(indexNextBlock / 500)
+    # print "test Index: ", testIndex
+    # testIndex = math.ceil(testIndex)
+    # print "test index:", testIndex
+    # startPage = int(testIndex)
+    # if startPage is not 1:
+    #     startPage += 0.1
+    #     startPage *= 10
 
-    codigo_pag += str('<a href="/'+direccion+'/?'
-                      'indice=0'
-                      '&fecha1=' + fecha_inicio + ''
-                      '&fecha2=' + fecha_fin + ''
-                      '&num_pagina=' + str(num_pagina) + '">1<span class="sr-only">(current)</span></a></li>')
+    # if actualPage == 11:
+    #     startPage = 11
 
-    total_registro = total_registro[0][0]
-    indice = 0
+    # startPage = int(startPage)
 
-    for num in range(0, total_registro):
-        if count == registros_pagina:
-            indice += registros_pagina
-            num_pagina += 1
-
-            if int(num_pagina) == int(pag_activa):
-                codigo_pag += str('<li class="active" id = "pag' + str(num_pagina) + '">')
-            else:
-                codigo_pag += str('<li id = "pag' + str(num_pagina) + '">')
-
-            codigo_pag += str('<a href="/'+direccion+'/?'
-                              'indice=' + str(indice) + ''
-                              '&fecha1=' + fecha_inicio + ''
-                              '&fecha2=' + fecha_fin + ''
-                              '&num_pagina=' + str(num_pagina) + '">' + str(num_pagina) + '<span class="sr-only">(current)</span></a></li>')
-            count = 0
-        count += 1
-
-    if int(pag_activa) != num_pagina:
-        next_pag = int(pag_activa) + 1
-        codigo_pag += str('<li class="enable"><a href="/'+direccion+'/?'
-                          'indice=' + str(indice_next) + ''
-                          '&fecha1=' + fecha_inicio + ''
-                          '&fecha2=' + fecha_fin + ''
-                          '&num_pagina=' + str(next_pag) + '">&raquo;</a></li>')
+    testStartPage = float(pag_activa) / 10.0
+    # print "=" * 5, testStartPage
+    if testStartPage <= 1:
+        startPage = 1
     else:
-        codigo_pag += str('<li class="disabled"><a href="#">&raquo;</a></li>')
+        startPage =  testStartPage * 10
+        # print startPage
+        startPage = int(startPage) 
 
-    codigo_pag += str('</ul></article></div>') # Fin del article y la lista
-    return codigo_pag
+    # print "Start page: ", startPage
+    # print "Test page start: ", float(pag_activa) / 10.0
+
+    code = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
+    code += str('<ul class="pagination">')
+
+    # simbolo <<
+    pageBackBlock = startPage -10
+    if pageBackBlock <= 0:
+        pageBackBlock = 1
+
+    if actualPage is not 1:
+        code += str('<li class="enable prev"> <a href="/'+link+'/?' \
+            'indice=' + str(indexBackBlock) +\
+            '&fecha1=' + startDate + \
+            '&fecha2='  + endDate + \
+            '&num_pagina=' + str(pageBackBlock) + '">'\
+            '<i class="fa fa-angle-double-left"></i></a></li>')
+    else:
+        code += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
+
+    # Simbolo <
+    if actualPage is not 1:
+        code += str('<li class="enable prev"><a href="/'+link+'/?'\
+            'indice='+ str(indexBackPage) + \
+            '&fecha1='+ startDate + \
+            '&fecha2='+ endDate + \
+            '&num_pagina='+ str(backPage) +'">'\
+            '<i class="fa fa-angle-left"></i></a></li>')
+    else:
+        code += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>')
+    
+    lastPage = 0
+    pageNextBlock = startPage + 10
+    for numPage in range(1, totalPages + 1):
+        lastPage += 1
+        if startPage is actualPage:
+            code += str('<li class="active" id="pag'+str(startPage)+'">')
+        else:
+            code += str('<li id="pag'+str(startPage)+'">')
+        code += str('<a href="/'+link+'/?'\
+                    'indice='+ str(indexPage) + \
+                    '&fecha1='+ startDate + \
+                    '&fecha2='+ endDate + \
+                    '&num_pagina='+ str(startPage) + '">'\
+                    +str(startPage)+
+                    '</a></li>')
+        startPage += 1
+        indexBackBlock += 50
+        indexPage += 50
+        
+    # print "Last page: ", lastPage
+    # Simbolo >
+    if actualPage is not lastPage:
+        code += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+str(indexNextPage)+\
+                    '&fecha1=' + startDate +\
+                    '&fecha2=' + endDate +\
+                    '&num_pagina=' + str(nextPage) + '">'
+                    '<i class="fa fa-angle-right"></i></a></li>')
+    else:
+        code += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
+
+    ifNextBlock = class_db.total_registros(startDate, endDate, indexNextBlock)
+    
+    # Simbolo >>
+    if ifNextBlock is not 0:
+        code += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+ str(indexNextBlock + 50)+\
+                    '&fecha1=' + startDate +\
+                    '&fecha2=' + endDate +\
+                    '&num_pagina=' + str(pageNextBlock) +'">'\
+                    '<i class="fa fa-angle-double-right"></i></a></li>')
+    else:
+        code += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+ str(indexNextBlock)+\
+                    '&fecha1=' + startDate +\
+                    '&fecha2=' + endDate +\
+                    '&num_pagina=' + str(lastPage) +'">'\
+                    '<i class="fa fa-angle-double-right"></i></a></li>')
+    return code
+
+
 
 
 def paginacion(pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN

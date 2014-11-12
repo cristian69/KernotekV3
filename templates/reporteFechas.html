@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="tipoReporte();">
+  <body class="page-header-fixed" onload="tipoReporte(), {{bandera}};">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -129,6 +129,10 @@
               </article>
             </article>
             <article class="col-md-3"></article>
+          </article>
+          <article class="col-md-12">
+            {{tableHTML|safe}}
+            {{indexHTML|safe}}
           </article>
         </article>
       </article>

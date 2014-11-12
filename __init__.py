@@ -58,6 +58,7 @@ from corteTurno import corteTurno
 from nuevaLlave import NuevaLlave
 from editarLlave import EditarLlave
 
+from reportes import Reportes
 
 app = flask.Flask(__name__)
 ######### Inicializacion del servidor ####################
@@ -90,7 +91,9 @@ def logout():
     return flask.redirect(flask.url_for('login'))
 
 app.add_url_rule('/login/', view_func=Login.as_view('login'), methods=['POST', 'GET'])
-app.add_url_rule('/home/', view_func=Home.as_view('home'), methods=['GET'])
+app.add_url_rule('/home/', view_func=Home.as_view('home'), methods=['POST', 'GET'])
+app.add_url_rule('/reportes/', view_func=Reportes.as_view('reportes'), methods=['POST', 'GET'])
+
 #app.add_url_rule('/logout/', view_func=Logout.as_view('logout'), methods=['POST'])
 app.add_url_rule('/usuarios/', view_func=verUsuarios.as_view('verUsuarios'), methods=['GET'])
 app.add_url_rule('/registro-Usuario/', view_func=RegistroUsuario.as_view('registroUsuario'), methods=['POST'])

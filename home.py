@@ -10,6 +10,15 @@ import time
 import datetime 
 from calendar import monthrange
 from datetime import date, timedelta
+from reporteTurno import turnosDisponibles
+from libgral import numeracion_paginas
+from reporte_especifico import cod_tabla
+
+REPORT = "reporte"
+SHIFT_REPORT = "turno"
+DATES_REPORT = "fechas"
+CHANGE_RATE = "tarifa"
+CHANGE_TIME_OPEN = "tiempoApertura"
 
 class Home(flask.views.MethodView):
     def get(self):
@@ -21,6 +30,36 @@ class Home(flask.views.MethodView):
             ip = request.remote_addr
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
             return redirect(url_for('login'))
+
+    def post(self):
+        operation = request.form['submit']
+        if operation == REPORT:
+            typeReport = request.form.getlist('tipoReporte')
+            typeReport = typeReport[0]
+            startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
+            endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
+            if typeReport == SHIFT_REPORT:
+                codeShift = turnosDisponibles
+                return render_template('reportesTurno.html')
+            if typeReport == DATES_REPORT:
+                indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
+                tableHTML = cod_tabla(startDate, endDate, 0)
+                if len(tableHTML) == 66:
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
+                else:
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, indexHTML=indexHTML, bandera=1)
+
+        if operation == CHANGE_RATE:
+            newRate = request.form['nuevaTarifa']
+            class_db.cambiarTarifa(newRate)
+
+        if operation == CHANGE_TIME_OPEN:
+            newTime = request.form['nuevoTiempo']
+            class_db.cambiarTiempoApertura(newTime)
+
+        dic_home = datos_home()
+        # return render_template('reporteFechas.html')
+        return render_template('home.html',dic_home=dic_home)
 
 
 def inicioSemana(year, numSemana):
