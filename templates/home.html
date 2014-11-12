@@ -427,7 +427,7 @@
                             </li>
                           </ul>
                           <article class="tab-content">
-                            <article class="tab-pane active" id="Turno1">
+                            <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
@@ -445,12 +445,12 @@
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
-                                    <h4>¿Seguro que deceas realizarel corte de turno?</h4>
+                                    <h4>¿Seguro que deceas realizar el corte de turno?</h4>
                                   </article>
                                 </article>
                               </article>  
                             </article>
-                            <article class="tab-pane" id="turno2">
+                            <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
                                 <article class="col-md-12 form-group">
                                   <article class="col-md-12 text-center">
@@ -520,7 +520,7 @@
                                 </article>
                               </article>  
                             </article>
-                            <article class="tab-pane" id="Turno2a">
+                            <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
@@ -539,6 +539,7 @@
                     </article>
                     <article class="modal-footer">
                       <ul class="pager" id="">
+                        <input type="text" class="control-form hidden" id="valorPestaña" value="1">
                         <li><button type="submit" class="btn blue  hidden" id="AceptarCorte"></i>Aceptar</button></li>
                         <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
                         <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
@@ -575,17 +576,17 @@
                             <article class="tab-content times" onclick="$('#generarReportes').modal('show');">
                               <article class="tab-pane active" id="diaria">
                                 <article id="canvas-holder">
-                                  <canvas id="graficaDia" width="900px" height="570px" wi></canvas>
+                                  <canvas id="graficaDia" width="900px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="semanal">
                                 <article id="canvas-holder">
-                                  <canvas id="graficaSemana" width="900px" height="570px" wi></canvas>
+                                  <canvas id="graficaSemana" width="900px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="mensual">
                                 <article id="canvas-holder">
-                                  <canvas id="graficaMes" width="900px" height="570px" wi></canvas>
+                                  <canvas id="graficaMes" width="900px" height="570px"></canvas>
                                 </article>
                               </article>
                             </article>
