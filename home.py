@@ -46,16 +46,15 @@ def graficaMes():
     mesActual = datetime.date.today()
     mesActual = mesActual.strftime('%m')
     mesActual = int(mesActual)
-    
     listaMeses = []
     listaVentas = []
-    m = datetime.datetime(2014,mesActual,1)
     for i in range(0,7):
+	m = datetime.datetime(2014,mesActual,1)
 	try:
 	    mes = datos[i]
 	except:
 	    mes = [0,0]
-        if int(mes[0]) == mesActual:
+        if int(mes[0]) == int(mesActual):
             listaMeses.append(nombreMes(str(m.strftime('%b'))))
             listaVentas.append(mes[1])
         else:
@@ -70,7 +69,6 @@ def graficaMes():
     for indice in range(len(listaVentas)- 1, -1, -1):
         ventas.append(listaVentas[indice])
         meses.append(listaMeses[indice])
-    
     return meses, ventas
 
 def graficaSemana():
@@ -118,12 +116,12 @@ def graficaDia():
     diaActual = int(obtenerDia())
     listaDias = []
     listaVentas = []
-    for i in range(0,7):
+    for i in range(7):
         try:
 	    dia = datos[i]
 	except:
 	    dia = [0,0]
-        if int(dia[0]) == diaActual:
+        if int(dia[0]) == int(diaActual):
             d = datetime.datetime(year, mes, diaActual)
             listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
             listaVentas.append(float(dia[1]))
