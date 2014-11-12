@@ -6,7 +6,7 @@ import class_db
 from libgral import numeracion_paginas
 from reporte_especifico import cod_tabla
 
-
+NONE = 66
 class Reportes(flask.views.MethodView):
 	def get(self):
 		if len(session) > 1:
@@ -24,4 +24,10 @@ class Reportes(flask.views.MethodView):
 			return redirect(url_for('login'))
 
 	def post(self):
-		pass
+		startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
+		endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
+		indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
+		tableHTML = cod_tabla(startDate, endDate, 0)
+		if len(tableHTML) == NONE:
+			return render_template('reporteFechas.html', tableHTML=tableHTML, indexHTML="")
+		return render_template('reporteFechas.html', tableHTML=tableHTML, indexHTML=indexHTML)    
