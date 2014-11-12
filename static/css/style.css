@@ -41,6 +41,10 @@ body {
   font-size:13px; 
   direction: ltr;
 }
+.graficaHome{
+  width: 900px !important;
+  height: 560px !important;
+}
 
 .tarjetas{
   margin-top: 45px;
