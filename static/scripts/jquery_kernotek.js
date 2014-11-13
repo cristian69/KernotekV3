@@ -1,8 +1,4 @@
 
-
-
-
-
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
 		$("#semana").addClass("hidden");
@@ -150,59 +146,82 @@ function cambiarEstado(parametro){
 }
 
 
-function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, datosMeses){		
-var lineChartData1 = {
-			labels : [labelDias[0],labelDias[1],labelDias[2],labelDias[3],labelDias[4],labelDias[5],labelDias[6]],
-			datasets : [
-				{
-					label: "Primera serie de datos",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "#009DE0",
-					pointColor : "rgba(151,187,205,1)",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(0,247,247,1)",
-					data : [datosDias[0],datosDias[1],datosDias[2],datosDias[3],datosDias[4],datosDias[5],datosDias[6]]
-				}
-			]
-
+function graficaDias(labelDias, datosDias){
+	$("#diaria").addClass("active");
+	$("#graficaenDias").addClass("active");
+	$("#semanal").removeClass("active");
+	$("#graficaenSemanas").removeClass("active");
+	$("#mensual").removeClass("active");
+	$("#graficaenMeses").removeClass("active");
+	var lineChartData1 = {
+		labels : [labelDias[0],labelDias[1],labelDias[2],labelDias[3],labelDias[4],labelDias[5],labelDias[6]],
+		datasets :
+		{
+			label: "Primera serie de datos",
+			fillColor : "rgba(220,220,220,0.2)",
+			strokeColor : "#6b9dfa",
+			pointColor : "#1e45d7",
+			pointStrokeColor : "#fff",
+			pointHighlightFill : "#fff",
+			pointHighlightStroke : "rgba(220,220,220,1)",
+			data : [datosDias[0],datosDias[1],datosDias[2],datosDias[3],datosDias[4],datosDias[5],datosDias[6]]
 		}
-		var lineChartData2 = {
-			labels : [labelSemanas[0], labelSemanas[1], labelSemanas[2], labelSemanas[3], labelSemanas[4], labelSemanas[5], labelSemanas[6]],
-			datasets : [
-				{
-					label: "Primera serie de datos",
-					fillColor: "rgba(151,187,205,0.2)",
-		            strokeColor: "#009DE0",
-		            pointColor: "rgba(151,187,205,1)",
-		            pointStrokeColor: "#fff",
-		            pointHighlightFill: "#fff",
-		            pointHighlightStroke: "rgba(151,187,205,1)",
-					data : [datosSemanas[0], datosSemanas[1], datosSemanas[2], datosSemanas[3], datosSemanas[4], datosSemanas[5], datosSemanas[6]]
-				}
-			]
-
-		}
-		var lineChartData3 = {
-			labels : [labelMeses[0], labelMeses[1], labelMeses[2], labelMeses[3], labelMeses[4], labelMeses[5], labelMeses[6]],
-			datasets : [
-				{
-					label: "Primera serie de datos",
-					fillColor: "rgba(220,220,220,0.2)",
-		            strokeColor: "#009DE0",
-		            pointColor: "rgba(151,187,205,1)",
-		            pointStrokeColor: "#fff",
-		            pointHighlightFill: "#fff",
-		            pointHighlightStroke: "rgba(220,220,220,1)",
-					data : [datosMeses[0], datosMeses[1], datosMeses[2], datosMeses[3], datosMeses[4], datosMeses[5], datosMeses[6]]
-				}
-			]
-
-		}
-		var ctx1 = document.getElementById("graficaDia").getContext("2d");
-		window.myPie = new Chart(ctx1).Line(lineChartData1);
-		var ctx2 = document.getElementById("graficaSemana").getContext("2d");
-		window.myPie = new Chart(ctx2).Line(lineChartData2);
-		var ctx3 = document.getElementById("graficaMes").getContext("2d");
-		window.myPie = new Chart(ctx3).Line(lineChartData3);
+		]
 	}
+	var ctx4 = document.getElementById("graficaDia").getContext("2d");
+	window.myPie = new Chart(ctx4).Line(lineChartData1, {responsive:true});
+}
+
+
+
+function graficaSemanas(labelSemanas, datosSemanas){
+	$("#diaria").removeClass("active");
+	$("#graficaenDias").removeClass("active");
+	$("#semanal").addClass("active");
+	$("#graficaenSemanas").addClass("active");
+	$("#mensual").removeClass("active");
+	$("#graficaenMeses").removeClass("active");
+	var lineChartData2 = {
+		labels : [labelSemanas[0], labelSemanas[1], labelSemanas[2], labelSemanas[3], labelSemanas[4], labelSemanas[5], labelSemanas[6]],
+		datasets : [
+		{
+			label: "Primera serie de datos",
+			fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "#009DE0",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+			data : [datosSemanas[0], datosSemanas[1], datosSemanas[2], datosSemanas[3], datosSemanas[4], datosSemanas[5], datosSemanas[6]]
+		}
+		]
+	}
+	var ctx2 = document.getElementById("graficaSemana").getContext("2d");
+	window.myPie = new Chart(ctx2).Line(lineChartData2, {responsive: true});
+}
+
+function graficaMeses(labelMeses, datosMeses){
+	$("#diaria").removeClass("active");
+	$("#graficaenDias").removeClass("active");
+	$("#semanal").removeClass("active");
+	$("#graficaenSemanas").removeClass("active");
+	$("#mensual").addClass("active");
+	$("#graficaenMeses").addClass("active");
+	var lineChartData3 = {
+		labels : [labelMeses[0], labelMeses[1], labelMeses[2], labelMeses[3], labelMeses[4], labelMeses[5], labelMeses[6]],
+		datasets : [
+		{
+			label: "Primera serie de datos",
+			fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "#009DE0",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+			data : [datosMeses[0], datosMeses[1], datosMeses[2], datosMeses[3], datosMeses[4], datosMeses[5], datosMeses[6]]
+		}
+		]
+	}
+	var ctx3 = document.getElementById("graficaMes").getContext("2d");
+	window.myPie = new Chart(ctx3).Line(lineChartData3, {responsive: true});
+}
