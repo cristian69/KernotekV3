@@ -35,17 +35,17 @@
               <i class="fa fa-user"></i>{{ session['fullname']}}
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{ url_for('home') }}">
               <i class="fa fa-home"></i>Inicio
               </a>
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{ url_for('reportes') }}">
               <i class="fa fa-bar-chart-o"></i>Reportes
               </a>
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{ url_for('turnos') }}">
               <i class="fa fa-calendar-o"></i>Corte de turno
               </a>
             </li>
@@ -76,7 +76,7 @@
                   </article>
                 </article>
                 <article class="portlet-body form text-center ">
-                  <form  class="form-horizontal" >
+                  <form  class="form-horizontal" action="{{ url_for('turnos')}}" method="post">
                     <article class="form-body">
                       <article class="row">
                         <article class="col-md-3">
@@ -186,10 +186,10 @@
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
-                                    <select class="form-control" name="" id="tiposCortes">
+                                    <select class="form-control" name="tiposCortes" id="tiposCortes">
                                       <option value=""></option>
-                                      <option value="manual">Corte manual</option>
-                                      <option value="automatico">Corte automático</option>
+                                      <option value="0">Corte manual</option>
+                                      <option value="1">Corte automático</option>
                                     </select>
                                   </article>
                                 </article>
@@ -199,7 +199,6 @@
                         </article>
                       </article>
                     </article>
-                  </form>
                   <article class="form-actions text-right">
                     <input type="text" class="form-control hidden" id="banderaPosicion" value="1">
                     <button type="button" class="btn hidden" id="backTurno"><i class="fa fa-angle-double-left"></i> Anterior </button>
@@ -207,6 +206,7 @@
                     <button type="button" class="btn default hidden" id="cancelarAccion">Cancelar</button>
                     <button type="button" class="btn" id="nextTurno"> Siguiente <i class="fa fa-angle-double-right"></i></button>
                   </article>
+                </form>
                 </article>
               </article>
             </article>
