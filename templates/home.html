@@ -106,7 +106,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Generar reporte</h4>
                   </article>
-                  <form action="#" class="form-horizontal" id="submit_form">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -228,7 +228,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
-                  <form action="#" class="form-horizontal" id="submit_form">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body">
@@ -241,14 +241,14 @@
                               </label>
                             </article>
                             <article class="col-md-7 input-icon">
-                              <i class="fa fa-dollar"></i><input class="form-control" type="text"/>
+                              <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa"/>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarApertura">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarApertura" name="submit" value="tarifa">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -263,7 +263,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar tiempo de apertura</h4>
                   </article>
-                  <form action="#" class="form-horizontal" id="submit_form">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -276,14 +276,14 @@
                               </label>
                             </article>
                             <article class="col-md-7 input-icon">
-                              <i class="fa fa-history"></i><input type="text" class="form-control">
+                              <i class="fa fa-history"></i><input type="text" class="form-control" name="nuevoTiempo">
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarAcceso">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarAcceso" name="submit" value="tarifa">Aceptar</button>
                     </article>
                   </form>
                 </article>
