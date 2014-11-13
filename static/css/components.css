@@ -3913,17 +3913,16 @@ Dashboard stats
 
 .dashboard-stat .visual > i {
   margin-left: -37px;
-  font-size: 95px;
-  line-height: 190px;
+  font-size: 90px;
+  line-height: 43px;
 }
 .dashboard-stat .details {
-  right: 15px;
-  padding-right: 15px;
+  right: 0px;
+  padding-right: 0px;
 }
 .dashboard-stat .details .number {
-  padding-top: 50px;
-  text-align: center;
-  font-size: 35px;
+  padding-top: 40px;
+  font-size: 30px;
   line-height: 36px;
   letter-spacing: -1px;
   margin-bottom: 0px;

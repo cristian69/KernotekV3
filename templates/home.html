@@ -35,17 +35,17 @@
               <i class="fa fa-user"></i>{{ session['fullname']}}
             </li>
             <li class="tooltips">
-              <a href="{{ url_for('home') }}">
+              <a href="">
               <i class="fa fa-home"></i>Inicio
               </a>
             </li>
             <li class="tooltips">
-              <a href="{{ url_for('reportes') }}">
+              <a href="">
               <i class="fa fa-bar-chart-o"></i>Reportes
               </a>
             </li>
             <li class="tooltips">
-              <a href="{{ url_for('turnos') }}">
+              <a href="">
               <i class="fa fa-calendar-o"></i>Corte de turno
               </a>
             </li>
@@ -55,7 +55,7 @@
               </a>
             </li>
             <li class="tooltips">
-              <a class="times"onclick="$('#sistema').modal('show');">
+              <a href="" onclick="$('sistema').modal('show');">
                 <i class="fa fa fa-power-off"></i>Apagar<!--fa-sign-out-->
               </a>
             </li>
@@ -91,7 +91,7 @@
                     </article>
                     <article class="modal-footer">
                       <button type="submit" class="btn blue " id="">Aceptar</button>
-                      <button type="button" class="btn default" data-dismiss="modal">cancelar</button>
+                      <button type="button" class="btn " id="">Cancelar</button>
                     </article>
                   </form>
                 </article>
@@ -106,7 +106,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Generar reporte</h4>
                   </article>
-                  <form action="{{ url_for('home')}}" class="form-horizontal" id="submit_form" method="post">
+                  <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -212,7 +212,7 @@
                       <ul class="pager" id="btnReportes">
                         <li><button type="button" class="btn hidden" id="anteriorReporte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
                         <li><button type="button" class="btn" id="siguienteReporte">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
-                        <li><button type="submit" class="btn blue hidden" id="aceptarReporte" name="submit" value="reporte">Aceptar</button></li>
+                        <li><button type="submit" class="btn blue hidden" id="aceptarReporte">Aceptar</button></li>
                       </ul>
                     </article>
                   </form>
@@ -228,7 +228,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
-                  <form action="{{ url_for('home')}}" class="form-horizontal" id="submit_form" method="post">
+                  <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body">
@@ -241,14 +241,14 @@
                               </label>
                             </article>
                             <article class="col-md-7 input-icon">
-                              <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa"/>
+                              <i class="fa fa-dollar"></i><input class="form-control" type="text"/>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarApertura" name="submit" value="tarifa">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarApertura">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -263,7 +263,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar tiempo de apertura</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
+                  <form action="#" class="form-horizontal" id="submit_form">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -276,14 +276,14 @@
                               </label>
                             </article>
                             <article class="col-md-7 input-icon">
-                              <i class="fa fa-history"></i><input type="text" class="form-control" name="nuevoTiempo">
+                              <i class="fa fa-history"></i><input type="text" class="form-control">
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarAcceso" name="submit" value="tiempoApertura">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarAcceso">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -632,47 +632,6 @@
             </article>
             <article class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
               <article class="col-md-12">
-                <article class="col-lg-12 col-md-12 col-sm-6 col-xs-6 ">
-                  <article class="dashboard-stat">
-                    <article class="portlet light bordered">
-                      <article class="portlet-title">
-                        <article class="caption">
-                          <i class="fa fa-dollar"></i>Sistema.
-                        </article>
-                      </article>
-                      <article class="portlet-body form text-center">
-                        <form  class="form-horizontal" >
-                          <article class="form-body">
-                            <article class="row">
-                              <article class="col-md-12">
-                                <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
-                                    <h4 class="cabeceraTarjeta">Tarifa actual.</h4>
-                                    <article class="col-md-4 visual"><i class="fa fa-dollar"></i></article>
-                                    <article class="col-md-8 details text-center">
-                                      <article class="number">$ {{ dic_home['tarifa']}}0</article>
-                                    </article>
-                                  </article>
-                                </article>
-                                <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
-                                    <h4 class="cabeceraTarjeta">Tiempo de apertura.</h4>
-                                    <article class="col-md-4 visual"><i class="fa fa-history"></i></article>
-                                    <article class="col-md-8 details text-center">
-                                      <article class="number">{{ dic_home['t_apertura']}} S.</article>
-                                    </article>
-                                  </article>
-                                </article>
-                              </article>
-                            </article>
-                          </article>
-                        </form>
-                      </article>
-                    </article>
-                  </article>
-                </article>
-              </article>
-              <article class="col-md-12">
                 <article class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
                   <article class="dashboard-stat">
                     <article class="portlet light bordered">
@@ -688,20 +647,20 @@
                               <article class="col-md-12 text-center">
                                 <article class="col-md-6 ">
                                   <article class="col-md-12 form-group valorSistema times" onclick="$('#modalReporteTurno').modal('show');">
-                                    <h4 class="cabeceraTarjeta">Ventas del turno.</h4>
-                                    <article class="col-md-4 visual"><i class="fa fa-ticket"></i></article>
-                                    <article class="col-md-8 details text-center">
+                                    <h4 class="cabeceraTarjeta text-center">Ventas del turno.</h4>
+                                    <article class="col-md-12 details text-center">
                                       <article class="number">${{dic_home['ventasTurno']}}0</article>
                                     </article>
+                                    <article class="col-md-12 visual"><i class="fa fa-ticket"></i></article>
                                   </article>
                                 </article>
                                 <article class="col-md-6 ">
                                   <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTurno').modal('show');">
-                                    <h4 class="cabeceraTarjeta">Tipo de corte.</h4>
-                                    <article class="col-md-4 visual"><i class="fa fa-calendar"></i></article>
-                                    <article class="col-md-8 details text-center">
+                                    <h4 class="cabeceraTarjeta text-center">Tipo de corte.</h4>
+                                    <article class="col-md-12 details text-center">
                                       <article class="number">{{dic_home['tipoCorte']}}</article>
                                     </article>
+                                    <article class="col-md-12 visual"><i class="fa fa-calendar"></i></article>
                                   </article>
                                 </article>
                               </article>
@@ -713,6 +672,48 @@
                   </article>
                 </article>
               </article>
+              <article class="col-md-12">
+                <article class="col-lg-12 col-md-12 col-sm-6 col-xs-6 ">
+                  <article class="dashboard-stat">
+                    <article class="portlet light bordered">
+                      <article class="portlet-title">
+                        <article class="caption">
+                          <i class="fa fa-dollar"></i>Sistema.
+                        </article>
+                      </article>
+                      <article class="portlet-body form text-center">
+                        <form  class="form-horizontal" >
+                          <article class="form-body">
+                            <article class="row">
+                              <article class="col-md-12 text-center">
+                                <article class="col-md-6 ">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
+                                    <h4 class="cabeceraTarjeta text-center">Tarifa actual.</h4>
+                                    <article class="col-md-12 details text-center">
+                                      <article class="number">$ {{ dic_home['tarifa']}}0</article>
+                                    </article>
+                                    <article class="col-md-12 visual"><i class="fa fa-dollar"></i></article>
+                                  </article>
+                                </article>
+                                <article class="col-md-6 text-center">
+                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
+                                    <h4 class="cabeceraTarjeta text-center">Tiempo de apertura.</h4>
+                                    <article class="col-md-12 details text-center">
+                                      <article class="number">{{ dic_home['t_apertura']}} S.</article>
+                                    </article>
+                                    <article class="col-md-12 visual"><i class="fa fa-history"></i></article>
+                                  </article>
+                                </article>
+                              </article>
+                            </article>
+                          </article>
+                        </form>
+                      </article>
+                    </article>
+                  </article>
+                </article>
+              </article>
+              
             </article>
           </article>
         </article>
