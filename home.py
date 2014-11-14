@@ -25,16 +25,25 @@ class Home(flask.views.MethodView):
     def get(self):
         if len(session) > 1:
             dic_home = datos_home()
+            typeGrafic = ""
 	    typeGrafic = request.args.get('grafica')
-	    if typeGrafic == "diaria" or typeGrafic == "None":
+            # print typeGrafic
+            # print type(typeGrafic)
+            # print len(typeGrafic)
+	    if typeGrafic == "diaria":
+                print "entrando a la grafica diaria"
 		dayGrafic, sells = graficaDia()
-		return render_template('home.html', dic_home=dic_home, dias=dayGrafic, valoresDia=sells, bandera="graficaDia")
+		return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia")
 	    elif typeGrafic == "semanal":
 		weekGrafic, sells = graficaSemana()
-		return render_template('home.html', dic_home=dic_home, semanas=weekGrafic, valoresSemana=sells, bandera="graficaSemana")
-            else:
+		return render_template('home.html', dic_home=dic_home, labels=weekGrafic, datos=sells, bandera="graficaSemana")
+            elif typeGrafic == "mensual":
 		monthGrafic, sells = graficaMes()
-	    	return render_template('home.html',dic_home=dic_home, meses=monthGrafic, valoresMes=sells, bandera="graficaMes")
+	    	return render_template('home.html',dic_home=dic_home, labels=monthGrafic, datos=sells, bandera="graficaMes")
+            else:
+                dayGrafic, sells = graficaDia()
+                return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia")
+
         else:
             ip = request.remote_addr
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
