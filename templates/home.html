@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficaDias({{dic_home['dias']}}, {{dic_home['valoresDia']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficasHome('{{bandera}}',{{dic_home['dias']}}, {{dic_home['valoresDia']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -597,9 +597,9 @@
                         </article>
                         <article class="tools">
                           <ul class="nav nav-tabs">
-                            <li class="active"><a href="" onclick="graficaDias({{dic_home['dias']}}, {{dic_home['valoresDia']}});" data-toggle="pill">Diaria</a></li>
-                            <li><a href="" onclick="graficaSemanas({{dic_home['semanas']}}, {{dic_home['valoresSemana']}});" data-toggle="pill">Semanal</a></li>
-                            <li><a href="" onclick="graficaMeses({{dic_home['meses']}}, {{dic_home['valoresMes']}});" data-toggle="pill">Mensual</a></li>
+                            <li  id="diaria"><a href="" onclick="/home/?grafica=dia" data-toggle="pill">Diaria</a></li>
+                            <li id="semanal"><a href="" onclick="/home/?grafica=semana" data-toggle="pill">Semanal</a></li>
+                            <li id="mensual"><a href="" onclick="/home/?grafica=mes" data-toggle="pill">Mensual</a></li>
                           </ul>
                         </article>
                       </article>
@@ -607,17 +607,17 @@
                         <form  class="form-horizontal" >
                           <article class="form-body">
                             <article class="tab-content times" onclick="$('#generarReportes').modal('show');">
-                              <article class="tab-pane " id="diaria">
+                              <article class="tab-pane " id="graficaenDias">
                                 <article id="canvas-holder grafica">
                                   <canvas id="graficaDia" width="960px" height="570px"></canvas>
                                 </article>
                               </article>
-                              <article class="tab-pane" id="semanal">
+                              <article class="tab-pane" id="graficaenSemanas">
                                 <article id="canvas-holder grafica">
                                   <canvas id="graficaSemana" width="960px" height="570px"></canvas>
                                 </article>
                               </article>
-                              <article class="tab-pane" id="mensual">
+                              <article class="tab-pane" id="graficaenMeses">
                                 <article id="canvas-holder grafica">
                                   <canvas id="graficaMes" width="960px" height="570px"></canvas>
                                 </article>
