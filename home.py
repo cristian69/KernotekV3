@@ -105,121 +105,92 @@ def graficaMes():
     mesActual = int(mesActual)
     listaMeses = []
     listaVentas = []
-    for i in range(0,7):
-	m = datetime.datetime(2014,mesActual,1)
-	try:
-	    mes = datos[i]
-	except:
-	    mes = [0,0]
-        if int(mes[0]) == int(mesActual):
-            listaMeses.append(nombreMes(str(m.strftime('%b'))))
-            listaVentas.append(mes[1])
-        else:
-            listaMeses.append(nombreMes(str(m.strftime('%b'))))
-            listaVentas.append(float('0.0'))
-        mesActual -= 1
-        if mesActual == 0:
-            mesActual = 12
+    listaPibote = []
+    for mes in range(7):
+	m = [mesActual- mes, 0]
+	listaPibote.append(m)
+    for mes in listaPibote:
+	for d in datos:
+	    if int(mes[0]) == int(d[0]):
+		mes[1] = float(d[1])
+    # Format
+    for mes in listaPibote:
+	m = datetime.datetime(2014,mes[0],1)
+        listaMeses.append(nombreMes(str(m.strftime('%b'))))
+        listaVentas.append(mes[1])
 
     meses = []
     ventas = []
+    
     for indice in range(len(listaVentas)- 1, -1, -1):
         ventas.append(listaVentas[indice])
         meses.append(listaMeses[indice])
+    
     return meses, ventas
 
 def graficaSemana():
     year = datetime.date.today()
     year = int(year.strftime('%Y'))
-
+	
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
     listaSemanas = []
     listaVentas = []
     datos = class_db.ventasSemana()
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
-    for i in range(0,7):
-	try:
-	    semana = datos[i]
-	except:
-	    semana = [0,0]
-        if int(semana[0]) == int(semanaActual):
-            listaSemanas.append(inicioSemana(year, semanaActual + 1))
-            listaVentas.append(semana[1])
-        else:
-            listaSemanas.append(inicioSemana(year, semanaActual + 1))
-            listaVentas.append(float(0))
 
-        semanaActual -= 1
-        if semanaActual == 0:
-            semanaActual = 51
-            year -= 1
-
+    listaPibote = []
+    for semana in range(7):
+	i = [semanaActual - semana, 0]
+	listaPibote.append(i)
+    
+    for semana in listaPibote:
+	for d in datos:
+	    if int(semana[0]) == int(d[0]):
+		semana[1] = d[1]
+    # Format 
+    for semana in listaPibote:
+	listaSemanas.append(inicioSemana(year, semana[0] + 1))
+	listaVentas.append(semana[1])
     semanas = []
     ventas = []
 
     for indice in range(len(listaSemanas)-1, -1, -1):
         ventas.append(listaVentas[indice])
         semanas.append(listaSemanas[indice])
-
+    
     return semanas, ventas
 
 def graficaDia():
     datos = class_db.ventasDia()
-    print datos
     fecha = str(ObtenerFecha()).split('-')
     year = int(fecha[0])
     mes = int(fecha[1])
-    ultimoDia = monthrange(year,mes)
-    ultimoDia = int(ultimoDia[1])
     diaActual = int(obtenerDia())
     listaDias = []
     listaVentas = []
-    listaPrueba = []
-    for x in range(7):
-	try:
-	    dia = datos[x]
-	except:
-	    dia = [diaActual, 0]
-	lista = []
-	print dia[0], diaActual - x
-	if int(dia[0]) == diaActual - x:
-	    listaPrueba.append(dia)
-	else:
-	    lista = [diaActual, 0]
-	    listaPrueba.append(lista)
-	diaActual -= 1
-    
-    diaActual = int(obtenerDia())
-    for i in range(7):
-        try:
-	    dia = datos[i]
-	except:
-	    dia = [0,0]
-        if int(dia[0]) == int(diaActual) - i:
-            d = datetime.datetime(year, mes, diaActual)
-            listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
-            listaVentas.append(float(dia[1]))
-        else:
-            d = datetime.datetime(year, mes, diaActual)
-            listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
-            listaVentas.append(float(0))
+    listaPibote = []
 
-        diaActual -= 1
-        if diaActual == 0:
-            fecha = str(ObtenerFecha()).split('-')
-            year = int(fecha[0])
-            mes = int(fecha[1]) - 1
-            if mes == 0:
-                mes = 12
-                year -= 1
-            ultimoDia = monthrange(year,mes)
-            diaActual = int(ultimoDia[1])
+    for dia in range(7):
+	i = [diaActual - dia, 0]
+	listaPibote.append(i)
+    
+    for dia in listaPibote:
+	for x in datos:
+	    if int(dia[0]) == int(x[0]):
+		dia[1] = int(x[1])
+
+    
+    for dia in listaPibote:
+	d = datetime.datetime(year,mes, int(dia[0]))
+	listaDias.append(str(d.strftime('%b')) +' '+  str(d.strftime('%d')))
+	listaVentas.append(float(dia[1]))
+
     dias = []
     ventas = []
     for indice in range(len(listaDias)-1, -1, -1):
         ventas.append(listaVentas[indice])
         dias.append(str(listaDias[indice]))
-
+   
     return dias, ventas
 
 def datos_home():
