@@ -146,6 +146,7 @@ def graficaSemana():
 
 def graficaDia():
     datos = class_db.ventasDia()
+    print datos
     fecha = str(ObtenerFecha()).split('-')
     year = int(fecha[0])
     mes = int(fecha[1])
@@ -154,12 +155,28 @@ def graficaDia():
     diaActual = int(obtenerDia())
     listaDias = []
     listaVentas = []
+    listaPrueba = []
+    for x in range(7):
+	try:
+	    dia = datos[x]
+	except:
+	    dia = [diaActual, 0]
+	lista = []
+	print dia[0], diaActual - x
+	if int(dia[0]) == diaActual - x:
+	    listaPrueba.append(dia)
+	else:
+	    lista = [diaActual, 0]
+	    listaPrueba.append(lista)
+	diaActual -= 1
+    
+    diaActual = int(obtenerDia())
     for i in range(7):
         try:
 	    dia = datos[i]
 	except:
 	    dia = [0,0]
-        if int(dia[0]) == int(diaActual):
+        if int(dia[0]) == int(diaActual) - i:
             d = datetime.datetime(year, mes, diaActual)
             listaDias.append( nombreMes(str(d.strftime('%b'))) + " "+str(d.strftime('%d')) )
             listaVentas.append(float(dia[1]))
@@ -178,7 +195,6 @@ def graficaDia():
                 year -= 1
             ultimoDia = monthrange(year,mes)
             diaActual = int(ultimoDia[1])
-
     dias = []
     ventas = []
     for indice in range(len(listaDias)-1, -1, -1):

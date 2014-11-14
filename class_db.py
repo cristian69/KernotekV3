@@ -662,7 +662,7 @@ def ventasSemana():
 
 def ventasMes():
     crear_conexion()
-    query = " select month(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 1 month) group by month(datetimesell);"
+    query = " select month(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 1 month) group by month(datetimesell) desc;"
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
