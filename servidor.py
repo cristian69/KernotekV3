@@ -24,8 +24,8 @@ tarifaActual = 0  # Tarifa actual
 tiempoActual = 0  # Tiempo de apertura actual
 turnoActual = 0
 
-maxIntentos = 4
-DEBUG = 1
+maxIntentos = 20
+DEBUG = 0
 
 #BasicValidator = "/home/linaro/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
 BasicValidator = "/home/odroid/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
@@ -81,7 +81,7 @@ def Socket():
         if corteAutomatico:
             hacerCorteAutomatico()
 
-        time.sleep(0.1)  # Tiempo de poleo
+        time.sleep(0.01)  # Tiempo de poleo
         datosSocket = select.select([sock], [], [], 0.5)
         cambioTarifa = cambiarTarifa()  # Cambio de tarifa
         cambioTiempo = cambiarTiempoA()  # Cambio de tiempo de apertura

@@ -19,12 +19,22 @@ SHIFT_REPORT = "turno"
 DATES_REPORT = "fechas"
 CHANGE_RATE = "tarifa"
 CHANGE_TIME_OPEN = "tiempoApertura"
+CUT_SHIFT = "aceptarCorte"
 
 class Home(flask.views.MethodView):
     def get(self):
         if len(session) > 1:
             dic_home = datos_home()
-            return render_template('home.html',dic_home=dic_home)
+	    typeGrafic = request.args.get('grafica')
+	    if typeGrafic == "diaria" or typeGrafic == "None":
+		dayGrafic, sells = graficaDia()
+		return render_template('home.html', dic_home=dic_home, dias=dayGrafic, valoresDia=sells, bandera="graficaDia")
+	    elif typeGrafic == "semanal":
+		weekGrafic, sells = graficaSemana()
+		return render_template('home.html', dic_home=dic_home, semanas=weekGrafic, valoresSemana=sells, bandera="graficaSemana")
+            else:
+		monthGrafic, sells = graficaMes()
+	    	return render_template('home.html',dic_home=dic_home, meses=monthGrafic, valoresMes=sells, bandera="graficaMes")
         else:
             ip = request.remote_addr
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
@@ -32,6 +42,7 @@ class Home(flask.views.MethodView):
 
     def post(self):
         operation = request.form['submit']
+        flag = ""
         print operation
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
@@ -52,14 +63,21 @@ class Home(flask.views.MethodView):
         if operation == CHANGE_RATE:
             newRate = request.form['nuevaTarifa']
             class_db.cambiarTarifa(newRate)
+            flag = "tarifaExitosa"
 
         if operation == CHANGE_TIME_OPEN:
             newTime = request.form['nuevoTiempo']
             class_db.cambiarTiempoApertura(newTime)
+            flag = "tiempoExitoso"
+
+        if operation == CUT_SHIFT:
+            class_db.activarCorteTurno()
+            time.sleep(2)  # Espera a que el corte de turno se ejecute
+            flag = "corteExitoso"
 
         dic_home = datos_home()
         # return render_template('reporteFechas.html')
-        return render_template('home.html',dic_home=dic_home)
+        return render_template('home.html',dic_home=dic_home, bandera=flag)
 
 
 def inicioSemana(year, numSemana):

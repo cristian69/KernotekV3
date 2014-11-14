@@ -401,7 +401,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Corte de turno.</h4>
                   </article>
-                  <form action="#" class="form-horizontal" id="submit_form">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -572,11 +572,11 @@
                     <article class="modal-footer">
                       <ul class="pager" id="">
                         <input type="text" class="control-form hidden" id="valorPestaña" value="1">
-                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte"></i>Aceptar</button></li>
+                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
                         <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
                         <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
                         <li><button type="button" class="btn" id="siguienteCorte">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
-                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccion">Aceptar</button></li>
+                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccion" name="submit" value="modalTurno">Aceptar</button></li>
                       </ul>
                     </article>
                   </form>

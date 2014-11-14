@@ -3,6 +3,7 @@ import flask
 from flask import render_template, redirect, url_for, session, request
 import class_db
 import libgral
+import time
 
 class Turnos(flask.views.MethodView):
 	def get(self):
@@ -12,6 +13,8 @@ class Turnos(flask.views.MethodView):
 	def post(self):
 		option = request.form.getlist('seleccionarAccion')
 		option = option[0]
+		print option
+		bandera = ""
 		if option == "cambiar":
 			typeCut = request.form.getlist('tiposCortes')
 			typeCut = typeCut[0]
@@ -26,14 +29,14 @@ class Turnos(flask.views.MethodView):
 			if typeLapse == "cadaSemana":
 				dayWeek = request.form.getlist('diaSem')
 				dayWeek = dayWeek[0]
-				time = request.form['hora']
-				timeAutoCut = dayWeek + '|' + time
+				timeCut = request.form['hora']
+				timeAutoCut = dayWeek + '|' + timeCut
 				class_db.registroProxCorteAuto("")
 			if typeLapse == 'cadaMes':
 				dayMonth = request.form.getlist('diaMes')
 				dayMonth = dayMonth[0]
-				time = request.form['hora']
-				timeAutoCut = dayMonth + '|' + time
+				timeCut = request.form['hora']
+				timeAutoCut = dayMonth + '|' + timeCut
 				class_db.registroProxCorteAuto("")
 			if typeLapse == 'cadaDetHora':
 				timeAutoCut = request.form['hora']
@@ -44,4 +47,10 @@ class Turnos(flask.views.MethodView):
 			class_db.tipoTiempoAutomatico(typeLapse)
 			class_db.tiempoCorteAuto(timeAutoCut)	
 			return render_template('corteDeTurno.html', bandera=bandera)
-		return render_template('corteDeTurno.html')
+
+		if option == "corte":
+			class_db.activarCorteTurno()
+			time.sleep(2)  # Espera a que el corte de turno se ejecute
+			bandera = "corteExitoso"
+
+		return render_template('corteDeTurno.html', bandera=bandera)
