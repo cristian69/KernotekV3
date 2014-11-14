@@ -24,7 +24,16 @@ class Home(flask.views.MethodView):
     def get(self):
         if len(session) > 1:
             dic_home = datos_home()
-            return render_template('home.html',dic_home=dic_home)
+	    typeGrafic = request.args.get('grafica')
+	    if typeGrafic == "diaria" or typeGrafic == "None":
+		dayGrafic, sells = graficaDia()
+		return render_template('home.html', dic_home=dic_home, dias=dayGrafic, valoresDia=sells, bandera="graficaDia")
+	    elif typeGrafic == "semanal":
+		weekGrafic, sells = graficaSemana()
+		return render_template('home.html', dic_home=dic_home, semanas=weekGrafic, valoresSemana=sells, bandera="graficaSemana")
+            else:
+		monthGrafic, sells = graficaMes()
+	    	return render_template('home.html',dic_home=dic_home, meses=monthGrafic, valoresMes=sells, bandera="graficaMes")
         else:
             ip = request.remote_addr
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
