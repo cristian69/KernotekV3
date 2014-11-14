@@ -27,17 +27,13 @@ class Home(flask.views.MethodView):
             dic_home = datos_home()
             typeGrafic = ""
 	    typeGrafic = request.args.get('grafica')
-            # print typeGrafic
-            # print type(typeGrafic)
-            # print len(typeGrafic)
-	    if typeGrafic == "diaria":
-                print "entrando a la grafica diaria"
+	    if typeGrafic == "dia":
 		dayGrafic, sells = graficaDia()
 		return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia")
-	    elif typeGrafic == "semanal":
+	    elif typeGrafic == "semana":
 		weekGrafic, sells = graficaSemana()
 		return render_template('home.html', dic_home=dic_home, labels=weekGrafic, datos=sells, bandera="graficaSemana")
-            elif typeGrafic == "mensual":
+            elif typeGrafic == "mes":
 		monthGrafic, sells = graficaMes()
 	    	return render_template('home.html',dic_home=dic_home, labels=monthGrafic, datos=sells, bandera="graficaMes")
             else:
