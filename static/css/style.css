@@ -2912,7 +2912,6 @@ Dashboard stats
 .dashboard-stat .details .number {    
   padding-top: 15px;
   font-size: 30px;
-  line-height: 34px;
   letter-spacing: -1px;
   margin-bottom: 5px;
   font-weight: 300;
@@ -3242,7 +3241,6 @@ Tiles(new in v1.1.1)
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.01em;
-  line-height: 14px;
   margin-bottom: 8px;
   margin-right: 10px;
 }
@@ -4474,6 +4472,7 @@ UI Loading
 
 
 .cabeceraTarjeta{
+  padding-top: 10px;
   color:#007CC0;
   font-size: 20px !important;
 }
@@ -4647,7 +4646,7 @@ UI Loading
 @media (min-width: 1530px) and (max-width: 1550px) { 
   .valorSistema{
     height: 126px;
-    background-color:red;
+    background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
   }
@@ -4670,45 +4669,212 @@ UI Loading
 @media (min-width: 1490px) and (max-width: 1510px) { 
   .valorSistema{
     height: 120px;
-    background-color:red;
+    background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 17px !important;
   }
 
 }
 @media (min-width: 1470px) and (max-width: 1490px) { 
   .valorSistema{
-    height: 124px;
+    height: 117px;
     background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 17px !important;
   }
 
 }
 @media (min-width: 1450px) and (max-width: 1470px) { 
   .valorSistema{
-    height: 124px;
+    height: 112px;
     background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 17px !important;
   }
 
 }
 @media (min-width: 1430px) and (max-width: 1450px) { 
   .valorSistema{
-    height: 124px;
+    height: 108px;
     background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 17px !important;
   }
 
 }
 @media (min-width: 1410px) and (max-width: 1430px) { 
   .valorSistema{
-    height: 124px;
+    height: 105px;
     background-color:#F7F7F7;
   }.dashboard-stat .details .number{
     padding-top: 3px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 17px !important;
   }
 
 }
+
+
+
+
+
+@media (min-width: 1390px) and (max-width: 1410px) { 
+  .valorSistema{
+    height: 102px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 15px !important;
+  }
+
+}
+@media (min-width: 1370px) and (max-width: 1390px) { 
+  .valorSistema{
+    height: 99px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 15px !important;
+  }
+
+}
+@media (min-width: 1350px) and (max-width: 1370px) { 
+  .valorSistema{
+    height: 96px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 15px !important;
+  }
+
+}
+@media (min-width: 1330px) and (max-width: 1350px) { 
+  .valorSistema{
+    height: 93px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 15px !important;
+  }
+
+}
+@media (min-width: 1310px) and (max-width: 1330px) { 
+  .valorSistema{
+    height: 88px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 20px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 15px !important;
+  }
+
+}
+
+
+
+
+
+@media (min-width: 1290px) and (max-width: 1310px) { 
+  .valorSistema{
+    height: 84px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 17px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 14px !important;
+  }
+
+}
+@media (min-width: 1270px) and (max-width: 1290px) { 
+  .valorSistema{
+    height: 80px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 16px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 13px !important;
+  }
+
+}
+@media (min-width: 1250px) and (max-width: 1270px) { 
+  .valorSistema{
+    height: 78px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 16px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 13px !important;
+  }
+
+}
+@media (min-width: 1230px) and (max-width: 1250px) { 
+  .valorSistema{
+    height: 74px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 16px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 13px !important;
+  }
+
+}
+@media (min-width: 1200px) and (max-width: 1230px) { 
+  .valorSistema{
+    height: 72px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 0px !important;
+    font-size: 16px !important;
+  }
+    .cabeceraTarjeta {
+  font-size: 13px !important;
+  }
+
+}
+
+
+@media (max-width: 440px){ 
+  
+}
+
+
