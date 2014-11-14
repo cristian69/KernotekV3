@@ -2911,7 +2911,6 @@ Dashboard stats
 
 .dashboard-stat .details .number {    
   padding-top: 15px;
-  text-align: right;
   font-size: 30px;
   line-height: 34px;
   letter-spacing: -1px;
@@ -4487,9 +4486,6 @@ UI Loading
 @media (min-width: 1890px) and (max-width: 1910px) { 
   .valorSistema{
     height: 190px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color: #F7F7F7;
   }
 
@@ -4499,10 +4495,10 @@ UI Loading
 @media (min-width: 1870px) and (max-width: 1890px) { 
   .valorSistema{
     height: 187px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
@@ -4510,9 +4506,6 @@ UI Loading
 @media (min-width: 1850px) and (max-width: 1870px) { 
   .valorSistema{
     height: 182px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4521,9 +4514,6 @@ UI Loading
 @media (min-width: 1830px) and (max-width: 1850px) { 
   .valorSistema{
     height: 178px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4531,9 +4521,6 @@ UI Loading
 @media (min-width: 1810px) and (max-width: 1830px) { 
   .valorSistema{
     height: 174px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4541,9 +4528,6 @@ UI Loading
 @media (min-width: 1790px) and (max-width: 1810px) { 
   .valorSistema{
     height: 172px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4552,9 +4536,6 @@ UI Loading
 @media (min-width: 1770px) and (max-width: 1790px) { 
   .valorSistema{
     height: 170px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4562,9 +4543,6 @@ UI Loading
 @media (min-width: 1750px) and (max-width: 1770px) { 
   .valorSistema{
     height: 164px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4572,9 +4550,6 @@ UI Loading
 @media (min-width: 1730px) and (max-width: 1750px) { 
   .valorSistema{
     height: 160px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
   }
 
@@ -4583,20 +4558,20 @@ UI Loading
 @media (min-width: 1710px) and (max-width: 1730px) { 
   .valorSistema{
     height: 157px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
 @media (min-width: 1690px) and (max-width: 1710px) { 
   .valorSistema{
     height: 154px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
@@ -4604,91 +4579,136 @@ UI Loading
 @media (min-width: 1670px) and (max-width: 1690px) { 
   .valorSistema{
     height: 151px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
 @media (min-width: 1650px) and (max-width: 1670px) { 
   .valorSistema{
     height: 148px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
 @media (min-width: 1630px) and (max-width: 1650px) { 
   .valorSistema{
     height: 144px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-    background-color:RED;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
 @media (min-width: 1610px) and (max-width: 1630px) { 
   .valorSistema{
-    height: 146px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    height: 140px;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 15px !important;
   }
 
 }
 
 @media (min-width: 1590px) and (max-width: 1610px) { 
   .valorSistema{
-    height: 140px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    height: 136px;
     background-color:#F7F7F7;
+  }
+  .dashboard-stat .details .number{
+    padding-top: 3px !important;
   }
 
 }
 @media (min-width: 1570px) and (max-width: 1590px) { 
   .valorSistema{
-    height: 136px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    height: 132px;
     background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
   }
 
 }
 @media (min-width: 1550px) and (max-width: 1570px) { 
   .valorSistema{
-    height: 132px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
+    height: 130px;
     background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
   }
 
 }
 @media (min-width: 1530px) and (max-width: 1550px) { 
   .valorSistema{
-    height: 128px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-    background-color:#F7F7F7;
+    height: 126px;
+    background-color:red;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
   }
 
 }
-@media (min-width: 15100px) and (max-width: 1530px) { 
+@media (min-width: 1510px) and (max-width: 1530px) { 
   .valorSistema{
     height: 124px;
-    border: 1px solid #e1e1e1;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
     background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
+  }
+
+}
+
+
+
+
+
+@media (min-width: 1490px) and (max-width: 1510px) { 
+  .valorSistema{
+    height: 120px;
+    background-color:red;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
+  }
+
+}
+@media (min-width: 1470px) and (max-width: 1490px) { 
+  .valorSistema{
+    height: 124px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
+  }
+
+}
+@media (min-width: 1450px) and (max-width: 1470px) { 
+  .valorSistema{
+    height: 124px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
+  }
+
+}
+@media (min-width: 1430px) and (max-width: 1450px) { 
+  .valorSistema{
+    height: 124px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
+  }
+
+}
+@media (min-width: 1410px) and (max-width: 1430px) { 
+  .valorSistema{
+    height: 124px;
+    background-color:#F7F7F7;
+  }.dashboard-stat .details .number{
+    padding-top: 3px !important;
   }
 
 }
