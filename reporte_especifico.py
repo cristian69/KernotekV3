@@ -67,7 +67,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     cabezerasDisponibles = class_db.columnas_habilitadas()
     codigo_tabla = ""
     bandera_color = True
-    codigo_tabla += str('<div class="portlet ligthx bordered">')  # Código del div
+    codigo_tabla += str('<div class="portlet ligth bordered">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + fecha_inicio + """ a """ + fecha_fin + """
@@ -80,7 +80,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
           <div class="portlet-body">
             <table class="table table-bordered  table-condensed flip-content">""")
 
-    codigo_tabla += str('<thead class="flip-content text-center ">')  # Etiqueta de head para la tabla
+    codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras
     dicVenta = []
     for cabezera in cabezerasDisponibles:
