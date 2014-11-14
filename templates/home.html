@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficasHome('{{bandera}}',{{dic_home['dias']}}, {{dic_home['valoresDia']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficasHome('{{bandera}}',{{labels}}, {{datos}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -71,6 +71,12 @@
     <section class="page-container">
       <article class="page-content">
         <article class="row tarjetas">
+          <article class="col-md-12">
+            <article class="alert alert-info hidden" id="errorServicio">
+              <button class="close" data-close="alert"></button>
+              <span>Operoción no disponible, verifique el estado actual del sistema</span>
+            </article>
+          </article>
           <article class="col-md-12">
             <article id="sistema" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
               <article class="modal-dialog">
