@@ -32,6 +32,7 @@ class Home(flask.views.MethodView):
 
     def post(self):
         operation = request.form['submit']
+        print operation
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
             typeReport = typeReport[0]

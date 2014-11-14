@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficas({{dic_home['dias']}}, {{dic_home['valoresDia']}}, {{dic_home['semanas']}}, {{dic_home['valoresSemana']}}, {{dic_home['meses']}}, {{dic_home['valoresMes']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficaDias({{dic_home['dias']}}, {{dic_home['valoresDia']}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -298,7 +298,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Reporte por turno</h4>
                   </article>
-                  <form action="#" class="form-horizontal" id="submit_form">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
@@ -385,7 +385,7 @@
                       <ul class="pager" id="btnReporteTurno">
                         <li><button type="button" class="btn hidden" id="reporteTurnoAnterior"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
                         <li><button type="button" class="btn" id="reporteTurnoSiguiente">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
-                        <li><button type="submit" class="btn blue hidden" id="reporteTurnoAceptar" value="prueba">Aceptar</button></li>
+                        <li><button type="submit" class="btn blue hidden" id="reporteTurnoAceptar" value="reporteTurno" name="submit">Aceptar</button></li>
                       </ul>
                     </article>
                   </form>
@@ -596,9 +596,9 @@
                         </article>
                         <article class="tools">
                           <ul class="nav nav-tabs">
-                            <li class="active"><a href="#diaria" data-toggle="pill">Diaria</a></li>
-                            <li><a href="#semanal" data-toggle="pill">Semanal</a></li>
-                            <li><a href="#mensual" data-toggle="pill">Mensual</a></li>
+                            <li class="active"><a href="" onclick="graficaDias({{dic_home['dias']}}, {{dic_home['valoresDia']}});" data-toggle="pill">Diaria</a></li>
+                            <li><a href="" onclick="graficaSemanas({{dic_home['semanas']}}, {{dic_home['valoresSemana']}});" data-toggle="pill">Semanal</a></li>
+                            <li><a href="" onclick="graficaMeses({{dic_home['meses']}}, {{dic_home['valoresMes']}});" data-toggle="pill">Mensual</a></li>
                           </ul>
                         </article>
                       </article>
@@ -608,17 +608,17 @@
                             <article class="tab-content times" onclick="$('#generarReportes').modal('show');">
                               <article class="tab-pane active" id="diaria">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaDia" width="900px" height="570px"></canvas>
+                                  <canvas id="graficaDia" width="960px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="semanal">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaSemana" width="900px" height="570px"></canvas>
+                                  <canvas id="graficaSemana" width="960px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="mensual">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaMes" width="900px" height="570px"></canvas>
+                                  <canvas id="graficaMes" width="960px" height="570px"></canvas>
                                 </article>
                               </article>
                             </article>

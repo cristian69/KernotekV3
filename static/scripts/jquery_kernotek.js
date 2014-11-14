@@ -150,7 +150,13 @@ function cambiarEstado(parametro){
 }
 
 
-function graficas(labelDias, datosDias, labelSemanas, datosSemanas, labelMeses, datosMeses){		
+function graficaDias(labelDias, datosDias){
+	$("#diaria").addClass("active");
+	$("#graficaenDias").addClass("active");
+	$("#semanal").removeClass("active");
+	$("#graficaenSemanas").removeClass("active");
+	$("#mensual").removeClass("active");
+	$("#graficaenMeses").removeClass("active");	
 var lineChartData1 = {
 			labels : [labelDias[0],labelDias[1],labelDias[2],labelDias[3],labelDias[4],labelDias[5],labelDias[6]],
 			datasets : [
@@ -167,6 +173,18 @@ var lineChartData1 = {
 			]
 
 		}
+		var ctx1 = document.getElementById("graficaDia").getContext("2d");
+		window.myPie = new Chart(ctx1).Line(lineChartData1, {responsive:true});
+		
+	}
+
+function graficaSemanas(labelSemanas, datosSemanas){		
+		$("#diaria").removeClass("active");
+		$("#graficaenDias").removeClass("active");
+		$("#semanal").addClass("active");
+		$("#graficaenSemanas").addClass("active");
+		$("#mensual").removeClass("active");
+		$("#graficaenMeses").removeClass("active");
 		var lineChartData2 = {
 			labels : [labelSemanas[0], labelSemanas[1], labelSemanas[2], labelSemanas[3], labelSemanas[4], labelSemanas[5], labelSemanas[6]],
 			datasets : [
@@ -183,6 +201,17 @@ var lineChartData1 = {
 			]
 
 		}
+		var ctx2 = document.getElementById("graficaSemana").getContext("2d");
+		window.myPie = new Chart(ctx2).Line(lineChartData2, {responsive:true});
+	}
+
+function graficaMeses(labelMeses, datosMeses){
+	$("#diaria").removeClass("active");
+	$("#graficaenDias").removeClass("active");
+	$("#semanal").removeClass("active");
+	$("#graficaenSemanas").removeClass("active");
+	$("#mensual").addClass("active");
+	$("#graficaenMeses").addClass("active");
 		var lineChartData3 = {
 			labels : [labelMeses[0], labelMeses[1], labelMeses[2], labelMeses[3], labelMeses[4], labelMeses[5], labelMeses[6]],
 			datasets : [
@@ -199,10 +228,6 @@ var lineChartData1 = {
 			]
 
 		}
-		var ctx1 = document.getElementById("graficaDia").getContext("2d");
-		window.myPie = new Chart(ctx1).Line(lineChartData1);
-		var ctx2 = document.getElementById("graficaSemana").getContext("2d");
-		window.myPie = new Chart(ctx2).Line(lineChartData2);
 		var ctx3 = document.getElementById("graficaMes").getContext("2d");
-		window.myPie = new Chart(ctx3).Line(lineChartData3);
+		window.myPie = new Chart(ctx3).Line(lineChartData3, {responsive:true});
 	}
