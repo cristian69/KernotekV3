@@ -54,8 +54,8 @@
               <i class="fa fa-cogs"></i>Configuración
               </a>
             </li>
-            <li class="tooltips">
-              <a href="" onclick="$('sistema').modal('show');">
+            <li class="" onclick="$('#sitema').modal('show')">
+              <a href="" >
                 <i class="fa fa fa-power-off"></i>Apagar<!--fa-sign-out-->
               </a>
             </li>
@@ -239,6 +239,12 @@
                       <article class="form-wizard">
                         <article class="form-body">
                           <article class="col-md-12">
+                            <article class="col-md-12">
+                              <article class="alert alert-danger hidden" id="tarifaIncorrecta">
+                                <button class="close" data-dismiss="alert"></button>
+                                El formato introducido es incorrecto.
+                              </article>
+                            </article>
                             <article class="col-md-5">
                               <label for="Ingresa" class="control-label label-control">
                               <strong>
@@ -247,14 +253,14 @@
                               </label>
                             </article>
                             <article class="col-md-7 input-icon">
-                              <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa"/>
+                              <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa" id="nuevaTarifa"/>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarApertura" name="submit" value="tarifa">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarApertura" name="submit" value="tarifa" onclick="validarNumeros();">Aceptar</button>
                     </article>
                   </form>
                 </article>
