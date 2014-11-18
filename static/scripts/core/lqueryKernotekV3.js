@@ -11,6 +11,9 @@ function home(){
 	$("#seleccionarAccion").select2({
 		placeholder:"seleccionar acción"
 	});
+	$("#seleccionarAccion2").select2({
+		placeholder:"seleccionar acción"
+	});
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
 		radioClass: 'iradio_square-blue',
@@ -348,10 +351,14 @@ var valoresTurnoh=function(){
 	}
 
 
+
+
+
+
 	$("#nextTurno").click(function(){
-		if($("#seleccionarAccion").val()=="corte"){
-			$("#aceptarAccion").removeClass("hidden");
-			$("#cancelarAccion").removeClass("hidden");
+		if($("#seleccionarAccion2").val()=="corte" && $("#configurraCorte").hasClass("hidden")){
+			$("#aAccion").removeClass("hidden");
+			$("#cAccion").removeClass("hidden");
 			$("#nextTurno").addClass("hidden");
 			$("#mturno2").addClass("active");
 			$("#paso2").addClass("active");
@@ -359,17 +366,18 @@ var valoresTurnoh=function(){
 			$("#paso1").removeClass("active");
 			$("#paso2").removeClass("hidden");
 		}
-		if($("#seleccionarAccion").val()=="configurar"){
+
+		if($("#seleccionarAccion2").val()=="configurar"){
 			$("#paso4").removeClass("hidden");
 			$("#paso4").addClass("active");
 			$("#mturno4").addClass("active");
 			$("#mturno1").removeClass("active");
 			$("#paso1").removeClass("active");
-			$("#aceptarAccion").removeClass("hidden");
-			$("#cancelarAccion").removeClass("hidden");
+			$("#aAccion").removeClass("hidden");
+			$("#cAccion").removeClass("hidden");
 			$("#nextTurno").addClass("hidden");
 		}
-		if($("#seleccionarAccion").val()=="cambiar"){
+		if($("#seleccionarAccion2").val()=="cambiar"){
 			$("#paso3").addClass("active");
 			$("#paso3").removeClass("hidden");
 			$("#mturno3").addClass("active");
@@ -378,15 +386,14 @@ var valoresTurnoh=function(){
 			$("#backTurno").removeClass("hidden");
 			$("#banderaPosicion").val("2");
 		}
-
-		if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+		if($("#seleccionarAccion2").val()=="cambiar" && $("#tiposCortes2").val()=="automatico"){
 			$("#paso3").removeClass("active");
 			$("#mturno3").removeClass("active");
 			$("#paso4").addClass("active");
 			$("#paso4").removeClass("hidden");
 			$("#mturno4").addClass("active");
 			$("#nextTurno").addClass("hidden");
-			$("#aceptarAccion").removeClass("hidden");
+			$("#aAccion").removeClass("hidden");
 			$("#banderaPosicion").val("3");
 		}
 	});
@@ -397,10 +404,10 @@ var valoresTurnoh=function(){
 
 
 	/*Cancelar el corte manual*/
-	$("#cancelarAccion").click(function(){
-		if($("#seleccionarAccion").val()=="corte"){
-			$("#aceptarAccion").addClass("hidden");
-			$("#cancelarAccion").addClass("hidden");
+	$("#cAccion").click(function(){
+		if($("#seleccionarAccion2").val()=="corte"){
+			$("#aAccion").addClass("hidden");
+			$("#cAccion").addClass("hidden");
 			$("#nextTurno").removeClass("hidden");
 			$("#mturno2").removeClass("active");
 			$("#paso2").removeClass("active");
@@ -408,21 +415,21 @@ var valoresTurnoh=function(){
 			$("#paso1").addClass("active");
 			$("#paso2").addClass("hidden");
 		}
-		if($("#seleccionarAccion").val()=="configurar"){
+		if($("#seleccionarAccion2").val()=="configurar"){
 			$("#paso4").addClass("hidden");
 			$("#paso4").removeClass("active");
 			$("#mturno4").removeClass("active");
 			$("#mturno1").addClass("active");
 			$("#paso1").addClass("active");
-			$("#aceptarAccion").addClass("hidden");
-			$("#cancelarAccion").addClass("hidden");
+			$("#aAccion").addClass("hidden");
+			$("#cAccion").addClass("hidden");
 			$("#nextTurno").removeClass("hidden");	
 		}
 	});
 
 
 	$("#backTurno").click(function(){
-		if($("#seleccionarAccion").val()=="cambiar" && $("#banderaPosicion").val()=="2"){
+		if($("#seleccionarAccion2").val()=="cambiar" && $("#banderaPosicion").val()=="2"){
 			$("#paso3").removeClass("active");
 			$("#paso3").addClass("hidden");
 			$("#mturno3").removeClass("active");
@@ -432,15 +439,15 @@ var valoresTurnoh=function(){
 			$("#backTurno").addClass("hidden");
 			$("#banderaPosicion").val("1")
 		}
-		if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico" && $("#banderaPosicion").val()!="1"){
+		if($("#seleccionarAccion2").val()=="cambiar" && $("#tiposCortes2").val()=="automatico" && $("#banderaPosicion").val()!="1"){
 			$("#paso3").addClass("active");
 			$("#mturno3").addClass("active");
 			$("#paso4").removeClass("active");
 			$("#paso4").addClass("hidden");
 			$("#mturno4").removeClass("active");
 			$("#nextTurno").removeClass("hidden");
-			$("#aceptarAccion").addClass("hidden");
-			$('#tiposCortes > option[value=""]').attr('selected', 'selected');
+			$("#aAccion").addClass("hidden");
+			$('#tiposCortes2 > option[value=""]').attr('selected', 'selected');
 			$("#banderaPosicion").val("2");
 		}
 

@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="home();">
+  <body class="page-header-fixed" onload="home(), corteValores('automatico');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -93,11 +93,11 @@
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
-                                    <select class="form-control" name="seleccionarAccion" id="seleccionarAccion">
+                                    <select class="form-control" name="seleccionarAccion2" id="seleccionarAccion2">
                                       <option value=""></option>
                                       <option value="cambiar">Cambiar tipo de corte</option>
-                                      <option value="configurar">Configurar corte automático</option>
-                                      <option value="corte">Realizar corte de turno</option>
+                                      <option id="configurraCorte"value="configurar">Configurar corte automático</option>
+                                      <option id="hacerCorte"value="corte">Realizar corte de turno</option>
                                     </select>
                                   </article>
                                 </article>
@@ -186,10 +186,10 @@
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
-                                    <select class="form-control" name="tiposCortes" id="tiposCortes">
+                                    <select class="form-control" name="tiposCortes2" id="tiposCortes2">
                                       <option value=""></option>
-                                      <option value="0">Corte manual</option>
-                                      <option value="1">Corte automático</option>
+                                      <option value="manual">Corte manual</option>
+                                      <option value="automatico">Corte automático</option>
                                     </select>
                                   </article>
                                 </article>
@@ -202,8 +202,8 @@
                   <article class="form-actions text-right">
                     <input type="text" class="form-control hidden" id="banderaPosicion" value="1">
                     <button type="button" class="btn hidden" id="backTurno"><i class="fa fa-angle-double-left"></i> Anterior </button>
-                    <button type="sibmit" class="btn blue hidden" name="submit" value="" id="aceptarAccion">Aceptar</button>
-                    <button type="button" class="btn default hidden" id="cancelarAccion">Cancelar</button>
+                    <button type="sibmit" class="btn blue hidden" name="submit" value="" id="aAccion">Aceptar</button>
+                    <button type="button" class="btn default hidden" id="cAccion">Cancelar</button>
                     <button type="button" class="btn" id="nextTurno"> Siguiente <i class="fa fa-angle-double-right"></i></button>
                   </article>
                 </form>
