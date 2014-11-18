@@ -59,7 +59,7 @@ class reporteEspecifico(flask.views.MethodView):
             return redirect(url_for('login'))
 
 
-def cod_tabla(fecha_inicio, fecha_fin, inicio):
+def cod_tabla(startDate, endDate, inicio):
     linkExcel = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
     linkPDF = "../static/download/"+ session['username'] + "/Reporte de Ventas.pdf"
     dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
@@ -70,11 +70,12 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     codigo_tabla += str('<div class="portlet ligth bordered">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
-              <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + fecha_inicio + """ a """ + fecha_fin + """
+              <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + startDate + """ a """ + endDate + """
             </div>
             <div class="tools">
-              <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
-              <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general" data-toggle="modal" class="black">General</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" data-toggle="modal" class="black">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico" data-toggle="modal" class="black">Generar Excel</a>
             </div>
           </div>
           <div class="portlet-body">
@@ -93,7 +94,7 @@ def cod_tabla(fecha_inicio, fecha_fin, inicio):
     codigo_tabla += str('</thead>')  # Fin de head
 
     codigo_tabla += str('<tbody class="text-center">')  # Inicio del contenido de la tabla
-    tabla_ventas = class_db.paginacion(fecha_inicio, fecha_fin, inicio)
+    tabla_ventas = class_db.paginacion(startDate, endDate, inicio)
 
     if len(tabla_ventas) == 0:
         return str('<h1 align="center"><strong>No hay registro de ventas</strong></h1>')

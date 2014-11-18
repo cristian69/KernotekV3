@@ -16,16 +16,21 @@ class Reportes(flask.views.MethodView):
 			typeReport = request.args.get('reporte')
 			startDate = request.args.get('fecha1')
 			endDate = request.args.get('fecha2')
-				
-			print typeReport
+			index = str(request.args.get('indice'))
+			actualPage = str(request.args.get('num_pagina'))
+			objExcel = excel
+	
+			if typeReport == "detallado":
+				sellsReport = class_db.reportDetallado(startDate, endDate)
+				excel.reporteDetallado(sellsReport, startDate, endDate)
+				return render_template('reporteFechas.html', indexHTML="", tableHTML="", bandera=0)
 			if typeReport == "especifico":
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				tableHTML = cod_tabla(startDate, endDate, 0)
 				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML)
 			
-			if typeReport == "descargarEspecifico":
+			if typeReport == "generarEspecifico":
 				sellsReport = class_db.reporte_especifico(startDate, endDate)
-				objExcel = excel
 				objExcel.export_excel(sellsReport, startDate, endDate)
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				tableHTML = cod_tabla(startDate, endDate, 0)
@@ -36,10 +41,11 @@ class Reportes(flask.views.MethodView):
 				tableHTML = tablaReporte(sells, startDate, endDate)
 				return render_template('reporteFechas.html', tableHTML=tableHTML)
 
-			index = str(request.args.get('indice'))
-			startDate = str(request.args.get('fecha1'))
-			endDate = str(request.args.get('fecha2'))
-			actualPage = str(request.args.get('num_pagina'))
+			if typeReport == "generarGeneral":
+				sellsReport = class_db.reporte_general(startDate, endDate)
+				objExcel.reporteGeneral(sellsReport, startDate, endDate)
+				tableHTML = tablaReporte(sellsReport, startDate, endDate)
+				return render_template('reporteFechas.html', tableHTML=tableHTML)
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
 				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')

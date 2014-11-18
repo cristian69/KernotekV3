@@ -45,6 +45,7 @@ def tablaReporte(datos, startDate, endDate):
         return codigoTabla
     linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
+    # linkExcel = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
     codigoTabla = """
                     <article class="portlet ligth bordered">
             <article class="portlet-title">
@@ -54,6 +55,8 @@ def tablaReporte(datos, startDate, endDate):
               <article class="tools">
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" data-toggle="modal" class="black">Especifico</a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" data-toggle="modal" class="black">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" data-toggle="modal" class="black">Generar Excel</a>
+                <a href=" """+linkExcel+""" " data-toggle="modal" class="black">Descargar Excel</a>
               </article>
             </article>
             <article class="portlet-body">

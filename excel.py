@@ -57,7 +57,7 @@ def export_excel(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
@@ -175,7 +175,7 @@ def reporteGeneral(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', '/var/www/demoFlask/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'SERVICIO SECA S.A DE C.V', string_format)

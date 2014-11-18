@@ -6,7 +6,7 @@ import class_db
 import excel
 
 
-mensaje = str('<h1 class="text-center"><strong>No hay Registros Entre esas Fechas</strong></h1>')
+mensaje = str('<h1 class="text-center"><strong>No hay registros entre esas fechas</strong></h1>')
 
 class reporteDetallado(flask.views.MethodView):
     def get(self):
