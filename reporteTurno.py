@@ -10,10 +10,12 @@ import pdf
 class reporteTurno(flask.views.MethodView):
     def post(self):
         bandera = request.form['submit']
+        startDate = request.form['fecha_inicio'] + " 00:00:00"
+        endDate = request.form['fecha_fin'] + " 24:59:59"
         if bandera == "buscarTurnos":
-            fecha = request.form['fecha_inicio']    
-            htmlTurnos = turnosDisponibles(fecha)
-            return render_template('reporteTurno.html', htmlTurnos=htmlTurnos)
+            # fecha = request.form['fecha_inicio']    
+            htmlTurnos = turnosDisponibles(startDate, endDate)
+            return render_template('reportesTurno.html', htmlTurnos=htmlTurnos)
       
         if bandera == "generarReporteTurno":
             numTurno = request.form['turnoSeleccionado']
@@ -21,17 +23,16 @@ class reporteTurno(flask.views.MethodView):
             fechaFinTurno = request.form['fechaFinal']
             registrosTurno = class_db.reporteTurno(numTurno)
             htmlTabla = tablaReporte(registrosTurno)
-            
-            excel.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
+            # excel.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
 
-            pdf.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
+            # pdf.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
             
-            return render_template('reporteTurno.html', htmlTabla=htmlTabla)
+            return render_template('reportesTurno.html', htmlTabla=htmlTabla)
 
 
     def get(self):
         if len(session) > 1:
-            return render_template('reporteTurno.html')
+            return render_template('reportesTurno.html')
         else:
             return redirect(url_for('login'))
 
@@ -40,10 +41,10 @@ def turnosDisponibles(startDate, endDate):
     turnos = class_db.turnosDisponibles(startDate, endDate)
     htmlTurnos = ""
     if len(turnos) == 0:
-        htmlTurnos += '<h1 align="center"><strong>No Hay Cortes de Turnos en esa Fecha</strong></h1>'
+        htmlTurnos += '<h1 align="center"><strong>No se encontraron turnos en esas fechas.</strong></h1>'
     else:
         htmlTurnos += """
-        <article class="portlet box green">
+        <article class="portlet ligth bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
@@ -53,7 +54,7 @@ def turnosDisponibles(startDate, endDate):
               </article>
             </article>
             <article class="portlet-body flip-scroll">
-              <table class="table table-bordered table-striped table-condensed flip-content" id="tablaTurno">
+              <table class="table table-bordered table-condensed flip-content" id="tablaTurno">
                 <thead class="flip-content text-center c-blue">
                   <tr>
                     <th class="text-center">
@@ -87,7 +88,7 @@ def tablaReporte(registros):
     linkExcel = "../static/download/"+session['username']+"/Reporte por Turno.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte por Turno.pdf"
     codigoTabla = """
-                    <article class="portlet box green">
+                    <article class="portlet ligth bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno
@@ -99,7 +100,7 @@ def tablaReporte(registros):
               </article>
             </article>
             <article class="portlet-body flip-scroll">
-              <table class="table table-bordered table-striped table-condensed flip-content">
+              <table class="table table-bordered table-condensed flip-content">
                 <thead class="flip-content text-center c-blue">
                   <tr>
                     <th class="text-center">

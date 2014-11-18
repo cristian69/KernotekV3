@@ -97,6 +97,8 @@ app.add_url_rule('/home/', view_func=Home.as_view('home'), methods=['POST', 'GET
 app.add_url_rule('/reportes/', view_func=Reportes.as_view('reportes'), methods=['POST', 'GET'])
 app.add_url_rule('/turnos/', view_func=Turnos.as_view('turnos'), methods=['GET', 'POST'])
 app.add_url_rule('/configuracion/', view_func=Configuracion.as_view('configuracion'), methods=['GET', 'POST'])
+app.add_url_rule('/reporte-turno/', view_func=reporteTurno.as_view('reporteTurno'), methods=['GET', 'POST'])
+
 
 #app.add_url_rule('/logout/', view_func=Logout.as_view('logout'), methods=['POST'])
 app.add_url_rule('/usuarios/', view_func=verUsuarios.as_view('verUsuarios'), methods=['GET'])
@@ -106,7 +108,7 @@ app.add_url_rule('/activar-cuentas/', view_func=activarCuentas.as_view('activarC
 app.add_url_rule('/reporte-general/', view_func=reporteGeneral.as_view('reporteGeneral'), methods=['POST', 'GET'])
 app.add_url_rule('/reporte-especifico/', view_func=reporteEspecifico.as_view('reporteEspecifico'), methods=['GET', 'POST'])
 app.add_url_rule('/reporte-detallado', view_func=reporteDetallado.as_view('reporteDetallado'), methods=['GET', 'POST'])
-app.add_url_rule('/reporte-turno/', view_func=reporteTurno.as_view('reporteTurno'), methods=['GET', 'POST'])
+
 app.add_url_rule('/estado-sistema/', view_func=estadoSistema.as_view('estadoSistema'), methods=['GET'])
 app.add_url_rule('/bitacora/', view_func=Bitacora.as_view('bitacora'), methods=['GET'])
 app.add_url_rule('/perfil/', view_func=Perfil.as_view('perfil'), methods=['GET', 'POST'])

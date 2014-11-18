@@ -35,7 +35,7 @@
               <i class="fa fa-user"></i>{{ session['fullname']}}
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{ url_for('home') }}">
               <i class="fa fa-home"></i>Inicio
               </a>
             </li>
@@ -45,12 +45,12 @@
               </a>
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{ url_for('turnos') }}">
               <i class="fa fa-calendar-o"></i>Corte de turno
               </a>
             </li>
             <li class="tooltips">
-              <a href="">
+              <a href="{{  url_for('configuracion') }}">
               <i class="fa fa-cogs"></i>Configuración
               </a>
             </li>
@@ -76,7 +76,7 @@
                   </article>
                 </article>
                 <article class="portlet-body form text-center">
-                  <form action="{{ url_for('reporteGeneral') }}" class="form-horizontal" method="post">
+                  <form action="{{ url_for('reporteTurno') }}" class="form-horizontal" method="post">
                     <article class="form-body">
                       <article class="row" id="<Fe></Fe>chaReporteGeneral">
                         <article class="col-md-12 form-group">
@@ -121,7 +121,7 @@
                         </article>
                       </article>
                       <article class="form-actions text-right">
-                        <input type="submit" class="btn blue" name="AceptarRepoteG" value="Aceptar" id="AceptarReporte">
+                        <input type="submit" class="btn blue" name="submit" value="buscarTurnos" id="AceptarReporte">
                       </article>
                     </article>
                   </form>
@@ -129,6 +129,9 @@
               </article>
             </article>
             <article class="col-md-3"></article>
+          </article>
+          <article class="col-md-12">
+            {{htmlTurnos|safe}}
           </article>
         </article>
       </article>
