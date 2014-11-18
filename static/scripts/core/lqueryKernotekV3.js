@@ -373,7 +373,7 @@ var valoresTurnoh=function(){
 			$("#paso2").removeClass("hidden");
 		}
 
-		if($("#seleccionarAccion2").val()=="configurar"){
+		if($("#seleccionarAccion2").val()=="configurar" && $("#hacerCorte").hasClass("hidden")){
 			$("#paso4").removeClass("hidden");
 			$("#paso4").addClass("active");
 			$("#mturno4").addClass("active");
@@ -443,6 +443,14 @@ var valoresTurnoh=function(){
 			$("#paso1").addClass("active");
 			$("#mturno1").addClass("active");
 			$("#backTurno").addClass("hidden");
+			$("#aCorte").addClass("hidden");
+			$('#tiposCortes2 > option[value=""]').attr('selected', 'selected');
+			$("#tiposCortes2").select2({
+				placeholder: "Selecciona el tipo de corte de turno"
+			});
+			$("#nextTurno").removeClass("hidden");
+
+
 			$("#banderaPosicion").val("1")
 		}
 		if($("#seleccionarAccion2").val()=="cambiar" && $("#tiposCortes2").val()=="automatico" && $("#banderaPosicion").val()!="1"){
@@ -462,3 +470,15 @@ var valoresTurnoh=function(){
 
 		
 	});
+
+$(".configuracionCortes").mouseover(function(){
+	if($("#seleccionarAccion2").val()=="cambiar" && $("#banderaPosicion").val()=="2" && $("#tiposCortes2").val()=="manual"){
+		$("#aCorte").removeClass("hidden");
+		$("#nextTurno").addClass("hidden");
+	}
+	if($("#seleccionarAccion2").val()=="cambiar" && $("#banderaPosicion").val()=="2" && $("#tiposCortes2").val()!="manual"){
+		$("#aCorte").addClass("hidden");
+		$("#nextTurno").removeClass("hidden");
+	}
+
+});
