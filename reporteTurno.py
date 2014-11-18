@@ -49,13 +49,11 @@ def turnosDisponibles(startDate, endDate):
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
               </article>
-              <article class="tools">
-                <a href="javascript:;" class="collapse"></a>
-              </article>
+
             </article>
             <article class="portlet-body flip-scroll">
               <table class="table table-bordered table-condensed flip-content" id="tablaTurno">
-                <thead class="flip-content text-center c-blue">
+                <thead class="flip-content text-center">
                   <tr>
                     <th class="text-center">
                        Número de Corte
