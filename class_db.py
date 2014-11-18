@@ -459,7 +459,7 @@ def acumuladoTurno(numTurno):
     cursor.execute(query)
     data = cursor.fetchall()
     matar_conexion()
-    if data[0][0] == 'None':
+    if str(data[0][0]) == 'None':
         return float(0)
     else:
         return float(data[0][0])

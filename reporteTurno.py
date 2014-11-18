@@ -11,7 +11,7 @@ class reporteTurno(flask.views.MethodView):
     def post(self):
         bandera = request.form['submit']
         startDate = request.form['fecha_inicio'] + " 00:00:00"
-        endDate = request.form['fecha_fin'] + " 24:59:59"
+        endDate = request.form['fecha_fin'] + " 23:59:59"
         if bandera == "buscarTurnos":
             # fecha = request.form['fecha_inicio']    
             htmlTurnos = turnosDisponibles(startDate, endDate)
