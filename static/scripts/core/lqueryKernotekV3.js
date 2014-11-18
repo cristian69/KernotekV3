@@ -23,7 +23,7 @@ function corteValores(parametro){
 		$('#configurraCorte').addClass("hidden");
 	}
 	if(parametro=="automatico"){
-		$("#hacerCorte").addClass("hidden");
+		$("#hacerCorte").addClass("hidden")
 	}
 }
 
@@ -224,11 +224,11 @@ function validarApertura(){
 
 
 $("#modalTurno").mouseover(function(){
-	if($("#tiposCortes").val()=="manual"){
+	if($("#tiposCortes").val()=="manual" && $("#seleccionarAccion").val()!="corte"){
 		$("#ConfirmarAccion").removeClass("hidden");
 		$("#siguienteCorte").addClass("hidden");
 	}
-	else{
+	if($("#tiposCortes").val()!="manual" && $("#seleccionarAccion").val()!="corte"){
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
