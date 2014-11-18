@@ -50,6 +50,8 @@ class Home(flask.views.MethodView):
         operation = request.form['submit']
         flag = ""
         print operation
+        stateC, statePython =  revisarProceso()
+
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
             typeReport = typeReport[0]
@@ -68,25 +70,32 @@ class Home(flask.views.MethodView):
                     return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
 
         if operation == CHANGE_RATE:
-            newRate = request.form['nuevaTarifa']
-            class_db.cambiarTarifa(newRate)
-            flag = "tarifaExitosa"
+            if stateC and statePython:
+                newRate = request.form['nuevaTarifa']
+                class_db.cambiarTarifa(newRate)
+                flag = "tarifaExitosa"
+            else:
+                flag = "error"
 
         if operation == CHANGE_TIME_OPEN:
-            newTime = request.form['nuevoTiempo']
-            class_db.cambiarTiempoApertura(newTime)
-            flag = "tiempoExitoso"
+            if stateC and statePython:
+                newTime = request.form['nuevoTiempo']
+                class_db.cambiarTiempoApertura(newTime)
+                flag = "tiempoExitoso"
+            else:
+                flag = "error"
 
         if operation == CUT_SHIFT:
-            class_db.activarCorteTurno()
-            time.sleep(2)  # Espera a que el corte de turno se ejecute
-            flag = "corteExitoso"
+            if stateC and statePython:
+                class_db.activarCorteTurno()
+                time.sleep(2)  # Espera a que el corte de turno se ejecute
+                flag = "corteExitoso"
+            else:
+                flag = "error"
 
         dic_home = datos_home()
-        # return render_template('reporteFechas.html')
         dayGrafic, sells = graficaDia()
         return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia", operacion=flag)
-        # return render_template('home.html',dic_home=dic_home, operacion=flag)
 
 
 def inicioSemana(year, numSemana):
