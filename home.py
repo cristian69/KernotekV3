@@ -12,7 +12,8 @@ from calendar import monthrange
 from datetime import date, timedelta
 from reporteTurno import turnosDisponibles
 from libgral import numeracion_paginas
-from reporte_especifico import cod_tabla
+from reporte_general import tablaReporte
+
 
 REPORT = "reporte"
 SHIFT_REPORT = "turno"
@@ -58,12 +59,13 @@ class Home(flask.views.MethodView):
                 codeShift = turnosDisponibles
                 return render_template('reportesTurno.html')
             if typeReport == DATES_REPORT:
-                indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
-                tableHTML = cod_tabla(startDate, endDate, 0)
+                sells = class_db.reporte_general(startDate, endDate)
+                tableHTML = tablaReporte(sells,startDate, endDate)
+
                 if len(tableHTML) == 66:
                     return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
                 else:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, indexHTML=indexHTML, bandera=1)
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
 
         if operation == CHANGE_RATE:
             newRate = request.form['nuevaTarifa']
