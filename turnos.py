@@ -18,8 +18,6 @@ class Turnos(flask.views.MethodView):
 		typeCut = class_db.tipoCorte()
 		option = request.form.getlist('seleccionarAccion2')
 		option = option[0]
-		bandera = ""
-		# print "Option: ", option
 		if option == "cambiar":
 			typeCut = request.form.getlist('tiposCortes2')
 			typeCut = typeCut[0]

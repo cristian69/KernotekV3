@@ -22,6 +22,7 @@ CHANGE_RATE = "tarifa"
 CHANGE_TIME_OPEN = "tiempoApertura"
 CUT_SHIFT = "aceptarCorte"
 
+
 class Home(flask.views.MethodView):
     def get(self):
         if len(session) > 1:
@@ -51,6 +52,12 @@ class Home(flask.views.MethodView):
         flag = ""
         print operation
         stateC, statePython =  revisarProceso()
+
+        if operation == "reporteTurno":
+            startDate = request.form['fecha_inicio2'] + ' 00:00:00'
+            endDate = request.form['fecha_fin2'] + ' 23:59:59'
+            codeShifts = turnosDisponibles(startDate, endDate)
+            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaTurnos=True)
 
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
