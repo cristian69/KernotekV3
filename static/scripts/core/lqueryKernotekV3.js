@@ -221,6 +221,8 @@ function validarApertura(){
 		return false;
 	}
 }
+configurraCorte
+
 
 
 $("#modalTurno").mouseover(function(){
@@ -232,6 +234,15 @@ $("#modalTurno").mouseover(function(){
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
+	if($("#tiposCortes").val()=="automatico" && $("#seleccionarAccion").val()!="corte" && $("#turno2").hasClass("active")){
+		$("#ConfirmarAccion").removeClass("hidden");
+		$("#siguienteCorte").addClass("hidden");
+	}
+	if($("#hacerCorte").hasClass("hidden") && $("#seleccionarAccion").val()=="configurar" && $("#pasoTurno2").hasClass("active")){
+		$("#ConfirmarAccion").removeClass("hidden");
+		$("#siguienteCorte").addClass("hidden");
+	}
+
 });
 
 
