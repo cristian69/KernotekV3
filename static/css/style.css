@@ -4432,8 +4432,8 @@ UI Loading
 }
 
 .bordetablaA{
-  border-left: 3px solid blue;
-  border-right: 3px solid blue;
+  border-left: 3px solid #009DE0;
+  border-right: 3px solid #009DE0;
 }
 .times{
   cursor:pointer;
