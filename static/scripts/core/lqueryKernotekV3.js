@@ -24,6 +24,18 @@ function home(){
 	});
 }
 
+function tablasReportes(parametro){
+	if(parametro=="True"){
+		$("#moduloFechas").addClass("hidden");
+	}
+	else{
+		$("#moduloFechas").removeClass("hidden");
+	}
+}
+
+
+
+
 function corteValores(parametro){
 	if(parametro=='manual'){
 		$('#configurraCorte').addClass("hidden");
