@@ -8,9 +8,12 @@ import time
 class Turnos(flask.views.MethodView):
 	def get(self):
 		if len(session) > 1:
-			return render_template('corteDeTurno.html')
+			typeCut = class_db.tipoCorte()
+			return render_template('corteDeTurno.html', tipoCorte=typeCut)
 
 	def post(self):
+		stateC, statePython = libgral.revisarProceso()
+		typeCut = class_db.tipoCorte()
 		option = request.form.getlist('seleccionarAccion')
 		option = option[0]
 		bandera = ""
@@ -18,7 +21,8 @@ class Turnos(flask.views.MethodView):
 			typeCut = request.form.getlist('tiposCortes')
 			typeCut = typeCut[0]
 			class_db.cambiarTipoCorte(typeCut)
-			return render_template('corteDeTurno.html', bandera="cambioTipoCorte")
+			typeCut = class_db.tipoCorte()
+			return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut)
 		if option == "configurar":
 			typeLapse = request.form.getlist('tipoLapso')
 			typeLapse = typeLapse[0]
@@ -45,7 +49,7 @@ class Turnos(flask.views.MethodView):
 			bandera = "configuracionExitosa"
 			class_db.tipoTiempoAutomatico(typeLapse)
 			class_db.tiempoCorteAuto(timeAutoCut)	
-			return render_template('corteDeTurno.html', bandera=bandera)
+			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut)
 
 		if option == "corte":
 			class_db.activarCorteTurno()
