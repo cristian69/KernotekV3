@@ -60,7 +60,7 @@ from editarLlave import EditarLlave
 
 from reportes import Reportes
 from turnos import Turnos
-
+from configuracionSistema import Configuracion
 
 app = flask.Flask(__name__)
 ######### Inicializacion del servidor ####################
@@ -96,7 +96,7 @@ app.add_url_rule('/login/', view_func=Login.as_view('login'), methods=['POST', '
 app.add_url_rule('/home/', view_func=Home.as_view('home'), methods=['POST', 'GET'])
 app.add_url_rule('/reportes/', view_func=Reportes.as_view('reportes'), methods=['POST', 'GET'])
 app.add_url_rule('/turnos/', view_func=Turnos.as_view('turnos'), methods=['GET', 'POST'])
-
+app.add_url_rule('/configuracion/', view_func=Configuracion.as_view('configuracion'), methods=['GET', 'POST'])
 
 #app.add_url_rule('/logout/', view_func=Logout.as_view('logout'), methods=['POST'])
 app.add_url_rule('/usuarios/', view_func=verUsuarios.as_view('verUsuarios'), methods=['GET'])

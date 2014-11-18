@@ -38,28 +38,30 @@ def hiloPDF(datos, fechaInicio, fechaFin):
     pdf.reporteGeneral(datos, fechaInicio, fechaFin)
 
 
-def tablaReporte(datos):
+def tablaReporte(datos, startDate, endDate):
     cuerpoTabla = generar_tabla(datos, "", False)
     if not cuerpoTabla:
         codigoTabla = str('<h1 align="center"><strong>No hay registros entre esas fechas</strong></h1>')
         return codigoTabla
     linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
+    # linkExcel = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
     codigoTabla = """
-                    <article class="portlet box green">
+                    <article class="portlet ligth bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte General
               </article>
               <article class="tools">
-                <a href=" """+linkExcel+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-excel-o"></i></a>
-                <a href=" """+linkPDF+""" " data-toggle="modal" class="blanc"><i class="fa fa-file-pdf-o"></i></a>
-                <a href="javascript:;" class="collapse"></a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" data-toggle="modal" class="black">Especifico</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" data-toggle="modal" class="black">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" data-toggle="modal" class="black">Generar Excel</a>
+                <a href=" """+linkExcel+""" " data-toggle="modal" class="black">Descargar Excel</a>
               </article>
             </article>
-            <article class="portlet-body flip-scroll">
-              <table class="table table-bordered table-striped table-condensed flip-content">
-                <thead class="flip-content text-center c-blue">
+            <article class="portlet-body">
+              <table class="table table-bordered table-condensed">
+                <thead class="flip-content text-center">
                   <tr>
                     <th class="text-center">
                        Tarifa
