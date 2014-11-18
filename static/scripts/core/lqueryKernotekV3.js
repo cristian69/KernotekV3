@@ -192,21 +192,29 @@ $("#anteriorCorte").click(function(){
 });
 
 
-
-
 function validarNumeros(){
 	numeroValidar=$("#nuevaTarifa").val();
-	var patron =/^[0-9]+$/
+	var patron =/^[0-9]+(\.[0,5]{0,1})?$/;
 	var patron2=/\s/;
 	if(patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || !patron.test(numeroValidar)){
-		$("#tarifaIncorrecta").removeClass("hidden");
-		cancelar();
+		$("#tarifaIncorrecta").alert("open");
+		$("#nuevaTarifa").val("");
 		return false;
 	}
 }
-function cancelar(){
-	return false;
+
+function validarApertura(){
+	aperturaValidar=$("#nuevoTiempo").val();
+	var patron1=/\s/;
+	var patron2=/^[0-9]+$/;
+	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar)){
+		$("#tiempoIncorrecto").removeClass("hidden");
+		$("#nuevoTiempo").val("");
+		return false;
+	}
 }
+
+
 $("#modalTurno").mouseover(function(){
 	if($("#tiposCortes").val()=="manual"){
 		$("#ConfirmarAccion").removeClass("hidden");
