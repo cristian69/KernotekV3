@@ -15,7 +15,7 @@ class reporteTurno(flask.views.MethodView):
         if bandera == "buscarTurnos":
             # fecha = request.form['fecha_inicio']    
             htmlTurnos = turnosDisponibles(startDate, endDate)
-            return render_template('reportesTurno.html', htmlTurnos=htmlTurnos, tablaTurnos=True)
+            return render_template('reportesTurno.html', htmlTurnos=htmlTurnos, tablaFechas=True)
       
         if bandera == "generarReporteTurno":
             numTurno = request.form['turnoSeleccionado']
@@ -27,12 +27,12 @@ class reporteTurno(flask.views.MethodView):
 
             # pdf.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
             
-            return render_template('reportesTurno.html', htmlTabla=htmlTabla)
+            return render_template('reportesTurno.html', htmlTabla=htmlTabla, tablaFechas=True)
 
 
     def get(self):
         if len(session) > 1:
-            return render_template('reportesTurno.html')
+            return render_template('reportesTurno.html', tablaFechas=False)
         else:
             return redirect(url_for('login'))
 

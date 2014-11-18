@@ -50,14 +50,13 @@ class Home(flask.views.MethodView):
     def post(self):
         operation = request.form['submit']
         flag = ""
-        print operation
         stateC, statePython =  revisarProceso()
 
         if operation == "reporteTurno":
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
             endDate = request.form['fecha_fin2'] + ' 23:59:59'
             codeShifts = turnosDisponibles(startDate, endDate)
-            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaTurnos=True)
+            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=True)
 
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
