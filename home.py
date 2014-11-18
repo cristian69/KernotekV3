@@ -84,7 +84,9 @@ class Home(flask.views.MethodView):
 
         dic_home = datos_home()
         # return render_template('reporteFechas.html')
-        return render_template('home.html',dic_home=dic_home, bandera=flag)
+        dayGrafic, sells = graficaDia()
+        return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia", operacion=flag)
+        # return render_template('home.html',dic_home=dic_home, operacion=flag)
 
 
 def inicioSemana(year, numSemana):
