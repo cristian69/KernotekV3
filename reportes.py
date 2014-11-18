@@ -19,40 +19,41 @@ class Reportes(flask.views.MethodView):
 			index = str(request.args.get('indice'))
 			actualPage = str(request.args.get('num_pagina'))
 			objExcel = excel
-	
+			flagTableDate = True
 			if typeReport == "detallado":
 				sellsReport = class_db.reportDetallado(startDate, endDate)
 				excel.reporteDetallado(sellsReport, startDate, endDate)
-				return render_template('reporteFechas.html', indexHTML="", tableHTML="", bandera=0)
+				return render_template('reporteFechas.html', indexHTML="", tableHTML="", bandera=0, tablaFechas=flagTableDate)
 			if typeReport == "especifico":
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				tableHTML = cod_tabla(startDate, endDate, 0)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate)
 			
 			if typeReport == "generarEspecifico":
 				sellsReport = class_db.reporte_especifico(startDate, endDate)
 				objExcel.export_excel(sellsReport, startDate, endDate)
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				tableHTML = cod_tabla(startDate, endDate, 0)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate)
 
 			if typeReport == "general":
 				sells = class_db.reporte_general(startDate, endDate)
 				tableHTML = tablaReporte(sells, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate)
 
 			if typeReport == "generarGeneral":
 				sellsReport = class_db.reporte_general(startDate, endDate)
 				objExcel.reporteGeneral(sellsReport, startDate, endDate)
 				tableHTML = tablaReporte(sellsReport, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate)
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
 				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')
 				tableHTML = cod_tabla(startDate, endDate, index)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate)
 			else:
-				return render_template('reporteFechas.html', indexHTML="", tableHTML="", bandera=0)
+				flagTableDate = False
+				return render_template('reporteFechas.html', indexHTML="", tableHTML="", bandera=0, tablaFechas=flagTableDate)
 		else:
 			return redirect(url_for('login'))
 
