@@ -6,7 +6,10 @@ function home(){
 	$("#semana").select2();
 	$("#mes").select2();
 	$("#tiposCortes").select2({
-		placeholder: "Selecciona el tipo de dorte de turno"
+		placeholder: "Selecciona el tipo de corte de turno"
+	});
+	$("#tiposCortes2").select2({
+		placeholder: "Selecciona el tipo de corte de turno"
 	});
 	$("#seleccionarAccion").select2({
 		placeholder:"seleccionar acción"
@@ -186,6 +189,9 @@ $("#anteriorCorte").click(function(){
 		$("#anteriorCorte").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 		$('#tiposCortes > option[value=""]').attr('selected', 'selected');
+		$("#tiposCortes").select2({
+			placeholder: "Selecciona el tipo de corte de turno"
+		});
 		$("#valorPestaña").val("1");	
 	}	
 	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="3"){
@@ -448,6 +454,9 @@ var valoresTurnoh=function(){
 			$("#nextTurno").removeClass("hidden");
 			$("#aAccion").addClass("hidden");
 			$('#tiposCortes2 > option[value=""]').attr('selected', 'selected');
+			$("#tiposCortes2").select2({
+				placeholder: "Selecciona el tipo de corte de turno"
+			});
 			$("#banderaPosicion").val("2");
 		}
 
