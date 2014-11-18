@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="valoresTurnoh(), home(),graficasHome('{{bandera}}',{{labels}}, {{datos}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
+  <body class="page-header-fixed" onload="corteValores('{{dic_home['tipoCorte']}}'), valoresTurnoh(),home(),graficasHome('{{bandera}}',{{labels}}, {{datos}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -370,15 +370,6 @@
                                         </span>
                                       </article>
                                     </article>
-                                    <label class="control-label col-md-5">Hora</label>
-                                    <article class="col-md-7 form-group">
-                                      <article class="input-group">
-                                        <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio2" id="hora_inicio2" value="00:00:00">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
                                   </article>
                                   <article class="col-md-12 form-group">
                                     <label class="control-label col-md-5">Fecha final</label>
@@ -387,15 +378,6 @@
                                         <input type="text" class="form-control times"  name="fecha_fin2" id="fecha_fin2">
                                         <span class="input-group-btn">
                                         <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
-                                    <label class="control-label col-md-5">Hora</label>
-                                    <article class="col-md-7 form-group">
-                                      <article class="input-group">
-                                        <input type="text" class="form-control timepicker timepicker-24 times" name="hora_fin2" id="hora_fin2" value="23:59:59">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                         </span>
                                       </article>
                                     </article>
@@ -494,8 +476,8 @@
                                     <select class="form-control" name="seleccionarAccion" id="seleccionarAccion">
                                       <option value=""></option>
                                       <option class="" value="cambiar">Cambiar tipo de corte</option>
-                                      <option class="" value="configurar">Configurar corte automático</option>
-                                      <option class="" value="corte">Realizar corte de turno</option>
+                                      <option id="configurraCorte"class="" value="configurar">Configurar corte automático</option>
+                                      <option id="hacerCorte"class="" value="corte">Realizar corte de turno</option>
                                     </select>
                                   </article>
                                 </article>

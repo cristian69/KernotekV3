@@ -18,6 +18,14 @@ function home(){
 	});
 }
 
+function corteValores(parametro){
+	if(parametro=='manual'){
+		$('#configurraCorte').addClass("hidden");
+	}
+	if(parametro=="automatico"){
+		$("#hacerCorte").addClass("hidden");
+	}
+}
 
 
 
