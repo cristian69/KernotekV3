@@ -84,7 +84,7 @@ def logout():
     if len(session) > 1:
         session['endsession'] = str(datetime.today())
         class_db.registro_bitacora(session['username'], session['startsession'], session['endsession'])
-        shutil.rmtree("/var/www/demoFlask/static/download/"+session['username'])
+        shutil.rmtree("/var/www/KernotekV3/static/download/"+session['username'])
         session.clear()
 
         return flask.render_template('cerrarSesion.html')

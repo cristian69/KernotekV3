@@ -43,9 +43,9 @@ def tablaReporte(datos, startDate, endDate):
     if not cuerpoTabla:
         codigoTabla = str('<h1 align="center"><strong>No hay registros entre esas fechas</strong></h1>')
         return codigoTabla
-    linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
-    linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
-    # linkExcel = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
+    # linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
+    # linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
+    linkExcel = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
     codigoTabla = """
                     <article class="portlet light bordered">
             <article class="portlet-title">
