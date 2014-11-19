@@ -41,19 +41,19 @@ def turnosDisponibles(startDate, endDate):
     turnos = class_db.turnosDisponibles(startDate, endDate)
     htmlTurnos = ""
     if len(turnos) == 0:
-        htmlTurnos += '<h1 align="center"><strong>No se encontraron turnos en esas fechas.</strong></h1>'
+        htmlTurnos += '<h1  style="line-height:1.1 !important;" align="center"><strong>No se encontraron turnos en esas fechas.</strong></h1>'
     else:
         htmlTurnos += """
-        <article class="portlet ligth bordered">
+        <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Turno Disponibles
               </article>
 
             </article>
-            <article class="portlet-body flip-scroll">
-              <table class="table table-bordered table-condensed flip-content" id="tablaTurno">
-                <thead class="flip-content text-center">
+            <article class="portlet-body ">
+              <table class="table table-bordered table-condensed" id="tablaTurno">
+                <thead class=" text-center">
                   <tr>
                     <th class="text-center">
                        Número de Corte

@@ -103,7 +103,7 @@
                 <article class="portlet-body form text-center">
                   <form action="{{ url_for('reporteTurno') }}" class="form-horizontal" method="post">
                     <article class="form-body">
-                      <article class="row" id="<Fe></Fe>chaReporteGeneral">
+                      <article class="row" id="fechaReporteGeneral">
                         <article class="col-md-12 form-group">
                           <label class="control-label col-md-3">Fecha de inicio</label>
                           <article class="col-md-4">
@@ -155,8 +155,10 @@
             </article>
             <article class="col-md-3"></article>
           </article>
-          <article class="col-md-12">
+          <article class="row">
+            <article class="col-md-12">
             {{htmlTurnos|safe}}
+          </article>
           </article>
         </article>
       </article>

@@ -67,15 +67,15 @@ def cod_tabla(startDate, endDate, inicio):
     cabezerasDisponibles = class_db.columnas_habilitadas()
     codigo_tabla = ""
     bandera_color = True
-    codigo_tabla += str('<div class="portlet ligth bordered">')  # Código del div
+    codigo_tabla += str('<div class="portlet light bordered">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + startDate + """ a """ + endDate + """
             </div>
-            <div class="tools">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general" data-toggle="modal" class="black">General</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" data-toggle="modal" class="black">Detallado</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico" data-toggle="modal" class="black">Generar Excel</a>
+            <div class="actions">
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default">General</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default">Generar Excel</a>
             </div>
           </div>
           <div class="portlet-body">
@@ -113,7 +113,7 @@ def cod_tabla(startDate, endDate, inicio):
             codigo_tabla += str("</tr>")
 
     codigo_tabla += str('</tbody>')  #Fin del contenido de la tabla
-    codigo_tabla += str('</table>')  # Fin de la tabla
+    codigo_tabla += str('</table></div></div>')  # Fin de la tabla
     return codigo_tabla
 
 

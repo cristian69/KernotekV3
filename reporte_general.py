@@ -47,16 +47,16 @@ def tablaReporte(datos, startDate, endDate):
     linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
     # linkExcel = "/var/www/demoFlask/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
     codigoTabla = """
-                    <article class="portlet ligth bordered">
+                    <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte General
               </article>
-              <article class="tools">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" data-toggle="modal" class="black">Especifico</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" data-toggle="modal" class="black">Detallado</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" data-toggle="modal" class="black">Generar Excel</a>
-                <a href=" """+linkExcel+""" " data-toggle="modal" class="black">Descargar Excel</a>
+              <article class="actions">
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-circle btn-default">Especifico</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-circle btn-default">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn btn-circle btn-default"><i class="fa fa-refresh"></i> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle btn-default  hidden"><i class="fa fa-download"></i>Descargar Excel</a>
               </article>
             </article>
             <article class="portlet-body">
