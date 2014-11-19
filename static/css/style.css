@@ -2915,7 +2915,7 @@ Dashboard stats
   letter-spacing: -1px;
   margin-bottom: 5px;
   font-weight: 300;
-  color: #F27020;
+  color: #999999;
 }
 
 .dashboard-stat .details .desc {
@@ -4472,7 +4472,7 @@ UI Loading
 
 .cabeceraTarjeta{
   padding-top: 10px;
-  color:#007CC0;
+  color:black;
   font-size: 20px !important;
 }
 .colorAzul{
