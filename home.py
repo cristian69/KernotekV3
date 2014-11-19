@@ -280,6 +280,7 @@ def graficaDia():
     return dias, ventas
 
 def datos_home():
+ 
     dic_home = {
                 't_apertura': int(class_db.tiempo_apertura()), 
                 'tarifa': class_db.tarifa(),
@@ -318,6 +319,25 @@ def datos_home():
         dic_home['socketC'] = "Activo"
     else:
         dic_home['socketC'] = "Desactivo"
+
+
+    banderaTiempo = class_db.consultarTipoTiempo()
+    dic_home['tipoTiempo'] = banderaTiempo
+    if banderaTiempo == "cadaDia":
+        horaCorte = class_db.consultarTiempo()
+        dic_home['automaticoHora'] = horaCorte
+        dic_home['automaticoDia'] = ""
+    if banderaTiempo == "cadaSemana":
+        diaHora = class_db.consultarTiempo()
+        diaHora = diaHora.split('|')
+        dic_home['automaticoDia'] = diaHora[0]
+        dic_home['automaticoHora']= diaHora[1]
+
+    if banderaTiempo == "cadaMes":
+        diaHora = class_db.consultarTiempo()
+        diaHora = diaHora.split('|')
+        dic_home['automaticoDia'] = diaHora[0]
+        dic_home['automaticoHora']= diaHora[1]
 
     return dic_home
 
