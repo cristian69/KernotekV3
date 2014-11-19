@@ -85,7 +85,6 @@ $("#siguienteReporte").click(function(){
 		$("#reportepaso2").addClass("active");
 		$("#reportetab1").removeClass("active");
 		$("#reportepaso1").removeClass("active");
-		$("#reportepaso2 .step").removeClass("hidden");
 		$("#aceptarReporte").removeClass("hidden");
 		$("#anteriorReporte").removeClass("hidden");
 		$("#siguienteReporte").addClass("hidden");
@@ -99,7 +98,6 @@ $("#siguienteReporte").click(function(){
 		$("#reportepaso2").addClass("active");
 		$("#reportetab1").removeClass("active");
 		$("#reportepaso1").removeClass("active");
-		$("#reportepaso2 .step").removeClass("hidden");
 		$("#siguienteReporte").addClass("hidden");
 		$("#anteriorReporte").removeClass("hidden");
 		$("#aceptarReporte").removeClass("hidden");
@@ -116,7 +114,6 @@ $("#anteriorReporte").click(function(){
 	$("#reportepaso2").removeClass("active");
 	$("#reportetab1").addClass("active");
 	$("#reportepaso1").addClass("active");
-	$("#reportepaso2 .step").addClass("hidden");
 	$("#aceptarReporte").addClass("hidden");
 	$("#anteriorReporte").addClass("hidden");
 	$("#siguienteReporte").removeClass("hidden");

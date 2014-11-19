@@ -73,13 +73,13 @@ def cod_tabla(startDate, endDate, inicio):
               <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + startDate + """ a """ + endDate + """
             </div>
             <div class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default">General</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default">Detallado</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default">Generar Excel</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default"> Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default"> Generar Excel </a>
             </div>
           </div>
           <div class="portlet-body">
-            <table class="table table-bordered  table-condensed flip-content">""")
+            <table class="table table-bordered  table-condensed ">""")
 
     codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
     codigo_tabla += str('<tr>')  # Inicio de las cabezeras

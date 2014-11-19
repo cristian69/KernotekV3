@@ -9083,6 +9083,16 @@ Red Pink
 Red Sunglo
 ***/
 /* Button */
+.blue-sunglo.btn {
+  color: white;
+  background-color: #009DE0;
+  border-color: "";
+}
+.blue-sunglo.btn:hover, .blue-sunglo.btn:focus, .blue-sunglo.btn:active, .blue-sunglo.btn.active {
+  color: white;
+  background-color: #007cc0;
+}
+
 .red-sunglo.btn {
   color: white;
   background-color: #e26a6a;

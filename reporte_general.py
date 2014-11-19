@@ -53,10 +53,10 @@ def tablaReporte(datos, startDate, endDate):
                 <i class="fa fa-bar-chart-o"></i>Reporte General
               </article>
               <article class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-circle btn-default">Especifico</a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-circle btn-default">Detallado</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-circle btn-default"> Especifico </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-circle btn-default"> Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn btn-circle btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn btn-circle btn-default" id="excelDescargar"><i class="fa fa-download"></i>Descargar Excel</a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
               </article>
             </article>
             <article class="portlet-body">
