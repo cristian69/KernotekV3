@@ -161,10 +161,8 @@ $(function(){
         $("#fechaFinal").val(fechaFinal);        
         $("#turnoSeleccionado").val(turno);
         $("table#tablaTurno tbody tr").removeClass("info");
-        $("table#tablaTurno tbody tr").removeClass("bordetablaA");
         if($("table#tablaTurno tbody tr").hasClass=(id)){
             $("table#tablaTurno tbody tr."+id).addClass("info");
-            $("table#tablaTurno tbody tr."+id).addClass("bordetablaA");
         }
         document.location.href="#reporteTurno"
         $('#reporteTurno').modal("show");

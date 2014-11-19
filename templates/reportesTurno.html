@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="tipoReporte(), tablasReportes('{{tablaTurnos}}');">
+  <body class="page-header-fixed" onload="tipoReporte(), tablasReportes('{{tablaFechas}}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -66,6 +66,31 @@
     <section class="page-container">
       <article class="page-content">
         <article class="row">
+          <article class="col-md-12">
+            <article class="modal fade" tabindex="-1" aria-hidden="true" style="display:bolck;" id="reporteTurno">
+              <article class="modal-dialog">
+                <form action="" id = "modalTurnoSeleccionado">
+                  <article class="modal-content">
+                    <article class="modal-header text-center">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h3 class="modal-title">¿Generar el Reporte del Turno Seleccionado?</h3>
+                      <input class="form-control group-form hidden" type="text" value="" id="turnoSeleccionado" name="turnoSeleccionado">
+                    </article>
+                    <article class="modal-body text-center">
+                      <article  data-always-visible="1" data-rail-visible="1">
+                        <article class="row">
+                          <article class="col-md-12">
+                            <button type="submit" class="btn blue" name="submit" value="generarReporteTurno">Aceptar</button>
+                            <button type="button" data-dismiss="modal" class="btn default">Cancelar</button>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                  </article>
+                </form>
+              </article>
+            </article>
+          </article>
           <article class="col-md-12" id="moduloFechas">
             <article class="col-md-3"></article>
             <article class="col-md-6">
