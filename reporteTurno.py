@@ -25,7 +25,7 @@ class reporteTurno(flask.views.MethodView):
             fechaInicioTurno = request.form['fechaInicial']
             fechaFinTurno = request.form['fechaFinal']
             registrosTurno = class_db.reporteTurno(numTurno)
-            htmlTabla = tablaReporte(registrosTurno, numTurno, fechaInicioTurno, fechaFinTurno)
+            htmlTabla = tablaReporte(registrosTurno, numTurno, fechaInicioTurno, fechaFinTurno, "False", "False")
             if len(htmlTabla) == 89:
                 return render_template('reportesTurno.html', htmlTurnos=htmlTabla, tablaFechas=False, excel=False, PDF=False)
             # excel.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
@@ -39,16 +39,35 @@ class reporteTurno(flask.views.MethodView):
             numShift = request.args.get('turno')
             startDate = request.args.get('fechaInicio')
             endDate = request.args.get('fechaFin')
+            stateExcel = request.args.get('excel')
+            statePDF = request.args.get('pdf')
+            print statePDF, stateExcel
             if typeReport == "excel":
                 sellShift = class_db.reporteTurno(numShift)
-                excel.reporteTurno(sellShift, startDate, endDate, numShift)
-                tableHTML = tablaReporte(sellShift, numShift, startDate, endDate)
-                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=True, PDF= False)
+                # excel.reporteTurno(sellShift, startDate, endDate, numShift)
+                tableHTML = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel="True", statePDF=statePDF)
+                if statePDF == "True":
+                    statePDF = True
+                else:
+                    statePDF = False
+                if stateExcel == "True":
+                    stateExcel= True
+                else:
+                    stateExcel= False
+                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF= statePDF)
             elif typeReport == "PDF":
                 sellShift = class_db.reporteTurno(numShift)
-                pdf.reporteTurno(sellShift, startDate, endDate, numShift)
-                tableHTML = tablaReporte(sellShift, numShift, startDate, endDate)
-                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=False, PDF=True)
+                # pdf.reporteTurno(sellShift, startDate, endDate, numShift)
+                tableHTML = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel=stateExcel, statePDF="True")
+                if statePDF == "True":
+                    statePDF = True
+                else:
+                    statePDF = False
+                if stateExcel == "True":
+                    stateExcel= True
+                else:
+                    stateExcel= False
+                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF=statePDF)
             else:
                 return render_template('reportesTurno.html', htmlTurnos="", tablaFechas=False, excel=False, PDF=False)
         else:
@@ -96,7 +115,7 @@ def turnosDisponibles(startDate, endDate):
                     """
     return htmlTurnos
 
-def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno):
+def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExcel, statePDF):
     cuerpoTabla = generar_tabla(registros, "", False)
     if not cuerpoTabla:
         codigoTabla = str('<h1></h1><h1 align="center"><strong>No hay registros de Ventas en ese Turno</strong></h1>')
@@ -111,8 +130,8 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno):
               </article>
               <article class="actions">
                 <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo hidden" id="descargarTurnoExcel"> Descargar Excel </a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel "  class="btn btn-circle btn-default" id="generarTurnoExcel"> Generar Excel </a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF "  class="btn btn-circle btn-default" id="generarTurnoPdf"> Generar PDF </a>
+                 <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel&excel="""+stateExcel+"""&pdf="""+statePDF+""" "  class="btn btn-circle btn-default">Generar Excel</a>
+                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF&excel="""+stateExcel+"""&pdf="""+statePDF+""" "  class="btn btn-circle btn-default">Generar PDF</a>
                 <a href=" """+linkPDF+""" " class="btn btn-circle blue-sunglo hidden" id="descargarTurnoPdf"> Descargar PDF </a>
                 <a href="javascript:;" class="collapse"></a>
               </article>
