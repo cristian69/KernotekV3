@@ -23,7 +23,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="tipoReporte(), tablasReportes('{{tablaFechas}}');">
+  <body class="page-header-fixed" onload="tipoReporte(), tablasReportes('{{tablaFechas}}'), generarExcel('{{excel}}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -39,10 +39,20 @@
               <i class="fa fa-home"></i>Inicio
               </a>
             </li>
-            <li class="tooltips">
-              <a href="{{ url_for('reportes') }}">
-              <i class="fa fa-bar-chart-o"></i>Reportes
-              </a>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
+              <ul class="dropdown-menu">
+                 <li class="tooltips">
+                  <a href="{{ url_for('reportes') }}">
+                  <i class="fa fa fa-history"></i>Por fechas
+                  </a>
+                </li>
+                 <li class="tooltips">
+                  <a href="{{ url_for('reporteTurno') }}">
+                  <i class="fa fa-ticket"></i>Por turno
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="tooltips">
               <a href="{{ url_for('turnos') }}">
@@ -50,13 +60,13 @@
               </a>
             </li>
             <li class="tooltips">
-              <a href="{{ url_for('configuracion') }}">
+              <a href="{{ url_for('configuracion')}}">
               <i class="fa fa-cogs"></i>Configuración
               </a>
             </li>
             <li class="tooltips">
               <a href="{{ url_for('logout') }}">
-                <i class="fa fa fa-power-off"></i>Salir<!--fa-sign-out-->
+                <i class="fa fa fa-sign-out"></i>Salir<!--fa-sign-out-->
               </a>
             </li>
           </ul>
