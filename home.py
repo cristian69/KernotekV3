@@ -81,9 +81,9 @@ class Home(flask.views.MethodView):
                 tableHTML = tablaReporte(sells,startDate, endDate)
 
                 if len(tableHTML) == 66:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False)
                 else:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1)
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True)
 
         if operation == CHANGE_RATE:
             if stateC and statePython:
