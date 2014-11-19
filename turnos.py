@@ -9,7 +9,8 @@ class Turnos(flask.views.MethodView):
 	def get(self):
 		if len(session) > 1:
 			typeCut = class_db.tipoCorte()
-			return render_template('corteDeTurno.html', tipoCorte=typeCut)
+			dicTurno = valuesAutomaticShift()
+			return render_template('corteDeTurno.html', tipoCorte=typeCut, dicTurno=dicTurno)
 		else:
 			return redirect(url_for('login'))
 
@@ -18,6 +19,7 @@ class Turnos(flask.views.MethodView):
 		typeCut = class_db.tipoCorte()
 		option = request.form.getlist('seleccionarAccion2')
 		option = option[0]
+		dicTurno = valuesAutomaticShift()
 		if option == "cambiar":
 			typeCut = request.form.getlist('tiposCortes2')
 			typeCut = typeCut[0]
@@ -29,7 +31,7 @@ class Turnos(flask.views.MethodView):
 			if typeCut is not "1":
 				class_db.cambiarTipoCorte(typeCut)
 				typeCut = class_db.tipoCorte()
-				return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut)
+				return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
 			else:
 				option = "configurar"
 
@@ -59,8 +61,9 @@ class Turnos(flask.views.MethodView):
 			bandera = "configuracionExitosa"
 			class_db.cambiarTipoCorte('1')
 			class_db.tipoTiempoAutomatico(typeLapse)
-			class_db.tiempoCorteAuto(timeAutoCut)	
-			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut)
+			class_db.tiempoCorteAuto(timeAutoCut)
+			dicTurno = valuesAutomaticShift()
+			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno=dicTurno)
 
 		if option == "corte":
 			class_db.activarCorteTurno()
@@ -68,3 +71,23 @@ class Turnos(flask.views.MethodView):
 			bandera = "corteExitoso"
 
 		return render_template('corteDeTurno.html', bandera=bandera)
+
+def valuesAutomaticShift():
+	banderaTiempo = class_db.consultarTipoTiempo()
+	dicTurno = {}
+	dicTurno['tipoTiempo'] = banderaTiempo
+	if banderaTiempo == "cadaDia":
+		horaCorte = class_db.consultarTiempo()
+		dicTurno['automaticoHora'] = horaCorte
+		dicTurno['automaticoDia'] = ""
+	if banderaTiempo == "cadaSemana":
+		diaHora = class_db.consultarTiempo()
+		diaHora = diaHora.split('|')
+		dicTurno['automaticoDia'] = diaHora[0]
+		dicTurno['automaticoHora']= diaHora[1]
+	if banderaTiempo == "cadaMes":
+		diaHora = class_db.consultarTiempo()
+		diaHora = diaHora.split('|')
+		dicTurno['automaticoDia'] = diaHora[0]
+		dicTurno['automaticoHora']= diaHora[1]
+	return dicTurno

@@ -50,7 +50,7 @@ class reporteTurno(flask.views.MethodView):
                 tableHTML = tablaReporte(sellShift, numShift, startDate, endDate)
                 return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=False, PDF=True)
             else:
-                return render_template('reportesTurno.html', htmlTurnos="", tablaFechas=False, excel="", PDF="")
+                return render_template('reportesTurno.html', htmlTurnos="", tablaFechas=False, excel=False, PDF=False)
         else:
             return redirect(url_for('login'))
 
