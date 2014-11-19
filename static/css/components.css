@@ -3912,8 +3912,8 @@ Dashboard stats
 }
 
 .dashboard-stat .visual > i {
-  margin-left: -37px;
-  font-size: 90px;
+  margin-left: -10px;
+  font-size: 70px;
   line-height: 43px;
 }
 .dashboard-stat .details {

@@ -4456,7 +4456,7 @@ UI Loading
   width: 70px;
   height: 100px;
   display: block;
-  float: left;
+  float: right;
   padding-left: 15px;
   margin-bottom: 15px;
   font-size: 35px;
@@ -4466,8 +4466,7 @@ UI Loading
   margin-left: -50px;
   font-size: 100px;
   line-height: 100px;
-  color: white;
-  opacity: 0.5;
+  color: #009DE0;
 }
 
 
