@@ -76,6 +76,7 @@ def turnosDisponibles(startDate, endDate):
                     </article>
                     </article>
                     """
+    print len(htmlTurnos)
     return htmlTurnos
 
 def tablaReporte(registros):

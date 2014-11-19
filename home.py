@@ -51,7 +51,6 @@ class Home(flask.views.MethodView):
         operation = request.form['submit']
         flag = ""
         stateC, statePython =  revisarProceso()
-
         if operation == "reporteTurno":
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
             endDate = request.form['fecha_fin2'] + ' 23:59:59'
@@ -98,6 +97,59 @@ class Home(flask.views.MethodView):
                 flag = "corteExitoso"
             else:
                 flag = "error"
+
+        if operation == "modalTurno":
+            modalOperation = request.form.getlist('seleccionarAccion')
+            modalOperation = modalOperation[0]
+            if modalOperation == "cambiar":
+                typeCut = request.form.getlist('tiposCorte')
+                typeCut = typeCut[0]
+                if typeCut == "manual":
+                    typeCut = '0'
+                else:
+                    typeCut = '1'
+                    modalOperation = "configurar"
+                class_db.cambiarTipoCorte(typeCut)
+                flag = "cambioExitoso"
+                # if stateC and statePython:
+                #     class_db.cambiarTipoCorte(typeCut)
+                #     flag = "cambioExitoso"
+                # else:
+                #     flag = "error"
+            if modalOperation == "corte":
+                if stateC and statePython:
+                    class_db.activarCorteTurno()
+                    flag = "corteExitoso"
+                else:
+                    flag = "error"
+            if modalOperation == "configurar":
+                typeLapse = request.form.getlist('tipoLapso')
+                typeLapse = typeLapse[0]
+                if typeLapse == "cadaDia":
+                    timeAutoCut = request.form['hora']
+                    class_db.registroProxCorteAuto("")
+                if typeLapse == "cadaSemana":
+                    dayWeek = request.form.getlist('diaSem')
+                    dayWeek = dayWeek[0]
+                    timeCut = request.form['hora']
+                    timeAutoCut = dayWeek + '|' + timeCut
+                    class_db.registroProxCorteAuto("")
+                if typeLapse == 'cadaMes':
+                    dayMonth = request.form.getlist('diaMes')
+                    dayMonth = dayMonth[0]
+                    timeCut = request.form['hora']
+                    timeAutoCut = dayMonth + '|' + timeCut
+                    class_db.registroProxCorteAuto("")
+                if typeLapse == 'cadaDetHora':
+                    timeAutoCut = request.form['hora']
+                    nextCut = libgral.generarProximoCorte(timeAutoCut)
+                    class_db.registroProxCorteAuto(nextCut)
+
+                bandera = "configuracionExitosa"
+                class_db.cambiarTipoCorte('1')
+                class_db.tipoTiempoAutomatico(typeLapse)
+                class_db.tiempoCorteAuto(timeAutoCut)   
+                # return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut)
 
         dic_home = datos_home()
         dayGrafic, sells = graficaDia()
