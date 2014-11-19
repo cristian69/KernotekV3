@@ -443,9 +443,9 @@
                                     <h4 id="labelTipoCorte"></h4>
                                   </article>
                                   <article class="col-md-4">
-                                    <input class="form-control tipoLapsoh hidden" type="text" value="cadaMes">
-                                    <input class="form-control diaCorteh hidden" type="text" value="12">
-                                    <input class="form-control horaCorteh hidden" type="text" value="23:59:59">
+                                    <input class="form-control tipoLapsoh hidden" type="text" value="{{dic_home['tipoTiempo']}}">
+                                    <input class="form-control diaCorteh hidden" type="text" value="{{dic_home['automaticoDia']}}">
+                                    <input class="form-control horaCorteh hidden" type="text" value="{{dic_home['automaticoHora']}}">
                                     <select class="form-control" name="tipoLapso" id="Lapso" >
                                       <option value="cadaDia">Diario</option>
                                       <option value="cadaSemana">Semanal</option>

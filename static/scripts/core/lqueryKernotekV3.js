@@ -24,6 +24,26 @@ function home(){
 	});
 }
 
+function reporteTurnos(parametro1, parametro2){
+	if(parametro1=="True"){
+		alert("excel descargar");
+		$("#descargarTurnoExcel").removeClass("hidden");
+		$("#generarTurnoExcel").addClass("hidden");
+	}
+	if(parametro2=="True"){
+		$("#descargarTurnoPdf").removeClass("hidden");
+		$("#generarTurnoPdf").addClass("hidden");
+	}
+	if(parametro1=="False"){
+		$("#descargarTurnoExcel").addClass("hidden");
+		$("#generarTurnoExcel").removeClass("hidden");
+	}
+	if(parametro2=="False"){
+		$("#descargarTurnoPdf").addClass("hidden");
+		$("#generarTurnoPdf").removeClass("hidden");
+	}
+}
+
 function generarExcel(parametro){
 	if(parametro=="True"){
 		$("#excelDescargar").removeClass("hidden");

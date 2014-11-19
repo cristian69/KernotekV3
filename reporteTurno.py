@@ -110,10 +110,10 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno):
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno
               </article>
               <article class="actions">
-                <a href=" """+linkExcel+""" " class="btn btn-circle btn-default">Descargar Excel</a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel "  class="btn btn-circle btn-default">Generar Excel</a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF "  class="btn btn-circle btn-default">Generar PDF</a>
-                <a href=" """+linkPDF+""" " class="btn btn-circle btn-default">Descargar PDF</a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle btn-default hidden" id="descargarTurnoExcel">Descargar Excel</a>
+                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel "  class="btn btn-circle btn-default" id="generarTurnoExcel">Generar Excel</a>
+                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF "  class="btn btn-circle btn-default" id="generarTurnoPdf">Generar PDF</a>
+                <a href=" """+linkPDF+""" " class="btn btn-circle btn-default hidden" id="descargarTurnoPdf">Descargar PDF</a>
                 <a href="javascript:;" class="collapse"></a>
               </article>
             </article>
