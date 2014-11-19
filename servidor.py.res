@@ -15,8 +15,7 @@ import InhibirMDB
 from libErrores import registroError
 import libgral
 
-CONTADOR_CORTE = 0
-BANDERA_CORTE = True
+
 IP_UDP = "127.0.0.1"
 PUERTO_UDP = 8000
 MESSAGE = "...."
@@ -173,60 +172,49 @@ def Socket():
 # -------------------------- FUNCIONES  --------------------------------------------
 
 def hacerCorteAutomatico():
-    global BANDERA_CORTE
-    global CONTADOR_CORTE
-    if BANDERA_CORTE:
-        hacerCorte = False
-        banderaTiempo = class_db.consultarTipoTiempo()
-        if banderaTiempo == "cadaDia":
-            horaCorte = class_db.consultarTiempo()
-            horaActual = libgral.ObtenerHora()
-            if horaCorte == horaActual:
-                hacerCorte = True
+    hacerCorte = False
+    banderaTiempo = class_db.consultarTipoTiempo()
+    if banderaTiempo == "cadaDia":
+        horaCorte = class_db.consultarTiempo()
+        horaActual = libgral.ObtenerHora()
+        if horaCorte == horaActual:
+            hacerCorte = True
 
-        if banderaTiempo == "cadaSemana":
-            diaHora = class_db.consultarTiempo()
-            diaHora = diaHora.split('|')
-            dia = diaHora[0]
-            hora = diaHora[1]
-            diaActual = libgral.obtenerNombreDia()
-            horaActual = libgral.ObtenerHora()
-            if dia == diaActual and hora == horaActual:
-                hacerCorte = True
+    if banderaTiempo == "cadaSemana":
+        diaHora = class_db.consultarTiempo()
+        diaHora = diaHora.split('|')
+        dia = diaHora[0]
+        hora = diaHora[1]
+        diaActual = libgral.obtenerNombreDia()
+        horaActual = libgral.ObtenerHora()
+        if dia == diaActual and hora == horaActual:
+            hacerCorte = True
 
-        if banderaTiempo == "cadaMes":
-            diaHora = class_db.consultarTiempo()
-            diaHora = diaHora.split('|')
-            dia = diaHora[0]
-            hora = diaHora[1]
-            diaActual = libgral.obtenerDia()
-            horaActual = libgral.ObtenerHora()
-            if dia == diaActual and hora == horaActual:
-                hacerCorte = True
+    if banderaTiempo == "cadaMes":
+        diaHora = class_db.consultarTiempo()
+        diaHora = diaHora.split('|')
+        dia = diaHora[0]
+        hora = diaHora[1]
+        diaActual = libgral.obtenerDia()
+        horaActual = libgral.ObtenerHora()
+        if dia == diaActual and hora == horaActual:
+            hacerCorte = True
 
-        if banderaTiempo == "cadaDetHora":
-            hora = class_db.consultProxCorte()
-            hora  = hora[:-3]
-            horaActual = libgral.ObtenerHora()
-            hora2 = class_db.consultarTiempo()
-            horaActual = horaActual[:-3]
-            if hora == horaActual:
-                hacerCorte = True
-                proxCorte = libgral.generarProximoCorte(hora2)
-                class_db.registroProxCorteAuto(proxCorte)
+    if banderaTiempo == "cadaDetHora":
+        hora = class_db.consultProxCorte()
+        hora  = hora[:-3]
+        horaActual = libgral.ObtenerHora()
+        hora2 = class_db.consultarTiempo()
+        horaActual = horaActual[:-3]
+        if hora == horaActual:
+            hacerCorte = True
+            proxCorte = libgral.generarProximoCorte(hora2)
+            class_db.registroProxCorteAuto(proxCorte)
 
-        if hacerCorte:
-            if DEBUG:
-                print "CORTE DE TURNO AUTOMATICO"
-            class_db.activarCorteTurno()
-            #global BANDERA_CORTE 
-            BANDERA_CORTE = False
-    else:
-        #global CONTADOR_CORTE 
-        CONTADOR_CORTE += 1
-    if CONTADOR_CORTE == 10:
-        #global BANDERA_CORTE 
-        BANDERA_CORTE = True
+    if hacerCorte:
+        if DEBUG:
+            print "CORTE DE TURNO AUTOMATICO"
+        class_db.activarCorteTurno()
 
 
 

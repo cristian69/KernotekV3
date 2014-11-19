@@ -60,7 +60,7 @@ class reporteEspecifico(flask.views.MethodView):
 
 
 def cod_tabla(startDate, endDate, inicio):
-    linkExcel = "/var/wwww/KernotekV3/static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
+    linkExcel = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
     # linkPDF = "../static/download/"+ session['username'] + "/Reporte de Ventas.pdf"
     dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
                     'deposit': 'Depósito'}
