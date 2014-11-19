@@ -76,6 +76,7 @@ def cod_tabla(startDate, endDate, inicio):
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default"> Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default"> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
             </div>
           </div>
           <div class="portlet-body" >
