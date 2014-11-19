@@ -10,8 +10,7 @@
     * pip install xlsxwriter
     * apt-get install python-dev
     * pip install xhtml2pdf
-    * pip install python-flup
-    
+    * apt-get install uwsgi-plugin-python    
 
     NUEVA LIBRERIA PARA EXPORTAR A PDF
     
@@ -19,6 +18,8 @@
     * apt-get install libffi-dev - Ubuntu
     * apt-get install python-lxml
     * pip install WeasyPrint
+    * pip install pango
+   
 
     CODIFICACION
 
