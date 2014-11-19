@@ -78,7 +78,7 @@ def cod_tabla(startDate, endDate, inicio):
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default"> Generar Excel </a>
             </div>
           </div>
-          <div class="portlet-body">
+          <div class="portlet-body" >
             <table class="table table-bordered  table-condensed ">""")
 
     codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
