@@ -74,7 +74,7 @@ class Home(flask.views.MethodView):
                     tablaFechas = False
                 else:
                     tablaFechas = True
-                return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas)
+                return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas, excel=False, PDF=False)
 
             if typeReport == DATES_REPORT:
                 sells = class_db.reporte_general(startDate, endDate)
