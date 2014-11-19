@@ -55,7 +55,11 @@ class Home(flask.views.MethodView):
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
             endDate = request.form['fecha_fin2'] + ' 23:59:59'
             codeShifts = turnosDisponibles(startDate, endDate)
-            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=True)
+            if len(codeShifts) == 118:
+                tablaFechas = False
+            else:
+                tablaFechas = True
+            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas)
 
         if operation == REPORT:
             typeReport = request.form.getlist('tipoReporte')
@@ -63,8 +67,15 @@ class Home(flask.views.MethodView):
             startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
             endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
             if typeReport == SHIFT_REPORT:
-                codeShift = turnosDisponibles
-                return render_template('reportesTurno.html')
+                startDate = request.form['fecha_inicio'] + ' 00:00:00'
+                endDate = request.form['fecha_fin'] + ' 23:59:59'
+                codeShifts = turnosDisponibles(startDate, endDate)
+                if len(codeShifts) == 118:
+                    tablaFechas = False
+                else:
+                    tablaFechas = True
+                return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas)
+
             if typeReport == DATES_REPORT:
                 sells = class_db.reporte_general(startDate, endDate)
                 tableHTML = tablaReporte(sells,startDate, endDate)
@@ -140,16 +151,15 @@ class Home(flask.views.MethodView):
                     timeCut = request.form['hora']
                     timeAutoCut = dayMonth + '|' + timeCut
                     class_db.registroProxCorteAuto("")
-                if typeLapse == 'cadaDetHora':
-                    timeAutoCut = request.form['hora']
-                    nextCut = libgral.generarProximoCorte(timeAutoCut)
-                    class_db.registroProxCorteAuto(nextCut)
+                # if typeLapse == 'cadaDetHora':
+                #     timeAutoCut = request.form['hora']
+                #     nextCut = libgral.generarProximoCorte(timeAutoCut)
+                #     class_db.registroProxCorteAuto(nextCut)
 
-                bandera = "configuracionExitosa"
+                flag = "configuracionExitosa"
                 class_db.cambiarTipoCorte('1')
                 class_db.tipoTiempoAutomatico(typeLapse)
                 class_db.tiempoCorteAuto(timeAutoCut)   
-                # return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut)
 
         dic_home = datos_home()
         dayGrafic, sells = graficaDia()
