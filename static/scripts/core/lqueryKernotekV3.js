@@ -168,7 +168,7 @@ $("#siguienteCorte").click(function(){
 		$("#AceptarCorte").removeClass("hidden");
 		$("#CancelarCorte").removeClass("hidden");
 		$("#siguienteCorte").addClass("hidden");
-		$("#pasoTurno2b .step").removeClass("hidden");
+		$("#pasoTurno2b").removeClass("hidden");
 		$("#pasoTurno2b").addClass("active");
 		$("#pasoTurno1").removeClass("active");
 		$("#Turno1").removeClass("active");
@@ -180,14 +180,14 @@ $("#siguienteCorte").click(function(){
 		$("#pasoTurno1").removeClass("active");
 		$("#turno2").addClass("active");
 		$("#Turno1").removeClass("active");
-		$("#pasoTurno2 .step").removeClass("hidden");
+		$("#pasoTurno2").removeClass("hidden");
 		$("#anteriorCorte").removeClass("hidden");
 		$("#ConfirmarAccion").removeClass("hidden");
 		$("#siguienteCorte").addClass("hidden");
 	}
 	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="1"){
 		$("#pasoTurno2a").addClass("active");
-		$("#pasoTurno2a .step").removeClass("hidden");
+		$("#pasoTurno2a").removeClass("hidden");
 		$("#Turno2a").addClass("active");
 		$("#pasoTurno1").removeClass("active");
 		$("#Turno1").removeClass("active");	
@@ -198,7 +198,7 @@ $("#siguienteCorte").click(function(){
 		$("#pasoTurno2a").removeClass("active");
 		$("#Turno2a").removeClass("active");		
 		$("#pasoTurno3a").addClass("active");
-		$("#pasoTurno3a .step").removeClass("hidden");
+		$("#pasoTurno3a").removeClass("hidden");
 		$("#turno2").addClass("active");
 		$("#siguienteCorte").addClass("hidden");
 		$("#ConfirmarAccion").removeClass("hidden");
@@ -212,7 +212,7 @@ $("#CancelarCorte").click(function(){
 		$("#AceptarCorte").addClass("hidden");
 		$("#CancelarCorte").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
-		$("#pasoTurno2b .step").addClass("hidden");
+		$("#pasoTurno2b").addClass("hidden");
 		$("#pasoTurno2b").removeClass("active");
 		$("#pasoTurno1").addClass("active");
 		$("#Turno1").addClass("active");
@@ -226,14 +226,14 @@ $("#anteriorCorte").click(function(){
 		$("#pasoTurno1").addClass("active");
 		$("#turno2").removeClass("active");
 		$("#Turno1").addClass("active");
-		$("#pasoTurno2 .step").addClass("hidden");
+		$("#pasoTurno2").addClass("hidden");
 		$("#anteriorCorte").addClass("hidden");
 		$("#ConfirmarAccion").addClass("hidden");
 		$("#siguienteCorte").removeClass("hidden");
 	}
 	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="2"){
 		$("#pasoTurno2a").removeClass("active");
-		$("#pasoTurno2a .step").addClass("hidden");
+		$("#pasoTurno2a").addClass("hidden");
 		$("#Turno2a").removeClass("active");
 		$("#pasoTurno1").addClass("active");
 		$("#Turno1").addClass("active");	
@@ -249,7 +249,7 @@ $("#anteriorCorte").click(function(){
 		$("#pasoTurno2a").addClass("active");
 		$("#Turno2a").addClass("active");		
 		$("#pasoTurno3a").removeClass("active");
-		$("#pasoTurno3a .step").addClass("hidden");
+		$("#pasoTurno3a").addClass("hidden");
 		$("#turno2").removeClass("active");
 		$("#siguienteCorte").removeClass("hidden");
 		$("#anteriorCorte").removeClass("hidden");
