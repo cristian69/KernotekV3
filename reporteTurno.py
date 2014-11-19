@@ -104,22 +104,22 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno):
     linkExcel = "../static/download/"+session['username']+"/Reporte por Turno.xlsx"
     linkPDF = "../static/download/"+session['username']+"/Reporte por Turno.pdf"
     codigoTabla = """
-                    <article class="portlet ligth bordered">
+                    <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno
               </article>
-              <article class="tools">
-                <a href=" """+linkExcel+""" " data-toggle="modal" class="">Descargar Excel</a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel " data-toggle="modal" class="">Generar Excel</a>
-                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF " data-toggle="modal" class="">Generar PDF</a>
-                <a href=" """+linkPDF+""" " data-toggle="modal" class="">Descargar PDF</a>
+              <article class="actions">
+                <a href=" """+linkExcel+""" " class="btn btn-circle btn-default">Descargar Excel</a>
+                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel "  class="btn btn-circle btn-default">Generar Excel</a>
+                <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF "  class="btn btn-circle btn-default">Generar PDF</a>
+                <a href=" """+linkPDF+""" " class="btn btn-circle btn-default">Descargar PDF</a>
                 <a href="javascript:;" class="collapse"></a>
               </article>
             </article>
-            <article class="portlet-body flip-scroll">
-              <table class="table table-bordered table-condensed flip-content">
-                <thead class="flip-content text-center c-blue">
+            <article class="portlet-body">
+              <table class="table table-bordered table-condensed">
+                <thead class="text-center ">
                   <tr>
                     <th class="text-center">
                        Ticket
