@@ -41,11 +41,11 @@ class reporteTurno(flask.views.MethodView):
             endDate = request.args.get('fechaFin')
             stateExcel = request.args.get('excel')
             statePDF = request.args.get('pdf')
-            print statePDF, stateExcel
             if typeReport == "excel":
                 sellShift = class_db.reporteTurno(numShift)
                 # excel.reporteTurno(sellShift, startDate, endDate, numShift)
                 tableHTML = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel="True", statePDF=statePDF)
+                stateExcel = "True"
                 if statePDF == "True":
                     statePDF = True
                 else:
@@ -54,11 +54,13 @@ class reporteTurno(flask.views.MethodView):
                     stateExcel= True
                 else:
                     stateExcel= False
+                
                 return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF= statePDF)
             elif typeReport == "PDF":
                 sellShift = class_db.reporteTurno(numShift)
                 # pdf.reporteTurno(sellShift, startDate, endDate, numShift)
                 tableHTML = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel=stateExcel, statePDF="True")
+                statePDF = "True"
                 if statePDF == "True":
                     statePDF = True
                 else:
@@ -67,6 +69,7 @@ class reporteTurno(flask.views.MethodView):
                     stateExcel= True
                 else:
                     stateExcel= False
+                
                 return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF=statePDF)
             else:
                 return render_template('reportesTurno.html', htmlTurnos="", tablaFechas=False, excel=False, PDF=False)
