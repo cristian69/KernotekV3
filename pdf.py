@@ -182,7 +182,7 @@ def reporteGeneral(datos, fechaInicio, fechaFin):
 
 def reporteTurno(datos, fechaInicio, fechaFin, numTurno):
     ruta = "/var/www/demoFlask/static/download/"+session['username']+"/"
-    fechaReporte = str(datetime.datetime.today().strftime('%d-%b-%Y'))
+    fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
     cabezeras = ['Ticket', 'Fecha', 'Tarifa', 'Multi.', 'Total', 'Depósito']
 
     codigoHTML = """

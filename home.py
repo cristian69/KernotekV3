@@ -11,7 +11,6 @@ import datetime
 from calendar import monthrange
 from datetime import date, timedelta
 from reporteTurno import turnosDisponibles
-from libgral import numeracion_paginas
 from reporte_general import tablaReporte
 
 
