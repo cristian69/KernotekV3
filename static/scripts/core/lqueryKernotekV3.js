@@ -24,8 +24,20 @@ function home(){
 	});
 }
 
-function tablasReportes(parametro){
+function generarExcel(parametro){
 	alert(parametro);
+	if(parametro=="True"){
+		$("#excelDescargar").removeClass("hidden");
+		$("#generarExcel").addClass("hidden");
+	}
+	else{
+
+		$("#excelDescargar").addClass("hidden");
+		$("#generarExcel").removeClass("hidden");
+	}
+}
+
+function tablasReportes(parametro){
 	if(parametro=="True"){
 		$("#moduloFechas").addClass("hidden");
 	}
@@ -58,6 +70,10 @@ $("#siguienteReporte").click(function(){
 		$("#aceptarReporte").removeClass("hidden");
 		$("#anteriorReporte").removeClass("hidden");
 		$("#siguienteReporte").addClass("hidden");
+		$(".labelHoraFin").removeClass("hidden");
+		$(".inputHoraFin").removeClass("hidden");
+		$(".labelHoraInicio").removeClass("hidden");
+		$(".inputHoraInicio").removeClass("hidden");
 	}
 	if($("#tipoReporte").val()=="turno"){
 		$("#reportetab2").addClass("active");
@@ -65,8 +81,14 @@ $("#siguienteReporte").click(function(){
 		$("#reportetab1").removeClass("active");
 		$("#reportepaso1").removeClass("active");
 		$("#reportepaso2 .step").removeClass("hidden");
-		$("#reportepaso3 .step").removeClass("hidden");
+		$("#siguienteReporte").addClass("hidden");
 		$("#anteriorReporte").removeClass("hidden");
+		$("#aceptarReporte").removeClass("hidden");
+		$(".labelHoraFin").addClass("hidden");
+		$(".inputHoraFin").addClass("hidden");
+		$(".labelHoraInicio").addClass("hidden");
+		$(".inputHoraInicio").addClass("hidden");
+			
 	}
 });
 
@@ -76,10 +98,10 @@ $("#anteriorReporte").click(function(){
 	$("#reportetab1").addClass("active");
 	$("#reportepaso1").addClass("active");
 	$("#reportepaso2 .step").addClass("hidden");
-	$("#reportepaso3 .step").addClass("hidden");
 	$("#aceptarReporte").addClass("hidden");
 	$("#anteriorReporte").addClass("hidden");
 	$("#siguienteReporte").removeClass("hidden");
+	$("#aceptarReporte").addClass("hidden");
 });
 
 $("#aceptarReporte").click(function(){
