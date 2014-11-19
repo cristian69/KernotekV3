@@ -25,6 +25,7 @@ function home(){
 }
 
 function tablasReportes(parametro){
+	alert(parametro);
 	if(parametro=="True"){
 		$("#moduloFechas").addClass("hidden");
 	}

@@ -160,6 +160,8 @@ $(function(){
         $("#fechaInicial").val(fechaInicio);
         $("#fechaFinal").val(fechaFinal);        
         $("#turnoSeleccionado").val(turno);
+        $("#fechaInicial").val(fechaInicio);
+        $("#fechaFinal").val(fechaFinal);
         $("table#tablaTurno tbody tr").removeClass("info");
         if($("table#tablaTurno tbody tr").hasClass=(id)){
             $("table#tablaTurno tbody tr."+id).addClass("info");
