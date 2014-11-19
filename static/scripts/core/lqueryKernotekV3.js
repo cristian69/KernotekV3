@@ -25,7 +25,6 @@ function home(){
 }
 
 function generarExcel(parametro){
-	alert(parametro);
 	if(parametro=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");
