@@ -3895,9 +3895,12 @@ Customized Progress Bars
 /***
 Dashboard stats
 ***/
+.conent{
+
+}
 .dashboard-stat {
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
   overflow: hidden;
 }
 .dashboard-stat:before, .dashboard-stat:after {
@@ -3913,16 +3916,18 @@ Dashboard stats
 
 .dashboard-stat .visual > i {
   margin-left: -10px;
-  font-size: 70px;
-  line-height: 43px;
+  font-size: 65px;
+  line-height: -1px;
+}
+.dashboard-stat  .conent> i{
+  margin-left: -25px !important;
 }
 .dashboard-stat .details {
   right: 0px;
   padding-right: 0px;
 }
 .dashboard-stat .details .number {
-  padding-top: 40px;
-  font-size: 30px;
+  font-size: 40px;
   letter-spacing: -1px;
   margin-bottom: 0px;
   font-weight: 300;

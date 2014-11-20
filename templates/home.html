@@ -543,7 +543,7 @@
               <article class="col-md-12">
                 <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <article class="dashboard-stat" id="grafica">
-                    <article class="portlet light bordered">
+                    <article class="portlet light bordered" style="  border-radius: 7px !important;">
                       <article class="portlet-title">
                         <form action="" name="formTitle"></form>
                         <article class="caption">
@@ -560,20 +560,20 @@
                       <article class="portlet-body form text-center ">
                         <form  class="form-horizontal" >
                           <article class="form-body">
-                            <article class="tab-content times" onclick="$('#generarReportes').modal('show');">
+                            <article class="tab-content times .valorSistema" onclick="$('#generarReportes').modal('show');">
                               <article class="tab-pane " id="graficaenDias">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaDia" width="960px" height="570px"></canvas>
+                                  <canvas id="graficaDia" width="940px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="graficaenSemanas">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaSemana" width="960px" height="570px"></canvas>
+                                  <canvas id="graficaSemana" width="940px" height="570px"></canvas>
                                 </article>
                               </article>
                               <article class="tab-pane" id="graficaenMeses">
                                 <article id="canvas-holder grafica">
-                                  <canvas id="graficaMes" width="960px" height="570px"></canvas>
+                                  <canvas id="graficaMes" width="940px" height="570px"></canvas>
                                 </article>
                               </article>
                             </article>
@@ -586,85 +586,92 @@
               </article>
             </article>
             <article class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-              <article class="col-md-12">
+              <article class="row">
                 <article class="col-lg-12 col-md-12 col-sm-6 col-xs-12 ">
                   <article class="dashboard-stat">
-                    <article class="portlet light bordered">
-                      <article class="portlet-title">
-                        <article class="caption">
-                          <i class="fa fa-dollar"></i>Sistema.
-                        </article>
-                      </article>
-                      <article class="portlet-body form text-center">
-                        <form  class="form-horizontal text-center" >
-                          <article class="form-body text-center">
-                            <article class="row text-center">
-                              <article class="col-md-12 text-center">
-                                <article class="col-md-6 text-center">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Tarifa actual.</strong></h1>
-                                    <article class="col-md-12 details text-center">
-                                      <article class="number text-center">$ {{ dic_home['tarifa']}}0</article>
-                                    </article>
-                                    <article class="col-md-12 visual"><i class="fa fa-dollar"></i></article>
-                                  </article>
+                    <form  class="form-horizontal text-center" >
+                      <article class="form-body">
+                        <article class="row">
+                          <article class="col-md-6">
+                            <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
+                              <article class="row">
+                                <article class="col-md-12 tituloTarjeta">
+                                  <h1 class="cabeceraTarjeta text-left"><strong>Tarifa actual</strong></h1>
                                 </article>
-                                <article class="col-md-6 text-center">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Tiempo de apertura.</strong></h1>
-                                    <article class="col-md-12 details text-center">
-                                      <article class="number">{{ dic_home['t_apertura']}} S.</article>
-                                    </article>
-                                    <article class="col-md-12 visual"><i class="fa fa-history"></i></article>
-                                  </article>
+                              </article>
+                              <article class="row">
+                                <article class="details text-left col-md-9">
+                                  <article class="number"><strong>{{ dic_home['tarifa']}}0</strong></article>
+                                  <h4 class="text-left">MXN, Actual</h4>
                                 </article>
+                                <article class="col-md-3 visual"><i class="fa fa-dollar"></i></article>  
                               </article>
                             </article>
                           </article>
-                        </form>
+                          <article class="col-md-6">
+                            <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
+                              <article class="row">
+                                <article class="col-md-12 tituloTarjeta">
+                                  <h1 class="cabeceraTarjeta text-left"><strong>Tiempo de apertura</strong></h1>
+                                </article>
+                              </article>
+                              <article class="row">
+                                <article class="details text-left col-md-9">
+                                  <article class="number"><strong>{{ dic_home['t_apertura']}}</strong></article>
+                                  <h4 class="text-left">Segundos</h4>    
+                                </article>
+                              <article class="col-md-3 visual"><i class="fa fa-history"></i></article>
+                              </article>
+                            </article>
+                          </article>
+                        </article>
                       </article>
-                    </article>
+                    </form>
                   </article>
                 </article>
               </article>
-              <article class="col-md-12">
+              <article class="row">
                 <article class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                   <article class="dashboard-stat">
-                    <article class="portlet light bordered">
-                      <article class="portlet-title">
-                        <article class="caption">
-                          <i class="fa fa-calendar-o"></i>Turnos.
-                        </article>
-                      </article>
-                      <article class="portlet-body form text-center ">
-                        <form  class="form-horizontal" >
-                          <article class="form-body">
-                            <article class="row">
-                              <article class="col-md-12 text-center">
-                                <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalReporteTurno').modal('show');">
-                                    <h4 class="cabeceraTarjeta text-left">Ventas del turno.</h4>
-                                    <article class="col-md-12 details text-center">
-                                      <article class="number">${{dic_home['ventasTurno']}}0</article>
-                                    </article>
-                                    <article class="col-md-12 visual"><i class="fa fa-ticket"></i></article>
-                                  </article>
+                    <form  class="form-horizontal" >
+                      <article class="form-body">
+                        <article class="row">
+                          <article class="col-md-6">
+                            <article class="col-md-12 form-group valorSistema times" onclick="$('#modalReporteTurno').modal('show');">
+                              <article class="row">
+                                <article class="col-md-12 tituloTarjeta">
+                                  <h1 class="cabeceraTarjeta text-left"><strong>Ventas del turno</strong></h1>
+                                  <h3 class="text-left" style="color:#999999;"><strong>15200</strong></h3>
                                 </article>
-                                <article class="col-md-6 ">
-                                  <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTurno').modal('show');">
-                                    <h4 class="cabeceraTarjeta text-left">Tipo de corte.</h4>
-                                    <article class="col-md-12 details text-center">
-                                      <article class="number">{{dic_home['tipoCorte']}}</article>
-                                    </article>
-                                    <article class="col-md-12 visual"><i class="fa fa-calendar"></i></article>
-                                  </article>
+                              </article>
+                              <article class="row">
+                                <article class="details text-left col-md-9">
+                                  <article class="number"><strong>{{dic_home['ventasTurno']}}0</strong></article>
+                                  <h4 class="text-left">MXN, Actual</h4>
                                 </article>
+                                <article class="col-md-3 visual conent"><i class="fa fa-ticket"></i></article>
                               </article>
                             </article>
                           </article>
-                        </form>
+                          <article class="col-md-6 ">
+                            <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTurno').modal('show');">
+                              <article class="row">
+                                <article class="col-md-12 tituloTarjeta">
+                                  <h1 class="cabeceraTarjeta text-left"><strong>Corte de turno</strong></h1>
+                                </article>
+                              </article>
+                              <article class="row">
+                                <article class="details text-left col-md-9">
+                                  <article class="number"><strong>{{dic_home['tipoCorte']}}</strong></article>
+                                  <h4 class="text-left">Mensual, 1 5:59:59</h4>
+                                </article>
+                                <article class="col-md-3 visual conent"><i class="fa fa-calendar"></i></article>
+                              </article>
+                            </article>
+                          </article>
+                        </article>
                       </article>
-                    </article>
+                    </form>
                   </article>
                 </article>
               </article>

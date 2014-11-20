@@ -1042,7 +1042,7 @@ Page content
 .page-content {  
   margin-top: 0px;   
   padding: 0px;
-  background-color: #fff; 
+  background-color: #FAFAFA; 
 }
 
 .ie8 .page-content { 
@@ -2857,7 +2857,7 @@ Dashboard container
 Dashboard stats
 ***/
 .dashboard-stat {
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 
 .portlet .dashboard-stat:last-child {
@@ -2879,7 +2879,6 @@ Dashboard stats
   height:80px;
   display: block;
   float: left;
-  padding-top: 10px;
   padding-left: 15px;
   margin-bottom: 10px;
 }
@@ -2909,8 +2908,7 @@ Dashboard stats
   padding-right: 0px;  
 }
 
-.dashboard-stat .details .number {    
-  padding-top: 15px;
+.dashboard-stat .details .number { 
   font-size: 30px;
   letter-spacing: -1px;
   margin-bottom: 5px;
@@ -4441,13 +4439,19 @@ UI Loading
 
 
 .valorSistema{
-  height: 195px;
+  height: 330px;
   border: 1px solid #e1e1e1;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
   margin-right: 0px !important;
   margin-left: 0px !important;
-  background-color: #F7F7F7;
+  background-color: #FFFFFF;
 }
 
+.tituloTarjeta{
+  height: 200px;
+}
 .valorSistema:hover{
   background-color: #F2F2F2;
 }
@@ -4471,15 +4475,14 @@ UI Loading
 
 
 .cabeceraTarjeta{
-  padding-top: 10px;
   color:black;
-  font-size: 20px !important;
+  font-size: 26px !important;
 }
 .colorAzul{
   color:#009de0;
 }
 
-
+/*
 
 @media (min-width: 1890px) and (max-width: 1910px) { 
   .valorSistema{
@@ -4674,7 +4677,7 @@ UI Loading
     font-size: 20px !important;
   }
     .cabeceraTarjeta {
-  font-size: 17px !important;
+  font-size: 23px !important;
   }
 
 }
@@ -4871,3 +4874,4 @@ UI Loading
 
 }
 
+*/
