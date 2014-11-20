@@ -80,14 +80,17 @@ def valuesAutomaticShift():
 		horaCorte = class_db.consultarTiempo()
 		dicTurno['automaticoHora'] = horaCorte
 		dicTurno['automaticoDia'] = ""
+		dicTurno['tipoTiempo'] = "Diario"
 	if banderaTiempo == "cadaSemana":
 		diaHora = class_db.consultarTiempo()
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
+		dic_home['tipoTiempo'] = "Semanal"
 	if banderaTiempo == "cadaMes":
 		diaHora = class_db.consultarTiempo()
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
+		dic_home['tipoTiempo'] = "Mensual"
 	return dicTurno

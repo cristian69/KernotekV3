@@ -326,18 +326,19 @@ def datos_home():
         horaCorte = class_db.consultarTiempo()
         dic_home['automaticoHora'] = horaCorte
         dic_home['automaticoDia'] = ""
+        dic_home['tipoTiempo'] = "Diario"
     if banderaTiempo == "cadaSemana":
         diaHora = class_db.consultarTiempo()
         diaHora = diaHora.split('|')
         dic_home['automaticoDia'] = diaHora[0]
         dic_home['automaticoHora']= diaHora[1]
-
+        dic_home['tipoTiempo'] = "Semanal"
     if banderaTiempo == "cadaMes":
         diaHora = class_db.consultarTiempo()
         diaHora = diaHora.split('|')
         dic_home['automaticoDia'] = diaHora[0]
         dic_home['automaticoHora']= diaHora[1]
-
+        dic_home['tipoTiempo'] = "Mensual"
     return dic_home
 
 
