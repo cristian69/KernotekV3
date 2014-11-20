@@ -293,6 +293,7 @@ def datos_home():
                 'dias': '',
                 'socketPython': "", 
                 'socketC': "",
+                'acumuladoTurno': "",
                 'ventasTurno': "",
                 'cerradura': class_db.consultarCerradura()
                 }
@@ -300,8 +301,8 @@ def datos_home():
     datosTurno = class_db.datosTurnoActual()
     numTurno = datosTurno[0]
 
-    dic_home['ventasTurno'] = class_db.acumuladoTurno(str(numTurno))
-
+    dic_home['acumuladoTurno'] = class_db.acumuladoTurno(str(numTurno))
+    dic_home['ventasTurno'] = class_db.ventasTurno(str(numTurno))
     dic_home['meses'], dic_home['valoresMes'] = graficaMes()
     dic_home['semanas'], dic_home['valoresSemana'] = graficaSemana()
     dic_home['dias'], dic_home['valoresDia'] = graficaDia()
@@ -339,6 +340,9 @@ def datos_home():
         dic_home['automaticoDia'] = diaHora[0]
         dic_home['automaticoHora']= diaHora[1]
         dic_home['tipoTiempo'] = "Mensual"
+
+    for c in dic_home:
+        print c, dic_home[c]
     return dic_home
 
 

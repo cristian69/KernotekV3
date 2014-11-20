@@ -93,4 +93,5 @@ def valuesAutomaticShift():
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
 		dic_home['tipoTiempo'] = "Mensual"
+
 	return dicTurno
