@@ -191,8 +191,11 @@ def hacerCorteAutomatico():
         if banderaTiempo == "cadaSemana":
             diaHora = class_db.consultarTiempo()
             diaHora = diaHora.split('|')
-            dia = diaHora[0]
+            dia = str(diaHora[0])
             hora = diaHora[1]
+	    hora = datetime.strptime(hora, '%H:%M:%S')
+	    hora = str(hora).split(' ')
+	    hora = str(hora[1])
             diaActual = libgral.obtenerNombreDia()
             horaActual = libgral.ObtenerHora()
             if dia == diaActual and hora == horaActual:
@@ -201,8 +204,11 @@ def hacerCorteAutomatico():
         if banderaTiempo == "cadaMes":
             diaHora = class_db.consultarTiempo()
             diaHora = diaHora.split('|')
-            dia = diaHora[0]
+            dia = str(diaHora[0])
             hora = diaHora[1]
+	    hora = datetime.strptime(hora, '%H:%M:%S')
+	    hora = str(hora).split(' ')
+	    hora = hora[1]
             diaActual = libgral.obtenerDia()
             horaActual = libgral.ObtenerHora()
             if dia == diaActual and hora == horaActual:
