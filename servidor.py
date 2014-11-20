@@ -13,6 +13,7 @@ import os
 import class_db
 import InhibirMDB
 from libErrores import registroError
+from datetime import datetime
 import libgral
 
 CONTADOR_CORTE = 0
@@ -26,7 +27,7 @@ tiempoActual = 0  # Tiempo de apertura actual
 turnoActual = 0
 
 maxIntentos = 20
-DEBUG = 0
+DEBUG = 1
 
 # BasicValidator = "/home/linaro/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
 BasicValidator = "/home/odroid/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
@@ -179,8 +180,11 @@ def hacerCorteAutomatico():
         hacerCorte = False
         banderaTiempo = class_db.consultarTipoTiempo()
         if banderaTiempo == "cadaDia":
-            horaCorte = class_db.consultarTiempo()
+            horaCorte = str(class_db.consultarTiempo())
             horaActual = libgral.ObtenerHora()
+	    horaCorte = datetime.strptime(horaCorte, '%H:%M:%S')
+	    horaCorte = str(horaCorte).split(' ')
+	    horaCorte = str(horaCorte[1])
             if horaCorte == horaActual:
                 hacerCorte = True
 
@@ -214,7 +218,6 @@ def hacerCorteAutomatico():
                 hacerCorte = True
                 proxCorte = libgral.generarProximoCorte(hora2)
                 class_db.registroProxCorteAuto(proxCorte)
-
         if hacerCorte:
             if DEBUG:
                 print "CORTE DE TURNO AUTOMATICO"
@@ -224,9 +227,10 @@ def hacerCorteAutomatico():
     else:
         #global CONTADOR_CORTE 
         CONTADOR_CORTE += 1
-    if CONTADOR_CORTE == 10:
+    if CONTADOR_CORTE == 6:
         #global BANDERA_CORTE 
         BANDERA_CORTE = True
+	CONTADOR_CORTE = 0
 
 
 
