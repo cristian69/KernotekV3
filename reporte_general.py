@@ -45,7 +45,7 @@ def tablaReporte(datos, startDate, endDate):
         return codigoTabla
     # linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
     # linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
-    linkExcel = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
+    linkExcel = "../static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
     codigoTabla = """
                     <article class="portlet light bordered">
             <article class="portlet-title">
