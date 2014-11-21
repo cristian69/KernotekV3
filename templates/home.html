@@ -589,32 +589,32 @@
                         <article class="form-body">
                           <article class="row">
                             <article class="col-md-6">
-                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');" style="margin-top:-12px !important;">
+                              <article class="col-md-12 form-group valorSistema times tajetasTop" onclick="$('#modalTarifa').modal('show');">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Tarifa actual</strong></h1>
+                                    <h1 class="cabeceraTarjeta text-left">Tarifa actual</h1>
                                   </article>
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{ dic_home['tarifa']}}0</strong></article>
-                                    <h4 class="text-left">MXN, Actual</h4>
+                                    <article class="detalles">MXN, Actual</article>
                                   </article>
                                   <article class="col-md-4 visual"><i class="fa fa-dollar"></i></article>  
                                 </article>
                               </article>
                             </article>
                             <article class="col-md-6">
-                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');" style="margin-top:-12px !important;">
+                              <article class="col-md-12 form-group valorSistema times tarjetasTop" onclick="$('#modalAcceso').modal('show');">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Tiempo de apertura</strong></h1>
+                                    <h1 class="cabeceraTarjeta text-left">Tiempo de apertura</h1>
                                   </article>
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{ dic_home['t_apertura']}}</strong></article>
-                                    <h4 class="text-left">Segundos</h4>    
+                                    <article class="detalles">Segundos</article>
                                   </article>
                                 <article class="col-md-4 visual conent"><i class="fa fa-history"></i></article>
                                 </article>
@@ -636,14 +636,14 @@
                               <article class="col-md-12 form-group valorSistema times" onclick="$('#modalReporteTurno').modal('show');">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Ventas del turno</strong></h1>
+                                    <h1 class="cabeceraTarjeta text-left">Ventas del turno</h1>
                                     <h3 class="text-left" style="color:#999999;"><strong>{{dic_home['ventasTurno']}}</strong></h3>
                                   </article>
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{dic_home['acumuladoTurno']}}0</strong></article>
-                                    <h4 class="text-left">MXN, Actual</h4>
+                                    <article class="detalles">MXN, Actual</article>
                                   </article>
                                   <article class="col-md-4 visual conent"><i class="fa fa-ticket"></i></article>
                                 </article>
@@ -653,15 +653,15 @@
                               <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTurno').modal('show');">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
-                                    <h1 class="cabeceraTarjeta text-left"><strong>Corte de turno</strong></h1>
+                                    <h1 class="cabeceraTarjeta text-left">Corte de turno</h1>
                                     <h3 class="text-left" style="color:#999999;"><strong>{{dic_home['turno']}}, Actual</strong></h3>
-                                    <h5>ultimo corte: 30/marzo/2014 24:59:59 hrs.</h5>
+                                    <h5>ultimo corte: {{dic_home['ultimoCorte']}}</h5>
                                   </article>
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-8">
-                                    <article class="number"><strong>Automatico</strong></article>
-                                    <h4 class="text-left">{{dic_home['tipoTiempo']}} {{dic_home['automaticoDia']}}  {{dic_home['automaticoHora']}} Hrs.</h4>
+                                    <article class="number"><strong>{{dic_home['tipoCorte']}}</strong></article>
+                                    <article class="detalles">{{dic_home['tipoTiempo']}} {{dic_home['automaticoDia']}}  {{dic_home['automaticoHora']}}</article>
                                   </article>
                                   <article class="col-md-4 visual conent"><i class="fa fa-calendar"></i></article>
                                 </article>

@@ -4475,13 +4475,21 @@ UI Loading
 
 
 .cabeceraTarjeta{
+  font-family: arial !important;
   color:black;
   font-size: 26px !important;
+}
+.tarjetasTop{
+  margin-top:-12px !important;
 }
 .colorAzul{
   color:#009de0;
 }
 
+.detalles{
+  font-size: 17px;
+  font-family: arial;
+}
 
 
 @media (min-width: 1900px) and (max-width: 1910px) { 
@@ -5164,9 +5172,13 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5180,9 +5192,14 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5195,9 +5212,14 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5210,9 +5232,14 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5225,9 +5252,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5240,9 +5275,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5255,9 +5298,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5270,9 +5321,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5285,9 +5344,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5300,9 +5367,17 @@ UI Loading
 }
 .valorSistema .visual > i {
   font-size: 50px;
+  text-align: right;;
 }
 .dashboard-stat .details .number { 
-  font-size: 25px;
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5316,6 +5391,20 @@ UI Loading
    .tituloTarjeta{
   height: 143px;
 }
+.valorSistema .visual > i {
+  font-size: 50px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 
@@ -5326,6 +5415,20 @@ UI Loading
    .tituloTarjeta{
   height: 141px;
 }
+.valorSistema .visual > i {
+  font-size: 50px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 @media (min-width: 1270px) and (max-width: 1280px) { 
@@ -5334,6 +5437,20 @@ UI Loading
   }
    .tituloTarjeta{
   height: 139px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 24px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5344,6 +5461,20 @@ UI Loading
    .tituloTarjeta{
   height: 137px;
 }
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 @media (min-width: 1250px) and (max-width: 1260px) { 
@@ -5352,6 +5483,20 @@ UI Loading
   }
    .tituloTarjeta{
   height: 135px;
+}
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5362,6 +5507,20 @@ UI Loading
    .tituloTarjeta{
   height: 133px;
 }
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 @media (min-width: 1230px) and (max-width: 1240px) { 
@@ -5370,6 +5529,20 @@ UI Loading
   }
    .tituloTarjeta{
   height: 131px;
+}
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
@@ -5380,6 +5553,20 @@ UI Loading
    .tituloTarjeta{
   height: 129px;
 }
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 @media (min-width: 1210px) and (max-width: 1220px) { 
@@ -5389,6 +5576,20 @@ UI Loading
    .tituloTarjeta{
   height: 127px;
 }
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
 
 }
 @media (min-width: 1200px) and (max-width: 1210px) { 
@@ -5397,6 +5598,20 @@ UI Loading
   }
    .tituloTarjeta{
   height: 125px;
+}
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 22px;
+}
+.detalles{
+  font-size: 13px;
+}
+
+.valorSistema .visual{
+  width: 55px;
 }
 
 }
