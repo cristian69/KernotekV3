@@ -9,15 +9,24 @@ from flask import session
 
 
 def export_excel(data, date_start, date_end):
-    date_start_report = date_start
-    date_end_report = date_end
+    startDateReport = date_start.split(' ')
+    date = startDateReport[0].split('-')
+    startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
+    endDateReport = date_end.split(' ')
+    date = endDateReport[0].split('-')
+    endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
+
+    dateReport = datetime.date.today()
+    dateReport = str(dateReport).split('-')
+    dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
+
     total_sells = data
     total_registros = 10  # Indica donde comenzar
 
-    date_report = datetime.date.today()
+   
     columns = class_db.columnas_habilitadas()
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
+    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte Específico.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -61,9 +70,9 @@ def export_excel(data, date_start, date_end):
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
-    sheet.merge_range('E4:F4', 'Fecha: ' + str(date_report), string_format)
-    sheet.merge_range('B6:F6', 'REPORTE DE VENTAS', string_format)
-    sheet.merge_range('B8:F8', 'DEL DIA ' + date_start_report + ' AL DIA ' + date_end_report, string_format)
+    sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
+    sheet.merge_range('B6:F6', 'REPORTE ESPECÍFICO', string_format)
+    sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
 
 
     # DATOS DE LA TABLA
@@ -132,15 +141,24 @@ def export_excel(data, date_start, date_end):
 
 
 def reporteGeneral(data, date_start, date_end):
-    date_start_report = date_start
-    date_end_report = date_end
+    startDateReport = date_start.split(' ')
+    date = startDateReport[0].split('-')
+    startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
+    endDateReport = date_end.split(' ')
+    date = endDateReport[0].split('-')
+    endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
+
+    dateReport = datetime.date.today()
+    dateReport = str(dateReport).split('-')
+    dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
+
     total_sells = data
     total_registros = 10
-    date_report = datetime.date.today()
+   
 
     columns = ['Tarifa', 'Número de Ventas', 'Total Acumulado']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte General de Ventas.xlsx"
+    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte General.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -179,9 +197,9 @@ def reporteGeneral(data, date_start, date_end):
 
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'SERVICIO SECA S.A DE C.V', string_format)
-    sheet.merge_range('E4:F4', 'Fecha: ' + str(date_report), string_format)
-    sheet.merge_range('B6:F6', 'REPORTE DE VENTAS', string_format)
-    sheet.merge_range('B8:F8', 'DEL DIA ' + date_start_report + ' AL DIA ' + date_end_report, string_format)
+    sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
+    sheet.merge_range('B6:F6', 'REPORTE GENERAL.', string_format)
+    sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
 
 
     # DATOS DE LA TABLA
@@ -236,16 +254,22 @@ def reporteGeneral(data, date_start, date_end):
 
 
 def reporteDetallado(data, date_start, date_end):
-    date_start_report = date_start
-    date_end_report = date_end
     total_sells = data
 
+    startDateReport = date_start.split(' ')
+    date = startDateReport[0].split('-')
+    startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
+    endDateReport = date_end.split(' ')
+    date = endDateReport[0].split('-')
+    endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
     total_registros = 10  # Indica donde comenzar
 
-    date_report = datetime.date.today()
+    dateReport = datetime.date.today()
+    dateReport = str(dateReport).split('-')
+    dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
     columns = ['Ticket', 'Turno', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte Detallado de Ventas.xlsx"
+    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte Detallado.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -285,13 +309,13 @@ def reporteDetallado(data, date_start, date_end):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', '/var/www/KernotekV3/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
-    sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
-    sheet.merge_range('E4:F4', 'Fecha: ' + str(date_report), string_format)
-    sheet.merge_range('B6:F6', 'REPORTE DE VENTAS', string_format)
-    sheet.merge_range('B8:F8', 'DEL DIA ' + date_start_report + ' AL DIA ' + date_end_report, string_format)
+    sheet.merge_range('A4:C4', 'KERNOTEK', string_format)
+    sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
+    sheet.merge_range('B6:F6', 'REPORTE DETALLADO.', string_format)
+    sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport +' hrs.', string_format)
 
 
     # FORMATO DE LA TABLA
@@ -318,7 +342,7 @@ def reporteDetallado(data, date_start, date_end):
         headers.append(column)
         format_columns.append(cells_format[column])
 
-    depositHeaders = ['D 0.5', 'D 1.0', 'D 2.0', 'D 5.0', 'D 10.0', 'D 20.0', 'D 50.0', 'D 100.0', 'D 200.0', 'TOKEN']
+    depositHeaders = ['D 0.5', 'D 1.0', 'D 2.0', 'D 5.0', 'D 10.0', 'D 20.0', 'D 50.0', 'D 100.0', 'D 200.0', 'Cortesía']
     changeHeaders = ['C 0.5', 'C 1.0', 'C 2.0', 'C 5.0', 'C 10.0', 'C 20.0', 'C 50.0', 'C 100.0', 'C 200.0']
 
     # col = Columna
@@ -459,8 +483,17 @@ def reporteDetallado(data, date_start, date_end):
 
 
 def reporteTurno(data, date_start, date_end, numTurno):
-    date_start_report = date_start
-    date_end_report = date_end
+    startDateReport = date_start.split(' ')
+    date = startDateReport[0].split('-')
+    startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
+    endDateReport = date_end.split(' ')
+    date = endDateReport[0].split('-')
+    endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
+
+    dateReport = datetime.date.today()
+    dateReport = str(dateReport).split('-')
+    dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
+
     total_sells = data
     total_registros = 10
     date_report = datetime.date.today()
@@ -508,13 +541,13 @@ def reporteTurno(data, date_start, date_end, numTurno):
 
 
     # INSERTAR IMAGEN CON ESCALA
-    sheet.insert_image('A1', '/var/www/KernotekV3/static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
+    sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
     sheet.merge_range('C4:D4', 'SERVICIO SECA S.A DE C.V', string_format)
-    sheet.merge_range('G4:H4', 'Fecha: ' + str(date_report), string_format)
+    sheet.merge_range('G4:H4', 'Fecha: ' + str(dateReport), string_format)
     sheet.merge_range('C6:H6', 'REPORTE DEL TURNO NÚMERO '+str(numTurno)+'', string_format)
-    sheet.merge_range('C8:H8', 'DEL DIA ' + date_start_report + ' AL DIA ' + date_end_report, string_format)
+    sheet.merge_range('C8:H8', 'Del ' + startDateReport + ' hrs. AL  ' + endDateReport + ' hrs.', string_format)
 
 
     # DATOS DE LA TABLA

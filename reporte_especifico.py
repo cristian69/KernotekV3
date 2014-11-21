@@ -7,6 +7,7 @@ import class_db
 import excel
 import threading
 import pdf
+from datetime import datetime
 
 banderaPDF = True
 try:
@@ -60,7 +61,15 @@ class reporteEspecifico(flask.views.MethodView):
 
 
 def cod_tabla(startDate, endDate, inicio):
+    startDateReport = startDate.split(' ')
+    date = startDateReport[0].split('-')
+    startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
+    endDateReport = endDate.split(' ')
+    date = endDateReport[0].split('-')
+    endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
+
     linkExcel = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
+    linkDetallado = "../static/download/" +session['username']+ "/Reporte Detallado.xlsx"
     # linkPDF = "../static/download/"+ session['username'] + "/Reporte de Ventas.pdf"
     dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
                     'deposit': 'Depósito'}
@@ -70,11 +79,12 @@ def cod_tabla(startDate, endDate, inicio):
     codigo_tabla += str('<div class="portlet light bordered">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
-              <i class="fa fa-bar-chart-o"></i>Reporte Específico del Sistema de la fecha """ + startDate + """ a """ + endDate + """
+              <i class="fa fa-bar-chart-o"></i>Reporte específico del """ + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
             </div>
             <div class="actions">
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default"> Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default"> Generar Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
                 <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
             </div>

@@ -301,7 +301,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
     # print "Index Next Block: ", indexNextBlock
 
     totalSales = class_db.total_registros(startDate, endDate, indexBackBlock)
-    # print "total sales: ", totalSales
+    print "total sales: ", totalSales
     if totalSales == 500:
         totalPages = totalSales / 50
     else:
@@ -366,6 +366,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
     
     lastPage = 0
     pageNextBlock = startPage + 10
+    print totalPages
     for numPage in range(1, totalPages + 1):
         lastPage += 1
         if startPage is actualPage:
@@ -396,9 +397,8 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
         code += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
 
     ifNextBlock = class_db.total_registros(startDate, endDate, indexNextBlock)
-    
     # Simbolo >>
-    if ifNextBlock is not 0:
+    if ifNextBlock > 0:
         code += str('<li class="enable"><a href="/'+link+'/?'\
                     'indice='+ str(indexNextBlock + 50)+\
                     '&fecha1=' + startDate +\
@@ -406,12 +406,15 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
                     '&num_pagina=' + str(pageNextBlock) +'">'\
                     '<i class="fa fa-angle-double-right"></i></a></li>')
     else:
-        code += str('<li class="enable"><a href="/'+link+'/?'\
-                    'indice='+ str(indexNextBlock)+\
-                    '&fecha1=' + startDate +\
-                    '&fecha2=' + endDate +\
-                    '&num_pagina=' + str(lastPage) +'">'\
-                    '<i class="fa fa-angle-double-right"></i></a></li>')
+        code += str('<li class="disabled"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>')
+        # code += str('<li class="enable"><a href="/'+link+'/?'\
+        #             'indice='+ str(indexNextBlock)+\
+        #             '&fecha1=' + startDate +\
+        #             '&fecha2=' + endDate +\
+        #             '&num_pagina=' + str(lastPage) +'">'\
+        #             '<i class="fa fa-angle-double-right"></i></a></li>')
+    if totalPages <= 0:
+        code = ""
     return code
 
 

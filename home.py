@@ -340,9 +340,6 @@ def datos_home():
         dic_home['automaticoDia'] = diaHora[0]
         dic_home['automaticoHora']= diaHora[1]
         dic_home['tipoTiempo'] = "Mensual"
-
-    for c in dic_home:
-        print c, dic_home[c]
     return dic_home
 
 
