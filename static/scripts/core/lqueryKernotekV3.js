@@ -20,8 +20,6 @@ function home(){
 }
 
 function reporteTurnos(parametro1, parametro2){
-	alert(parametro1);
-	alert(parametro2);
 	if(parametro1=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
 		$("#generarTurnoExcel").addClass("hidden");
