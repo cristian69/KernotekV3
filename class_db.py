@@ -436,6 +436,15 @@ def turnoActual():
     matar_conexion()
     return data[0]
 
+def ultimoTurno():
+    crear_conexion()
+    query = "SELECT dateend from panelshifthead order by dateend DESC limit 1;"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    if len(data) == 0:
+        return ""
+    return data[0][0]
 
 def datosTurnoActual():
     crear_conexion()

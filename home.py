@@ -295,8 +295,16 @@ def datos_home():
                 'socketC': "",
                 'acumuladoTurno': "",
                 'ventasTurno': "",
+                'ultimoTurno': str(class_db.ultimoTurno()),
                 'cerradura': class_db.consultarCerradura()
                 }
+
+    if dic_home['ultimoTurno'] != "":
+        dateShift = dic_home['ultimoTurno'].split(' ')
+        date = dateShift[0].split('-')
+        date = date[2] +'/'+ date[1]+'/'+ date[0]
+        dateShift = date + " " +dateShift[1] + ' hrs.'
+        dic_home['ultimoTurno'] = dateShift
 
     datosTurno = class_db.datosTurnoActual()
     numTurno = datosTurno[0]
@@ -320,26 +328,32 @@ def datos_home():
     else:
         dic_home['socketC'] = "Desactivo"
 
-
-    banderaTiempo = class_db.consultarTipoTiempo()
-    dic_home['tipoTiempo'] = banderaTiempo
-    if banderaTiempo == "cadaDia":
-        horaCorte = class_db.consultarTiempo()
-        dic_home['automaticoHora'] = horaCorte
+    if dic_home['tipoCorte'] == 'automatico':
+        banderaTiempo = class_db.consultarTipoTiempo()
+        dic_home['tipoTiempo'] = banderaTiempo
+        if banderaTiempo == "cadaDia":
+            horaCorte = class_db.consultarTiempo()
+            dic_home['automaticoHora'] = horaCorte +" Hrs."
+            dic_home['automaticoDia'] = ""
+            dic_home['tipoTiempo'] = "Diario"
+        if banderaTiempo == "cadaSemana":
+            diaHora = class_db.consultarTiempo()
+            diaHora = diaHora.split('|')
+            dic_home['automaticoDia'] = diaHora[0]
+            dic_home['automaticoHora']= diaHora[1] + " Hrs."
+            dic_home['tipoTiempo'] = "Semanal"
+        if banderaTiempo == "cadaMes":
+            diaHora = class_db.consultarTiempo()
+            diaHora = diaHora.split('|')
+            dic_home['automaticoDia'] = diaHora[0]
+            dic_home['automaticoHora']= diaHora[1] +" Hrs."
+            dic_home['tipoTiempo'] = "Mensual"
+        dic_home['tipoCorte'] = "Automático"
+    else:
+        dic_home['tipoTiempo'] = ""
+        dic_home['automaticoHora'] = ""
         dic_home['automaticoDia'] = ""
-        dic_home['tipoTiempo'] = "Diario"
-    if banderaTiempo == "cadaSemana":
-        diaHora = class_db.consultarTiempo()
-        diaHora = diaHora.split('|')
-        dic_home['automaticoDia'] = diaHora[0]
-        dic_home['automaticoHora']= diaHora[1]
-        dic_home['tipoTiempo'] = "Semanal"
-    if banderaTiempo == "cadaMes":
-        diaHora = class_db.consultarTiempo()
-        diaHora = diaHora.split('|')
-        dic_home['automaticoDia'] = diaHora[0]
-        dic_home['automaticoHora']= diaHora[1]
-        dic_home['tipoTiempo'] = "Mensual"
+        dic_home['tipoCorte'] = "Manual"
     return dic_home
 
 
