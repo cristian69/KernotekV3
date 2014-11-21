@@ -4439,7 +4439,7 @@ UI Loading
 
 
 .valorSistema{
-  height: 330px;
+  height: 370px;
   border: 1px solid #e1e1e1;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
@@ -4450,7 +4450,7 @@ UI Loading
 }
 
 .tituloTarjeta{
-  height: 200px;
+  height: 245px;
 }
 .valorSistema:hover{
   background-color: #F2F2F2;

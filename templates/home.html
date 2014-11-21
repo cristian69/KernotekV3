@@ -561,17 +561,17 @@
                           <article class="tab-content times .valorSistema" onclick="$('#generarReportes').modal('show');">
                             <article class="tab-pane " id="graficaenDias">
                               <article id="canvas-holder grafica">
-                                <canvas id="graficaDia" width="940px" height="570px"></canvas>
+                                <canvas id="graficaDia" width="880px" height="570px"></canvas>
                               </article>
                             </article>
                             <article class="tab-pane" id="graficaenSemanas">
                               <article id="canvas-holder grafica">
-                                <canvas id="graficaSemana" width="940px" height="570px"></canvas>
+                                <canvas id="graficaSemana" width="880px" height="570px"></canvas>
                               </article>
                             </article>
                             <article class="tab-pane" id="graficaenMeses">
                               <article id="canvas-holder grafica">
-                                <canvas id="graficaMes" width="940px" height="570px"></canvas>
+                                <canvas id="graficaMes" width="880px" height="570px"></canvas>
                               </article>
                             </article>
                           </article>
@@ -589,7 +589,7 @@
                         <article class="form-body">
                           <article class="row">
                             <article class="col-md-6">
-                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');">
+                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalTarifa').modal('show');" style="margin-top:-12px !important;">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
                                     <h1 class="cabeceraTarjeta text-left"><strong>Tarifa actual</strong></h1>
@@ -605,7 +605,7 @@
                               </article>
                             </article>
                             <article class="col-md-6">
-                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');">
+                              <article class="col-md-12 form-group valorSistema times" onclick="$('#modalAcceso').modal('show');" style="margin-top:-12px !important;">
                                 <article class="row">
                                   <article class="col-md-12 tituloTarjeta">
                                     <h1 class="cabeceraTarjeta text-left"><strong>Tiempo de apertura</strong></h1>
@@ -642,7 +642,7 @@
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-9">
-                                    <article class="number"><strong>{{dic_home[acumuladoTurno]}}0</strong></article>
+                                    <article class="number"><strong>{{dic_home['acumuladoTurno']}}0</strong></article>
                                     <h4 class="text-left">MXN, Actual</h4>
                                   </article>
                                   <article class="col-md-3 visual conent"><i class="fa fa-ticket"></i></article>
@@ -659,7 +659,7 @@
                                 <article class="row">
                                   <article class="details text-left col-md-9">
                                     <article class="number"><strong>{{dic_home['tipoCorte']}}</strong></article>
-                                    <h4 class="text-left">{{dic_home['tipoTiempo']}} {{dic_home['automaticoDia']}}  {{dic_home['automaticoHora']}} </h4>
+                                    <h4 class="text-left">{{dic_home['tipoTiempo']}} {{dic_home['automaticoDia']}}  {{dic_home['automaticoHora']}} Hrs.</h4>
                                   </article>
                                   <article class="col-md-3 visual conent"><i class="fa fa-calendar"></i></article>
                                 </article>
