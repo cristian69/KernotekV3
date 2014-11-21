@@ -26,11 +26,13 @@ tarifaActual = 0  # Tarifa actual
 tiempoActual = 0  # Tiempo de apertura actual
 turnoActual = 0
 
-maxIntentos = 20
+maxIntentos = 8
 DEBUG = 1
 
 # BasicValidator = "/home/linaro/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
-BasicValidator = "/home/odroid/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
+# BasicValidator = "/home/odroid/projects/ITLSSPLinux_6mod/BasicValidator6/BasicValidator"
+BasicValidator = "service BasicValidator manual"
+
 def socketC():
     try:
         os.system(BasicValidator)
