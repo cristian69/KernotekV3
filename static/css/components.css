@@ -3916,7 +3916,6 @@ Dashboard stats
 
 .dashboard-stat .visual > i {
   margin-left: -10px;
-  font-size: 65px;
   line-height: -1px;
 }
 .dashboard-stat  .conent> i{
@@ -3927,7 +3926,6 @@ Dashboard stats
   padding-right: 0px;
 }
 .dashboard-stat .details .number {
-  font-size: 40px;
   letter-spacing: -1px;
   margin-bottom: 0px;
   font-weight: 300;

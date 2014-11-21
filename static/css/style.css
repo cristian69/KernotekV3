@@ -2909,7 +2909,7 @@ Dashboard stats
 }
 
 .dashboard-stat .details .number { 
-  font-size: 30px;
+  font-size: 40px;
   letter-spacing: -1px;
   margin-bottom: 5px;
   font-weight: 300;
@@ -4450,7 +4450,7 @@ UI Loading
 }
 
 .tituloTarjeta{
-  height: 245px;
+  height: 260px;
 }
 .valorSistema:hover{
   background-color: #F2F2F2;
@@ -4468,7 +4468,7 @@ UI Loading
 }
 .valorSistema .visual > i {
   margin-left: -50px;
-  font-size: 100px;
+  font-size: 65px;
   line-height: 100px;
   color: #009DE0;
 }
@@ -4482,17 +4482,931 @@ UI Loading
   color:#009de0;
 }
 
-/*
 
-@media (min-width: 1890px) and (max-width: 1910px) { 
+
+@media (min-width: 1900px) and (max-width: 1910px) { 
   .valorSistema{
-    height: 190px;
-    background-color: #F7F7F7;
+    height: 366px;
   }
+  .tituloTarjeta{
+  height: 258px;
+}
+
+}
+@media (min-width: 1890px) and (max-width: 1900px) { 
+  .valorSistema{
+    height: 362px;
+  }
+  .tituloTarjeta{
+  height: 256px;
+}
+
+}
+
+@media (min-width: 1880px) and (max-width: 1890px) { 
+  .valorSistema{
+    height: 360px;
+  }
+  .tituloTarjeta{
+  height: 254px;
+}
+
+}
+@media (min-width: 1870px) and (max-width: 1880px) { 
+  .valorSistema{
+    height: 358px;
+  }
+  .tituloTarjeta{
+  height: 252px;
+}
+
+}
+@media (min-width: 1860px) and (max-width: 1870px) { 
+  .valorSistema{
+    height: 357px;
+  }
+  .tituloTarjeta{
+  height: 251px;
+}
+
+}
+@media (min-width: 1850px) and (max-width: 1860px) { 
+  .valorSistema{
+    height: 355px;
+  }
+  .tituloTarjeta{
+  height: 249px;
+}
+
+}
+@media (min-width: 1840px) and (max-width: 1850px) { 
+  .valorSistema{
+    height: 354px;
+  }
+  .tituloTarjeta{
+  height: 248px;
+}
+
+}
+@media (min-width: 1830px) and (max-width: 1840px) { 
+  .valorSistema{
+    height: 352px;
+  }
+  .tituloTarjeta{
+  height: 246px;
+}
+
+}
+@media (min-width: 1820px) and (max-width: 1830px) { 
+  .valorSistema{
+    height: 351px;
+  }
+  .tituloTarjeta{
+  height: 245px;
+}
+
+}
+@media (min-width: 1810px) and (max-width: 1820px) { 
+  .valorSistema{
+    height: 349px;
+  }
+  .tituloTarjeta{
+  height: 243px;
+}
+
+}
+@media (min-width: 1800px) and (max-width: 1810px) { 
+  .valorSistema{
+    height: 348px;
+  }
+  .tituloTarjeta{
+  height: 242px;
+}
 
 }
 
 
+
+
+
+@media (min-width: 1790px) and (max-width: 1800px) { 
+  .valorSistema{
+    height: 346px;
+  }
+  .tituloTarjeta{
+  height: 240px;
+}
+
+}
+
+@media (min-width: 1780px) and (max-width: 1790px) { 
+  .valorSistema{
+    height: 344px;
+  }
+  .tituloTarjeta{
+  height: 238px;
+}
+
+}
+@media (min-width: 1770px) and (max-width: 1780px) { 
+  .valorSistema{
+    height: 342px;
+  }
+  .tituloTarjeta{
+  height: 236px;
+}
+
+}
+@media (min-width: 1760px) and (max-width: 1770px) { 
+  .valorSistema{
+    height: 341px;
+  }
+  .tituloTarjeta{
+  height: 235px;
+}
+
+}
+@media (min-width: 1750px) and (max-width: 1760px) { 
+  .valorSistema{
+    height: 339px;
+  }
+  .tituloTarjeta{
+  height: 233px;
+}
+
+}
+@media (min-width: 1740px) and (max-width: 1750px) { 
+  .valorSistema{
+    height: 337px;
+  }
+  .tituloTarjeta{
+  height: 231px;
+}
+
+}
+@media (min-width: 1730px) and (max-width: 1740px) { 
+  .valorSistema{
+    height: 335px;
+  }
+  .tituloTarjeta{
+  height: 229px;
+}
+
+}
+@media (min-width: 1720px) and (max-width: 1730px) { 
+  .valorSistema{
+    height: 333px;
+  }
+  .tituloTarjeta{
+  height: 227px;
+}
+
+}
+@media (min-width: 1710px) and (max-width: 1720px) { 
+  .valorSistema{
+    height: 331px;
+  }
+  .tituloTarjeta{
+  height: 225px;
+}
+
+}
+@media (min-width: 1700px) and (max-width: 1710px) { 
+  .valorSistema{
+    height: 329px;
+  }
+  .tituloTarjeta{
+  height: 223px;
+}
+
+}
+
+
+
+@media (min-width: 1690px) and (max-width: 1700px) { 
+  .valorSistema{
+    height: 328px;
+  }
+  .tituloTarjeta{
+  height: 222px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+
+}
+
+@media (min-width: 1680px) and (max-width: 1690px) { 
+  .valorSistema{
+    height: 326px;
+  }
+  .tituloTarjeta{
+  height: 220px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1670px) and (max-width: 1680px) { 
+  .valorSistema{
+    height: 324px;
+  }
+  .tituloTarjeta{
+  height: 219px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1660px) and (max-width: 1670px) { 
+  .valorSistema{
+    height: 322px;
+  }
+  .tituloTarjeta{
+  height: 217px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1650px) and (max-width: 1660px) { 
+  .valorSistema{
+    height: 320px;
+  }
+  .tituloTarjeta{
+  height: 215px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1640px) and (max-width: 1650px) { 
+  .valorSistema{
+    height: 318px;
+  }
+  .tituloTarjeta{
+  height: 213px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1630px) and (max-width: 1640px) { 
+  .valorSistema{
+    height: 316px;
+  }
+  .tituloTarjeta{
+  height: 211px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1620px) and (max-width: 1630px) { 
+  .valorSistema{
+    height: 314px;
+  }
+  .tituloTarjeta{
+  height: 209px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1610px) and (max-width: 1620px) { 
+  .valorSistema{
+    height: 312px;
+  }
+  .tituloTarjeta{
+  height: 207px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1600px) and (max-width: 1610px) { 
+  .valorSistema{
+    height: 310px;
+  }
+  .tituloTarjeta{
+  height: 205px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+
+
+
+
+
+
+
+@media (min-width: 1590px) and (max-width: 1600px) { 
+  .valorSistema{
+    height: 308px;
+  }
+  .tituloTarjeta{
+  height: 203px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+
+@media (min-width: 1580px) and (max-width: 1590px) { 
+  .valorSistema{
+    height: 306px;
+  }
+  .tituloTarjeta{
+  height: 201px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1570px) and (max-width: 1580px) { 
+  .valorSistema{
+    height: 304px;
+  }
+  .tituloTarjeta{
+  height: 199px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1560px) and (max-width: 1570px) { 
+  .valorSistema{
+    height: 302px;
+  }
+  .tituloTarjeta{
+  height: 197px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1550px) and (max-width: 1560px) { 
+  .valorSistema{
+    height: 300px;
+  }
+  .tituloTarjeta{
+  height: 195px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1540px) and (max-width: 1550px) { 
+  .valorSistema{
+    height: 298px;
+  }
+  .tituloTarjeta{
+  height: 193px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1530px) and (max-width: 1540px) { 
+  .valorSistema{
+    height: 296px;
+  }
+  .tituloTarjeta{
+  height: 191px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1520px) and (max-width: 1530px) { 
+  .valorSistema{
+    height: 294px;
+  }
+  .tituloTarjeta{
+  height: 189px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1510px) and (max-width: 1520px) { 
+  .valorSistema{
+    height: 292px;
+  }
+  .tituloTarjeta{
+  height: 187px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+@media (min-width: 1500px) and (max-width: 1510px) { 
+  .valorSistema{
+    height: 290px;
+  }
+  .tituloTarjeta{
+  height: 185px;
+}
+.valorSistema .visual > i {
+  font-size: 60px;
+}
+.dashboard-stat .details .number { 
+  font-size: 30px;
+}
+
+}
+
+
+
+
+
+
+
+
+@media (min-width: 1490px) and (max-width: 1500px) { 
+  .valorSistema{
+    height: 288px;
+  }
+  .tituloTarjeta{
+  height: 183px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+
+@media (min-width: 1480px) and (max-width: 1490px) { 
+  .valorSistema{
+    height: 286px;
+  }
+  .tituloTarjeta{
+  height: 181px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1470px) and (max-width: 1480px) { 
+  .valorSistema{
+    height: 284px;
+  }
+  .tituloTarjeta{
+  height: 179px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1460px) and (max-width: 1470px) { 
+  .valorSistema{
+    height: 282px;
+  }
+  .tituloTarjeta{
+  height: 177px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1450px) and (max-width: 1460px) { 
+  .valorSistema{
+    height: 280px;
+  }
+  .tituloTarjeta{
+  height: 175px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1440px) and (max-width: 1450px) { 
+  .valorSistema{
+    height: 278px;
+  }
+  .tituloTarjeta{
+  height: 173px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1430px) and (max-width: 1440px) { 
+  .valorSistema{
+    height: 276px;
+  }
+  .tituloTarjeta{
+  height: 171px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1420px) and (max-width: 1430px) { 
+  .valorSistema{
+    height: 274px;
+  }
+  .tituloTarjeta{
+  height: 169px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+
+}
+@media (min-width: 1410px) and (max-width: 1420px) { 
+  .valorSistema{
+    height: 272px;
+  }
+.tituloTarjeta{
+  height: 167px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1400px) and (max-width: 1410px) { 
+  .valorSistema{
+    height: 270px;
+  }
+.tituloTarjeta{
+  height: 165px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+
+
+
+
+
+
+@media (min-width: 1390px) and (max-width: 1400px) { 
+  .valorSistema{
+    height: 268px;
+  }
+  .tituloTarjeta{
+  height: 163px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+
+@media (min-width: 1380px) and (max-width: 1390px) { 
+  .valorSistema{
+    height: 266px;
+  }
+  .tituloTarjeta{
+  height: 161px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1370px) and (max-width: 1380px) { 
+  .valorSistema{
+    height: 264px;
+  }
+  .tituloTarjeta{
+  height: 159px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1360px) and (max-width: 1370px) { 
+  .valorSistema{
+    height: 262px;
+  }
+  .tituloTarjeta{
+  height: 157px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1350px) and (max-width: 1360px) { 
+  .valorSistema{
+    height: 260px;
+  }
+  .tituloTarjeta{
+  height: 155px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1340px) and (max-width: 1350px) { 
+  .valorSistema{
+    height: 258px;
+  }
+  .tituloTarjeta{
+  height: 153px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1330px) and (max-width: 1340px) { 
+  .valorSistema{
+    height: 256px;
+  }
+  .tituloTarjeta{
+  height: 151px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1320px) and (max-width: 1330px) { 
+  .valorSistema{
+    height: 254px;
+  }
+  .tituloTarjeta{
+  height: 149px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1310px) and (max-width: 1320px) { 
+  .valorSistema{
+    height: 252px;
+  }
+  .tituloTarjeta{
+  height: 147px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+@media (min-width: 1300px) and (max-width: 1310px) { 
+  .valorSistema{
+    height: 250px;
+  }
+  .tituloTarjeta{
+  height: 145px;
+}
+.valorSistema .visual > i {
+  font-size: 50px;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+
+}
+
+
+
+@media (min-width: 1290px) and (max-width: 1300px) { 
+  .valorSistema{
+    height: 248px;
+  }
+   .tituloTarjeta{
+  height: 143px;
+}
+
+}
+
+@media (min-width: 1280px) and (max-width: 1290px) { 
+  .valorSistema{
+    height: 246px;
+  }
+   .tituloTarjeta{
+  height: 141px;
+}
+
+}
+@media (min-width: 1270px) and (max-width: 1280px) { 
+  .valorSistema{
+    height: 244px;
+  }
+   .tituloTarjeta{
+  height: 139px;
+}
+
+}
+@media (min-width: 1260px) and (max-width: 1270px) { 
+  .valorSistema{
+    height: 242px;
+  }
+   .tituloTarjeta{
+  height: 137px;
+}
+
+}
+@media (min-width: 1250px) and (max-width: 1260px) { 
+  .valorSistema{
+    height: 240px;
+  }
+   .tituloTarjeta{
+  height: 135px;
+}
+
+}
+@media (min-width: 1240px) and (max-width: 1250px) { 
+  .valorSistema{
+    height: 238px;
+  }
+   .tituloTarjeta{
+  height: 133px;
+}
+
+}
+@media (min-width: 1230px) and (max-width: 1240px) { 
+  .valorSistema{
+    height: 236px;
+  }
+   .tituloTarjeta{
+  height: 131px;
+}
+
+}
+@media (min-width: 1220px) and (max-width: 1230px) { 
+  .valorSistema{
+    height: 234px;
+  }
+   .tituloTarjeta{
+  height: 129px;
+}
+
+}
+@media (min-width: 1210px) and (max-width: 1220px) { 
+  .valorSistema{
+    height: 232px;
+  }
+   .tituloTarjeta{
+  height: 127px;
+}
+
+}
+@media (min-width: 1200px) and (max-width: 1210px) { 
+  .valorSistema{
+    height: 230px;
+  }
+   .tituloTarjeta{
+  height: 125px;
+}
+
+}
+
+
+
+
+
+
+/*
 @media (min-width: 1870px) and (max-width: 1890px) { 
   .valorSistema{
     height: 187px;
