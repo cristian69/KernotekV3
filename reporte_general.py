@@ -43,8 +43,6 @@ def tablaReporte(datos, startDate, endDate):
     if not cuerpoTabla:
         codigoTabla = str('<h1 align="center"><strong>No hay registros entre esas fechas</strong></h1>')
         return codigoTabla
-    # linkExcel = "../static/download/"+session['username']+"/Reporte General de Ventas.xlsx"
-    # linkPDF = "../static/download/"+session['username']+"/Reporte General de Ventas.pdf"
     startDateReport = startDate.split(' ')
     date = startDateReport[0].split('-')
     startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
@@ -53,18 +51,21 @@ def tablaReporte(datos, startDate, endDate):
     endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
     linkExcel = "../static/download/" + session['username'] + "/Reporte General.xlsx"
     linkDetallado = "../static/download/" +session['username']+ "/Reporte Detallado.xlsx"
+
+    codeOperations = """
+                    <article class="actions">
+                        <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-circle btn-default"> Especifico </a>
+                        <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-circle btn-default" id="detallado"> Generar Detallado </a>
+                        <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                        <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn btn-circle btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
+                        <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                    </article>
+                     """
     codigoTabla = """
                     <article class="portlet light bordered">
             <article class="portlet-title">
               <article class="caption">
-                <i class="fa fa-bar-chart-o"></i>Reporte general del """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
-              </article>
-              <article class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-circle btn-default"> Especifico </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-circle btn-default" id="detallado"> Generar Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn btn-circle btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
               </article>
             </article>
             <article class="portlet-body">
@@ -93,4 +94,4 @@ def tablaReporte(datos, startDate, endDate):
                     </article>
                     </article>
                     """
-    return codigoTabla
+    return codigoTabla, codeOperations

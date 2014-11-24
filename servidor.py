@@ -78,7 +78,7 @@ def Socket():
         if DEBUG:
             print "No se puede Iniciar el Soceket de Python"
         class_db.estadoSocketPython('0')  # Registra que el socket python no se pudo inciar
-        logger.error("No se puede conectar Socket")
+        logger.error("no se puede conectar socket")
         sys.exit(0)
     while True:
         corteAutomatico = class_db.tipoCorte()
@@ -109,13 +109,13 @@ def Socket():
                 sock.sendto(tarifa(), direccion)
                 if DEBUG:
                     print "CAMBIO DE TARIFA A : ", tarifa()
-                logger.debug("Cambio de tarifa a $%i.00" % ( tarifaActual/100 ) )
+                logger.debug("cambio de tarifa a $%i.00" % ( tarifaActual/100 ) )
 
             if cambioTiempo:
                 sock.sendto(tiempoApertura(), direccion)
                 if DEBUG:
                     print "CAMBIO DE TIEMPO DE APERTURA A : ", tiempoApertura()
-                logger.debug("Cambio de tiempo de apertura a %s seg." % ( tiempoActual ) )
+                logger.debug("cambio de tiempo de apertura a %s seg." % ( tiempoActual ) )
 
             if corteTurno:
                 if DEBUG:
@@ -163,7 +163,7 @@ def Socket():
             class_db.estadoSocketC('0')
             if contador == maxIntentos:
                 print "REINICIO AUTOMATICO DEL  SOCKET"
-                logger.warning("Reinicio Automatico del Monedero")
+                logger.warning("reinicio Automatico del Monedero")
                 InhibirMDB.main()
                 try:
                     iniciarThread()

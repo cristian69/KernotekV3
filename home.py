@@ -50,7 +50,6 @@ class Home(flask.views.MethodView):
         operation = request.form['submit']
         flag = ""
         stateC, statePython =  revisarProceso()
-        print operation
         if operation == "reporteTurno":
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
             endDate = request.form['fecha_fin2'] + ' 23:59:59'
@@ -63,7 +62,6 @@ class Home(flask.views.MethodView):
 
         if operation == REPORT:
             typeReport = request.form['inpTipoReporte']
-            print typeReport
             # typeReport = typeReport[0]
             startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
             endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
@@ -79,12 +77,12 @@ class Home(flask.views.MethodView):
 
             if typeReport == DATES_REPORT:
                 sells = class_db.reporte_general(startDate, endDate)
-                tableHTML = tablaReporte(sells,startDate, endDate)
+                tableHTML, codeOperations = tablaReporte(sells,startDate, endDate)
 
                 if len(tableHTML) == 66:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General")
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General", acciones=codeOperations)
                 else:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General")
+                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
 
         if operation == CHANGE_RATE:
             if stateC and statePython:
