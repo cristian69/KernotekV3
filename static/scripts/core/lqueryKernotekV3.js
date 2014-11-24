@@ -17,9 +17,15 @@ function home(){
 	$("#seleccionarAccion2").select2({
 		placeholder:"seleccionar acción"
 	});
+	$('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '80%'
+  });
 }
 
 function reporteTurnos(parametro1, parametro2){
+	alert(parametro1, parametro2);
 	if(parametro1=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
 		$("#generarTurnoExcel").addClass("hidden");
@@ -38,17 +44,25 @@ function reporteTurnos(parametro1, parametro2){
 	}
 }
 
-function generarExcel(parametro){
-	if(parametro=="True"){
+function generarExcel(parametro1, parametro2){
+	if(parametro1=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");
 	}
-	else{
-
+	if(parametro1=="False"){
 		$("#excelDescargar").addClass("hidden");
 		$("#generarExcel").removeClass("hidden");
 	}
+	if(parametro2=="True"){
+		$("#descargarDetallado").removeClass("hidden");
+	}
+	if(parametro2=="False"){
+		$("#descargarDetallado").addClass("hidden");
+	}
 }
+
+
+
 
 function tablasReportes(parametro){
 	if(parametro=="True"){

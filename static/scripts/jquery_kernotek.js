@@ -2,17 +2,13 @@
 $("body").mouseover(function(){
 	if($("#modalTarifa").hasClass("in")){
 		$("#nuevaTarifa").focus();
-		$("#nuevoTiempo").value("");
+		$("#nuevoTiempo").val("");
 
 	}
 	if($("#modalAcceso").hasClass("in")){
 		$("#nuevoTiempo").focus();
-		$("#nuevaTarifa").value("");
+		$("#nuevaTarifa").val("");
 
-	}
-	else{
-		$("#nuevaTarifa").value("");
-		$("#nuevoTiempo").value("");
 	}
 });
 
@@ -21,17 +17,17 @@ $("body").mouseover(function(){
 function focusModal(parametro){
 	if(parametro=="1"){
 		$("#nuevaTarifa").focus();
-		$("#nuevoTiempo").value("");
+		$("#nuevoTiempo").val("");
 
 	}
 	if(parametro=="2"){
 		$("#nuevoTiempo").focus();
-		$("#nuevaTarifa").value("");
+		$("#nuevaTarifa").val("");
 
 	}
 	else{
-		$("#nuevaTarifa").value("");
-		$("#nuevoTiempo").value("");
+		$("#nuevaTarifa").val("");
+		$("#nuevoTiempo").val("");
 	}
 }
 
