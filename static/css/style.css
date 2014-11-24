@@ -4480,7 +4480,7 @@ UI Loading
   font-size: 26px !important;
 }
 .tarjetasTop{
-  margin-top:-12px !important;
+  margin-top:-10px !important;
 }
 .colorAzul{
   color:#009de0;
@@ -5389,7 +5389,7 @@ UI Loading
     height: 248px;
   }
    .tituloTarjeta{
-  height: 143px;
+  height: 160px;
 }
 .valorSistema .visual > i {
   font-size: 50px;
@@ -5413,7 +5413,7 @@ UI Loading
     height: 246px;
   }
    .tituloTarjeta{
-  height: 141px;
+  height: 158px;
 }
 .valorSistema .visual > i {
   font-size: 50px;
@@ -5436,7 +5436,7 @@ UI Loading
     height: 244px;
   }
    .tituloTarjeta{
-  height: 139px;
+  height: 156px;
 }
 .valorSistema .visual > i {
   font-size: 50px;
@@ -5459,7 +5459,7 @@ UI Loading
     height: 242px;
   }
    .tituloTarjeta{
-  height: 137px;
+  height: 154px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5482,7 +5482,7 @@ UI Loading
     height: 240px;
   }
    .tituloTarjeta{
-  height: 135px;
+  height: 152px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5505,7 +5505,7 @@ UI Loading
     height: 238px;
   }
    .tituloTarjeta{
-  height: 133px;
+  height: 150px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5528,7 +5528,7 @@ UI Loading
     height: 236px;
   }
    .tituloTarjeta{
-  height: 131px;
+  height: 148px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5551,7 +5551,7 @@ UI Loading
     height: 234px;
   }
    .tituloTarjeta{
-  height: 129px;
+  height: 146px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5574,7 +5574,7 @@ UI Loading
     height: 232px;
   }
    .tituloTarjeta{
-  height: 127px;
+  height: 144px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5597,7 +5597,7 @@ UI Loading
     height: 230px;
   }
    .tituloTarjeta{
-  height: 125px;
+  height: 142px;
 }
 .valorSistema .visual > i {
   font-size: 48px;
@@ -5616,391 +5616,43 @@ UI Loading
 
 }
 
-
-
-
-
-
-/*
-@media (min-width: 1870px) and (max-width: 1890px) { 
+@media (min-width: 768px) and (max-width: 992px) { 
   .valorSistema{
-    height: 187px;
-    background-color:#F7F7F7;
+    height: 310px;
   }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
+   .tituloTarjeta{
+  height: 150px;
+}
+.valorSistema .visual{
+  height: 50px;
+  line-height: 0px;
+}
+.valorSistema .visual > i {
+  line-height:0px;
+}
 
 }
 
-@media (min-width: 1850px) and (max-width: 1870px) { 
-  .valorSistema{
-    height: 182px;
-    background-color:#F7F7F7;
-  }
+@media (min-width: 380px) and (max-width: 768px) { 
+     .valorSistema{
+      height: 300px;
+      }
+    .tituloTarjeta{
+      height: 160px;
+    }
+    .valorSistema .visual{
+      height: 50px;
+      line-height: 0px;
+    }
+    .valorSistema .visual > i {
+     line-height: 0px;
+    }
+    .dashboard-stat .details .number{
+      line-height: 50px !important;
+    }
 
+    .tarjetasTop{
+      margin-top: 0px !important;
+    }
 }
 
-@media (min-width: 1830px) and (max-width: 1850px) { 
-  .valorSistema{
-    height: 178px;
-    background-color:#F7F7F7;
-  }
-
-}
-@media (min-width: 1810px) and (max-width: 1830px) { 
-  .valorSistema{
-    height: 174px;
-    background-color:#F7F7F7;
-  }
-
-}
-@media (min-width: 1790px) and (max-width: 1810px) { 
-  .valorSistema{
-    height: 172px;
-    background-color:#F7F7F7;
-  }
-
-}
-
-@media (min-width: 1770px) and (max-width: 1790px) { 
-  .valorSistema{
-    height: 170px;
-    background-color:#F7F7F7;
-  }
-
-}
-@media (min-width: 1750px) and (max-width: 1770px) { 
-  .valorSistema{
-    height: 164px;
-    background-color:#F7F7F7;
-  }
-
-}
-@media (min-width: 1730px) and (max-width: 1750px) { 
-  .valorSistema{
-    height: 160px;
-    background-color:#F7F7F7;
-  }
-
-}
-
-@media (min-width: 1710px) and (max-width: 1730px) { 
-  .valorSistema{
-    height: 157px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-@media (min-width: 1690px) and (max-width: 1710px) { 
-  .valorSistema{
-    height: 154px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-
-@media (min-width: 1670px) and (max-width: 1690px) { 
-  .valorSistema{
-    height: 151px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-@media (min-width: 1650px) and (max-width: 1670px) { 
-  .valorSistema{
-    height: 148px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-@media (min-width: 1630px) and (max-width: 1650px) { 
-  .valorSistema{
-    height: 144px;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-@media (min-width: 1610px) and (max-width: 1630px) { 
-  .valorSistema{
-    height: 140px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 15px !important;
-  }
-
-}
-
-@media (min-width: 1590px) and (max-width: 1610px) { 
-  .valorSistema{
-    height: 136px;
-    background-color:#F7F7F7;
-  }
-  .dashboard-stat .details .number{
-    padding-top: 3px !important;
-  }
-
-}
-@media (min-width: 1570px) and (max-width: 1590px) { 
-  .valorSistema{
-    height: 132px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-  }
-
-}
-@media (min-width: 1550px) and (max-width: 1570px) { 
-  .valorSistema{
-    height: 130px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-  }
-
-}
-@media (min-width: 1530px) and (max-width: 1550px) { 
-  .valorSistema{
-    height: 126px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-  }
-
-}
-@media (min-width: 1510px) and (max-width: 1530px) { 
-  .valorSistema{
-    height: 124px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-  }
-
-}
-
-
-
-
-
-@media (min-width: 1490px) and (max-width: 1510px) { 
-  .valorSistema{
-    height: 120px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 23px !important;
-  }
-
-}
-@media (min-width: 1470px) and (max-width: 1490px) { 
-  .valorSistema{
-    height: 117px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 17px !important;
-  }
-
-}
-@media (min-width: 1450px) and (max-width: 1470px) { 
-  .valorSistema{
-    height: 112px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 17px !important;
-  }
-
-}
-@media (min-width: 1430px) and (max-width: 1450px) { 
-  .valorSistema{
-    height: 108px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 17px !important;
-  }
-
-}
-@media (min-width: 1410px) and (max-width: 1430px) { 
-  .valorSistema{
-    height: 105px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 3px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 17px !important;
-  }
-
-}
-
-
-
-
-
-@media (min-width: 1390px) and (max-width: 1410px) { 
-  .valorSistema{
-    height: 102px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 15px !important;
-  }
-
-}
-@media (min-width: 1370px) and (max-width: 1390px) { 
-  .valorSistema{
-    height: 99px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 15px !important;
-  }
-
-}
-@media (min-width: 1350px) and (max-width: 1370px) { 
-  .valorSistema{
-    height: 96px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 15px !important;
-  }
-
-}
-@media (min-width: 1330px) and (max-width: 1350px) { 
-  .valorSistema{
-    height: 93px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 15px !important;
-  }
-
-}
-@media (min-width: 1310px) and (max-width: 1330px) { 
-  .valorSistema{
-    height: 88px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 20px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 15px !important;
-  }
-
-}
-
-
-
-
-
-@media (min-width: 1290px) and (max-width: 1310px) { 
-  .valorSistema{
-    height: 84px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 17px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 14px !important;
-  }
-
-}
-@media (min-width: 1270px) and (max-width: 1290px) { 
-  .valorSistema{
-    height: 80px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 16px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 13px !important;
-  }
-
-}
-@media (min-width: 1250px) and (max-width: 1270px) { 
-  .valorSistema{
-    height: 78px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 16px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 13px !important;
-  }
-
-}
-@media (min-width: 1230px) and (max-width: 1250px) { 
-  .valorSistema{
-    height: 74px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 16px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 13px !important;
-  }
-
-}
-@media (min-width: 1200px) and (max-width: 1230px) { 
-  .valorSistema{
-    height: 72px;
-    background-color:#F7F7F7;
-  }.dashboard-stat .details .number{
-    padding-top: 0px !important;
-    font-size: 16px !important;
-  }
-    .cabeceraTarjeta {
-  font-size: 13px !important;
-  }
-
-}
-
-*/
