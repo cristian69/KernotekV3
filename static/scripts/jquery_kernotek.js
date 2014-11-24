@@ -1,4 +1,41 @@
 
+$("body").mouseover(function(){
+	if($("#modalTarifa").hasClass("in")){
+		$("#nuevaTarifa").focus();
+		$("#nuevoTiempo").value("");
+
+	}
+	if($("#modalAcceso").hasClass("in")){
+		$("#nuevoTiempo").focus();
+		$("#nuevaTarifa").value("");
+
+	}
+	else{
+		$("#nuevaTarifa").value("");
+		$("#nuevoTiempo").value("");
+	}
+});
+
+
+
+function focusModal(parametro){
+	if(parametro=="1"){
+		$("#nuevaTarifa").focus();
+		$("#nuevoTiempo").value("");
+
+	}
+	if(parametro=="2"){
+		$("#nuevoTiempo").focus();
+		$("#nuevaTarifa").value("");
+
+	}
+	else{
+		$("#nuevaTarifa").value("");
+		$("#nuevoTiempo").value("");
+	}
+}
+
+
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
 		$("#semana").addClass("hidden");
