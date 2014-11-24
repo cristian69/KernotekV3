@@ -92,45 +92,26 @@ function corteValores(parametro){
 	}
 }
 
-$("#siguienteReporte").click(function(){
-	if($("#tipoReporte").val()=="fechas"){
-		$("#reportetab2").addClass("active");
-		$("#reportepaso2").addClass("active");
-		$("#reportetab1").removeClass("active");
-		$("#reportepaso1").removeClass("active");
-		$("#aceptarReporte").removeClass("hidden");
-		$("#anteriorReporte").removeClass("hidden");
-		$("#siguienteReporte").addClass("hidden");
-		$(".labelHoraFin").removeClass("hidden");
-		$(".inputHoraFin").removeClass("hidden");
-		$(".labelHoraInicio").removeClass("hidden");
-		$(".inputHoraInicio").removeClass("hidden");
-	}
-	if($("#tipoReporte").val()=="turno"){
-		$("#reportetab2").addClass("active");
-		$("#reportepaso2").addClass("active");
-		$("#reportetab1").removeClass("active");
-		$("#reportepaso1").removeClass("active");
-		$("#siguienteReporte").addClass("hidden");
-		$("#anteriorReporte").removeClass("hidden");
-		$("#aceptarReporte").removeClass("hidden");
-		$(".labelHoraFin").addClass("hidden");
-		$(".inputHoraFin").addClass("hidden");
-		$(".labelHoraInicio").addClass("hidden");
-		$(".inputHoraInicio").addClass("hidden");
-			
-	}
+
+$("#btnreporteFechas").click(function(){
+	$(".fechasReporte").removeClass("hidden");
+	$(".seleccionReporte").addClass("hidden");
+	$("#inpTipoReporte").val("Fechas");
+	$(".footerModalReporte").removeClass("hidden");
 });
 
-$("#anteriorReporte").click(function(){
-	$("#reportetab2").removeClass("active");
-	$("#reportepaso2").removeClass("active");
-	$("#reportetab1").addClass("active");
-	$("#reportepaso1").addClass("active");
-	$("#aceptarReporte").addClass("hidden");
-	$("#anteriorReporte").addClass("hidden");
-	$("#siguienteReporte").removeClass("hidden");
-	$("#aceptarReporte").addClass("hidden");
+$("#btnreporteTurno").click(function(){
+	$(".fechasReporte").removeClass("hidden");
+	$(".seleccionReporte").addClass("hidden");
+	$("#inpTipoReporte").val("Turno");
+	$(".footerModalReporte").removeClass("hidden");
+});
+
+$("#regresarReporte").click(function(){
+	$(".fechasReporte").addClass("hidden");
+	$(".seleccionReporte").removeClass("hidden");
+	$("#inpTipoReporte").val("");
+	$(".footerModalReporte").addClass("hidden");
 });
 
 $("#aceptarReporte").click(function(){

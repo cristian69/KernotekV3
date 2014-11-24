@@ -97,85 +97,59 @@
                   <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
                       <article class="form-wizard">
-                        <article class="form-body">
-                          <ul class="nav nav-pills nav-justified steps">
-                            <li class="active" id="reportepaso1">
-                              <a href="#reportetab1" class="step disabled">
-                              <span class="number">
-                              1
-                              </span>
-                              <span class="desc">
-                              <i class="fa fa-check"></i> Tipo de reporte.
-                              </span>
-                              </a>
-                            </li>
-                            <li id="reportepaso2">
-                              <a href="#reportetab2" class="step disabled">
-                              <span class="number">
-                              2
-                              </span>
-                              <span class="desc">
-                              <i class="fa fa-check"></i>Fechas.
-                              </span>
-                              </a>
-                            </li>
-                          </ul>
-                          <article class="tab-content">
-                            <article class="tab-pane active" id="reportetab1">
-                              <article class="col-md-12">
-                                <select class="form-control" name="tipoReporte" id="tipoReporte">
-                                  <option value=""></option>
-                                  <option value="turno">Por turno.</option>
-                                  <option value="fechas">Por fechas.</option>
-                                </select>
-                              </article>
+                        <article class="form-body row text-center">
+                          <article class="row seleccionReporte">
+                            <article class="col-md-12 form-group">
+                            <h3>Selecciona el tipo de reporte</h3>
+                          </article>
+                          <article class="col-md-12 form-group">
+                            <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                              <button class="btn blue" type="button" id="btnreporteFechas">Por fechas</button>
                             </article>
-                            <article class="tab-pane" id="reportetab2">
-                              <article class="alert alert-danger hidden" id="errorFechas">
-                                <button class="close" data-dismiss="alert"></button>
-                                Existen campos vacíos en el formulario.
-                              </article>
-                              <article class="row">
-                                <article class="group-form col-md-12">
-                                  <article class="col-md-12 form-group">
-                                    <label class="control-label col-md-5">Fecha de inicio</label>
-                                    <article class="col-md-7 form-group">
-                                      <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                                        <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
-                                    <label class="control-label col-md-5 labelHoraInicio">Hora</label>
-                                    <article class="col-md-7 form-group inputHoraInicio">
-                                      <article class="input-group">
-                                        <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
+                            <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                              <button class="btn blue" type="button" id="btnreporteTurno">Por Turno</button>
+                            </article>
+                          </article>
+                          </article>
+                          <article class="row fechasReporte hidden">
+                            <article class="group-form col-md-12">
+                              <article class="col-md-12 form-group">
+                                <label class="control-label col-md-5">Fecha de inicio</label>
+                                <article class="col-md-7 form-group">
+                                  <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                    <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
+                                    <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
                                   </article>
-                                  <article class="col-md-12 form-group">
-                                    <label class="control-label col-md-5">Fecha final</label>
-                                    <article class="col-md-7 form-group">
-                                      <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
-                                        <input type="text" class="form-control times"  name="fecha_fin" id="fecha_fin">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
-                                    <label class="control-label col-md-5 labelHoraFin">Hora</label>
-                                    <article class="col-md-7 form-group inputHoraFin">
-                                      <article class="input-group">
-                                        <input type="text" class="form-control timepicker timepicker-24 times" name="hora_fin" id="hora_fin" value="23:59:59">
-                                        <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
-                                        </span>
-                                      </article>
-                                    </article>
+                                </article>
+                                <label class="control-label col-md-5 labelHoraInicio">Hora</label>
+                                <article class="col-md-7 form-group inputHoraInicio">
+                                  <article class="input-group">
+                                    <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
+                                    <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                    </span>
+                                  </article>
+                                </article>
+                              </article>
+                              <article class="col-md-12 form-group">
+                                <label class="control-label col-md-5">Fecha final</label>
+                                <article class="col-md-7 form-group">
+                                  <article class="input-group date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                    <input type="text" class="form-control times"  name="fecha_fin" id="fecha_fin">
+                                    <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                  </article>
+                                </article>
+                                <label class="control-label col-md-5 labelHoraFin">Hora</label>
+                                <article class="col-md-7 form-group inputHoraFin">
+                                  <article class="input-group">
+                                    <input type="text" class="form-control timepicker timepicker-24 times" name="hora_fin" id="hora_fin" value="23:59:59">
+                                    <span class="input-group-btn">
+                                    <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                    </span>
                                   </article>
                                 </article>
                               </article>
@@ -184,11 +158,11 @@
                         </article>
                       </article>
                     </article>
-                    <article class="modal-footer">
+                    <article class="modal-footer hidden footerModalReporte">
                       <ul class="pager" id="btnReportes">
-                        <li><button type="button" class="btn hidden" id="anteriorReporte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
-                        <li><button type="button" class="btn" id="siguienteReporte">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
-                        <li><button type="submit" class="btn blue hidden" id="aceptarReporte" name="submit" value="reporte">Aceptar</button></li>
+                        <input class="hidden"type="text" id="inpTipoReporte" value="">
+                        <li><button type="button" class="btn" id="regresarReporte"><i class="fa fa-angle-double-left"></i>Regresar</button></li>
+                        <li><button type="submit" class="btn blue" id="aceptarReporte" name="submit">Aceptar</button></li>
                       </ul>
                     </article>
                   </form>
