@@ -87,10 +87,11 @@ function tablasReportes(parametro){
 
 
 function corteValores(parametro){
-	if(parametro=='manual'){
+	alert(parametro);
+	if(parametro=='Manual'){
 		$('#configurraCorte').addClass("hidden");
 	}
-	if(parametro=="automatico"){
+	if(parametro=="Automático"){
 		$("#hacerCorte").addClass("hidden")
 	}
 }
