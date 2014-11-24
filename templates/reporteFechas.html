@@ -29,7 +29,15 @@
           <a  class="menuTop"id="dLabel" href="{{ url_for('home') }}" >
           <i class="fa fa-arrow-left"  style="font-size:25px;"></i>
           </a>
-          <a class="linkCabecera" href="">Reporte por fechas</a>
+          <a class="linkCabecera" href="" style="padding-top:100px;">Reportes.</a>
+          <a href="" class="linkCabecera" style="padding-top:100px;">{{reporte}}</a>
+
+          <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default text-align:left"> General </a>
+          <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-circle btn-default"> Generar Detallado </a>
+          <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+          <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
+          <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+
         </article>
       </article>
     </section>
