@@ -86,12 +86,12 @@ def valuesAutomaticShift():
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
-		dic_home['tipoTiempo'] = "Semanal"
+		dicTurno['tipoTiempo'] = "Semanal"
 	if banderaTiempo == "cadaMes":
 		diaHora = class_db.consultarTiempo()
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
-		dic_home['tipoTiempo'] = "Mensual"
+		dicTurno['tipoTiempo'] = "Mensual"
 
 	return dicTurno
