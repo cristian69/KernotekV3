@@ -25,31 +25,31 @@ class Reportes(flask.views.MethodView):
 				excel.reporteDetallado(sellsReport, startDate, endDate)
 				sells = class_db.reporte_general(startDate, endDate)
 				tableHTML = tablaReporte(sells, startDate, endDate)
-				return render_template('reporteFechas.html', indexHTML="", tableHTML=tableHTML, bandera=0, tablaFechas=flagTableDate, excel=True)
+				return render_template('reporteFechas.html', indexHTML="", tableHTML=tableHTML, bandera=0, tablaFechas=flagTableDate, excel=True, detallado=True)
 			if typeReport == "especifico":
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				if len(indexHTML) == 589:
 					indexHTML = ""
 				tableHTML = cod_tabla(startDate, endDate, 0)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False, detallado=False)
 			
 			if typeReport == "generarEspecifico":
 				sellsReport = class_db.reporte_especifico(startDate, endDate)
 				objExcel.export_excel(sellsReport, startDate, endDate)
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				tableHTML = cod_tabla(startDate, endDate, 0)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True, detallado=False)
 
 			if typeReport == "general":
 				sells = class_db.reporte_general(startDate, endDate)
 				tableHTML = tablaReporte(sells, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False, detallado=False)
 
 			if typeReport == "generarGeneral":
 				sellsReport = class_db.reporte_general(startDate, endDate)
 				objExcel.reporteGeneral(sellsReport, startDate, endDate)
 				tableHTML = tablaReporte(sellsReport, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True, detallado=False)
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
 				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')
