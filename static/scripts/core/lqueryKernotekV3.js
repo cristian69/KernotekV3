@@ -96,14 +96,14 @@ function corteValores(parametro){
 $("#btnreporteFechas").click(function(){
 	$(".fechasReporte").removeClass("hidden");
 	$(".seleccionReporte").addClass("hidden");
-	$("#inpTipoReporte").val("Fechas");
+	$("#inpTipoReporte").val("fechas");
 	$(".footerModalReporte").removeClass("hidden");
 });
 
 $("#btnreporteTurno").click(function(){
 	$(".fechasReporte").removeClass("hidden");
 	$(".seleccionReporte").addClass("hidden");
-	$("#inpTipoReporte").val("Turno");
+	$("#inpTipoReporte").val("turno");
 	$(".footerModalReporte").removeClass("hidden");
 });
 
