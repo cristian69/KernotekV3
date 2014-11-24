@@ -16,7 +16,7 @@ def registroError(msgError):
         logger.debug('initializing system')
         fecha = libgral.FechaHora()
         texto = str(fecha) + "hrs. " + "Inicializando sistema."
-        #sms.MSG(texto)
+        sms.MSG(texto)
         return
     elif msgError == "0x0200":
         logger.debug("powering down")
