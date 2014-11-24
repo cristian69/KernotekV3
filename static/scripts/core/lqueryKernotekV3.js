@@ -25,7 +25,6 @@ function home(){
 }
 
 function reporteTurnos(parametro1, parametro2){
-	alert(parametro1, parametro2);
 	if(parametro1=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
 		$("#generarTurnoExcel").addClass("hidden");
@@ -42,22 +41,33 @@ function reporteTurnos(parametro1, parametro2){
 		$("#descargarTurnoPdf").addClass("hidden");
 		$("#generarTurnoPdf").removeClass("hidden");
 	}
+
 }
 
-function generarExcel(parametro1, parametro2){
-	if(parametro1=="True"){
+function generarExcel(parametroExcel, parametroDetallado){
+	if(parametroExcel=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");
 	}
-	if(parametro1=="False"){
+	if(parametroExcel=="False"){
 		$("#excelDescargar").addClass("hidden");
 		$("#generarExcel").removeClass("hidden");
 	}
-	if(parametro2=="True"){
+	if(parametroDetallado=="True"){
 		$("#descargarDetallado").removeClass("hidden");
+		$("#detallado").addClass("hidden");
 	}
-	if(parametro2=="False"){
+	if(parametroDetallado=="False"){
 		$("#descargarDetallado").addClass("hidden");
+		$("#detallado").removeClass("hidden");
+	}
+	if(parametroExcel!="True"){
+		$("#excelDescargar").addClass("hidden");
+		$("#generarExcel").removeClass("hidden");
+	}
+	if(parametroDetallado!="True"){
+		$("#descargarDetallado").addClass("hidden");
+		$("#detallado").removeClass("hidden");
 	}
 }
 
