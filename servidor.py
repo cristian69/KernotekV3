@@ -348,7 +348,7 @@ def totalMonto(entrada):
 
 
 if __name__ == '__main__':
-    """
+
     time.sleep(0.100)
     try:
         iniciarThread()
@@ -356,7 +356,7 @@ if __name__ == '__main__':
         if DEBUG:
             print "REGISTRANDO EL ESTADO DEL SOCKET DE C EN INACTIVO"
         class_db.estadoSocketC('0')
-    """
+
     try:
         Socket()
     except KeyboardInterrupt:

@@ -31,4 +31,4 @@ def main():
         logger.error("No esta disponible el puerto ttyUSBDisplay")
 
 
-#main()
+main()
