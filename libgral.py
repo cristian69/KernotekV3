@@ -259,163 +259,117 @@ def tabla_usuarios(indice, modal):
 
 
 def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN
-    
     startDate = fecha_inicio
     endDate = fecha_fin
     actualPage = int(pag_activa)
-    index = int(indice)
-    link = direccion 
-    code = ""
-    
-    indexBlock = 0
-    indexNextBlock = 0
-    indexBackBlock = 0
+    startRange = int(indice)
+    link = direccion
+    codeIndex = ""
 
-    backPage = actualPage - 1
-    nextPage = actualPage + 1
+    codeIndex = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
+    codeIndex += str('<ul class="pagination">')
 
-    indexNextPage = index + 50
-    indexBackPage = index - 50
-
-    indexBlock = index - 500
-    
-
-
-   
-    if indexBlock <= 0:
-        indexBackBlock = 0
-        indexNextBlock = 500
+    # Simbolo <<
+    if actualPage == 1:
+        codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
+        
     else:
-        indexBackBlock = index - 550
-        indexNextBlock = index + 450 
+        pagePreviousBlock = actualPage - 10
+        if pagePreviousBlock <= 0:
+            pagePreviousBlock = 1
 
-    indexPage = indexNextBlock - 500
+        rangePreviousBlock = startRange - 500
+        if rangePreviousBlock <= 0:
+            rangePreviousBlock = 0
 
-    # if indexPage <= 0:
-    #     indexPage = 0
-
-    # print "Index page: ", indexPage
-    # print "Actual page: ", actualPage
-    # print "Index Block: ", indexBlock
-    # print "Index Back Block: ", indexBackBlock
-    # print "Index Next Block: ", indexNextBlock
-
-    totalSales = class_db.total_registros(startDate, endDate, indexBackBlock)
-    print "total sales: ", totalSales
-    if totalSales == 500:
-        totalPages = totalSales / 50
-    else:
-        totalPages = (totalSales - 500) / 50
-    # print "Total pages: ", totalPages
-    # index = 500.0
-    # print "index: ", index
-    # testIndex = float(indexNextBlock / 500)
-    # print "test Index: ", testIndex
-    # testIndex = math.ceil(testIndex)
-    # print "test index:", testIndex
-    # startPage = int(testIndex)
-    # if startPage is not 1:
-    #     startPage += 0.1
-    #     startPage *= 10
-
-    # if actualPage == 11:
-    #     startPage = 11
-
-    # startPage = int(startPage)
-
-    testStartPage = float(pag_activa) / 10.0
-    # print "=" * 5, testStartPage
-    if testStartPage <= 1:
-        startPage = 1
-    else:
-        startPage =  testStartPage * 10
-        # print startPage
-        startPage = int(startPage) 
-
-    # print "Start page: ", startPage
-    # print "Test page start: ", float(pag_activa) / 10.0
-
-    code = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
-    code += str('<ul class="pagination">')
-
-    # simbolo <<
-    pageBackBlock = startPage -10
-    if pageBackBlock <= 0:
-        pageBackBlock = 1
-
-    if actualPage is not 1:
-        code += str('<li class="enable prev"> <a href="/'+link+'/?' \
-            'indice=' + str(indexBackBlock) +\
+        codeIndex += str('<li class="enable prev"> <a href="/'+link+'/?' \
+            'indice=' + str(rangePreviousBlock) +\
             '&fecha1=' + startDate + \
             '&fecha2='  + endDate + \
-            '&num_pagina=' + str(pageBackBlock) + '">'\
-            '<i class="fa fa-angle-double-left"></i></a></li>')
-    else:
-        code += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
+            '&num_pagina=' + str(pagePreviousBlock) + '">'\
+            '<i class="fa fa-angle-double-left"></i></a></li>') 
 
     # Simbolo <
-    if actualPage is not 1:
-        code += str('<li class="enable prev"><a href="/'+link+'/?'\
-            'indice='+ str(indexBackPage) + \
+    if actualPage == 1:
+        codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>')
+    else:
+        previousPage = actualPage - 1
+        rengePreviousPage = startRange - 50
+        codeIndex += str('<li class="enable prev"><a href="/'+link+'/?'\
+            'indice='+ str(rengePreviousPage) + \
             '&fecha1='+ startDate + \
             '&fecha2='+ endDate + \
-            '&num_pagina='+ str(backPage) +'">'\
+            '&num_pagina='+ str(previousPage) +'">'\
             '<i class="fa fa-angle-left"></i></a></li>')
-    else:
-        code += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>')
-    
-    lastPage = 0
-    pageNextBlock = startPage + 10
-    print totalPages
-    for numPage in range(1, totalPages + 1):
-        lastPage += 1
-        if startPage is actualPage:
-            code += str('<li class="active" id="pag'+str(startPage)+'">')
-        else:
-            code += str('<li id="pag'+str(startPage)+'">')
-        code += str('<a href="/'+link+'/?'\
-                    'indice='+ str(indexPage) + \
+
+    sales = int(class_db.total_registros(startDate, endDate, startRange))
+    restSales = sales
+    countPage = 0
+    startPage = actualPage
+    rangePage = startRange
+    for x in range(sales):
+        countPage += 1
+        if countPage == 50:
+            if startPage is actualPage:
+                codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')
+            else:
+                codeIndex += str('<li id="pag'+str(startPage)+'">')
+
+            codeIndex += str('<a href="/'+link+'/?'\
+                    'indice='+ str(rangePage) + \
                     '&fecha1='+ startDate + \
                     '&fecha2='+ endDate + \
                     '&num_pagina='+ str(startPage) + '">'\
                     +str(startPage)+
                     '</a></li>')
-        startPage += 1
-        indexBackBlock += 50
-        indexPage += 50
-        
-    # print "Last page: ", lastPage
+
+            startPage += 1
+            rangePage += 50
+            countPage = 0
+            restSales -= 50
+    if restSales > 0:
+        if startPage is actualPage:
+            codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')
+        else:
+            codeIndex += str('<li id="pag'+str(startPage)+'">')
+        codeIndex += str('<a href="/'+link+'/?'\
+                    'indice='+ str(rangePage) + \
+                    '&fecha1='+ startDate + \
+                    '&fecha2='+ endDate + \
+                    '&num_pagina='+ str(startPage) + '">'\
+                    +str(startPage)+
+                    '</a></li>')
+
     # Simbolo >
-    if actualPage is not lastPage:
-        code += str('<li class="enable"><a href="/'+link+'/?'\
-                    'indice='+str(indexNextPage)+\
+    nextPage = actualPage + 1
+    rangeNextPage = startRange + 50
+
+    salesNextPage = class_db.total_registros(startDate, endDate, startRange + 50)
+
+    if salesNextPage == 0:
+        codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
+    else:
+        codeIndex += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+str(rangeNextPage)+\
                     '&fecha1=' + startDate +\
                     '&fecha2=' + endDate +\
                     '&num_pagina=' + str(nextPage) + '">'
                     '<i class="fa fa-angle-right"></i></a></li>')
-    else:
-        code += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
-
-    ifNextBlock = class_db.total_registros(startDate, endDate, indexNextBlock)
+    
     # Simbolo >>
-    if ifNextBlock > 0:
-        code += str('<li class="enable"><a href="/'+link+'/?'\
-                    'indice='+ str(indexNextBlock + 50)+\
+    salesNextBlock = class_db.total_registros(startDate, endDate, startRange + 500)
+    nextBlock = actualPage + 10
+    rangeNextBlock = startRange + 500
+    if salesNextBlock == 0:
+        codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>')
+    else:
+        codeIndex += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+ str(rangeNextBlock)+\
                     '&fecha1=' + startDate +\
                     '&fecha2=' + endDate +\
-                    '&num_pagina=' + str(pageNextBlock) +'">'\
+                    '&num_pagina=' + str(nextBlock) +'">'\
                     '<i class="fa fa-angle-double-right"></i></a></li>')
-    else:
-        code += str('<li class="disabled"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>')
-        # code += str('<li class="enable"><a href="/'+link+'/?'\
-        #             'indice='+ str(indexNextBlock)+\
-        #             '&fecha1=' + startDate +\
-        #             '&fecha2=' + endDate +\
-        #             '&num_pagina=' + str(lastPage) +'">'\
-        #             '<i class="fa fa-angle-double-right"></i></a></li>')
-    if totalPages <= 0:
-        code = ""
-    return code
+    return codeIndex
 
 
 

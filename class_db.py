@@ -82,12 +82,17 @@ def modificar_reporte(nuevoEstado):
 
 def total_registros(dateStart, dateEnd, inicio):
     crear_conexion()
-    query = "SELECT ticket FROM panelservices " \
-                "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500;"
+    query = "SELECT count(*) FROM (SELECT ticket FROM panelservices "\
+            "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") order by datetimesell DESC LIMIT "+str(inicio)+", 500) as alias;"
+    # query = "SELECT ticket FROM panelservices " \
+    #             "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500;"
     cursor.execute(query)
+    # print "-" * 40
+    # print query
+    # print "-" * 40
     num_registros = cursor.fetchall()
     matar_conexion()
-    return len(num_registros)
+    return num_registros[0][0]
 
 
 def paginacion(dateStart, dateEnd, inicio):
