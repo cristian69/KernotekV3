@@ -83,11 +83,7 @@ function tablasReportes(parametro){
 	}
 }
 
-
-
-
 function corteValores(parametro){
-	alert(parametro);
 	if(parametro=='Manual'){
 		$('#configurraCorte').addClass("hidden");
 	}
@@ -95,8 +91,6 @@ function corteValores(parametro){
 		$("#hacerCorte").addClass("hidden")
 	}
 }
-
-
 
 $("#siguienteReporte").click(function(){
 	if($("#tipoReporte").val()=="fechas"){
