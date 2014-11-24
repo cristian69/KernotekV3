@@ -5617,6 +5617,9 @@ UI Loading
 }
 
 @media (min-width: 768px) and (max-width: 992px) { 
+  .portlet{
+    margin-top: 35px!important;
+  }
   .valorSistema{
     height: 310px;
   }
@@ -5634,6 +5637,9 @@ UI Loading
 }
 
 @media (min-width: 380px) and (max-width: 768px) { 
+  .portlet{
+    margin-top: 35px !important;
+  }
      .valorSistema{
       height: 300px;
       }
@@ -5654,5 +5660,106 @@ UI Loading
     .tarjetasTop{
       margin-top: 0px !important;
     }
+}
+
+@media (min-width: 330px) and (max-width: 380px) { 
+  .portlet{
+    margin-top: 35px !important;
+  }
+     .valorSistema{
+      height: 300px;
+      }
+    .tituloTarjeta{
+      height: 160px;
+    }
+    .valorSistema .visual{
+      width: 50px;
+      height: 50px;
+      line-height: 0px;
+    }
+    .valorSistema .visual > i {
+     line-height: 0px;
+     font-size: 50px;
+    }
+    .dashboard-stat .details .number{
+      line-height: 50px !important;
+      font-size: 24px;
+    }
+
+    .tarjetasTop{
+      margin-top: 0px !important;
+    }
+    .detalles{
+  font-size: 14px;
+}
+
+}
+
+@media (min-width: 250px) and (max-width: 330px) { 
+  .portlet{
+    margin-top: 35px !important;
+  }
+     .valorSistema{
+      height: 300px;
+      }
+    .tituloTarjeta{
+      height: 160px;
+    }
+    .valorSistema .visual{
+      width: 40px;
+      height: 50px;
+      line-height: 50px;
+    }
+    .valorSistema .visual > i {
+     line-height: 0px;
+     font-size: 40px;
+    }
+    .dashboard-stat .details .number{
+      line-height: 50px !important;
+      font-size: 24px;
+    }
+
+    .tarjetasTop{
+      margin-top: 0px !important;
+    }
+    .detalles{
+  font-size: 12px;
+}
+
+}
+
+@media (max-width: 250px) { 
+  .portlet{
+    margin-top: 35px !important;
+  }
+     .valorSistema{
+      height: 300px;
+      }
+    .tituloTarjeta{
+      height: 160px;
+    }
+    .valorSistema .visual{
+      width: 40px;
+      height: 50px;
+      line-height: 40px;
+    }
+    .valorSistema .visual > i {
+     line-height: 0px;
+    }
+    .dashboard-stat .details .number{
+      line-height: 50px !important;
+      font-size: 15px;
+    }
+
+    .tarjetasTop{
+      margin-top: 0px !important;
+    }
+    .detalles{
+  font-size: 10px;
+}
+.valorSistema .visual > i{
+  font-size:  30px;
+}
+
 }
 
