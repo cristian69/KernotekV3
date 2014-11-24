@@ -29,6 +29,7 @@
           <a  class="menuTop"id="dLabel" href="{{ url_for('home') }}" >
           <i class="fa fa-arrow-left"  style="font-size:25px;"></i>
           </a>
+          <a href="" class="linkCabecera">Corte de turno</a>
         </article>
       </article>
     </section>
@@ -88,9 +89,9 @@
                                     <h4 id="labelTipoCorte"></h4>
                                   </article>
                                   <article class="col-md-4">
-                                    <input class="form-control tipoLapsoh hidden" type="text" value="{{dic_home['tipoTiempo']}}">
-                                    <input class="form-control diaCorteh hidden" type="text" value="{{dic_home['automaticoDia']}}">
-                                    <input class="form-control horaCorteh hidden" type="text" value="{{dic_home['automaticoHora']}}">
+                                    <input class="form-control tipoLapsoh hidden" type="text" value="{{dicTurno['tipoTiempo']}}">
+                                    <input class="form-control diaCorteh hidden" type="text" value="{{dicTurno['automaticoDia']}}">
+                                    <input class="form-control horaCorteh hidden" type="text" value="{{dicTurno['automaticoHora']}}">
                                     <select class="form-control" name="tipoLapso" id="Lapso" >
                                       <option value="cadaDia">Diario</option>
                                       <option value="cadaSemana">Semanal</option>

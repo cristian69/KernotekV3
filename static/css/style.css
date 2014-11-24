@@ -4490,6 +4490,17 @@ UI Loading
   font-size: 17px;
   font-family: arial;
 }
+.linkCabecera{
+  text-align: center;
+  font-family: arial;
+  font-size: 17px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.linkCabecera:hover{
+  text-decoration: none;
+}
 
 
 @media (min-width: 1900px) and (max-width: 1910px) { 

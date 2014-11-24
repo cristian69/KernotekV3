@@ -25,11 +25,12 @@
   </head>
   <body class="page-header-fixed" onload="corteValores('{{dic_home['tipoCorte']}}'), valoresTurnoh(),home(),graficasHome('{{bandera}}',{{labels}}, {{datos}}), tipoReporte(), problemasEquipo('{{ dic_home['socketPython'] }}', '{{ dic_home['socketC'] }}');">
     <section class="header navbar navbar-fixed-top">
-      <article class="header-inner">
-        <article class="dropdown">
+      <article class="header-inner row">
+        <article class="dropdown col-lg-2 col-md-2 col-sm-2 col-xs-2">
           <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bars" style="font-size:25px;"></i>
           </a>
+          <a href="" class="linkCabecera">Inicio</a>
           <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
             <li class="tooltips usuario">
               <i class="fa fa-user"></i>{{ session['fullname']}}
@@ -70,6 +71,9 @@
               </a>
             </li>
           </ul>
+        </article>
+        <article class="col-lg-10 col-md-10 col-sm-10 col-xs-10 text-center">
+          
         </article>
       </article>
     </section>
