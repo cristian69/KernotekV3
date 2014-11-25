@@ -17,11 +17,8 @@ function home(){
 	$("#seleccionarAccion2").select2({
 		placeholder:"seleccionar acción"
 	});
-	$('input').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-    increaseArea: '80%'
-  });
+
+	
 }
 
 function reporteTurnos(parametro1, parametro2){

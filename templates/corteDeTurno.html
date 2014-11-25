@@ -42,47 +42,38 @@
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-calendar-o"></i>Turnos.
+                    <i class="fa fa-calendar-o"></i>Turnos. {{tipoCorte}}
                   </article>
                 </article>
                 <article class="portlet-body form text-center ">
                   <form  class="form-horizontal" action="{{ url_for('turnos')}}" method="post">
                     <article class="form-body">
                       <article class="row">
-                        <article class="col-md-3">
-                          <ul class="nav nav-pills nav-stacked">
-                            <li class="active" id="paso1"><a href="#mturno1">Seleccionar</a></li>
-                            <li class="hidden" id="paso2"><a href="#mturno2">Corte de turno</a></li>
-                            <li class="hidden" id="paso3"><a href="#mturno3">Tipo de corte</a></li>
-                            <li class="hidden" id="paso4"><a href="#mturno4">Configuración</a></li>
-                          </ul>
-                        </article>
-                        <article class="col-md-9">
+                        <article class="col-md-12">
                           <article class="tab-content">
-                            <article class="tab-pane  valorAutom active" id="mturno1">
+                            <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <select class="form-control" name="seleccionarAccion2" id="seleccionarAccion2">
-                                      <option value=""></option>
-                                      <option value="cambiar">Cambiar tipo de corte</option>
-                                      <option id="configurraCorte"value="configurar">Configurar corte automático</option>
-                                      <option id="hacerCorte"value="corte">Realizar corte de turno</option>
-                                    </select>
+                                <article class="col-md-12 text-center">
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button"id="btnCambiarCorte">Cambiar</button>
+                                  </article>
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button" id="btnConfigurar">Configurar</button>
+                                    <button class="btn blue" type="button" id="btnCorte">Corte</button>
                                   </article>
                                 </article>
-                              </article>
+                              </article>  
                             </article>
-                            <article class="tab-pane" id="mturno2">
+                            <article class="tab-pane" id="Turno2b">
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
                                     <h4>¿Seguro que deceas realizar el corte de turno?</h4>
                                   </article>
                                 </article>
-                              </article>
+                              </article>  
                             </article>
-                            <article class="tab-pane valorAutom" id="mturno4">
+                            <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
                                 <article class="col-md-12 form-group">
                                   <article class="col-md-12 text-center">
@@ -144,38 +135,38 @@
                                       <article class="input-group col-md-12">
                                         <input style="cursor:pointer;"type="text" class="form-control timepicker timepicker-24" name="hora" id="horaC" value="23:59:59" > 
                                         <span class="input-group-btn">
-                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                          <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                         </span>
                                       </article>
                                     </article>
                                   </article>
                                 </article>
-                              </article>
+                              </article>  
                             </article>
-                            <article class="tab-pane valorAutom" id="mturno3">
+                            <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <select class="form-control" name="tiposCortes2" id="tiposCortes2">
-                                      <option value=""></option>
-                                      <option value="manual">Corte manual</option>
-                                      <option value="automatico">Corte automático</option>
-                                    </select>
+                                <article class="col-md-12 text-center">
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="submit">Manual</button>
+                                  </article>
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button" id="btnAutomaticoCorte">Automático</button>
                                   </article>
                                 </article>
-                              </article>
+                              </article>  
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
-                  <article class="form-actions text-right">
-                    <input type="text" class="form-control hidden" id="banderaPosicion" value="1">
-                    <button type="button" class="btn hidden" id="backTurno"><i class="fa fa-angle-double-left"></i> Anterior </button>
-                    <button type="sibmit" class="btn blue hidden" name="submit" value="" id="aAccion">Aceptar</button>
-                    <button type="sibmit" class="btn blue hidden" name="submit" value="" id="aCorte">Aceptar</button>
-                    <button type="button" class="btn default hidden" id="cAccion">Cancelar</button>
-                    <button type="button" class="btn" id="nextTurno"> Siguiente <i class="fa fa-angle-double-right"></i></button>
+                  <article class="form-actions text-right  footerCorteTurno hidden">
+                         <ul class="pager" id="">
+                        <input type="text" class="control-form hidden" id="valorPestaña" value="1">
+                        <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
+                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
+                        <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
+                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button></li>
+                      </ul>
                   </article>
                 </form>
                 </article>
@@ -204,7 +195,6 @@
     <script src="../static/plugins/jquery.cokie.min.js" type="text/javascript"></script>
     <script src="../static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript" ></script>
     <script src="../static/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" type="text/javascript" ></script>
-    <script src="../static/plugins/chart/Chart.js" type="text/javascript" ></script>
     <script src="../static/scripts/core/app.js"></script>
     <script src="../static/scripts/custom/components-pickers.js"></script>
     <script src="../static/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
