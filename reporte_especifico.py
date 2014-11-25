@@ -115,11 +115,12 @@ def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEsp
     else:
 
         codeOperations = """
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-default"> General </a>
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-default"> Generar Detallado </a>
-                                <a href=" """+linkDetallado+""" " class="btn blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-default" id="generarExcel"> Generar Excel </a>
-                                <a href=" """+linkExcel+""" " class="btn blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkGeneral"> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkEspecifico"><i class="fa fa-refresh"></i> Generar Excel </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkDetallado"> Generar Detallado </a>
+                <a href=" """+linkExcelGeneral+""" " class="btn blue-sunglo" id="descargarGeneral"><i class="fa fa-download"></i> Descargar General </a>
+                <a href=" """+linkExcelEspecifico+""" " class="btn blue-sunglo" id="descargarEspecifico"><i class="fa fa-download"></i> Descargar Específico </a>
+                <a href=" """+linkDetallado+""" " class="btn blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
                          """
         for ventas in tabla_ventas:
             if bandera_color:

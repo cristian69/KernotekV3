@@ -5,6 +5,8 @@ import class_db
 from estado_sistema import sistema
 import config_sistema
 from libgral import terminarProceso, revisarProceso, iniciarProceso, reiniciarProceso
+import InhibirMDB
+import time
 
 RESTART = "reiniciar"
 START = "iniciar"
@@ -32,6 +34,7 @@ class Configuracion(flask.views.MethodView):
 			reiniciarProceso()
 		else:
 			return redirect(url_for('login'))
+		time.sleep(0.5)	
 		stateSystem = sistema()
 		botonSystem = config_sistema.estadoSistema()
 		return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)		
