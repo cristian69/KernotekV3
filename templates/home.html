@@ -174,7 +174,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" onSubmit="javascript:return validarNumeros()">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" >
                     <article class="modal-body row">
                       <article class="form-wizard">
                         <article class="form-body">
@@ -200,7 +200,7 @@
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="" name="submit" value="tarifa">Aceptar</button>
+                      <button type="submit" class="btn blue" id="aceptarModalTarifa" name="submit" value="tarifa">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -215,7 +215,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar tiempo de apertura</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" onSubmit="javascript:return validarApertura()">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" >
                     <article class="modal-body">
                       <article class="col-md-12">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">

@@ -1,3 +1,16 @@
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        if($("#modalTarifa").hasClass("in")){
+        	$("#aceptarModalTarifa").click();
+        	alert('entra tarifa');
+        }
+         if($("#modalAccesso").hasClass("in")){
+        	$("#aceptarAcceso").click();
+        	alert('entra acceso');
+        }
+    }
+});
+
 function home(){
 	$("#accionRealizar").select2({
 		placeholder:"Tipo de reporte"
@@ -21,6 +34,7 @@ function home(){
 	
 }
 
+
 function reporteTurnos(parametro1, parametro2){
 	if(parametro1=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
@@ -42,6 +56,8 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(parametroExcel, parametroDetallado){
+	alert(parametroExcel);
+	alert(parametroDetallado);
 	if(parametroExcel=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");
