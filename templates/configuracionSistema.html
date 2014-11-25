@@ -45,9 +45,11 @@
                     <i class="fa fa-desktop"></i>Configuración del sistema.
                   </article>
                   <article class="actions">
-                    <button typr="submit" class=" hidden btn btn-default" id="apagarSistema">Apagar</button>
-                    <button typr="submit" class=" hidden btn blue" id="encendeSistema">Encender</button>
-                    <button typr="submit" class="btn green" id="reiniciarSistema">Reiniciar</button>
+                    <form action="{{url_for('configuracion')}}" method="post">
+                      <button type="submit" name="submit" value="detener" class=" hidden btn btn-default" id="apagarSistema">Apagar</button>
+                      <button type="submit" name="submit" value="iniciar" class=" hidden btn blue" id="encendeSistema">Encender</button>
+                      <button type="submit" name="submit" value="reiniciar" class="btn green" id="reiniciarSistema">Reiniciar</button>
+                    </form>
                   </article>
                 </article>
                 <article class="portlet-body flip-scroll text-center">

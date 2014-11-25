@@ -68,7 +68,8 @@ def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEsp
     date = endDateReport[0].split('-')
     endDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ endDateReport[1]
 
-    linkExcel = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
+    linkExcelGeneral = "../static/download/" + session['username'] + "/Reporte General.xlsx"
+    linkExcelEspecifico = "../static/download/"+ session['username'] + "/Reporte de Ventas.xlsx"
     linkDetallado = "../static/download/" +session['username']+ "/Reporte Detallado.xlsx"
     # linkPDF = "../static/download/"+ session['username'] + "/Reporte de Ventas.pdf"
     dicCabezeras = {'ticket': 'Ticket', 'localshift': 'Turno', 'datetimesell': 'Fecha', 'rate': 'Tarifa',
@@ -86,7 +87,8 @@ def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEsp
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="detallado"> Generar Detallado </a>
                 <a href=" """+linkDetallado+""" " class="btn blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default " id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" """+linkExcelGeneral+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar General </a>
+                <a href=" """+linkExcelEspecifico+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Específico </a>
             </div>
           </div>
           <div class="portlet-body" >

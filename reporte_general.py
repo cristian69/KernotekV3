@@ -72,7 +72,8 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default id="linkDetallado"> Generar Detallado </a>
                 <a href=" """+linkDetallado+""" " class="btn blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" """+linkExcelGeneral+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar General </a>
+                <a href=" """+linkExcelEspecifico+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Específico </a>
               </article>
             </article>
             <article class="portlet-body">

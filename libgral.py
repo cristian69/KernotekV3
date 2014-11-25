@@ -33,7 +33,7 @@ def terminarProceso():
 
 
 def iniciarProceso():
-    STOP = "service appserver start"
+    START = "service appserver start"
     try:
         os.system(START)
     except:
@@ -41,9 +41,14 @@ def iniciarProceso():
 
 
 def reiniciarProceso():
-    terminarProceso()
-    time.sleep(1)
-    iniciarProceso()
+    RESET = "service appserver restart"
+    try:
+        os.system(RESET)
+    except:
+        logger.error('no se encuentra el servicio')
+    # terminarProceso()
+    # time.sleep(1)
+    # iniciarProceso()
 
 def revisarProceso():
     socketPython = False
