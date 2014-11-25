@@ -108,9 +108,13 @@ class Home(flask.views.MethodView):
             else:
                 flag = "error"
 
+        if operation == "cambiarManual":
+            class_db.cambiarTipoCorte('0')
+            flag = "cambioExitoso"
+        
         if operation == "modalTurno":
-            modalOperation = request.form.getlist('seleccionarAccion')
-            modalOperation = modalOperation[0]
+            modalOperation = request.form['seleccionarAccion']
+            # modalOperation = modalOperation[0]
             if modalOperation == "cambiar":
                 typeCut = request.form.getlist('tiposCorte')
                 typeCut = typeCut[0]
@@ -126,13 +130,13 @@ class Home(flask.views.MethodView):
                 #     flag = "cambioExitoso"
                 # else:
                 #     flag = "error"
-            if modalOperation == "corte":
+            if modalOperation == "1":
                 if stateC and statePython:
                     class_db.activarCorteTurno()
                     flag = "corteExitoso"
                 else:
                     flag = "error"
-            if modalOperation == "configurar":
+            if modalOperation == "3":
                 typeLapse = request.form.getlist('tipoLapso')
                 typeLapse = typeLapse[0]
                 if typeLapse == "cadaDia":
