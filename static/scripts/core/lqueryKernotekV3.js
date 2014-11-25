@@ -292,19 +292,19 @@ function validarApertura(){
 
 $("#modalTurno").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
+		document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
-		document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
@@ -313,19 +313,19 @@ $("#modalTurno").mouseover(function(){
 
 $(".configuracionCortes").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
+		document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
-		document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
@@ -352,42 +352,57 @@ var valoresTurnoh=function(){
 		valorLapso=$(".tipoLapsoh").val();
     	valorSemana=$(".diaCorteh").val();
     	valorHora=$(".horaCorteh").val();
-    	if(valorLapso=='cadaMes'){
-    		document.getElementById("labelTipoCorte").innerHTML = "Dia del mes y hora para la realizacion del corte de turno.";
+    	if(valorLapso=='Mensual'){
+    		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
         	$('#Lapso > option[value="cadaMes"]').attr('selected', 'selected');
 	        $('#mes > option[value="'+valorSemana+'"]').attr('selected','selected');
 	        $('#horaC').val(valorHora);
 	        $('.contenedorFecha').addClass('col-md-6');
 	        $('#mes').removeClass('hidden');
 	        $('#semana').addClass('hidden');
+	        $("#Lapso").select2();
+			$("#semana").select2();
+			$("#mes").select2();
 	    }
-	    if(valorLapso=='cadaSemana'){
-	    	document.getElementById("labelTipoCorte").innerHTML = "Dia de la semana y hora para la realizacion del corte de turno.";
+	    if(valorLapso=='Semanal'){
+	    	document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
 	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
 	        $('#semana > option[value="'+valorSemana+'"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
 	        $('.contenedorFecha').addClass('col-md-6');
 	        $('#semana').removeClass('hidden');
 	        $('#mes').addClass('hidden');
+	        $("#Lapso").select2();
+			$("#semana").select2();
+			$("#mes").select2();
 	    }
-	    if(valorLapso=='cadaDia'){
-	    	document.getElementById("labelTipoCorte").innerHTML = "Hora del dia para la realización del corte de turno";
+	    if(valorLapso=='Diario'){
+	    	document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
 	        $('#Lapso > option[value="cadaDia"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
-	        $('.contenedorFecha').removeClass('col-md-6');        
+	        $('.contenedorFecha').removeClass('col-md-6');
+	        $("#Lapso").select2();
+			$("#semana").select2();
+			$("#mes").select2();        
 	    }
 	    if(valorLapso=='cadaDetHora'){
-	    	document.getElementById("labelTipoCorte").innerHTML = "Seleccionar cada cuantas horas se realizara el corte de turno";
+	    	document.getElementById("labelTipoCorte").innerHTML = "Seleccionar cada cuantas horas se realizará el corte de turno";
 	        $('#Lapso > option[value="cadaDetHora"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);
-	        $('.contenedorFecha').removeClass('col-md-6');            
+	        $('.contenedorFecha').removeClass('col-md-6');  
+	        $("#Lapso").select2();
+			$("#semana").select2();
+			$("#mes").select2();          
 	    }
-	    if( valorLapso!=="cadaMes" && valorLapso!=="cadaSemana" && valorLapso!=="cadaDia" && valorLapso!="cadaDetHora"){$('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
+	    if( valorLapso!=="Mensual" && valorLapso!=="Semanal" && valorLapso!=="Diario" && valorLapso!="cadaDetHora"){$('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
 	        $('#semana > option[value="Domingo"]').attr('selected', 'selected');
 	        $('#horaC').val("23:59:59");
 	        $('.contenedorFecha').addClass('col-md-6');
 	        $('#semana').removeClass('hidden');
-	        $('#mes').addClass('hidden');   
+	        $('#mes').addClass('hidden');  
+	        $("#Lapso").select2();
+			$("#semana").select2();
+			$("#mes").select2(); 
 	    }
 	}
 
