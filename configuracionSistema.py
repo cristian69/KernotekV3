@@ -30,6 +30,7 @@ class Configuracion(flask.views.MethodView):
 			InhibirMDB.main()
 		elif operation == START:
 			iniciarProceso()
+			time.sleep(0.5)	
 		elif operation == RESTART:
 			reiniciarProceso()
 		else:
