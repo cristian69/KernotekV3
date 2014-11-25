@@ -62,8 +62,12 @@ function reporteTurnos(parametro1, parametro2){
 
 }
 
-function generarExcel(parametroExcel, parametroDetallado){
-	if(parametroExcel=="True"){
+function generarExcel(excelGeneral, excelEspecifico, excelDetallado){
+alert(excelGeneral);
+
+alert(excelEspecifico);
+alert(excelDetallado);
+	/*if(parametroExcel=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");
 	}
@@ -86,7 +90,7 @@ function generarExcel(parametroExcel, parametroDetallado){
 	if(parametroDetallado!="True"){
 		$("#descargarDetallado").addClass("hidden");
 		$("#detallado").removeClass("hidden");
-	}
+	}*/
 }
 
 
