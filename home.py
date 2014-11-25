@@ -306,6 +306,7 @@ def datos_home():
                 'socketC': "",
                 'acumuladoTurno': "",
                 'ventasTurno': "",
+                'etiqueta':" Hrs.",
                 'ultimoTurno': str(class_db.ultimoTurno()),
                 'cerradura': class_db.consultarCerradura()
                 }
@@ -344,20 +345,20 @@ def datos_home():
         dic_home['tipoTiempo'] = banderaTiempo
         if banderaTiempo == "cadaDia":
             horaCorte = class_db.consultarTiempo()
-            dic_home['automaticoHora'] = horaCorte +" Hrs."
+            dic_home['automaticoHora'] = horaCorte
             dic_home['automaticoDia'] = ""
             dic_home['tipoTiempo'] = "Diario"
         if banderaTiempo == "cadaSemana":
             diaHora = class_db.consultarTiempo()
             diaHora = diaHora.split('|')
             dic_home['automaticoDia'] = diaHora[0]
-            dic_home['automaticoHora']= diaHora[1] + " Hrs."
+            dic_home['automaticoHora']= diaHora[1] 
             dic_home['tipoTiempo'] = "Semanal"
         if banderaTiempo == "cadaMes":
             diaHora = class_db.consultarTiempo()
             diaHora = diaHora.split('|')
             dic_home['automaticoDia'] = diaHora[0]
-            dic_home['automaticoHora']= diaHora[1] +" Hrs."
+            dic_home['automaticoHora']= diaHora[1]
             dic_home['tipoTiempo'] = "Mensual"
         dic_home['tipoCorte'] = "Automático"
     else:
