@@ -9,6 +9,10 @@ class Turnos(flask.views.MethodView):
 	def get(self):
 		if len(session) > 1:
 			typeCut = class_db.tipoCorte()
+			if typeCut == "manual":
+				typeCut = "Manual"
+			else:
+				typeCut = "Automático"
 			dicTurno = valuesAutomaticShift()
 			return render_template('corteDeTurno.html', tipoCorte=typeCut, dicTurno=dicTurno)
 		else:

@@ -42,14 +42,14 @@ class Reportes(flask.views.MethodView):
 
 			if typeReport == "general":
 				sells = class_db.reporte_general(startDate, endDate)
-				tableHTML = tablaReporte(sells, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False, detallado=False, reporte="General")
+				tableHTML, codeOperations = tablaReporte(sells, startDate, endDate)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=False, detallado=False, reporte="General", acciones=codeOperations)
 
 			if typeReport == "generarGeneral":
 				sellsReport = class_db.reporte_general(startDate, endDate)
 				objExcel.reporteGeneral(sellsReport, startDate, endDate)
-				tableHTML = tablaReporte(sellsReport, startDate, endDate)
-				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True, detallado=False, reporte="General")
+				tableHTML, codeOperations = tablaReporte(sellsReport, startDate, endDate)
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True, detallado=False, reporte="General",acciones=codeOperations)
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
 				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')
@@ -68,11 +68,11 @@ class Reportes(flask.views.MethodView):
 		startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
 		endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
 		sells = class_db.reporte_general(startDate, endDate)
-		tableHTML = tablaReporte(sells, startDate, endDate)
+		tableHTML, codeOperations = tablaReporte(sells, startDate, endDate)
 		if len(tableHTML) == 75:
 			return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=False, excel=False)
 		else:
-			return render_template('reporteFechas.html', tableHTML=tableHTML,  tablaFechas=True, excel=False)
+			return render_template('reporteFechas.html', tableHTML=tableHTML,  tablaFechas=True, excel=False, acciones=codeOperations)
 		"""
 		indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 		tableHTML = cod_tabla(startDate, endDate, 0)
