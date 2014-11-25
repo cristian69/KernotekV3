@@ -273,4 +273,4 @@ def reporteTurno(datos, fechaInicio, fechaFin, numTurno):
 
     # Etiquetas de cierre del html
     codigoHTML += str("</html>")
-    HTML(string=codigoHTML).write_pdf(ruta+'Reporte del turno '+str(numTurno)+'.pdf')
+    HTML(string=codigoHTML).write_pdf(ruta+'Reporte por turno.pdf')

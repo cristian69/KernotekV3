@@ -124,8 +124,8 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
         codigoTabla = str('<h1></h1><h1 align="center"><strong>No hay registros de Ventas en ese Turno</strong></h1>')
         codeOpertations = ""
         return codigoTabla, codeOpertations 
-    linkExcel = "../static/download/"+session['username']+"/Reporte por Turno.xlsx"
-    linkPDF = "../static/download/"+session['username']+"/Reporte por Turno.pdf"
+    linkExcel = "../static/download/"+session['username']+"/Reporte por turno.xlsx"
+    linkPDF = "../static/download/"+session['username']+"/Reporte por turno.pdf"
     codigoTabla = """
                     <article class="portlet light bordered">
             <article class="portlet-title">
