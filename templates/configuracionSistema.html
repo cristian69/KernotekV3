@@ -22,7 +22,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="home();">
+  <body class="page-header-fixed" onload="home(), apagadoSistema('{{botonSistema}}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article >
@@ -45,8 +45,9 @@
                     <i class="fa fa-desktop"></i>Configuración del sistema.
                   </article>
                   <article class="actions">
-                    <a href="" class="btn"> <i class="fa fa fa-power-off"> Encender sistema </i></a>
-                    <a href="" class="btn green"> <i class="fa fa-refresh"> Reiniciar sistema </i></a>
+                    <button typr="submit" class=" hidden btn btn-default" id="apagarSistema">Apagar</button>
+                    <button typr="submit" class=" hidden btn blue" id="encendeSistema">Encender</button>
+                    <button typr="submit" class="btn green" id="reiniciarSistema">Reiniciar</button>
                   </article>
                 </article>
                 <article class="portlet-body flip-scroll text-center">

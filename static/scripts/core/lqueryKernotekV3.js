@@ -1,6 +1,20 @@
+function apagadoSistema(parametro){
+	if(parametro=="True"){
+		$("#apagarSistema").removeClass("hidden");
+		$("#encendeSistema").addClass("hidden");
+	}
+	else{
+		$("#apagarSistema").addClass("hidden");
+		$("#encendeSistema").removeClass("hidden");
+	}
+}
+
 $(document).keypress(function(e) {
     if(e.which == 13) {
-       document.formCambiarTarifa.submit();
+    	if($("#modalTarifa").hasClass("in")){
+    		$("#aceptarCambioTarifa").click();
+    		alert("boton clickeAD0")
+    	}
     }
 });
 
@@ -49,8 +63,6 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(parametroExcel, parametroDetallado){
-	alert(parametroExcel);
-	alert(parametroDetallado);
 	if(parametroExcel=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");

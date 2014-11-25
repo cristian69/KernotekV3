@@ -1,5 +1,5 @@
 
-$("body").mouseover(function(){
+/*$("body").mouseover(function(){
 	if($("#modalTarifa").hasClass("in")){
 		$("#nuevaTarifa").focus();
 		$("#nuevoTiempo").val("");
@@ -12,25 +12,7 @@ $("body").mouseover(function(){
 	}
 });
 
-
-
-function focusModal(parametro){
-	if(parametro=="1"){
-		$("#nuevaTarifa").focus();
-		$("#nuevoTiempo").val("");
-
-	}
-	if(parametro=="2"){
-		$("#nuevoTiempo").focus();
-		$("#nuevaTarifa").val("");
-
-	}
-	else{
-		$("#nuevaTarifa").val("");
-		$("#nuevoTiempo").val("");
-	}
-}
-
+*/
 
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
