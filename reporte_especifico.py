@@ -83,10 +83,10 @@ def cod_tabla(startDate, endDate, inicio):
             </div>
           </div>
           <div class="portlet-body" >
-            <table class="table table-bordered  table-condensed ">""")
+            <table class="table table-responsive  table-condensed ">""")
 
     codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
-    codigo_tabla += str('<tr>')  # Inicio de las cabezeras
+    codigo_tabla += str('<tr  style="border-bottom:1px solid #E1E1E1;"">')  # Inicio de las cabezeras
     dicVenta = []
     for cabezera in cabezerasDisponibles:
         codigo_tabla += str('<th width="20%"class="text-center">')
@@ -115,10 +115,10 @@ def cod_tabla(startDate, endDate, inicio):
                          """
         for ventas in tabla_ventas:
             if bandera_color:
-                codigo_tabla += str('<tr class="">')
+                codigo_tabla += str('<tr  style="border-bottom:1px solid #E1E1E1;">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr>')
+                codigo_tabla += str('<tr style="border-bottom:1px solid #E1E1E1;">')
                 bandera_color = True
             for venta, columna in zip(ventas, dicVenta):
                 if columna == "Depósito"and venta == 0:

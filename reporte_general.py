@@ -67,9 +67,9 @@ def tablaReporte(datos, startDate, endDate):
               </article>
             </article>
             <article class="portlet-body">
-              <table class="table table-bordered table-condensed">
+              <table class="table table-responsive table-condensed">
                 <thead class="flip-content text-center">
-                  <tr>
+                  <tr style='border-bottom:1px solid #E1E1E1;'>
                     <th class="text-center">
                        Tarifa
                     </th>

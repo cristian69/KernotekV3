@@ -231,10 +231,10 @@ def generar_tabla(datos, modal, bandera):
             bandera_td = True
             bandera_tocket = True
             if bandera_color:
-                codigo_tabla += str('<tr id="'+str(id_fila)+'" class="'+str(id_fila)+'">')
+                codigo_tabla += str('<tr id="'+str(id_fila)+'" class="'+str(id_fila)+'" style="border-bottom:1px solid #E1E1E1;">')
                 bandera_color = False
             else:
-                codigo_tabla += str('<tr id= "'+str(id_fila)+'" class="'+str(id_fila)+'">')
+                codigo_tabla += str('<tr id= "'+str(id_fila)+'" class="'+str(id_fila)+'" style="border-bottom:1px solid #E1E1E1;">')
                 bandera_color = True
             for dato in fila_datos:
 		
