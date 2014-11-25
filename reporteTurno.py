@@ -132,6 +132,13 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i>Reporte por Turno
               </article>
+              <article class="actions">
+                <a href=" """+linkExcel+""" " class="btn blue-sunglo hidden" id="descargarTurnoExcel"> Descargar Excel </a>
+                    <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=excel&excel="""+stateExcel+"""&pdf="""+statePDF+""" "  class="btn btn-default" id="generarTurnoExcel">Generar Excel</a>
+                    <a href="/reporte-turno/?turno="""+numTurno+"""&fechaInicio="""+fechaInicioTurno+"""&fechaFin="""+fechaFinTurno+"""&reporte=PDF&excel="""+stateExcel+"""&pdf="""+statePDF+""" "  class="btn btn-default" id="generarTurnoPdf">Generar PDF</a>
+                    <a href=" """+linkPDF+""" " class="btn blue-sunglo hidden" id="descargarTurnoPdf"> Descargar PDF </a>
+                    <a href="javascript:;" class="collapse"></a>
+              </article>
             </article>
             <article class="portlet-body">
               <table class="table table-bordered table-condensed">

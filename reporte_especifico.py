@@ -81,6 +81,13 @@ def cod_tabla(startDate, endDate, inicio):
             <div class="caption">
               <i class="fa fa-bar-chart-o text-center"></i>De""" + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
             </div>
+            <div class="actions">
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-default"> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-default"> Generar Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-default" id="generarExcel"> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+            </div>
           </div>
           <div class="portlet-body" >
             <table class="table table-responsive  table-condensed ">""")

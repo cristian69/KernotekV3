@@ -66,6 +66,13 @@ def tablaReporte(datos, startDate, endDate):
               <article class="caption">
                 <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
               </article>
+              <article class="actions">
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn btn-default linkCabecera text-left" style="color:#666; align:left;"> Especifico </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn btn-default linkCabecera" id="detallado" style="color:#666;"> Generar Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn btn-default blue-sunglo" id="descargarDetallado"><i class="fa fa-download linkCabecera" style="color:#666;"></i> Descargar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn btn-default btn-default linkCabecera" id="generarExcel" style="color:#666;"><i class="fa fa-refresh"></i> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-default blue-sunglo" id="excelDescargar"><i class="fa fa-download linkCabecera" style="color:#666;"></i> Descargar Excel </a>
+              </article>
             </article>
             <article class="portlet-body">
               <table class="table table-responsive table-condensed">
