@@ -85,10 +85,10 @@ function tablasReportes(parametro){
 
 
 function corteValores(parametro){
-	if(parametro=='aanual'){
+	if(parametro=='Manual'){
 		$('#btnConfigurar').addClass("hidden");
 	}
-	if(parametro=="automático"){
+	if(parametro=="Automático"){
 		$("#btnCorte").addClass("hidden")
 	}
 }
