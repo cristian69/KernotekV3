@@ -167,14 +167,14 @@
             </article>
           </article>
           <article class="col-me-12">
-            <article id="modalTarifa" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+            <article id="modalTarifa" class="modal fade" tabindex="-1" data-keyboard="false">
               <article class="modal-dialog">
                 <article class="modal-content">
                   <article class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" >
+                  <form action="{{ url_for('home') }}" class="form-horizontal"  method="post" name="formCambiarTarifa" id="formCambiarTarifa" >
                     <article class="modal-body row">
                       <article class="form-wizard">
                         <article class="form-body">
@@ -215,7 +215,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar tiempo de apertura</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" >
+                  <form action="{{ url_for('home') }}" class="form-horizontal" name="formCambiarApertura" id="formCambiarApertura" method="post">
                     <article class="modal-body">
                       <article class="col-md-12">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">

@@ -1,13 +1,6 @@
 $(document).keypress(function(e) {
     if(e.which == 13) {
-        if($("#modalTarifa").hasClass("in")){
-        	$("#aceptarModalTarifa").click();
-        	alert('entra tarifa');
-        }
-         if($("#modalAccesso").hasClass("in")){
-        	$("#aceptarAcceso").click();
-        	alert('entra acceso');
-        }
+       document.formCambiarTarifa.submit();
     }
 });
 
