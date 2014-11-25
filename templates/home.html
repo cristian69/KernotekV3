@@ -420,7 +420,7 @@
                                     </article>
                                     <article class="col-md-6">
                                       <article class="input-group col-md-12">
-                                        <input style="cursor:pointer;"type="text" class="form-control timepicker timepicker-24" name="hora" id="horaC" value="23:59:59" > 
+                                        <input style="cursor:pointer;"type="text" class="form-control timepicker timepicker-24" name="hora" id="horaC" value="{{dic_home['automaticoHora']}}" > 
                                         <span class="input-group-btn">
                                           <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                         </span>
@@ -585,7 +585,7 @@
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{dic_home['tipoCorte']}}</strong></article>
-                                    <article class="detalles">{{dic_home['automaticoDia']}} {{dic_home['automaticoHora']}}</article>
+                                    <article class="detalles">{{dic_home['automaticoDia']}} {{dic_home['automaticoHora']}} {{dic_home['etiqueta']}}</article>
                                   </article>
                                   <article class="col-md-4 visual conent"><i class="fa fa-calendar"></i>
                                   </article>
@@ -605,7 +605,7 @@
       </article>
     </section>
     <section class="footer">
-      <article class="footer-inner">2014 &copy; KERNOTEK{{dic_home['automaticoHora']}}</article>
+      <article class="footer-inner">2014 &copy; KERNOTEK</article>
       <article class="footer-tools">
         <span class="go-top">
         <i class="fa fa-angle-up"></i>

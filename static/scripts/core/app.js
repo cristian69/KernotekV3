@@ -460,43 +460,7 @@ $(function(){
     }
 
 var valoresTurno =function(){
-    valorLapso=$(".tipoLapso").val();
-    valorSemana=$(".diaCorte").val();
-    valorHora=$(".horaCorte").val();
-    if(valorLapso=='cadaMes'){
-        $('#Lapso > option[value="cadaMes"]').attr('selected', 'selected');
-        $('#mes > option[value="'+valorSemana+'"]').attr('selected','selected');
-        $('#horaC').val(valorHora);
-        $('.contenedorFecha').addClass('col-md-6');
-        $('#mes').removeClass('hidden');
-        $('#semana').addClass('hidden');
-    }
-    if(valorLapso=='cadaSemana'){
-        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
-        $('#semana > option[value="'+valorSemana+'"]').attr('selected', 'selected');
-        $('#horaC').val(valorHora);
-        $('.contenedorFecha').addClass('col-md-6');
-        $('#semana').removeClass('hidden');
-        $('#mes').addClass('hidden');
-    }
-    if(valorLapso=='cadaDia'){
-        $('#Lapso > option[value="cadaDia"]').attr('selected', 'selected');
-        $('#horaC').val(valorHora);
-        $('.contenedorFecha').removeClass('col-md-6');        
-    }
-    if(valorLapso=='cadaDetHora'){
-        $('#Lapso > option[value="cadaDetHora"]').attr('selected', 'selected');
-        $('#horaC').val(valorHora);
-        $('.contenedorFecha').removeClass('col-md-6');            
-    }
-    if( valorLapso!=="cadaMes" && valorLapso!=="cadaSemana" && valorLapso!=="cadaDia" && valorLapso!="cadaDetHora"){
-        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
-        $('#semana > option[value="Domingo"]').attr('selected', 'selected');
-        $('#horaC').val("23:59:59");
-        $('.contenedorFecha').addClass('col-md-6');
-        $('#semana').removeClass('hidden');
-        $('#mes').addClass('hidden');   
-    }
+   
     
 }
 

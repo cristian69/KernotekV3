@@ -394,16 +394,6 @@ var valoresTurnoh=function(){
 			$("#semana").select2();
 			$("#mes").select2();          
 	    }
-	    if( valorLapso!=="Mensual" && valorLapso!=="Semanal" && valorLapso!=="Diario" && valorLapso!="cadaDetHora"){$('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
-	        $('#semana > option[value="Domingo"]').attr('selected', 'selected');
-	        $('#horaC').val("23:59:59");
-	        $('.contenedorFecha').addClass('col-md-6');
-	        $('#semana').removeClass('hidden');
-	        $('#mes').addClass('hidden');  
-	        $("#Lapso").select2();
-			$("#semana").select2();
-			$("#mes").select2(); 
-	    }
 	}
 
 
