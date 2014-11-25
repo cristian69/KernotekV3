@@ -63,10 +63,30 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado){
-alert(excelGeneral);
-
-alert(excelEspecifico);
-alert(excelDetallado);
+if(excelGeneral=="True"){
+	$("#linkGeneral").addClass("hidden");
+	$("#descargarGeneral").removeClass("hidden")
+}
+if(excelGeneral=="false"){
+	$("#linkGeneral").addClass("hidden");
+	$("#descargarGeneral").removeClass("hidden")
+}
+if(excelEspecifico=="True"){
+	$("#linkEspecifico").addClass("hidden");
+	$("#descargarEspecifico").removeClass("hidden")
+}
+if(excelEspecifico=="false"){
+	$("#linkEspecifico").addClass("hidden");
+	$("#descargarEspecifico").removeClass("hidden")
+}
+if(excelDetallado=="True"){
+	$("#linkDetallado").addClass("hidden");
+	$("#descargarDetallado").removeClass("hidden")
+}
+if(excelDetallado=="false"){
+	$("#linkDetallado").addClass("hidden");
+	$("#descargarDetallado").removeClass("hidden")
+}
 	/*if(parametroExcel=="True"){
 		$("#excelDescargar").removeClass("hidden");
 		$("#generarExcel").addClass("hidden");

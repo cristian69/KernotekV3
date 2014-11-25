@@ -68,12 +68,12 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
                 <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
               </article>
               <article class="actions">
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkGeneral"><i class="fa fa-refresh"></i> Generar Excel </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default id="linkEspecifico"> Específico </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default id="linkDetallado"> Generar Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcelGeneral+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar General </a>
-                <a href=" """+linkExcelEspecifico+""" " class="btn blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Específico </a>
+                <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="descargarGeneral"><i class="fa fa-download"></i> Descargar General </a>
+                <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="descargarEspecifico"><i class="fa fa-download"></i> Descargar Específico </a>
+                <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
               </article>
             </article>
             <article class="portlet-body">
