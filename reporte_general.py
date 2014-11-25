@@ -69,9 +69,9 @@ def tablaReporte(datos, startDate, endDate):
               <article class="actions">
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico" class="btn-circle btn btn-default"> Especifico </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado" class="btn-circle btn btn-default" id="detallado"> Generar Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn btn-default blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral" class="btn-circle btn btn-default btn-default" id="generarExcel"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn-circle btn btn-default blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
               </article>
             </article>
             <article class="portlet-body">
