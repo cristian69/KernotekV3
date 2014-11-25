@@ -60,7 +60,7 @@ class reporteEspecifico(flask.views.MethodView):
             return redirect(url_for('login'))
 
 
-def cod_tabla(startDate, endDate, inicio):
+def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEspecifico):
     startDateReport = startDate.split(' ')
     date = startDateReport[0].split('-')
     startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
@@ -82,11 +82,11 @@ def cod_tabla(startDate, endDate, inicio):
               <i class="fa fa-bar-chart-o text-center"></i>De""" + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
             </div>
             <div class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default" id="detallado"> Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default linkCabecera text-left" style="color:#666; align:left;"> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default linkCabecera" id="detallado" style="color:#666;"> Generar Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn btn-default blue-sunglo" id="descargarDetallado"><i class="fa fa-download linkCabecera" style="color:#666;"></i> Descargar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default btn-default linkCabecera" id="generarExcel" style="color:#666;"><i class="fa fa-refresh"></i> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-default blue-sunglo" id="excelDescargar"><i class="fa fa-download linkCabecera" style="color:#666;"></i> Descargar Excel </a>
             </div>
           </div>
           <div class="portlet-body" >

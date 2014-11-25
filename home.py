@@ -49,7 +49,6 @@ class Home(flask.views.MethodView):
     def post(self):
         operation = request.form['submit']
         flag = ""
-        print operation
         stateC, statePython =  revisarProceso()
         if operation == "reporteTurno":
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
@@ -78,7 +77,7 @@ class Home(flask.views.MethodView):
 
             if typeReport == DATES_REPORT:
                 sells = class_db.reporte_general(startDate, endDate)
-                tableHTML, codeOperations = tablaReporte(sells,startDate, endDate)
+                tableHTML, codeOperations = tablaReporte(sells,startDate, endDate, "False", "False", "False")
 
                 if len(tableHTML) == 66:
                     return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General", acciones=codeOperations)

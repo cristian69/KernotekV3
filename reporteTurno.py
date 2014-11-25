@@ -182,6 +182,4 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
                           <a href=" """+linkPDF+""" " class="btn blue-sunglo hidden" id="descargarTurnoPdf"> Descargar PDF </a>
                           <a href="javascript:;" class="collapse"></a>
                       """
-    print codeOpertations
-    print codigoTabla
     return codigoTabla, codeOpertations
