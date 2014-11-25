@@ -25,7 +25,7 @@ class Reportes(flask.views.MethodView):
 				excel.reporteDetallado(sellsReport, startDate, endDate)
 				sells = class_db.reporte_general(startDate, endDate)
 				tableHTML,codeOperations = tablaReporte(sells, startDate, endDate)
-				return render_template('reporteFechas.html', indexHTML="", tableHTML=tableHTML, bandera=0, tablaFechas=flagTableDate, excel=False, detallado=True, acciones=codeOperations)
+				return render_template('reporteFechas.html', indexHTML="", tableHTML=tableHTML, bandera=0, tablaFechas=flagTableDate, excel=False, detallado=True, acciones=codeOperations, reporte="General")
 			if typeReport == "especifico":
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 				if len(indexHTML) == 589:
@@ -53,7 +53,6 @@ class Reportes(flask.views.MethodView):
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
 				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')
-				# print len(indexHTML)
 				if len(indexHTML) == 589:
 					indexHTML = ""
 				tableHTML = cod_tabla(startDate, endDate, index)
