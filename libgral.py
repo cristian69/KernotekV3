@@ -6,31 +6,38 @@ from flask import session
 import os
 import signal
 import time
-
+import logger
 
 registros_pagina = 50 # El número de registros tiene que ser multiplo de la variable de clase db en la consulta
 
+# def terminarProceso():
+#     for proceso in os.popen("ps xa"):
+#         proceso = proceso.split()
+#         for valor in proceso:
+#             valor = valor.split('/')
+#             for valor2 in valor:
+#                 if valor2 == "BasicValidator" or valor2 == "servidor.py":
+#                     pid = int(proceso[0])
+#                     try:
+#                         os.kill(pid, signal.SIGKILL)
+#                     except:
+#                         print "No se pude terminar el proceso"
+
+
 def terminarProceso():
-    for proceso in os.popen("ps xa"):
-        proceso = proceso.split()
-        for valor in proceso:
-            valor = valor.split('/')
-            for valor2 in valor:
-                if valor2 == "BasicValidator" or valor2 == "servidor.py":
-                    pid = int(proceso[0])
-                    try:
-                        os.kill(pid, signal.SIGKILL)
-                    except:
-                        print "No se pude terminar el proceso"
+    STOP = "service appserver stop"
+    try:
+        os.system(STOP)
+    except:
+        logger.error('no se puede detener el proceso')
 
 
 def iniciarProceso():
-    START = "service appserver start"
+    STOP = "service appserver start"
     try:
         os.system(START)
-
     except:
-        print "No se puede iniciar"
+        logger.error('no se encuentra el servicio')
 
 
 def reiniciarProceso():

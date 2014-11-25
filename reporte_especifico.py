@@ -79,14 +79,7 @@ def cod_tabla(startDate, endDate, inicio):
     codigo_tabla += str('<div class="portlet light bordered">')  # Código del div
     codigo_tabla += str(""" <div class="portlet-title">
             <div class="caption">
-              <i class="fa fa-bar-chart-o"></i>Reporte específico del """ + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
-            </div>
-            <div class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-circle btn-default"> Generar Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+              <i class="fa fa-bar-chart-o text-center"></i>De""" + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
             </div>
           </div>
           <div class="portlet-body" >
@@ -110,6 +103,16 @@ def cod_tabla(startDate, endDate, inicio):
     if len(tabla_ventas) == 0:
         return str('<h1 align="center"><strong>No hay registro de ventas</strong></h1>')
     else:
+
+        codeOperations = """
+                            <div class="actions">
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-circle btn-default"> Generar Detallado </a>
+                                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
+                                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                            </div>
+                         """
         for ventas in tabla_ventas:
             if bandera_color:
                 codigo_tabla += str('<tr class="">')
@@ -125,7 +128,7 @@ def cod_tabla(startDate, endDate, inicio):
 
     codigo_tabla += str('</tbody>')  #Fin del contenido de la tabla
     codigo_tabla += str('</table></div></div>')  # Fin de la tabla
-    return codigo_tabla
+    return codigo_tabla, codeOperations
 
 
 def hilo_excel(ventas, fecha_inicio, fecha_fin):
