@@ -500,7 +500,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
 
     columns = ['Ticket', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte por Turno.xlsx"
+    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte por turno.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
