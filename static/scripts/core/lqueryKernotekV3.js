@@ -103,10 +103,10 @@ $("#btnreporteTurno").click(function(){
 	$(".seleccionReporte").addClass("hidden");
 	$("#inpTipoReporte").val("turno");
 	$(".footerModalReporte").removeClass("hidden");
-	$("#labelHoraFin").addClass("hidden");
-	$("#inputHoraFin").addClass("hidden");
-	$("#labelHoraFin").addClass("hidden");
-	$("#inputHoraFin").addClass("hidden");
+	$(".labelHoraInicio").addClass("hidden");
+	$(".inputHoraInicio").addClass("hidden");
+	$(".labelHoraFin").addClass("hidden");
+	$(".inputHoraFin").addClass("hidden");
 });
 
 $("#regresarReporte").click(function(){
@@ -114,10 +114,10 @@ $("#regresarReporte").click(function(){
 	$(".seleccionReporte").removeClass("hidden");
 	$("#inpTipoReporte").val("");
 	$(".footerModalReporte").addClass("hidden");
-	$("#labelHoraFin").removeClass("hidden");
-	$("#inputHoraFin").removeClass("hidden");
-	$("#labelHoraFin").removeClass("hidden");
-	$("#inputHoraFin").removeClass("hidden");
+	$(".labelHoraInicio").removeClass("hidden");
+	$(".inputHoraInicio").removeClass("hidden");
+	$(".labelHoraFin").removeClass("hidden");
+	$(".inputHoraFin").removeClass("hidden");
 });
 
 $("#aceptarReporte").click(function(){
