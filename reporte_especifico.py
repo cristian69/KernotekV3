@@ -101,17 +101,16 @@ def cod_tabla(startDate, endDate, inicio):
     tabla_ventas = class_db.paginacion(startDate, endDate, inicio)
 
     if len(tabla_ventas) == 0:
-        return str('<h1 align="center"><strong>No hay registro de ventas</strong></h1>')
+        codeOperations = ""
+        return str('<h1 align="center"><strong>No hay registro de ventas</strong></h1>'), codeOperations
     else:
 
         codeOperations = """
-                            <div class="actions">
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-circle btn-default"> Generar Detallado </a>
-                                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
-                                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
-                            </div>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-default"> General </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn btn-default"> Generar Detallado </a>
+                                <a href=" """+linkDetallado+""" " class="btn blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-default" id="generarExcel"> Generar Excel </a>
+                                <a href=" """+linkExcel+""" " class="btn blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
                          """
         for ventas in tabla_ventas:
             if bandera_color:
