@@ -100,13 +100,13 @@ class Home(flask.views.MethodView):
             else:
                 flag = "error"
 
-        if operation == CUT_SHIFT:
-            if stateC and statePython:
-                class_db.activarCorteTurno()
-                time.sleep(2)  # Espera a que el corte de turno se ejecute
-                flag = "corteExitoso"
-            else:
-                flag = "error"
+        # if operation == CUT_SHIFT:
+        #     if stateC and statePython:
+        #         class_db.activarCorteTurno()
+        #         time.sleep(2)  # Espera a que el corte de turno se ejecute
+        #         flag = "corteExitoso"
+        #     else:
+        #         flag = "error"
 
         if operation == "cambiarManual":
             class_db.cambiarTipoCorte('0')
@@ -115,28 +115,33 @@ class Home(flask.views.MethodView):
         if operation == "modalTurno":
             modalOperation = request.form['seleccionarAccion']
             # modalOperation = modalOperation[0]
-            if modalOperation == "cambiar":
-                typeCut = request.form.getlist('tiposCorte')
-                typeCut = typeCut[0]
-                if typeCut == "manual":
-                    typeCut = '0'
-                else:
-                    typeCut = '1'
-                    modalOperation = "configurar"
-                class_db.cambiarTipoCorte(typeCut)
-                flag = "cambioExitoso"
+            # if modalOperation == "cambiar":
+            #     typeCut = request.form.getlist('tiposCorte')
+            #     typeCut = typeCut[0]
+            #     if typeCut == "manual":
+            #         typeCut = '0'
+            #     else:
+            #         typeCut = '1'
+            #         modalOperation = "configurar"
+            #     class_db.cambiarTipoCorte(typeCut)
+            #     flag = "cambioExitoso"
                 # if stateC and statePython:
                 #     class_db.cambiarTipoCorte(typeCut)
                 #     flag = "cambioExitoso"
                 # else:
                 #     flag = "error"
-            if modalOperation == "1":
-                if stateC and statePython:
-                    class_db.activarCorteTurno()
-                    flag = "corteExitoso"
-                else:
-                    flag = "error"
-            if modalOperation == "3":
+                #     
+            if modalOperation == '4':
+                class_db.activarCorteTurno()
+                time.sleep(2)   
+                # if stateC and statePython:
+                #     class_db.activarCorteTurno()
+                #     time.sleep(2)  # Espera a que el corte de turno se ejecute
+                #     flag = "corteExitoso"
+                # else:
+                #     flag = "error"
+
+            if modalOperation == "3" or modalOperation == "1":
                 typeLapse = request.form.getlist('tipoLapso')
                 typeLapse = typeLapse[0]
                 if typeLapse == "cadaDia":
@@ -163,6 +168,8 @@ class Home(flask.views.MethodView):
                 class_db.cambiarTipoCorte('1')
                 class_db.tipoTiempoAutomatico(typeLapse)
                 class_db.tiempoCorteAuto(timeAutoCut)   
+
+            
 
         dic_home = datos_home()
         dayGrafic, sells = graficaDia()
