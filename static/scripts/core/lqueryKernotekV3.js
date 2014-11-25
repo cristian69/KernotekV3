@@ -83,12 +83,13 @@ function tablasReportes(parametro){
 	}
 }
 
+
 function corteValores(parametro){
-	if(parametro=='Manual'){
-		$('#configurraCorte').addClass("hidden");
+	if(parametro=='aanual'){
+		$('#btnConfigurar').addClass("hidden");
 	}
-	if(parametro=="Automático"){
-		$("#hacerCorte").addClass("hidden")
+	if(parametro=="automático"){
+		$("#btnCorte").addClass("hidden")
 	}
 }
 
@@ -156,100 +157,98 @@ $("#reporteTurnoAnterior").click(function(){
 
 /*Acciones que se realiara si se selecciona la opcion de corte,
 configureacion o cambiar tipo de corte de turno*/
+$("#btnCorte").click(function(){
+	$("#Turno2b").addClass("active");
+	$("#Turno1").removeClass("active");
+	$(".footerCorteTurno").removeClass("hidden");
+	$("#CancelarCorte").removeClass("hidden");
+	$("#ConfirmarAccionT").removeClass("hidden");
+});
 
-$("#siguienteCorte").click(function(){
-	if($("#seleccionarAccion").val()=="corte"){
-		$("#AceptarCorte").removeClass("hidden");
-		$("#CancelarCorte").removeClass("hidden");
-		$("#siguienteCorte").addClass("hidden");
-		$("#pasoTurno2b").removeClass("hidden");
-		$("#pasoTurno2b").addClass("active");
-		$("#pasoTurno1").removeClass("active");
-		$("#Turno1").removeClass("active");
-		$("#Turno2b").addClass("active");
+$("#CancelarCorte").click(function(){
+	if($("#valorPestaña").val()=="1"){
+		$("#Turno2b").removeClass("active");
+		$("#Turno1").addClass("active");
+		$(".footerCorteTurno").addClass("hidden");
+		$("#CancelarCorte").addClass("hidden");
+		$("#ConfirmarAccionT").addClass("hidden");
+		$("#turno2").removeClass("active");
+		$("#AceptarCorte").addClass("hidden");
+	}
+});
 
-	}
-	if($("#seleccionarAccion").val()=="configurar"){
-		$("#pasoTurno2").addClass("active");
-		$("#pasoTurno1").removeClass("active");
-		$("#turno2").addClass("active");
-		$("#Turno1").removeClass("active");
-		$("#pasoTurno2").removeClass("hidden");
-		$("#anteriorCorte").removeClass("hidden");
-		$("#ConfirmarAccion").removeClass("hidden");
-		$("#siguienteCorte").addClass("hidden");
-	}
-	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="1"){
+
+$("#btnConfigurar").click(function(){
+	$("#turno2").addClass("active");
+	$("#Turno1").removeClass("active");
+	$(".footerCorteTurno").removeClass("hidden");
+	$("#AceptarCorte").removeClass("hidden");
+	$("#CancelarCorte").removeClass("hidden");
+});
+
+
+$("#btnCambiarCorte").click(function(){
+	if($("#valorPestaña").val()=="1"){
 		$("#pasoTurno2a").addClass("active");
 		$("#pasoTurno2a").removeClass("hidden");
 		$("#Turno2a").addClass("active");
 		$("#pasoTurno1").removeClass("active");
 		$("#Turno1").removeClass("active");	
 		$("#anteriorCorte").removeClass("hidden");
+		$(".footerCorteTurno").removeClass("hidden");
 		$("#valorPestaña").val("2");	
 	}
-	if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
-		$("#pasoTurno2a").removeClass("active");
-		$("#Turno2a").removeClass("active");		
-		$("#pasoTurno3a").addClass("active");
-		$("#pasoTurno3a").removeClass("hidden");
-		$("#turno2").addClass("active");
-		$("#siguienteCorte").addClass("hidden");
-		$("#ConfirmarAccion").removeClass("hidden");
-		$("#valorPestaña").val("3");
-	}
-	
 });
 
-$("#CancelarCorte").click(function(){
-	if($("#seleccionarAccion").val()=="corte"){
-		$("#AceptarCorte").addClass("hidden");
-		$("#CancelarCorte").addClass("hidden");
-		$("#siguienteCorte").removeClass("hidden");
-		$("#pasoTurno2b").addClass("hidden");
-		$("#pasoTurno2b").removeClass("active");
-		$("#pasoTurno1").addClass("active");
-		$("#Turno1").addClass("active");
-		$("#Turno2b").removeClass("active");
-	}
+
+
+$("#btnAutomaticoCorte").click(function(){
+	$("#pasoTurno2a").removeClass("active");
+	$("#Turno2a").removeClass("active");		
+	$("#pasoTurno3a").addClass("active");
+	$("#pasoTurno3a").removeClass("hidden");
+	$("#turno2").addClass("active");
+	$("#siguienteCorte").addClass("hidden");
+	$("#ConfirmarAccionT").removeClass("hidden");
+	$("#valorPestaña").val("3");
 });
 
 $("#anteriorCorte").click(function(){
-	if($("#seleccionarAccion").val()=="configurar"){
-		$("#pasoTurno2").removeClass("active");
-		$("#pasoTurno1").addClass("active");
-		$("#turno2").removeClass("active");
-		$("#Turno1").addClass("active");
-		$("#pasoTurno2").addClass("hidden");
-		$("#anteriorCorte").addClass("hidden");
-		$("#ConfirmarAccion").addClass("hidden");
-		$("#siguienteCorte").removeClass("hidden");
-	}
-	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="2"){
+	if($("#valorPestaña").val()=="2"){
 		$("#pasoTurno2a").removeClass("active");
 		$("#pasoTurno2a").addClass("hidden");
 		$("#Turno2a").removeClass("active");
 		$("#pasoTurno1").addClass("active");
 		$("#Turno1").addClass("active");	
 		$("#anteriorCorte").addClass("hidden");
-		$("#siguienteCorte").removeClass("hidden");
-		$('#tiposCortes > option[value=""]').attr('selected', 'selected');
-		$("#tiposCortes").select2({
-			placeholder: "Selecciona el tipo de corte de turno"
-		});
-		$("#valorPestaña").val("1");	
-	}	
-	if($("#seleccionarAccion").val()=="cambiar" && $("#valorPestaña").val()=="3"){
+		$(".footerCorteTurno").addClass("hidden");
+		$("#valorPestaña").val("1");
+	}
+
+
+$("#anteriorCorte").click(function(){
+	if($("#valorPestaña").val()!="1" && $("#valorPestaña").val()!="2"){
 		$("#pasoTurno2a").addClass("active");
-		$("#Turno2a").addClass("active");		
-		$("#pasoTurno3a").removeClass("active");
-		$("#pasoTurno3a").addClass("hidden");
-		$("#turno2").removeClass("active");
-		$("#siguienteCorte").removeClass("hidden");
+		$("#pasoTurno2a").removeClass("hidden");
+		$("#Turno2a").addClass("active");
+		$("#pasoTurno1").removeClass("active");
+		$("#Turno1").removeClass("active");	
 		$("#anteriorCorte").removeClass("hidden");
-		$("#ConfirmarAccion").addClass("hidden");
+		$(".footerCorteTurno").removeClass("hidden");
 		$("#valorPestaña").val("2");
-	}	
+
+
+		$("#pasoTurno2a").addClass("active");
+	$("#Turno2a").addClass("active");		
+	$("#pasoTurno3a").removeClass("active");
+	$("#pasoTurno3a").addClass("hidden");
+	$("#turno2").removeClass("active");
+	$("#siguienteCorte").removeClass("hidden");
+	$("#ConfirmarAccionT").addClass("hidden");
+	}
+});
+
+
 
 });
 
@@ -275,29 +274,6 @@ function validarApertura(){
 		return false;
 	}
 }
-configurraCorte
-
-
-
-$("#modalTurno").mouseover(function(){
-	if($("#tiposCortes").val()=="manual" && $("#seleccionarAccion").val()!="corte"){
-		$("#ConfirmarAccion").removeClass("hidden");
-		$("#siguienteCorte").addClass("hidden");
-	}
-	if($("#tiposCortes").val()!="manual" && $("#seleccionarAccion").val()!="corte"){
-		$("#ConfirmarAccion").addClass("hidden");
-		$("#siguienteCorte").removeClass("hidden");
-	}
-	if($("#tiposCortes").val()=="automatico" && $("#seleccionarAccion").val()!="corte" && $("#turno2").hasClass("active")){
-		$("#ConfirmarAccion").removeClass("hidden");
-		$("#siguienteCorte").addClass("hidden");
-	}
-	if($("#hacerCorte").hasClass("hidden") && $("#seleccionarAccion").val()=="configurar" && $("#pasoTurno2").hasClass("active")){
-		$("#ConfirmarAccion").removeClass("hidden");
-		$("#siguienteCorte").addClass("hidden");
-	}
-
-});
 
 
 $("#modalTurno").mouseover(function(){

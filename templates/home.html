@@ -337,70 +337,16 @@
                     <article class="modal-body">
                       <article class="form-wizard">
                         <article class="form-body row">
-                          <ul class="nav nav-pills nav-justified steps">
-                            <li class="active"id="pasoTurno1">
-                              <a href="#Turno1" class="step disabled">
-                              <span class="number">
-                              1
-                              </span>
-                              <span class="desc">
-                              Seleccionar acción.
-                              </span>
-                              </a>
-                            </li>
-                            <li id="pasoTurno2" class="hidden">
-                              <a href="#Turno2" class="step disabled">
-                              <span class="number">
-                              2
-                              </span>
-                              <span class="desc">
-                              Nueva configuración.
-                              </span>
-                              </a>
-                            </li>
-                            <li id="pasoTurno2b" class="hidden">
-                              <a href="#Turno2b" class="step disabled">
-                              <span class="number">
-                              2
-                              </span>
-                              <br>
-                              <span class="desc">
-                              Confirmar.
-                              </span>
-                              </a>
-                            </li>
-                            <li id="pasoTurno2a" class="hidden">
-                              <a href="#Turno2a" class="step disabled">
-                              <span class="number">
-                              2
-                              </span>
-                              <span class="desc">
-                              Tipo de corte de turno.
-                              </span>
-                              </a>
-                            </li>
-                            <li id="pasoTurno3a" class="hidden">
-                              <a href="#Turno3a" class="step disabled">
-                              <span class="number">
-                              3
-                              </span>
-                              <span class="desc">
-                              Ingresa la configuración.
-                              </span>
-                              </a>
-                            </li>
-                          </ul>
                           <article class="tab-content">
                             <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <select class="form-control" name="seleccionarAccion" id="seleccionarAccion">
-                                      <option value=""></option>
-                                      <option class="" value="cambiar">Cambiar tipo de corte</option>
-                                      <option id="configurraCorte"class="" value="configurar">Configurar corte automático</option>
-                                      <option id="hacerCorte"class="" value="corte">Realizar corte de turno</option>
-                                    </select>
+                                <article class="col-md-12 text-center">
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button"id="btnCambiarCorte">Cambiar</button>
+                                  </article>
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button" id="btnConfigurar">Configurar</button>
+                                    <button class="btn blue" type="button" id="btnCorte">Corte</button>
                                   </article>
                                 </article>
                               </article>  
@@ -486,13 +432,12 @@
                             </article>
                             <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <select class="form-control" name="tiposCorte" id="tiposCortes">
-                                      <option value=""></option>
-                                      <option value="manual">Corte manual.</option>
-                                      <option value="automatico">Corte automático</option>
-                                    </select>
+                                <article class="col-md-12 text-center">
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="submit">Manual</button>
+                                  </article>
+                                  <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <button class="btn blue" type="button" id="btnAutomaticoCorte">Automático</button>
                                   </article>
                                 </article>
                               </article>  
@@ -501,14 +446,13 @@
                         </article>
                       </article>
                     </article>
-                    <article class="modal-footer">
+                    <article class="modal-footer footerCorteTurno hidden">
                       <ul class="pager" id="">
-                        <input type="text" class="control-form hidden" id="valorPestaña" value="1">
-                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
+                        <input type="text" class="control-form" id="valorPestaña" value="1">
                         <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
+                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
                         <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
-                        <li><button type="button" class="btn" id="siguienteCorte">Siguiente<i class="fa fa-angle-double-right"></i></button></li>
-                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccion" name="submit" value="modalTurno">Aceptar</button></li>
+                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button></li>
                       </ul>
                     </article>
                   </form>
