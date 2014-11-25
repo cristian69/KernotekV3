@@ -160,10 +160,12 @@ $("#btnCorte").click(function(){
 	$(".footerCorteTurno").removeClass("hidden");
 	$("#CancelarCorte").removeClass("hidden");
 	$("#ConfirmarAccionT").removeClass("hidden");
+	$("#accion").val("corte");
+	$("#valorPestaña").val("4");
 });
 
 $("#CancelarCorte").click(function(){
-	if($("#valorPestaña").val()=="1"){
+	if($("#valorPestaña").val()=="1" || $("#valorPestaña").val()=="4"){
 		$("#Turno2b").removeClass("active");
 		$("#Turno1").addClass("active");
 		$(".footerCorteTurno").addClass("hidden");
@@ -171,6 +173,8 @@ $("#CancelarCorte").click(function(){
 		$("#ConfirmarAccionT").addClass("hidden");
 		$("#turno2").removeClass("active");
 		$("#AceptarCorte").addClass("hidden");
+		$("#valorPestaña").val("1");
+		$("#accion").val("");
 	}
 });
 
@@ -181,6 +185,7 @@ $("#btnConfigurar").click(function(){
 	$(".footerCorteTurno").removeClass("hidden");
 	$("#AceptarCorte").removeClass("hidden");
 	$("#CancelarCorte").removeClass("hidden");
+	$("#accion").val("configurar");
 });
 
 
@@ -193,7 +198,8 @@ $("#btnCambiarCorte").click(function(){
 		$("#Turno1").removeClass("active");	
 		$("#anteriorCorte").removeClass("hidden");
 		$(".footerCorteTurno").removeClass("hidden");
-		$("#valorPestaña").val("2");	
+		$("#valorPestaña").val("2");
+		$("#accion").val("manual");	
 	}
 });
 
@@ -208,6 +214,7 @@ $("#btnAutomaticoCorte").click(function(){
 	$("#siguienteCorte").addClass("hidden");
 	$("#ConfirmarAccionT").removeClass("hidden");
 	$("#valorPestaña").val("3");
+	$("#accion").val("automatico");
 });
 
 $("#anteriorCorte").click(function(){
@@ -220,6 +227,7 @@ $("#anteriorCorte").click(function(){
 		$("#anteriorCorte").addClass("hidden");
 		$(".footerCorteTurno").addClass("hidden");
 		$("#valorPestaña").val("1");
+		$("#accion").val("");
 	}
 
 
@@ -242,6 +250,7 @@ $("#anteriorCorte").click(function(){
 	$("#turno2").removeClass("active");
 	$("#siguienteCorte").removeClass("hidden");
 	$("#ConfirmarAccionT").addClass("hidden");
+	$("#accion").val("manual");
 	}
 });
 
