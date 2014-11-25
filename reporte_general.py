@@ -42,7 +42,8 @@ def tablaReporte(datos, startDate, endDate):
     cuerpoTabla = generar_tabla(datos, "", False)
     if not cuerpoTabla:
         codigoTabla = str('<h1 align="center"><strong>No hay registros entre esas fechas</strong></h1>')
-        return codigoTabla
+        codeOperations = ""
+        return codigoTabla, codeOperations
     startDateReport = startDate.split(' ')
     date = startDateReport[0].split('-')
     startDateReport = date[2] +'/'+ date[1] +'/'+ date[0] +' '+ startDateReport[1]
