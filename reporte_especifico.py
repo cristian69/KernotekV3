@@ -82,11 +82,11 @@ def cod_tabla(startDate, endDate, inicio):
               <i class="fa fa-bar-chart-o text-center"></i>De""" + startDateReport + """ hrs. a """ + endDateReport + """ hrs.
             </div>
             <div class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn-circle btn btn-default"> General </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  id="detallado"class="btn-circle btn btn-default"> Generar Detallado </a>
-                <a href=" """+linkDetallado+""" " class="btn-circle btn blue-sunglo hidden" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn-circle btn btn-default" id="generarExcel"> Generar Excel </a>
-                <a href=" """+linkExcel+""" " class="btn-circle btn blue-sunglo hidden" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=general"  class="btn btn-circle btn-default"> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado"  class="btn btn-circle btn-default" id="detallado"> Detallado </a>
+                <a href=" """+linkDetallado+""" " class="btn btn-circle blue-sunglo" id="descargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarEspecifico"  class="btn btn-circle btn-default" id="generarExcel"> Generar Excel </a>
+                <a href=" """+linkExcel+""" " class="btn btn-circle blue-sunglo" id="excelDescargar"><i class="fa fa-download"></i> Descargar Excel </a>
             </div>
           </div>
           <div class="portlet-body" >
