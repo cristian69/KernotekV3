@@ -30,12 +30,13 @@ class Configuracion(flask.views.MethodView):
 			InhibirMDB.main()
 		elif operation == START:
 			iniciarProceso()
-			time.sleep(0.5)	
+			time.sleep(1)	
 		elif operation == RESTART:
 			reiniciarProceso()
 		else:
 			return redirect(url_for('login'))
-		time.sleep(0.5)	
+		time.sleep(1)	
 		stateSystem = sistema()
 		botonSystem = config_sistema.estadoSistema()
+		print botonSystem
 		return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)		
