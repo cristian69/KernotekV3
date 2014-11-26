@@ -41,6 +41,16 @@ body {
   font-size:13px; 
   direction: ltr;
 }
+.loading {
+background:url(../img/file.gif) no-repeat center center;
+height: 100px;
+width: 200px;
+position: fixed;
+left: 50%;
+top: 50%;
+margin: -25px 0 0 -25px;
+z-index: 1000;
+}
 
 .tarjetas{
   margin-top: 45px;

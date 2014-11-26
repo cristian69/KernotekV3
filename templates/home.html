@@ -30,7 +30,7 @@
           <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bars"  style="font-size:25px; padding-left:18px;"></i>
           </a>
-          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
+          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="margin:7px 0px 0px 5px !important;background-color:#F7F7F7 !important;">
             <li class="tooltips usuario">
               <i class="fa fa-user"></i>{{ session['fullname']}}
             </li>
@@ -76,6 +76,9 @@
     <section class="page-container">
       <article class="page-content">
         <article class="row">
+          <aricle class="text-center loading hidden" id="loading">
+            <p>Cargando...</p>
+          </aricle>
           <article class="col-md-12">
             <article class="alert alert-info hidden" id="errorServicio">
               <button class="close" data-close="alert"></button>
