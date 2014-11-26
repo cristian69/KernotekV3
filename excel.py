@@ -26,7 +26,7 @@ def export_excel(data, date_start, date_end):
    
     columns = class_db.columnas_habilitadas()
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte Específico.xlsx"
+    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte Específico.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -71,7 +71,7 @@ def export_excel(data, date_start, date_end):
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
     sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
-    sheet.merge_range('B6:F6', 'Reporte espec�fico', string_format)
+    sheet.merge_range('B6:F6', 'Reporte especifico', string_format)
     sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
 
 
@@ -158,7 +158,7 @@ def reporteGeneral(data, date_start, date_end):
 
     columns = ['Tarifa', 'Número de Ventas', 'Total Acumulado']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte General.xlsx"
+    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte General.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -269,7 +269,7 @@ def reporteDetallado(data, date_start, date_end):
     dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
     columns = ['Ticket', 'Turno', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte Detallado.xlsx"
+    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte Detallado.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -500,7 +500,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
 
     columns = ['Ticket', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
 
-    rute_and_name = "/var/www/KernotekV3/static/download/" + session['username'] + "/Reporte por turno.xlsx"
+    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte por turno.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
