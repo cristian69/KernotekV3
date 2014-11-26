@@ -326,7 +326,7 @@ def consultKey(key):
 
 
 
-# Coculta si hay un corte de turno desde la pagina
+# Consulta si hay un corte de turno desde la pagina
 def consultarCorteTurno():
     crear_conexion()
     query = "SELECT hacer_corte_turno FROM config"

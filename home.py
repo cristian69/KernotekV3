@@ -366,6 +366,7 @@ def datos_home():
         dic_home['automaticoHora'] = ""
         dic_home['automaticoDia'] = ""
         dic_home['tipoCorte'] = "Manual"
+        dic_home['etiqueta'] = ""
     return dic_home
 
 
