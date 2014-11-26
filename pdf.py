@@ -8,7 +8,7 @@ import time
 
 
 style="""
-        @page{@top-left {content: url("file:/var/www/KernotekV3/static/img/PDF.png");}@bottom-right {content: "Página " counter(page) " de " counter(pages);font-size: .75em;padding-bottom: 6mm;}}
+        @page{@top-left {content: url("file:/var/www/kernotekv3/static/img/PDF.png");}@bottom-right {content: "Página " counter(page) " de " counter(pages);font-size: .75em;padding-bottom: 6mm;}}
         img{border: 0;left: 50px;width: 180px;top: 20px;height: 60px;}
         .active{background-color: #f9f9f9;}
         .text-left {text-align: left;}
@@ -25,7 +25,7 @@ style="""
       """
 
 def reporteEspecifico(datos, fechaInicio, fechaFin): 
-    ruta = "/var/www/KernotekV3/static/download/"+session['username']+"/"
+    ruta = "/var/www/kernotekv3/static/download/"+session['username']+"/"
     fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
     tiempo0 = time.time()
     codigoHTML = """
@@ -91,7 +91,7 @@ def reporteEspecifico(datos, fechaInicio, fechaFin):
     print time.time() - tiempo0 
 
 def reporteGeneral(datos, fechaInicio, fechaFin):
-    ruta = "/var/www/KernotekV3/static/download/"+session['username']+"/"
+    ruta = "/var/www/kernotekv3/static/download/"+session['username']+"/"
     fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
     cabezeras = ['Tarifa', 'Número de Ventas', 'Total Acumulado']
     codigoHTML = """
@@ -181,7 +181,7 @@ def reporteGeneral(datos, fechaInicio, fechaFin):
 
 
 def reporteTurno(datos, fechaInicio, fechaFin, numTurno):
-    ruta = "/var/www/KernotekV3/static/download/"+session['username']+"/"
+    ruta = "/var/www/kernotekv3/static/download/"+session['username']+"/"
     fecha = str(datetime.datetime.today().strftime('%d-%b-%Y'))
     cabezeras = ['Ticket', 'Fecha', 'Tarifa', 'Multi.', 'Total', 'Depósito']
 

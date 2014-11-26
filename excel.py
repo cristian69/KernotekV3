@@ -71,7 +71,7 @@ def export_excel(data, date_start, date_end):
     # DATOS DE LA HOJA
     sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
     sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
-    sheet.merge_range('B6:F6', 'REPORTE ESPEC√çFICO', string_format)
+    sheet.merge_range('B6:F6', 'Reporte espec√fico', string_format)
     sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
 
 
