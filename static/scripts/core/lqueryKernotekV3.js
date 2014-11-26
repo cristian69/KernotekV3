@@ -63,54 +63,30 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado){
-if(excelGeneral=="True"){
-	$("#linkGeneral").addClass("hidden");
-	$("#descargarGeneral").removeClass("hidden")
-}
-if(excelGeneral=="false"){
-	$("#linkGeneral").addClass("hidden");
-	$("#descargarGeneral").removeClass("hidden")
-}
-if(excelEspecifico=="True"){
-	$("#linkEspecifico").addClass("hidden");
-	$("#descargarEspecifico").removeClass("hidden")
-}
-if(excelEspecifico=="false"){
-	$("#linkEspecifico").addClass("hidden");
-	$("#descargarEspecifico").removeClass("hidden")
-}
-if(excelDetallado=="True"){
-	$("#linkDetallado").addClass("hidden");
-	$("#descargarDetallado").removeClass("hidden")
-}
-if(excelDetallado=="false"){
-	$("#linkDetallado").addClass("hidden");
-	$("#descargarDetallado").removeClass("hidden")
-}
-	/*if(parametroExcel=="True"){
-		$("#excelDescargar").removeClass("hidden");
-		$("#generarExcel").addClass("hidden");
+	if(excelGeneral=="True"){
+		$("#linkgeneral").addClass("hidden");
+		$("#descargargeneral").removeClass("hidden")
 	}
-	if(parametroExcel=="False"){
-		$("#excelDescargar").addClass("hidden");
-		$("#generarExcel").removeClass("hidden");
+	if(excelGeneral=="False"){
+		$("#linkgeneral").removeClass("hidden");
+		$("#descargargeneral").addClass("hidden")
 	}
-	if(parametroDetallado=="True"){
-		$("#descargarDetallado").removeClass("hidden");
-		$("#detallado").addClass("hidden");
+	if(excelEspecifico=="True"){
+		$("#linkespecifico").addClass("hidden");
+		$("#descargarespecifico").removeClass("hidden")
 	}
-	if(parametroDetallado=="False"){
-		$("#descargarDetallado").addClass("hidden");
-		$("#detallado").removeClass("hidden");
+	if(excelEspecifico=="False"){
+		$("#linkespecifico").removeClass("hidden");
+		$("#descargarespecifico").addClass("hidden")
 	}
-	if(parametroExcel!="True"){
-		$("#excelDescargar").addClass("hidden");
-		$("#generarExcel").removeClass("hidden");
+	if(excelDetallado=="True"){
+		$("#linkdetallado").addClass("hidden");
+		$("#descargardetallado").removeClass("hidden")
 	}
-	if(parametroDetallado!="True"){
-		$("#descargarDetallado").addClass("hidden");
-		$("#detallado").removeClass("hidden");
-	}*/
+	if(excelDetallado=="False"){
+		$("#linkdetallado").removeClass("hidden");
+		$("#descargardetallado").addClass("hidden")
+	}
 }
 
 

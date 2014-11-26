@@ -1,5 +1,5 @@
 
-/*$("body").mouseover(function(){
+$("body").mouseover(function(){
 	if($("#modalTarifa").hasClass("in")){
 		$("#nuevaTarifa").focus();
 		$("#nuevoTiempo").val("");
@@ -12,7 +12,6 @@
 	}
 });
 
-*/
 
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
