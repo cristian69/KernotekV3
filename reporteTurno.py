@@ -92,9 +92,9 @@ def turnosDisponibles(startDate, endDate):
 
             </article>
             <article class="portlet-body ">
-              <table class="table table-bordered table-condensed" id="tablaTurno">
+              <table class="table table-responsive table-condensed" id="tablaTurno">
                 <thead class=" text-center">
-                  <tr>
+                  <tr style="border-bottom:1px solid #E1E1E1;">
                     <th class="text-center">
                        Número de Corte
                     </th>
@@ -141,9 +141,9 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
               </article>
             </article>
             <article class="portlet-body">
-              <table class="table table-bordered table-condensed">
+              <table class="table table-responsive table-condensed">
                 <thead class="text-center ">
-                  <tr>
+                  <tr style="border-bottom:1px solid #E1E1E1;">
                     <th class="text-center">
                        Ticket
                     </th>
