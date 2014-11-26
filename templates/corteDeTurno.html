@@ -26,10 +26,49 @@
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
-          <a  class="menuTop"id="dLabel" href="{{ url_for('home') }}" >
-          <i class="fa fa-arrow-left"  style="font-size:25px;"></i>
+          <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bars"  style="font-size:25px; padding-left:3px;"></i>
           </a>
-          <a href="" class="linkCabecera">Corte de turno</a>
+          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
+            <li class="tooltips usuario">
+              <i class="fa fa-user"></i>{{ session['fullname']}}
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('home') }}">
+              <i class="fa fa-home"></i>Inicio
+              </a>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
+              <ul class="dropdown-menu">
+                 <li class="tooltips">
+                  <a href="{{ url_for('reportes') }}">
+                  <i class="fa fa fa-history"></i>Por fechas
+                  </a>
+                </li>
+                 <li class="tooltips">
+                  <a href="{{ url_for('reporteTurno') }}">
+                  <i class="fa fa-ticket"></i>Por turno
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('turnos') }}">
+              <i class="fa fa-calendar-o"></i>Corte de turno
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('configuracion')}}">
+              <i class="fa fa-cogs"></i>Configuración
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('logout') }}">
+                <i class="fa fa fa-sign-out"></i>Salir<!--fa-sign-out clase  para el icono de apagado-->
+              </a>
+            </li>
+          </ul>
         </article>
       </article>
     </section>
@@ -160,13 +199,13 @@
                       </article>
                     </article>
                   <article class="form-actions text-right  footerCorteTurno hidden">
-                         <ul class="pager" id="">
-                        <input type="text" class="control-form hidden" id="valorPestaña" value="1">
-                        <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
-                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
-                        <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
-                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button></li>
-                      </ul>
+                   <ul class="pager" id="">
+                    <input type="text" class="control-form hidden" id="valorPestaña" value="1">
+                    <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
+                    <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
+                    <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Anterior</button></li>
+                    <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button></li>
+                  </ul>
                   </article>
                 </form>
                 </article>

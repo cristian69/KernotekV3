@@ -82,7 +82,7 @@
               <span>Operoción no disponible, verifique el estado actual del sistema</span>
             </article>
           </article>
-          <article class="col-me-12">
+          <article class="col-md-12">
             <article id="generarReportes" class="modal fade" tabindex="-1">
               <article class="modal-dialog">
                 <article class="modal-content">
@@ -166,7 +166,7 @@
               </article>
             </article>
           </article>
-          <article class="col-me-12">
+          <article class="col-md-12">
             <article id="modalTarifa" class="modal fade" tabindex="0">
               <article class="modal-dialog">
                 <article class="modal-content">
@@ -174,13 +174,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar Tarifa</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post" onSubmit="javascript:return validarNumeros()">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" method="post" id="formCambiarTarifa">
                     <article class="modal-body row">
                       <article class="form-wizard">
                         <article class="form-body">
                           <article class="col-md-12">
                             <article class="col-md-12">
-                              <article class=" hidden article.col-md-12 alert alert-danger " id="tarifaIncorrecta">
+                              <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
                                 <button class="close" data-dismiss="alert"></button>
                                 El formato introducido es incorrecto.
                               </article>
@@ -200,22 +200,22 @@
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
+                      <button type="submit" class="btn blue" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
                     </article>
                   </form>
                 </article>
               </article>
             </article>
           </article>
-          <article class="col-me-12">
-            <article id="modalAcceso" class="modal fade" tabindex="-1"> <!--data-backdrop="static"-->
+          <article class="col-md-12">
+            <article id="modalAcceso" class="modal fade" tabindex="0"> <!--data-backdrop="static"-->
               <article class="modal-dialog">
                 <article class="modal-content">
                   <article class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title">Cambiar tiempo de apertura</h4>
                   </article>
-                  <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" id="formNuevaTarifa"  name="formNuevaTarifa"method="post" onSubmit="javascript:return validarApertura()">
+                  <form action="{{ url_for('home') }}" class="form-horizontal" method="post" onSubmit="javascript:return validarApertura()">
                     <article class="modal-body">
                       <article class="col-md-12">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">
@@ -241,7 +241,8 @@
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" id="aceptarAcceso" name="submit" value="tiempoApertura">Aceptar</button>
+                      <a href="/home/" class="btn btn-blue">Aceptar</a>
+                      <button type="submit" class="btn blue" id="submit" name="submit" value="tiempoApertura">Aceptar</button>
                     </article>
                   </form>
                 </article>
@@ -351,7 +352,7 @@
                               <article class="row">
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
-                                    <h4>¿Seguro que deceas realizar el corte de turno?</h4>
+                                    <h4>¿Seguro que deseas realizar el corte de turno?</h4>
                                   </article>
                                 </article>
                               </article>  
@@ -465,7 +466,7 @@
                     <article class="portlet light bordered" style="  border-radius: 7px !important;">
                       <article class="portlet-title">
                         <article class="caption">
-                          <i class="fa fa-bar-chart-o"></i>Resumen de ventas.
+                          <a class="times" onclick="$('#generarReportes').modal('show');" style="text-decoration:none;" title="Generar reporte"><i class="fa fa-bar-chart-o"></i> Resumen de ventas</a>
                         </article>
                         <article class="tools">
                           <ul class="nav nav-tabs">
@@ -477,7 +478,7 @@
                       </article>
                       <article class="portlet-body form text-center ">
                         <article class="form-body">
-                          <article class="tab-content times .valorSistema" onclick="$('#generarReportes').modal('show');">
+                          <article class="tab-content">
                             <article class="tab-pane " id="graficaenDias">
                               <article id="canvas-holder grafica">
                                 <canvas id="graficaDia" width="880px" height="570px"></canvas>
@@ -517,7 +518,7 @@
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{ dic_home['tarifa']}}0</strong></article>
-                                    <article class="detalles">MXN, Actual</article>
+                                    <article class="detalles">MXN</article>
                                   </article>
                                   <article class="col-md-4 visual"><i class="fa fa-dollar"></i></article>  
                                 </article>
@@ -562,7 +563,7 @@
                                 <article class="row">
                                   <article class="details text-left col-md-8">
                                     <article class="number"><strong>{{dic_home['acumuladoTurno']}}0</strong></article>
-                                    <article class="detalles">MXN, Actual</article>
+                                    <article class="detalles">MXN</article>
                                   </article>
                                   <article class="col-md-4 visual conent"><i class="fa fa-ticket"></i></article>
                                 </article>

@@ -85,12 +85,13 @@ class Home(flask.views.MethodView):
                     return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
 
         if operation == CHANGE_RATE:
-            if stateC and statePython:
-                newRate = request.form['nuevaTarifa']
-                class_db.cambiarTarifa(newRate)
-                flag = "tarifaExitosa"
-            else:
-                flag = "error"
+            #if stateC and statePython:
+            newRate = request.form['nuevaTarifa']
+	    print newRate
+            class_db.cambiarTarifa(newRate)
+            flag = "tarifaExitosa"
+            #else:
+            #    flag = "error"
 
         if operation == CHANGE_TIME_OPEN:
             if stateC and statePython:

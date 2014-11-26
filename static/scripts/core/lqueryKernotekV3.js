@@ -1,18 +1,21 @@
 function apagadoSistema(parametro){
 	if(parametro=="True"){
-		$("#apagarSistema").removeClass("hidden");
-		$("#encendeSistema").addClass("hidden");
+		$("#btnApagar").removeClass("hidden");
+		$("#btnEncender").addClass("hidden");
 	}
 	else{
-		$("#apagarSistema").addClass("hidden");
-		$("#encendeSistema").removeClass("hidden");
+		$("#btnApagar").addClass("hidden");
+		$("#btnEncender").removeClass("hidden");
 	}
 }
 
 $(document).keypress(function(e) {
-    if(e.which == 13) {
+    if(e.which === 13) {
     	if($("#modalTarifa").hasClass("in")){
-    		document.formNuevaTarifa.submit();
+    		$("#aceptarCambioTarifa").click();
+    	}
+    	if($("#modalAcceso").hasClass("in")){
+    		$("#aceptarCambioTarifa").click();
     	}
     }
 });
@@ -36,8 +39,6 @@ function home(){
 	$("#seleccionarAccion2").select2({
 		placeholder:"seleccionar acción"
 	});
-
-	
 }
 
 

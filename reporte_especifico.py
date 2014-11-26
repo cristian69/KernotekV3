@@ -95,7 +95,7 @@ def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEsp
             <table class="table table-responsive  table-condensed ">""")
 
     codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
-    codigo_tabla += str('<tr  style="border-bottom:1px solid #E1E1E1;"">')  # Inicio de las cabezeras
+    codigo_tabla += str('<tr  style="border-bottom:1px solid #E1E1E1;">')  # Inicio de las cabezeras
     dicVenta = []
     for cabezera in cabezerasDisponibles:
         codigo_tabla += str('<th width="20%"class="text-center">')

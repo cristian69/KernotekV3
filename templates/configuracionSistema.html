@@ -25,11 +25,50 @@
   <body class="page-header-fixed" onload="home(), apagadoSistema('{{botonSistema}}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
-        <article >
-          <a  class="menuTop"id="dLabel" href="{{ url_for('home') }}">
-          <i class="fa fa-arrow-left"  style="font-size:25px;"></i>
+        <article class="dropdown">
+          <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bars"  style="font-size:25px; padding-left:3px;"></i>
           </a>
-          <a href="" class="linkCabecera">Configuración del sistema</a>
+          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
+            <li class="tooltips usuario">
+              <i class="fa fa-user"></i>{{ session['fullname']}}
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('home') }}">
+              <i class="fa fa-home"></i>Inicio
+              </a>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
+              <ul class="dropdown-menu">
+                 <li class="tooltips">
+                  <a href="{{ url_for('reportes') }}">
+                  <i class="fa fa fa-history"></i>Por fechas
+                  </a>
+                </li>
+                 <li class="tooltips">
+                  <a href="{{ url_for('reporteTurno') }}">
+                  <i class="fa fa-ticket"></i>Por turno
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('turnos') }}">
+              <i class="fa fa-calendar-o"></i>Corte de turno
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('configuracion')}}">
+              <i class="fa fa-cogs"></i>Configuración
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('logout') }}">
+                <i class="fa fa fa-sign-out"></i>Salir<!--fa-sign-out clase  para el icono de apagado-->
+              </a>
+            </li>
+          </ul>
         </article>
       </article>
     </section>
@@ -37,29 +76,132 @@
       <article class="page-content">
         <article class="row ">
           <article class="col-md-12">
-            <article class="col-md-4"></article>
-            <article class="col-md-4">
+            <article id="apagarSistem" class="modal fade" tabindex="-1">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Apagar sistema</h4>
+                  </article>
+                  <form  action="{{url_for('configuracion')}}" method="post">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body row text-center">
+                          <article class="row ">
+                            <article class="col-md-12 form-group">
+                            <h3>¿Seguro que desea apagar el sistema?</h3>
+                          </article>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <article class="col-md-12 form-group">
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                         <button type="submit" name="submit" value="detener" class="btn btn-default">Aceptar</button>
+                        </article>
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                          <button class="btn bnt-default" type="button">Cancelar</button>
+                        </article>
+                      </article>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-md-12">
+            <article id="encenderSistema" class="modal fade" tabindex="-1">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Encender sistema</h4>
+                  </article>
+                  <form  action="{{url_for('configuracion')}}" method="post">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body row text-center">
+                          <article class="row ">
+                            <article class="col-md-12 form-group">
+                            <h3>¿Seguro que desea encender el sistema?</h3>
+                          </article>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <article class="col-md-12 form-group">
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                         <button type="submit" name="submit" value="iniciar" class=" btn blue">Acetar</button>
+                        </article>
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                          <button class="btn bnt-default" type="button">Cancelar</button>
+                        </article>
+                      </article>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-md-12">
+            <article id="reiniciarSistema" class="modal fade" tabindex="-1">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Reiniciar sistema</h4>
+                  </article>
+                  <form  action="{{url_for('configuracion')}}" method="post">
+                    <article class="modal-body">
+                      <article class="form-wizard">
+                        <article class="form-body row text-center">
+                          <article class="row ">
+                            <article class="col-md-12 form-group">
+                            <h3>¿Seguro que desea reiniciar el sistema?</h3>
+                          </article>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                    <article class="modal-footer">
+                      <article class="col-md-12 form-group">
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                         <button type="submit" name="submit" value="reiniciar" class="btn green">Aceptar</button>
+                        </article>
+                        <article class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                          <button class="btn bnt-default" type="button">Cancelar</button>
+                        </article>
+                      </article>
+                    </article>
+                  </form>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-md-12">
+            <article class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></article>
+            <article class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
                     <i class="fa fa-desktop"></i>Configuración del sistema.
                   </article>
                   <article class="actions">
-                    <form action="{{url_for('configuracion')}}" method="post">
-                      <button type="submit" name="submit" value="detener" class=" hidden btn btn-default" id="apagarSistema">Apagar</button>
-                      <button type="submit" name="submit" value="iniciar" class=" hidden btn blue" id="encendeSistema">Encender</button>
-                      <button type="submit" name="submit" value="reiniciar" class="btn green" id="reiniciarSistema">Reiniciar</button>
-                    </form>
+                      <button type="button" id="btnApagar"class="hidden btn btn-default" onclick="$('#apagarSistem').modal('show');">Apagar</button>
+                      <button type="button" id="btnEncender"class="hidden btn blue" onclick="$('#encenderSistema').modal('show');">Encender</button>
+                      <button type="button" id="btnReiniciar"class="btn green" onclick="$('#reiniciarSistema').modal('show');">Reiniciar</button>
                   </article>
                 </article>
-                <article class="portlet-body flip-scroll text-center">
+                <article class="portlet-body  text-center">
                   <form class="form-horizontal" role="form">
                     <article class="form-body row responsivoEstado">
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label">
                         Número de serie
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-barcode"></i>
@@ -69,10 +211,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         Tarifa
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
@@ -82,10 +224,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         Tiempo de apertura
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-clock-o"></i>
@@ -95,10 +237,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         Última venta
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-ticket"></i>
@@ -108,10 +250,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         Turno
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-bell"></i>
@@ -121,10 +263,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         No. serie del monedero
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-usd"></i>
@@ -134,10 +276,10 @@
                         </article>
                       </article>
                       <article class="form-group col-md-12">
-                        <label class="col-md-5 control-label ">
+                        <label class="col-lg-5 col-md-5 col-sm-12 col-xs-12 control-label ">
                         No. serie del billetero
                         </label>
-                        <article class="col-lg-7">
+                        <article class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                           <article class="input-group">
                             <span class="input-group-addon">
                             <i class="fa fa-money"></i>
@@ -151,7 +293,7 @@
                 </article>
               </article>
             </article>
-            <article class="col-md-4"></article>
+            <article class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></article>
           </article>
         </article>
       </article>

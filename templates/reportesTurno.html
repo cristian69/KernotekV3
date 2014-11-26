@@ -26,10 +26,49 @@
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
-          <a  class="menuTop"id="dLabel" href="{{ url_for('home') }}" >
-          <i class="fa fa-arrow-left"  style="font-size:25px;"></i>
+          <a  class="menuTop"id="dLabel" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-bars"  style="font-size:25px; padding-left:3px;"></i>
           </a>
-          <a href="" class="linkCabecera">Reporte por turno</a>
+          <ul class="dropdown-menu page-sidebar-menu" role="menu" aria-labelledby="dLabel" style="background-color:#F7F7F7 !important;">
+            <li class="tooltips usuario">
+              <i class="fa fa-user"></i>{{ session['fullname']}}
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('home') }}">
+              <i class="fa fa-home"></i>Inicio
+              </a>
+            </li>
+            <li class="dropdown-submenu">
+              <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
+              <ul class="dropdown-menu">
+                 <li class="tooltips">
+                  <a href="{{ url_for('reportes') }}">
+                  <i class="fa fa fa-history"></i>Por fechas
+                  </a>
+                </li>
+                 <li class="tooltips">
+                  <a href="{{ url_for('reporteTurno') }}">
+                  <i class="fa fa-ticket"></i>Por turno
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('turnos') }}">
+              <i class="fa fa-calendar-o"></i>Corte de turno
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('configuracion')}}">
+              <i class="fa fa-cogs"></i>Configuración
+              </a>
+            </li>
+            <li class="tooltips">
+              <a href="{{ url_for('logout') }}">
+                <i class="fa fa fa-sign-out"></i>Salir<!--fa-sign-out clase  para el icono de apagado-->
+              </a>
+            </li>
+          </ul>
         </article>
       </article>
     </section>
@@ -64,8 +103,8 @@
             </article>
           </article>
           <article class="col-md-12 hidden" id="moduloFechas">
-            <article class="col-md-3"></article>
-            <article class="col-md-6">
+            <article class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></article>
+            <article class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
@@ -77,8 +116,8 @@
                     <article class="form-body">
                       <article class="row" id="fechaReporteGeneral">
                         <article class="col-md-12 form-group">
-                          <label class="control-label col-md-3">Fecha de inicio</label>
-                          <article class="col-md-4">
+                          <label class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-5">Fecha de inicio</label>
+                          <article class="col-lg-7 col-md-8 col-sm-8 col-xs-7">
                             <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                               <input type="text" class="form-control times"  name="fecha_inicio" id="fecha_inicio">
                               <span class="input-group-btn">
@@ -86,8 +125,8 @@
                               </span>
                             </article>
                           </article>
-                          <label class="control-label col-md-2">Hora</label>
-                          <article class="col-md-3">
+                          <label class="control-label hidden">Hora</label>
+                          <article class="hidden">
                             <article class="input-group">
                               <input type="text" class="form-control timepicker timepicker-24 times" name="hora_inicio" id="hora_inicio" value="00:00:00">
                               <span class="input-group-btn">
@@ -97,8 +136,8 @@
                           </article>
                         </article>
                         <article class="col-md-12 form-group">
-                          <label class="control-label col-md-3">Fecha de fin</label>
-                          <article class="col-md-4">
+                          <label class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-5">Fecha de fin</label>
+                          <article class="col-lg-7 col-md-8 col-sm-8 col-xs-7">
                             <article class="input-group  date date-picker"  data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                               <input type="text" class="form-control times"  name="fecha_fin" id="fecha_fin">
                               <span class="input-group-btn">
@@ -106,8 +145,8 @@
                               </span>
                             </article>
                           </article>
-                          <label class="control-label col-md-2">Hora</label>
-                          <article class="col-md-3">
+                          <label class="control-label hidden">Hora</label>
+                          <article class="hidden">
                             <article class="input-group">
                               <input type="text" class="form-control timepicker timepicker-24 times" name="hora_fin" id="hora_fin" value="23:59:59">
                               <span class="input-group-btn">
@@ -125,7 +164,7 @@
                 </article>
               </article>
             </article>
-            <article class="col-md-3"></article>
+            <article class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></article>
           </article>
           <article class="row">
             <article class="col-md-12">
