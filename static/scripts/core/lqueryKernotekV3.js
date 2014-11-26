@@ -12,8 +12,7 @@ function apagadoSistema(parametro){
 $(document).keypress(function(e) {
     if(e.which == 13) {
     	if($("#modalTarifa").hasClass("in")){
-    		$("#aceptarCambioTarifa").click();
-    		alert("boton clickeAD0")
+    		document.formNuevaTarifa.submit();
     	}
     }
 });

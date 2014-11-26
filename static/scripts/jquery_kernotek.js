@@ -1,16 +1,9 @@
-
-$("body").mouseover(function(){
-	if($("#modalTarifa").hasClass("in")){
-		$("#nuevaTarifa").focus();
-		$("#nuevoTiempo").val("");
-
-	}
-	if($("#modalAcceso").hasClass("in")){
-		$("#nuevoTiempo").focus();
-		$("#nuevaTarifa").val("");
-
-	}
-});
+$('#modalTarifa').on('shown.bs.modal', function () {
+    $('#nuevaTarifa').focus();
+})
+$('#modalAcceso').on('shown.bs.modal', function () {
+    $('#nuevoTiempo').focus();
+})
 
 
 $("#configCorte").mouseover(function(){
