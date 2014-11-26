@@ -1,4 +1,4 @@
-# -* coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from itertools import count
 
 __author__ = 'aramirez'
