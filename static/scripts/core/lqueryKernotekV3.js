@@ -189,15 +189,6 @@ $("#reporteTurnoAnterior").click(function(){
 
 /*Acciones que se realiara si se selecciona la opcion de corte,
 configureacion o cambiar tipo de corte de turno*/
-$("#btnCorte").click(function(){
-	$("#Turno2b").addClass("active");
-	$("#Turno1").removeClass("active");
-	$(".footerCorteTurno").removeClass("hidden");
-	$("#CancelarCorte").removeClass("hidden");
-	$("#ConfirmarAccionT").removeClass("hidden");
-	$("#accion").val("corte");
-	$("#valorPestaña").val("4");
-});
 
 $("#CancelarCorte").click(function(){
 	if($("#valorPestaña").val()=="1" || $("#valorPestaña").val()=="4"){

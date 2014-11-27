@@ -76,12 +76,12 @@
       <article class="page-content">
         <article class="row ">
           <article class="col-md-12">
-            <article class="col-md-3"></article>
-            <article class="col-md-6 configuracionCortes">
+            <article class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></article>
+            <article class="col-lg-6 col-md-8 col-sm-10 col-xs-12 configuracionCortes">
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-calendar-o"></i>Turnos. {{tipoCorte}}
+                    <i class="fa fa-calendar-o"></i>Turnos
                   </article>
                 </article>
                 <article class="portlet-body form text-center ">
@@ -92,6 +92,12 @@
                           <article class="tab-content">
                             <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
+                                <article class="col-md-12 text-right">
+                                  <h5>Tipo de corte de turno actual: {{tipoCorte}}</h5>
+                                </article>
+                                <article class="col-md-12 text-center">
+                                  <h4>Seleccionar la acción a realizar</h4>
+                                </article>
                                 <article class="col-md-12 text-center">
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="button"id="btnCambiarCorte">Cambiar</button>
@@ -103,22 +109,16 @@
                                 </article>
                               </article>  
                             </article>
-                            <article class="tab-pane" id="Turno2b">
-                              <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <h4>¿Seguro que deceas realizar el corte de turno?</h4>
-                                  </article>
-                                </article>
-                              </article>  
-                            </article>
                             <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
+                                <article class="col-md-12 text-center">
+                                  <h3>Seleccionar la configuración del corte automático</h3>
+                                </article>
                                 <article class="col-md-12 form-group">
                                   <article class="col-md-12 text-center">
                                     <h4 id="labelTipoCorte"></h4>
                                   </article>
-                                  <article class="col-md-4">
+                                  <article class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
                                     <input class="form-control tipoLapsoh hidden" type="text" value="{{dicTurno['tipoTiempo']}}">
                                     <input class="form-control diaCorteh hidden" type="text" value="{{dicTurno['automaticoDia']}}">
                                     <input class="form-control horaCorteh hidden" type="text" value="{{dicTurno['automaticoHora']}}">
@@ -128,8 +128,8 @@
                                       <option value="cadaMes">Mensual</option>
                                     </select>
                                   </article>
-                                  <article class="col-md-8 form-group group-form">
-                                    <article class="col-md-6 contenedorFecha">
+                                  <article class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-group group-form text-right">
+                                    <article class="col-lg-6 col-md-6  col-sm-6 col-xs-6 contenedorFecha text-center">
                                       <select class="form-control hidden" name="diaSem" id="semana" >
                                         <option value="Lunes">Lunes</option>
                                         <option value="Martes">Martes</option>
@@ -139,7 +139,7 @@
                                         <option value="Sabado">Sábado</option>
                                         <option value="Domingo">Domingo</option>
                                       </select>
-                                      <select class="form-control hidden" name="diaMes" id="mes" >
+                                      <select class="form-control hidden text-center" name="diaMes" id="mes" >
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -170,7 +170,7 @@
                                         <option value="28">28</option>
                                       </select>
                                     </article>
-                                    <article class="col-md-6">
+                                    <article class="col-lg-6 col-md-6  col-sm-6 col-xs-6 text-right">
                                       <article class="input-group col-md-12">
                                         <input style="cursor:pointer;"type="text" class="form-control timepicker timepicker-24" name="hora" id="horaC" value="23:59:59" > 
                                         <span class="input-group-btn">
@@ -184,6 +184,12 @@
                             </article>
                             <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
+                                <article class="col-md-12 text-right">
+                                  <h5>Tipo de corte de turno actual: {{tipoCorte}}</h5>
+                                </article>
+                                <article class="col-md-12 text-center">
+                                  <h4>Selecciona el nuevo tipo de corte de turno</h4>
+                                </article>
                                 <article class="col-md-12 text-center">
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="submit">Manual</button>
@@ -211,7 +217,7 @@
                 </article>
               </article>
             </article>
-            <article class="col-md-3"></article>
+            <article class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></article>
           </article>
         </article>
       </article>

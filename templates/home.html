@@ -319,7 +319,7 @@
                 <article class="modal-content">
                   <article class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" style="line-height:1.1 !important;">Corte de turno.</h4>
+                    <h4 class="modal-title" style="line-height:1.1 !important;">Corte de turno</h4>
                   </article>
                   <form action="{{ url_for('home') }}" class="form-horizontal" id="submit_form" method="post">
                     <article class="modal-body">
@@ -328,28 +328,28 @@
                           <article class="tab-content">
                             <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
+                                <article class="col-md-12 text-right">
+                                  <h5>Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h5>
+                                </article>
+                                <article class="col-md-12 text-center">
+                                  <h4>Seleccionar la acción a realizar</h4>
+                                </article>
                                 <article class="col-md-12 text-center">
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="button"id="btnCambiarCorte">Cambiar</button>
                                   </article>
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="button" id="btnConfigurar">Configurar</button>
-                                    <button class="btn blue" type="button" id="btnCorte">Corte</button>
-                                  </article>
-                                </article>
-                              </article>  
-                            </article>
-                            <article class="tab-pane" id="Turno2b">
-                              <article class="row">
-                                <article class="col-md-12 group-form">
-                                  <article class="col-md-12 text-center">
-                                    <h4>¿Seguro que deseas realizar el corte de turno?</h4>
+                                    <button class="btn blue" type="submit" name="btnCorte" value="btnCorte" id="btnCorte">Corte</button>
                                   </article>
                                 </article>
                               </article>  
                             </article>
                             <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
+                                <article class="col-md-12 text-center">
+                                  <h3>Seleccionar la configuración del corte automático</h3>
+                                </article>
                                 <article class="col-md-12 form-group">
                                   <article class="col-md-12 text-center">
                                     <h4 id="labelTipoCorte"></h4>
@@ -420,6 +420,12 @@
                             </article>
                             <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
+                                <article class="col-md-12 text-right">
+                                  <h5>Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h5>
+                                </article>
+                                <article class="col-md-12 text-center">
+                                  <h4>Selecciona el nuevo tipo de corte de turno</h4>
+                                </article>
                                 <article class="col-md-12 text-center">
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="submit" name="submit" value="cambiarManual">Manual</button>
