@@ -181,29 +181,41 @@
                     <article class="modal-body row">
                       <article class="form-wizard">
                         <article class="form-body">
-                          <article class="col-md-12">
-                            <article class="col-md-12">
-                              <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
-                                <button class="close" data-dismiss="alert"></button>
-                                El formato introducido es incorrecto.
+                          <article class="row modCambiarTarifa">
+                            <article class="col-md-12 text-right">
+                              <h4>Tarifa actual: {{ dic_home['tarifa']}}0</h4>
+                            </article>
+                            <article class="col-md-12 ">
+                              <article class="col-md-12">
+                                <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
+                                  <button class="close" data-dismiss="alert"></button>
+                                  El formato introducido es incorrecto.
+                                </article>
+                              </article>
+                              <article class="col-md-5">
+                                <label for="Ingresa" class="control-label label-control">
+                                <strong>
+                                Ingresa la nueva tarifa
+                                </strong>
+                                </label>
+                              </article>
+                              <article class="col-md-7 input-icon">
+                                <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa" id="nuevaTarifa"/>
                               </article>
                             </article>
-                            <article class="col-md-5">
-                              <label for="Ingresa" class="control-label label-control">
-                              <strong>
-                              Ingresa la nueva tarifa
-                              </strong>
-                              </label>
-                            </article>
-                            <article class="col-md-7 input-icon">
-                              <i class="fa fa-dollar"></i><input class="form-control" type="text" name="nuevaTarifa" id="nuevaTarifa"/>
+                          </article>
+                          <article class="row confCambioTarifa hidden">
+                            <article class="col-md-12 text-center">
+                              <h3>¿Seguro que deceas realizar el cambio de tarifa?</h3>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
+                      <button type="submit" class="btn blue hidden" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
+                      <button type="button" class="btn blue btnAceptarCambioTarifa">Aceptar</button>
+                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTarifa" onclick="cancelarTarjeta();">Cancelar</button>
                     </article>
                   </form>
                 </article>
@@ -228,6 +240,9 @@
                       </article>
                       <article class="form-wizard">
                         <article class="form-body row">
+                          <article class="col-md-12 text-right">
+                            <h4>Tiempo de apertura actual: {{ dic_home['t_apertura']}} S</h4>
+                          </article>
                           <article class="col-md-12">
                             <article class="col-md-5">
                               <label for="">
@@ -240,12 +255,16 @@
                               <i class="fa fa-history"></i><input type="text" class="form-control" name="nuevoTiempo" id="nuevoTiempo">
                             </article>
                           </article>
+                          <article class="col-md-12 text-center hidden">
+                            <h3>¿Seguro que deceas realizar el cambio de tiempo de apertura?</h3>
+                          </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <a href="/home/" class="btn btn-blue">Aceptar</a>
-                      <button type="submit" class="btn blue" id="submit" name="submit" value="tiempoApertura">Aceptar</button>
+                      <button type="submit" class="btn blue hidden" id="submit" name="submit" value="tiempoApertura">Aceptar</button>
+                      <button type="button" class="btn blue">Aceptar</button>
+                      <button type="button" class="btn blue hidden">Cancelar</button>
                     </article>
                   </form>
                 </article>

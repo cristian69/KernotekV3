@@ -1,3 +1,22 @@
+$(".btnAceptarCambioTarifa").click(function(){
+	$("#aceptarCambioTarifa").removeClass("hidden");
+	$(".btnCancelarrCambioTarifa").removeClass("hidden");
+	$(".btnAceptarCambioTarifa").addClass("hidden");
+	$(".modCambiarTarifa").addClass("hidden");
+	$(".confCambioTarifa").removeClass("hidden");
+});
+
+
+function cancelarTarjeta(){
+	$("#aceptarCambioTarifa").addClass("hidden");
+	$(".btnCancelarrCambioTarifa").addClass("hidden");
+	$(".btnAceptarCambioTarifa").removeClass("hidden");
+	$(".modCambiarTarifa").removeClass("hidden");
+	$(".confCambioTarifa").addClass("hidden");
+}
+
+
+
 function apagadoSistema(parametro){
 	if(parametro=="True"){
 		$("#btnApagar").removeClass("hidden");
