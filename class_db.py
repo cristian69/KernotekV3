@@ -15,8 +15,8 @@ mysql = MySQL()
 try:
     app = flask.Flask(__name__)
     app.config['MYSQL_DATABASE_USER'] = 'root'
-    app.config['MYSQL_DATABASE_PASSWORD'] = ''
-    app.config['MYSQL_DATABASE_DB'] = 'KERNOTEK'
+    app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
+    app.config['MYSQL_DATABASE_DB'] = 'kernotek'
     app.config['MYSQL_DATABASE_HOST'] = 'localhost'
     mysql.init_app(app)
     db = mysql.connect()
