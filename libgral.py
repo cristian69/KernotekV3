@@ -59,9 +59,9 @@ def revisarProceso():
             for valor in proceso:
                 valor = valor.split('/')
                 for valor2 in valor:
-                    if valor2 == "BasicValidator":
+                    if valor2 == "validator":
                         socketC = True
-                    if valor2 == "servidor.py":
+                    if valor2 == "server.py":
                         socketPython = True
     return socketC, socketPython
 

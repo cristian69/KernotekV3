@@ -50,6 +50,7 @@ class Home(flask.views.MethodView):
         operation = request.form['submit']
         flag = ""
         stateC, statePython =  revisarProceso()
+
         if operation == "reporteTurno":
             startDate = request.form['fecha_inicio2'] + ' 00:00:00'
             endDate = request.form['fecha_fin2'] + ' 23:59:59'
@@ -62,7 +63,6 @@ class Home(flask.views.MethodView):
 
         if operation == REPORT:
             typeReport = request.form['inpTipoReporte']
-            # typeReport = typeReport[0]
             startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
             endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
             if typeReport == SHIFT_REPORT:
@@ -85,13 +85,12 @@ class Home(flask.views.MethodView):
                     return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
 
         if operation == CHANGE_RATE:
-            #if stateC and statePython:
-            newRate = request.form['nuevaTarifa']
-	    print newRate
-            class_db.cambiarTarifa(newRate)
-            flag = "tarifaExitosa"
-            #else:
-            #    flag = "error"
+            if stateC and statePython:
+                newRate = request.form['nuevaTarifa']
+                class_db.cambiarTarifa(newRate)
+                flag = "tarifaExitosa"
+            else:
+                flag = "error"
 
         if operation == CHANGE_TIME_OPEN:
             if stateC and statePython:
