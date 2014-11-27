@@ -5,6 +5,7 @@ function validarNumeros(){
 	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
 		return false;
 	}
 	else{
@@ -22,6 +23,8 @@ function tarifaValida(){
 	$("#tiempoIncorrecto").addClass("hidden");
 }
 
+
+
 function validarApertura(){
 	aperturaValidar=$("#nuevoTiempo").val();
 	var patron1=/\s/;
@@ -29,16 +32,13 @@ function validarApertura(){
 	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar)){
 		$("#tiempoIncorrecto").removeClass("hidden");
 		$("#nuevoTiempo").val("");
+		$('#nuevoTiempo').focus();
 		return false;
 	}
 	else{
 		accesoValido();
 	}
 }
-
-
-
-
 
 function accesoValido(){
 	$(".btnCancelarrCambioTiempo").removeClass("hidden");
@@ -49,6 +49,8 @@ function accesoValido(){
 	$("#tarifaIncorrecta").addClass("hidden");
 	$("#tiempoIncorrecto").addClass("hidden");
 }
+
+
 
 function cancelarTarifa(){
 	$("#aceptarCambioTarifa").addClass("hidden");
@@ -71,6 +73,9 @@ function cancelarTiempo(){
 	$('#nuevoTiempo').focus();
 }
 
+function alertasiOcultar(parametro){
+	$("#"+parametro).addClass("hidden");
+}
 
 
 function apagadoSistema(parametro){

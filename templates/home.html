@@ -81,7 +81,7 @@
           </aricle>
           <article class="col-md-12">
             <article class="alert alert-info hidden" id="errorServicio">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <button type="button" class="close" onclick="alertasiOcultar('errorSercicio');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <span>Operoción no disponible, verifique el estado actual del sistema</span>
             </article>
           </article>
@@ -182,16 +182,16 @@
                       <article class="form-wizard">
                         <article class="form-body">
                           <article class="row modCambiarTarifa">
+                            <article class="col-md-12">
+                              <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
+                                <button type="button" class="close" onclick="alertasiOcultar('tarifaIncorrecta');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                El formato introducido es incorrecto.
+                              </article>
+                            </article>
                             <article class="col-md-12 text-right">
-                              <h4>Tarifa actual: {{ dic_home['tarifa']}}0</h4>
+                              <h4 style="color:#999999;">Tarifa actual: {{ dic_home['tarifa']}}0</h4>
                             </article>
                             <article class="col-md-12 ">
-                              <article class="col-md-12">
-                                <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
-                                  <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                  El formato introducido es incorrecto.
-                                </article>
-                              </article>
                               <article class="col-md-5">
                                 <label for="Ingresa" class="control-label label-control">
                                 <strong>
@@ -234,7 +234,7 @@
                     <article class="modal-body">
                       <article class="col-md-12">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">
-                          <button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                          <button type="button" class="close" onclick="alertasiOcultar('tiempoIncorrecto');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                           <span>El formato del número ingresado es incorrecto</span>
                         </article>
                       </article>
@@ -242,7 +242,7 @@
                         <article class="form-body">
                           <article class="row modCambiarTiempo">
                             <article class="col-md-12 text-right">
-                              <h4>Tiempo de apertura actual: {{ dic_home['t_apertura']}} S</h4>
+                              <h4 style="color:#999999;">Tiempo de apertura actual: {{ dic_home['t_apertura']}} S</h4>
                             </article>
                             <article class="col-md-12 modCambiarTarifa">
                               <article class="col-md-5">
@@ -290,7 +290,7 @@
                           <article class="tab-content">
                             <article class="tab-pane active" id="reportetabTurno1">
                               <article class="alert alert-danger hidden" id="errorFechas2">
-                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <button type="button" class="close" onclick="alertasiOcultar('errorFechas2');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 Existen campos vacíos en el formulario.
                               </article>
                               <article class="row">
@@ -352,7 +352,7 @@
                             <article class="tab-pane  valorAutom active" id="Turno1">
                               <article class="row">
                                 <article class="col-md-12 text-right">
-                                  <h5>Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h5>
+                                  <h4 style="color:#999999;">Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h4>
                                 </article>
                                 <article class="col-md-12 text-center">
                                   <h4>Seleccionar la acción a realizar</h4>
@@ -444,7 +444,7 @@
                             <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
                                 <article class="col-md-12 text-right">
-                                  <h5>Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h5>
+                                  <h4 style="color:#999999;">Tipo de corte de turno actual: {{dic_home['tipoCorte']}}</h4>
                                 </article>
                                 <article class="col-md-12 text-center">
                                   <h4>Selecciona el nuevo tipo de corte de turno</h4>
