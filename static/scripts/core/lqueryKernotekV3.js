@@ -1,18 +1,74 @@
-$(".btnAceptarCambioTarifa").click(function(){
+function validarNumeros(){
+	numeroValidar=$("#nuevaTarifa").val();
+	var patron1=/\s/;
+	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
+	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		return false;
+	}
+	else{
+		tarifaValida();
+	}
+}
+
+function tarifaValida(){
 	$("#aceptarCambioTarifa").removeClass("hidden");
 	$(".btnCancelarrCambioTarifa").removeClass("hidden");
 	$(".btnAceptarCambioTarifa").addClass("hidden");
 	$(".modCambiarTarifa").addClass("hidden");
 	$(".confCambioTarifa").removeClass("hidden");
-});
+	$("#tarifaIncorrecta").addClass("hidden");
+	$("#tiempoIncorrecto").addClass("hidden");
+}
+
+function validarApertura(){
+	aperturaValidar=$("#nuevoTiempo").val();
+	var patron1=/\s/;
+	var patron2=/^[0-9]+$/;
+	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar)){
+		$("#tiempoIncorrecto").removeClass("hidden");
+		$("#nuevoTiempo").val("");
+		return false;
+	}
+	else{
+		accesoValido();
+	}
+}
 
 
-function cancelarTarjeta(){
+
+
+
+function accesoValido(){
+	$(".btnCancelarrCambioTiempo").removeClass("hidden");
+	$("#aceptarCambioTiempo").removeClass("hidden");
+	$(".btnAceptarCambioTiempo").addClass("hidden");
+	$(".modCambiarTiempo").addClass("hidden");
+	$(".confCambioTiempo").removeClass("hidden");
+	$("#tarifaIncorrecta").addClass("hidden");
+	$("#tiempoIncorrecto").addClass("hidden");
+}
+
+function cancelarTarifa(){
 	$("#aceptarCambioTarifa").addClass("hidden");
 	$(".btnCancelarrCambioTarifa").addClass("hidden");
 	$(".btnAceptarCambioTarifa").removeClass("hidden");
 	$(".modCambiarTarifa").removeClass("hidden");
 	$(".confCambioTarifa").addClass("hidden");
+	$("#nuevaTarifa").val("");
+	$('#nuevaTarifa').focus();	
+}
+
+
+function cancelarTiempo(){
+	$("#aceptarCambioTiempo").addClass("hidden");
+	$(".btnAceptarCambioTiempo").removeClass("hidden");
+	$(".modCambiarTiempo").removeClass("hidden");
+	$(".confCambioTiempo").addClass("hidden");
+	$(".btnCancelarrCambioTiempo").addClass("hidden");
+	$("#nuevoTiempo").val("");
+	$('#nuevoTiempo').focus();
 }
 
 
@@ -304,27 +360,8 @@ $("#anteriorCorte").click(function(){
 });
 
 
-function validarNumeros(){
-	numeroValidar=$("#nuevaTarifa").val();
-	var patron1=/\s/;
-	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
-	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
-		$("#tarifaIncorrecta").removeClass("hidden");
-		$("#nuevaTarifa").val("");
-		return false;
-	}
-}
 
-function validarApertura(){
-	aperturaValidar=$("#nuevoTiempo").val();
-	var patron1=/\s/;
-	var patron2=/^[0-9]+$/;
-	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar)){
-		$("#tiempoIncorrecto").removeClass("hidden");
-		$("#nuevoTiempo").val("");
-		return false;
-	}
-}
+
 
 
 $("#modalTurno").mouseover(function(){

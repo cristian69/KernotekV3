@@ -81,7 +81,7 @@
           </aricle>
           <article class="col-md-12">
             <article class="alert alert-info hidden" id="errorServicio">
-              <button class="close" data-close="alert"></button>
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
               <span>Operoción no disponible, verifique el estado actual del sistema</span>
             </article>
           </article>
@@ -188,7 +188,7 @@
                             <article class="col-md-12 ">
                               <article class="col-md-12">
                                 <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
-                                  <button class="close" data-dismiss="alert"></button>
+                                  <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                   El formato introducido es incorrecto.
                                 </article>
                               </article>
@@ -214,8 +214,8 @@
                     </article>
                     <article class="modal-footer">
                       <button type="submit" class="btn blue hidden" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
-                      <button type="button" class="btn blue btnAceptarCambioTarifa">Aceptar</button>
-                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTarifa" onclick="cancelarTarjeta();">Cancelar</button>
+                      <button type="button" class="btn blue btnAceptarCambioTarifa" onclick=" validarNumeros();">Aceptar</button>
+                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTarifa" onclick="cancelarTarifa();">Cancelar</button>
                     </article>
                   </form>
                 </article>
@@ -234,37 +234,41 @@
                     <article class="modal-body">
                       <article class="col-md-12">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">
-                          <button class="close" data-close="alert"></button>
+                          <button type="button" class="close" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                           <span>El formato del número ingresado es incorrecto</span>
                         </article>
                       </article>
                       <article class="form-wizard">
-                        <article class="form-body row">
-                          <article class="col-md-12 text-right">
-                            <h4>Tiempo de apertura actual: {{ dic_home['t_apertura']}} S</h4>
-                          </article>
-                          <article class="col-md-12">
-                            <article class="col-md-5">
-                              <label for="">
-                              <strong>
-                              Nuevo tiempo de apertura
-                              </strong>
-                              </label>
+                        <article class="form-body">
+                          <article class="row modCambiarTiempo">
+                            <article class="col-md-12 text-right">
+                              <h4>Tiempo de apertura actual: {{ dic_home['t_apertura']}} S</h4>
                             </article>
-                            <article class="col-md-7 input-icon">
-                              <i class="fa fa-history"></i><input type="text" class="form-control" name="nuevoTiempo" id="nuevoTiempo">
+                            <article class="col-md-12 modCambiarTarifa">
+                              <article class="col-md-5">
+                                <label for="">
+                                <strong>
+                                Nuevo tiempo de apertura
+                                </strong>
+                                </label>
+                              </article>
+                              <article class="col-md-7 input-icon">
+                                <i class="fa fa-history"></i><input type="text" class="form-control" name="nuevoTiempo" id="nuevoTiempo">
+                              </article>
                             </article>
                           </article>
-                          <article class="col-md-12 text-center hidden">
+                          <article class="row  hidden confCambioTiempo">
+                            <article class="col-md-12 text-center">
                             <h3>¿Seguro que deceas realizar el cambio de tiempo de apertura?</h3>
+                          </article>
                           </article>
                         </article>
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <button type="submit" class="btn blue hidden" id="submit" name="submit" value="tiempoApertura">Aceptar</button>
-                      <button type="button" class="btn blue">Aceptar</button>
-                      <button type="button" class="btn blue hidden">Cancelar</button>
+                      <button type="submit" class="btn blue hidden" id="aceptarCambioTiempo" name="submit" value="tiempoApertura">Aceptar</button>
+                      <button type="button" class="btn blue btnAceptarCambioTiempo" onclick="validarApertura();">Aceptar</button>
+                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTiempo"  onclick="cancelarTiempo();">Cancelar</button>
                     </article>
                   </form>
                 </article>
@@ -286,7 +290,7 @@
                           <article class="tab-content">
                             <article class="tab-pane active" id="reportetabTurno1">
                               <article class="alert alert-danger hidden" id="errorFechas2">
-                                <button class="close" data-dismiss="alert"></button>
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 Existen campos vacíos en el formulario.
                               </article>
                               <article class="row">
