@@ -164,7 +164,7 @@ function graficasHome(parametro, labels, datos){
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "Primera serie de datos",
+				label: "$",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",
@@ -189,7 +189,7 @@ function graficasHome(parametro, labels, datos){
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "Primera serie de datos",
+				label: "$",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",
@@ -214,7 +214,7 @@ function graficasHome(parametro, labels, datos){
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "Primera serie de datos",
+				label: "$",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",

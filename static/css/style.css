@@ -4511,6 +4511,60 @@ UI Loading
 .linkCabecera:hover{
   text-decoration: none;
 }
+.tarjetasBottom{
+    margin-top: 0px !important;
+  }
+
+@media (min-width: 768px) and (max-width: 992px) { 
+  .portlet{
+    margin-top: 35px!important;
+  }
+  .valorSistema{
+    height: 310px;
+  }
+   .tituloTarjeta{
+  height: 130px;
+}
+.valorSistema .visual{
+  height: 50px;
+  line-height: 0px;
+}
+.valorSistema .visual > i {
+  line-height:50px;
+}
+
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px) { 
+  .tarjetasBottom{
+    margin-top: -10px !important;
+  }
+  .valorSistema{
+    height: 260px;
+  }
+   .tituloTarjeta{
+  height: 155px;
+}
+.valorSistema .visual > i {
+  font-size: 48px;
+  text-align: right;;
+}
+.dashboard-stat .details .number { 
+  font-size: 25px;
+}
+.detalles{
+  font-size: 14px;
+}
+
+.valorSistema .visual{
+  width: 55px;
+}
+
+}
+
+
+
 
 
 @media (min-width: 1900px) and (max-width: 1910px) { 
@@ -5637,25 +5691,7 @@ UI Loading
 
 }
 
-@media (min-width: 768px) and (max-width: 992px) { 
-  .portlet{
-    margin-top: 35px!important;
-  }
-  .valorSistema{
-    height: 310px;
-  }
-   .tituloTarjeta{
-  height: 150px;
-}
-.valorSistema .visual{
-  height: 50px;
-  line-height: 0px;
-}
-.valorSistema .visual > i {
-  line-height:0px;
-}
 
-}
 
 @media (min-width: 380px) and (max-width: 768px) { 
   .portlet{
@@ -5783,4 +5819,7 @@ UI Loading
 }
 
 }
+
+
+
 
