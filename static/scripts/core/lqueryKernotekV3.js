@@ -1,3 +1,15 @@
+function loadingPagina(parametro){
+	if(parametro!=""){
+		$("#paginaCargando").modal("show");
+	}
+}
+
+function loading(){
+	$("#paginaCargando").modal("show");
+}
+
+
+
 function validarNumeros(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
@@ -177,8 +189,8 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 
 
-
 function tablasReportes(parametro){
+
 	if(parametro=="True"){
 		$("#moduloFechas").addClass("hidden");
 	}
