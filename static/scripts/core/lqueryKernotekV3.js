@@ -377,13 +377,13 @@ $("#modalTurno").mouseover(function(){
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
-		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
@@ -398,13 +398,13 @@ $(".configuracionCortes").mouseover(function(){
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
-		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
-		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
+		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
@@ -432,7 +432,7 @@ var valoresTurnoh=function(){
     	valorSemana=$(".diaCorteh").val();
     	valorHora=$(".horaCorteh").val();
     	if(valorLapso=='Mensual'){
-    		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno.";
+    		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno";
         	$('#Lapso > option[value="cadaMes"]').attr('selected', 'selected');
 	        $('#mes > option[value="'+valorSemana+'"]').attr('selected','selected');
 	        $('#horaC').val(valorHora);
@@ -444,7 +444,7 @@ var valoresTurnoh=function(){
 			$("#mes").select2();
 	    }
 	    if(valorLapso=='Semanal'){
-	    	document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno.";
+	    	document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno";
 	        $('#Lapso > option[value="cadaSemana"]').attr('selected', 'selected');
 	        $('#semana > option[value="'+valorSemana+'"]').attr('selected', 'selected');
 	        $('#horaC').val(valorHora);

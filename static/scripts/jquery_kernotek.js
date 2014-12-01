@@ -99,7 +99,7 @@ function corteActual(entrada){
 $("#enviarConfiguracion").click(function(){
 	var numerosValidacion=$("#numeroMedida").val();
 	if(!/^[0-9]{1,4}?$/.test(numerosValidacion)){
-		document.getElementById('textoAlerta').innerHTML="Los valores introducidos no estan dentro del rango válido";
+		document.getElementById('textoAlerta').innerHTML="Los valores introducidos no están dentro del rango válido";
 		$("article.mensajesPassword").show();
 		$("#numeroMedida").val("");
 		return false;
