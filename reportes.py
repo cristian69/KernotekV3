@@ -24,8 +24,7 @@ class Reportes(flask.views.MethodView):
 			excelGeneral = request.args.get("excelGeneral")
 			excelEspecifico = request.args.get("excelEspecifico")
 			excelDetallado = request.args.get("excelDetallado")
-			print excelGeneral, excelEspecifico, excelDetallado
-
+			
 			if typeReport == "detallado":
 				sellsReport = classdb.reportDetallado(startDate, endDate)
 				excel.reporteDetallado(sellsReport, startDate, endDate)
@@ -85,14 +84,15 @@ class Reportes(flask.views.MethodView):
 			return redirect(url_for('login'))
 
 	def post(self):
-		startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
-		endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
-		sells = classdb.reporte_general(startDate, endDate)
-		tableHTML, codeOperations = tablaReporte(sells, startDate, endDate, "False", "False", "False")
-		if len(tableHTML) == 75:
-			return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=False, excel=False)
-		else:
-			return render_template('reporteFechas.html', tableHTML=tableHTML,  tablaFechas=True, excel=False, acciones=codeOperations)
+		if len(session) > 1:
+			startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
+			endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
+			sells = classdb.reporte_general(startDate, endDate)
+			tableHTML, codeOperations = tablaReporte(sells, startDate, endDate, "False", "False", "False")
+			if len(tableHTML) == 75:
+				return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=False, excel=False)
+			else:
+				return render_template('reporteFechas.html', tableHTML=tableHTML,  tablaFechas=True, excel=False, acciones=codeOperations)
 		"""
 		indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
 		tableHTML = cod_tabla(startDate, endDate, 0)

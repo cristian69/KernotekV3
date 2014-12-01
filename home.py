@@ -47,133 +47,134 @@ class Home(flask.views.MethodView):
             return redirect(url_for('login'))
 
     def post(self):
-        operation = request.form['submit']
-        flag = ""
-        stateC, statePython =  revisarProceso()
+        if len(session) > 1:
+            operation = request.form['submit']
+            flag = ""
+            stateC, statePython =  revisarProceso()
 
-        if operation == "reporteTurno":
-            startDate = request.form['fecha_inicio2'] + ' 00:00:00'
-            endDate = request.form['fecha_fin2'] + ' 23:59:59'
-            codeShifts = turnosDisponibles(startDate, endDate)
-            if len(codeShifts) == 118:
-                tablaFechas = False
-            else:
-                tablaFechas = True
-            return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas)
-
-        if operation == REPORT:
-            typeReport = request.form['inpTipoReporte']
-            startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
-            endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
-            if typeReport == SHIFT_REPORT:
-                startDate = request.form['fecha_inicio'] + ' 00:00:00'
-                endDate = request.form['fecha_fin'] + ' 23:59:59'
+            if operation == "reporteTurno":
+                startDate = request.form['fecha_inicio2'] + ' 00:00:00'
+                endDate = request.form['fecha_fin2'] + ' 23:59:59'
                 codeShifts = turnosDisponibles(startDate, endDate)
                 if len(codeShifts) == 118:
                     tablaFechas = False
                 else:
                     tablaFechas = True
-                return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas, excel=False, PDF=False)
+                return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas)
 
-            if typeReport == DATES_REPORT:
-                sells = classdb.reporte_general(startDate, endDate)
-                tableHTML, codeOperations = tablaReporte(sells,startDate, endDate, "False", "False", "False")
+            if operation == REPORT:
+                typeReport = request.form['inpTipoReporte']
+                startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
+                endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
+                if typeReport == SHIFT_REPORT:
+                    startDate = request.form['fecha_inicio'] + ' 00:00:00'
+                    endDate = request.form['fecha_fin'] + ' 23:59:59'
+                    codeShifts = turnosDisponibles(startDate, endDate)
+                    if len(codeShifts) == 118:
+                        tablaFechas = False
+                    else:
+                        tablaFechas = True
+                    return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas, excel=False, PDF=False)
 
-                if len(tableHTML) == 66:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General", acciones=codeOperations)
+                if typeReport == DATES_REPORT:
+                    sells = classdb.reporte_general(startDate, endDate)
+                    tableHTML, codeOperations = tablaReporte(sells,startDate, endDate, "False", "False", "False")
+
+                    if len(tableHTML) == 66:
+                        return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General", acciones=codeOperations)
+                    else:
+                        return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
+
+            if operation == CHANGE_RATE:
+                if stateC and statePython:
+                    newRate = request.form['nuevaTarifa']
+                    classdb.cambiarTarifa(newRate)
+                    flag = "tarifaExitosa"
                 else:
-                    return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
+                    flag = "error"
 
-        if operation == CHANGE_RATE:
-            if stateC and statePython:
-                newRate = request.form['nuevaTarifa']
-                classdb.cambiarTarifa(newRate)
-                flag = "tarifaExitosa"
-            else:
-                flag = "error"
+            if operation == CHANGE_TIME_OPEN:
+                if stateC and statePython:
+                    newTime = request.form['nuevoTiempo']
+                    classdb.cambiarTiempoApertura(newTime)
+                    flag = "tiempoExitoso"
+                else:
+                    flag = "error"
 
-        if operation == CHANGE_TIME_OPEN:
-            if stateC and statePython:
-                newTime = request.form['nuevoTiempo']
-                classdb.cambiarTiempoApertura(newTime)
-                flag = "tiempoExitoso"
-            else:
-                flag = "error"
-
-        # if operation == CUT_SHIFT:
-        #     if stateC and statePython:
-        #         class_db.activarCorteTurno()
-        #         time.sleep(2)  # Espera a que el corte de turno se ejecute
-        #         flag = "corteExitoso"
-        #     else:
-        #         flag = "error"
-
-        if operation == "cambiarManual":
-            classdb.cambiarTipoCorte('0')
-            flag = "cambioExitoso"
-        
-        if operation == "modalTurno":
-            modalOperation = request.form['seleccionarAccion']
-            # modalOperation = modalOperation[0]
-            # if modalOperation == "cambiar":
-            #     typeCut = request.form.getlist('tiposCorte')
-            #     typeCut = typeCut[0]
-            #     if typeCut == "manual":
-            #         typeCut = '0'
+            # if operation == CUT_SHIFT:
+            #     if stateC and statePython:
+            #         class_db.activarCorteTurno()
+            #         time.sleep(2)  # Espera a que el corte de turno se ejecute
+            #         flag = "corteExitoso"
             #     else:
-            #         typeCut = '1'
-            #         modalOperation = "configurar"
-            #     class_db.cambiarTipoCorte(typeCut)
-            #     flag = "cambioExitoso"
-                # if stateC and statePython:
+            #         flag = "error"
+
+            if operation == "cambiarManual":
+                classdb.cambiarTipoCorte('0')
+                flag = "cambioExitoso"
+            
+            if operation == "modalTurno":
+                modalOperation = request.form['seleccionarAccion']
+                # modalOperation = modalOperation[0]
+                # if modalOperation == "cambiar":
+                #     typeCut = request.form.getlist('tiposCorte')
+                #     typeCut = typeCut[0]
+                #     if typeCut == "manual":
+                #         typeCut = '0'
+                #     else:
+                #         typeCut = '1'
+                #         modalOperation = "configurar"
                 #     class_db.cambiarTipoCorte(typeCut)
                 #     flag = "cambioExitoso"
-                # else:
-                #     flag = "error"
-                #     
-            if modalOperation == '4':
-                classdb.activarCorteTurno()
-                time.sleep(4)   
-                # if stateC and statePython:
-                #     class_db.activarCorteTurno()
-                #     time.sleep(2)  # Espera a que el corte de turno se ejecute
-                #     flag = "corteExitoso"
-                # else:
-                #     flag = "error"
+                    # if stateC and statePython:
+                    #     class_db.cambiarTipoCorte(typeCut)
+                    #     flag = "cambioExitoso"
+                    # else:
+                    #     flag = "error"
+                    #     
+                if modalOperation == '4':
+                    classdb.activarCorteTurno()
+                    time.sleep(4)   
+                    # if stateC and statePython:
+                    #     class_db.activarCorteTurno()
+                    #     time.sleep(2)  # Espera a que el corte de turno se ejecute
+                    #     flag = "corteExitoso"
+                    # else:
+                    #     flag = "error"
 
-            if modalOperation == "3" or modalOperation == "1":
-                typeLapse = request.form.getlist('tipoLapso')
-                typeLapse = typeLapse[0]
-                if typeLapse == "cadaDia":
-                    timeAutoCut = request.form['hora']
-                    classdb.registroProxCorteAuto("")
-                if typeLapse == "cadaSemana":
-                    dayWeek = request.form.getlist('diaSem')
-                    dayWeek = dayWeek[0]
-                    timeCut = request.form['hora']
-                    timeAutoCut = dayWeek + '|' + timeCut
-                    classdb.registroProxCorteAuto("")
-                if typeLapse == 'cadaMes':
-                    dayMonth = request.form.getlist('diaMes')
-                    dayMonth = dayMonth[0]
-                    timeCut = request.form['hora']
-                    timeAutoCut = dayMonth + '|' + timeCut
-                    classdb.registroProxCorteAuto("")
-                # if typeLapse == 'cadaDetHora':
-                #     timeAutoCut = request.form['hora']
-                #     nextCut = libgral.generarProximoCorte(timeAutoCut)
-                #     class_db.registroProxCorteAuto(nextCut)
+                if modalOperation == "3" or modalOperation == "1":
+                    typeLapse = request.form.getlist('tipoLapso')
+                    typeLapse = typeLapse[0]
+                    if typeLapse == "cadaDia":
+                        timeAutoCut = request.form['hora']
+                        classdb.registroProxCorteAuto("")
+                    if typeLapse == "cadaSemana":
+                        dayWeek = request.form.getlist('diaSem')
+                        dayWeek = dayWeek[0]
+                        timeCut = request.form['hora']
+                        timeAutoCut = dayWeek + '|' + timeCut
+                        classdb.registroProxCorteAuto("")
+                    if typeLapse == 'cadaMes':
+                        dayMonth = request.form.getlist('diaMes')
+                        dayMonth = dayMonth[0]
+                        timeCut = request.form['hora']
+                        timeAutoCut = dayMonth + '|' + timeCut
+                        classdb.registroProxCorteAuto("")
+                    # if typeLapse == 'cadaDetHora':
+                    #     timeAutoCut = request.form['hora']
+                    #     nextCut = libgral.generarProximoCorte(timeAutoCut)
+                    #     class_db.registroProxCorteAuto(nextCut)
 
-                flag = "configuracionExitosa"
-                classdb.cambiarTipoCorte('1')
-                classdb.tipoTiempoAutomatico(typeLapse)
-                classdb.tiempoCorteAuto(timeAutoCut)   
+                    flag = "configuracionExitosa"
+                    classdb.cambiarTipoCorte('1')
+                    classdb.tipoTiempoAutomatico(typeLapse)
+                    classdb.tiempoCorteAuto(timeAutoCut)   
 
-            
+                
 
-        dic_home = datos_home()
-        dayGrafic, sells = graficaDia()
-        return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia", operacion=flag)
+            dic_home = datos_home()
+            dayGrafic, sells = graficaDia()
+            return render_template('home.html', dic_home=dic_home, labels=dayGrafic, datos=sells, bandera="graficaDia", operacion=flag)
 
 
 def inicioSemana(year, numSemana):

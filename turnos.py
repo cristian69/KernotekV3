@@ -23,28 +23,12 @@ class Turnos(flask.views.MethodView):
 		stateC, statePython = libgral.revisarProceso()
 		typeCut = classdb.tipoCorte()
 		option = request.form['submit']
-		print option
 		dicTurno = valuesAutomaticShift()
 		if option == "cortemanual":
 			classdb.cambiarTipoCorte('0')
 			typeCut = classdb.tipoCorte()
 			dicTurno = valuesAutomaticShift()
 			return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
-		# if option == "cambiar":
-		# 	typeCut = request.form.getlist('tiposCortes2')
-		# 	typeCut = typeCut[0]
-		# 	if typeCut == 'automatico':
-		# 		typeCut = '1'
-		# 	else:
-		# 		typeCut = '0'
-
-		# 	if typeCut is not "1":
-		# 		classdb.cambiarTipoCorte(typeCut)
-		# 		typeCut = classdb.tipoCorte()
-		# 		return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
-		# 	else:
-		# 		option = "configurar"
-
 		if option == "corteautomatico":
 			typeLapse = request.form.getlist('tipoLapso')
 			typeLapse = typeLapse[0]
@@ -77,10 +61,14 @@ class Turnos(flask.views.MethodView):
 			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno=dicTurno)
 
 		if option == "corte":
-			classdb.activarCorteTurno()
-			time.sleep(2)  # Espera a que el corte de turno se ejecute
-			bandera = "corteExitoso"
-			return render_template('corteDeTurno.html', bandera="corteturno", tipoCorte=typeCut, dicTurno=dicTurno)
+			if statePython == True and stateC == True:
+				classdb.activarCorteTurno()
+				time.sleep(4)  # Espera a que el corte de turno se ejecute
+				bandera = "corteExitoso"
+				return render_template('corteDeTurno.html', bandera="corteturno", tipoCorte=typeCut, dicTurno=dicTurno)
+			else:
+				bandera="error"
+				return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno= dicTurno)
 		return render_template('corteDeTurno.html', bandera=bandera)
 
 def valuesAutomaticShift():

@@ -36,7 +36,6 @@ class Configuracion(flask.views.MethodView):
 		time.sleep(1)	
 		stateSystem = sistema()
 		botonSystem = configsistema.estadoSistema()
-		print botonSystem
 		return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)		
 
 
