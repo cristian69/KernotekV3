@@ -167,7 +167,7 @@ function graficasHome(parametro, labels, datos){
 		$("#mensual").removeClass("active");
 		$("#graficaenMeses").removeClass("active");
 		var lineChartData1 = {
-			labels : ["$"+labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
+			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
 				label: "$",

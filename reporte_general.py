@@ -55,12 +55,12 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
     linkDetallado = "../static/download/" +session['username']+ "/Reporte Detallado.xlsx"
 
     codeOperations = """
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="General"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="Especifico"> Específico </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="Detallado"> Generar Detallado </a>
-                <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="dDescargarGeneral"><i class="fa fa-download"></i> Descargar General </a>
-                <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="dDescargarEspecifico"><i class="fa fa-download"></i> Descargar Específico </a>
-                <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="dDescargarDetallado"><i class="fa fa-download"></i> Descargar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="General" onclick="loading();"><i class="fa fa-file-excel-o"></i> General</a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="Detallado" onclick="loading();"><i class="fa fa-file-excel-o"></i> Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="Especifico"><i class="fa fa-arrow-right"></i> Específico </a>
+                <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="dDescargarGeneral"><i class="fa fa-download"></i> General </a>
+                <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="dDescargarDetallado"><i class="fa fa-download"></i> Detallado </a>
+                <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="dDescargarEspecifico"><i class="fa fa-download"></i> Específico </a>
                      """
     codigoTabla = """
                     <article class="portlet light bordered">
@@ -69,9 +69,9 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
                 <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
               </article>
               <article class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkgeneral"><i class="fa fa-refresh"></i> Generar Excel </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkespecifico"> Específico </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkdetallado"> Generar Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkgeneral" onclick="loading();"><i class="fa fa-file-excel-o"></i> General </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkdetallado" onclick="loading();"><i class="fa fa-file-excel-o"></i> Detallado </a>
+                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkespecifico"><i class="fa fa-arrow-right"></i> Específico </a>
                 <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="descargargeneral"><i class="fa fa-download"></i> Descargar General </a>
                 <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="descargarespecifico"><i class="fa fa-download"></i> Descargar Específico </a>
                 <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="descargardetallado"><i class="fa fa-download"></i> Descargar Detallado </a>

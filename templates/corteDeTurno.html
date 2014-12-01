@@ -109,6 +109,15 @@
                                 </article>
                               </article>  
                             </article>
+                            <article class="tab-pane" id="Turno2b">
+                              <article class="row">
+                                <article class="col-md-12 group-form">
+                                  <article class="col-md-12 text-center">
+                                    <h4>¿Seguro que deseas realizar el corte de turno?</h4>
+                                  </article>
+                                </article>
+                              </article>  
+                            </article>
                             <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
                                 <article class="col-md-12 text-center">
@@ -192,7 +201,7 @@
                                 </article>
                                 <article class="col-md-12 text-center">
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <button class="btn blue" type="submit">Manual</button>
+                                    <button class="btn blue" type="submit" name="submit">Manual</button>
                                   </article>
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="button" id="btnAutomaticoCorte">Automático</button>
@@ -206,7 +215,7 @@
                     </article>
                   <article class="form-actions text-right  footerCorteTurno hidden">
                    <ul class="pager" id="">
-                    <input type="text" class="control-form hidden" id="valorPestaña" value="1">
+                    <input type="text" class="control-form" id="valorPestaña" value="1">
                     <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
                     <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="aceptarCorte"></i>Aceptar</button></li>
                     <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Regresar</button></li>

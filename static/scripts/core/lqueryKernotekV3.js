@@ -5,6 +5,7 @@ function loadingPagina(parametro){
 }
 
 function loading(){
+	alert("entra");
 	$("#paginaCargando").modal("show");
 }
 
