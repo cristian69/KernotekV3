@@ -3,9 +3,11 @@ __author__ = 'aramirez'
 import flask
 from flask import render_template, redirect, session, request, url_for
 import class_db
-from libgral import generar_tabla
+from libgral import generar_tabla, numeracion_paginas
 import excel
 import pdf
+from reporte_especifico import cod_tabla
+
 
 class reporteTurno(flask.views.MethodView):
     def post(self):
@@ -24,28 +26,48 @@ class reporteTurno(flask.views.MethodView):
             numTurno = request.form['turnoSeleccionado']
             fechaInicioTurno = request.form['fechaInicial']
             fechaFinTurno = request.form['fechaFinal']
-            registrosTurno = class_db.reporteTurno(numTurno)
+            registrosTurno = class_db.reporteTurnoPaginacion(numTurno, 0)
             htmlTabla, codeOpertations = tablaReporte(registrosTurno, numTurno, fechaInicioTurno, fechaFinTurno, "False", "False")
             if len(htmlTabla) == 89:
                 return render_template('reportesTurno.html', htmlTurnos=htmlTabla, tablaFechas=False, excel=False, PDF=False)
             # excel.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
             # pdf.reporteTurno(registrosTurno, fechaInicioTurno, fechaFinTurno, numTurno)
-            return render_template('reportesTurno.html', htmlTurnos=htmlTabla, tablaFechas=True, excel=False, PDF=False, acciones=codeOpertations)
+            codepagination = paginacion(fechaInicioTurno, fechaFinTurno, 1, 0,
+                                                       'reporte-turno', str(numTurno), "False", "False")
+            return render_template('reportesTurno.html', htmlTurnos=htmlTabla, tablaFechas=True, excel=False, PDF=False, acciones=codeOpertations,
+                                                        indexHtml=codepagination)
 
 
     def get(self):
         if len(session) > 1:
+            index = str(request.args.get('indice'))
+            date1 = request.args.get('fecha1')
+            date2 = request.args.get('fecha2')
+
+            actualpage = str(request.args.get('num_pagina'))
             typeReport = request.args.get('reporte')
             numShift = request.args.get('turno')
             startDate = request.args.get('fechaInicio')
             endDate = request.args.get('fechaFin')
             stateExcel = request.args.get('excel')
             statePDF = request.args.get('pdf')
+
+            if index != 'None' and date1 != 'None' and date2 != 'None':
+                codepagination = paginacion(date1, date2, actualpage, index,
+                                                       'reporte-turno', numShift, stateExcel, statePDF)
+                registrosTurno = class_db.reporteTurnoPaginacion(numShift, index)
+                htmlTabla, codeOpertations = tablaReporte(registrosTurno, numShift, date1, date2, stateExcel, statePDF)
+                return render_template('reportesTurno.html', htmlTurnos=htmlTabla,
+                                       indexHtml=codepagination, tablaFechas= True, excel=stateExcel)
+
+
             if typeReport == "excel":
                 sellShift = class_db.reporteTurno(numShift)
+                salespagination = class_db.reporteTurnoPaginacion(numShift, 0)
                 excel.reporteTurno(sellShift, startDate, endDate, numShift)
-                tableHTML, codeOpertations = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel="True", statePDF=statePDF)
+                tableHTML, codeOpertations = tablaReporte(salespagination, numShift, startDate, endDate, stateExcel="True", statePDF=statePDF)
                 stateExcel = "True"
+                
                 if statePDF == "True":
                     statePDF = True
                 else:
@@ -54,8 +76,11 @@ class reporteTurno(flask.views.MethodView):
                     stateExcel= True
                 else:
                     stateExcel= False
-                
-                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF= statePDF, acciones=codeOpertations)
+                codepagination = paginacion(startDate, endDate, 1, 0,
+                                                       'reporte-turno', str(numShift), stateExcel, statePDF)
+                return render_template('reportesTurno.html', htmlTurnos=tableHTML, tablaFechas=True, excel=stateExcel, PDF= statePDF, acciones=codeOpertations,
+                                                            indexHtml=codepagination)
+            
             elif typeReport == "PDF":
                 sellShift = class_db.reporteTurno(numShift)
                 pdf.reporteTurno(sellShift, startDate, endDate, numShift)
@@ -183,3 +208,136 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
                           <a href="javascript:;" class="collapse"></a>
                       """
     return codigoTabla, codeOpertations
+
+
+
+
+def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, stateexcel, statepdf):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN
+    startDate = fecha_inicio
+    endDate = fecha_fin
+    actualPage = int(pag_activa)
+    startRange = int(indice)
+    link = direccion
+    codeIndex = ""
+    codeIndex = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
+    codeIndex += str('<ul class="pagination">')
+
+    # Simbolo <<
+    if actualPage == 1:
+        codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
+        
+    else:
+        pagePreviousBlock = actualPage - 10
+        if pagePreviousBlock <= 0:
+            pagePreviousBlock = 1
+
+        rangePreviousBlock = startRange - 500
+        if rangePreviousBlock <= 0:
+            rangePreviousBlock = 0
+
+        codeIndex += str('<li class="enable prev"> <a href="/'+link+'/?' \
+            'indice=' + str(rangePreviousBlock) +\
+            '&fecha1=' + startDate + \
+            '&fecha2='  + endDate + \
+            '&turno=' + str(turno) + \
+            '&excel=' +str(stateexcel)+\
+            '&pdf=' +str(statepdf)+\
+            '&num_pagina=' + str(pagePreviousBlock) + '">'\
+            '<i class="fa fa-angle-double-left"></i></a></li>') 
+
+    # Simbolo <
+    if actualPage == 1:
+        codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>')
+    else:
+        previousPage = actualPage - 1
+        rengePreviousPage = startRange - 50
+        codeIndex += str('<li class="enable prev"><a href="/'+link+'/?'\
+            'indice='+ str(rengePreviousPage) + \
+            '&fecha1='+ startDate + \
+            '&fecha2='+ endDate + \
+            '&turno=' + str(turno) + \
+            '&excel=' +str(stateexcel)+\
+            '&pdf=' +str(statepdf)+\
+            '&num_pagina='+ str(previousPage) +'">'\
+            '<i class="fa fa-angle-left"></i></a></li>')
+
+    sales = int(class_db.total_registros(startDate, endDate, startRange))
+    restSales = sales
+    countPage = 0
+    startPage = actualPage
+    rangePage = startRange
+    for x in range(sales):
+        countPage += 1
+        if countPage == 50:
+            if startPage is actualPage:
+                codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')
+            else:
+                codeIndex += str('<li id="pag'+str(startPage)+'">')
+
+            codeIndex += str('<a href="/'+link+'/?'\
+                    'indice='+ str(rangePage) + \
+                    '&fecha1='+ startDate + \
+                    '&fecha2='+ endDate + \
+                    '&turno=' + str(turno) + \
+                    '&excel=' +str(stateexcel)+\
+                    '&pdf=' +str(statepdf)+\
+                    '&num_pagina='+ str(startPage) + '">'\
+                    +str(startPage)+
+                    '</a></li>')
+
+            startPage += 1
+            rangePage += 50
+            countPage = 0
+            restSales -= 50
+    if restSales > 0:
+        if startPage is actualPage:
+            codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')
+        else:
+            codeIndex += str('<li id="pag'+str(startPage)+'">')
+        codeIndex += str('<a href="/'+link+'/?'\
+                    'indice='+ str(rangePage) + \
+                    '&fecha1='+ startDate + \
+                    '&fecha2='+ endDate + \
+                    '&turno=' + str(turno) + \
+                    '&excel=' +str(stateexcel)+\
+                    '&pdf=' +str(statepdf)+\
+                    '&num_pagina='+ str(startPage) + '">'\
+                    +str(startPage)+
+                    '</a></li>')
+
+    # Simbolo >
+    nextPage = actualPage + 1
+    rangeNextPage = startRange + 50
+
+    salesNextPage = class_db.total_registros(startDate, endDate, startRange + 50)
+
+    if salesNextPage == 0:
+        codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
+    else:
+        codeIndex += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+str(rangeNextPage)+\
+                    '&fecha1=' + startDate +\
+                    '&fecha2=' + endDate +\
+                    '&turno=' + str(turno) + \
+                    '&excel=' +str(stateexcel)+\
+                    '&pdf=' +str(statepdf)+\
+                    '&num_pagina=' + str(nextPage) + '">'
+                    '<i class="fa fa-angle-right"></i></a></li>')
+    
+    # Simbolo >>
+    salesNextBlock = class_db.total_registros(startDate, endDate, startRange + 500)
+    nextBlock = actualPage + 10
+    rangeNextBlock = startRange + 500
+    if salesNextBlock == 0:
+        codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-double-right"></i></a></li>')
+    else:
+        codeIndex += str('<li class="enable"><a href="/'+link+'/?'\
+                    'indice='+ str(rangeNextBlock)+\
+                    '&fecha1=' + startDate +\
+                    '&fecha2=' + endDate +\
+                    '&turno=' + str(turno) + \
+                    '&excel=' +str(stateexcel)+\
+                    '&pdf=' +str(statepdf)+\
+                    '&num_pagina=' + str(nextBlock) +'">'\
+                    '<i class="fa fa-angle-double-right"></i></a></li>')
+    return codeIndex

@@ -211,7 +211,15 @@ def montosTurno(numTurno):
     matar_conexion()
     return data
 
-
+def reporteTurnoPaginacion(turno, index):
+    crear_conexion()
+    query = "SELECT ticket, datetimesell, rate, multiplier, servicesdetail.cost, deposit"\
+    " FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid "\
+    "WHERE localshift = '"+str(turno)+"' order by datetimesell desc limit "+str(index)+",50;"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    matar_conexion()
+    return data
 
 #########################################################
 #                                                       #
