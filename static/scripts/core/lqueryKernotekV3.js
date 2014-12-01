@@ -5,7 +5,6 @@ function loadingPagina(parametro){
 }
 
 function loading(){
-	alert("entra");
 	$("#paginaCargando").modal("show");
 }
 
@@ -27,14 +26,12 @@ function validarNumeros(){
 }
 
 function tarifaValida(){
-	$("#aceptarCambioTarifa").removeClass("hidden");
-	$(".btnCancelarrCambioTarifa").removeClass("hidden");
-	$(".btnAceptarCambioTarifa").addClass("hidden");
-	$(".modCambiarTarifa").addClass("hidden");
-	$(".confCambioTarifa").removeClass("hidden");
 	$("#tarifaIncorrecta").addClass("hidden");
 	$("#tiempoIncorrecto").addClass("hidden");
+	$("#aceptarCambioTarifa").click();
 }
+
+
 
 
 
@@ -54,37 +51,13 @@ function validarApertura(){
 }
 
 function accesoValido(){
-	$(".btnCancelarrCambioTiempo").removeClass("hidden");
-	$("#aceptarCambioTiempo").removeClass("hidden");
-	$(".btnAceptarCambioTiempo").addClass("hidden");
-	$(".modCambiarTiempo").addClass("hidden");
-	$(".confCambioTiempo").removeClass("hidden");
 	$("#tarifaIncorrecta").addClass("hidden");
 	$("#tiempoIncorrecto").addClass("hidden");
+	$("#aceptarCambioTiempo").click();
 }
 
 
 
-function cancelarTarifa(){
-	$("#aceptarCambioTarifa").addClass("hidden");
-	$(".btnCancelarrCambioTarifa").addClass("hidden");
-	$(".btnAceptarCambioTarifa").removeClass("hidden");
-	$(".modCambiarTarifa").removeClass("hidden");
-	$(".confCambioTarifa").addClass("hidden");
-	$("#nuevaTarifa").val("");
-	$('#nuevaTarifa').focus();	
-}
-
-
-function cancelarTiempo(){
-	$("#aceptarCambioTiempo").addClass("hidden");
-	$(".btnAceptarCambioTiempo").removeClass("hidden");
-	$(".modCambiarTiempo").removeClass("hidden");
-	$(".confCambioTiempo").addClass("hidden");
-	$(".btnCancelarrCambioTiempo").addClass("hidden");
-	$("#nuevoTiempo").val("");
-	$('#nuevoTiempo').focus();
-}
 
 function alertasiOcultar(parametro){
 	$("#"+parametro).addClass("hidden");
@@ -105,7 +78,7 @@ function apagadoSistema(parametro){
 $(document).keypress(function(e) {
     if(e.which === 13) {
     	if($("#modalTarifa").hasClass("in")){
-    		$("#aceptarCambioTarifa").click();
+    		$(".btnAceptarCambioTarifa").click();
     	}
     	if($("#modalAcceso").hasClass("in")){
     		$("#aceptarCambioTarifa").click();
@@ -156,11 +129,6 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
-	alert(excelGeneral);
-	alert(excelEspecifico);
-	alert(excelDetallado);
-	alert(ventana);
-
 	if(excelGeneral=="True"){
 		$("#linkgeneral").addClass("hidden");
 		$("#descargargeneral").removeClass("hidden")
