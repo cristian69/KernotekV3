@@ -156,6 +156,11 @@ function reporteTurnos(parametro1, parametro2){
 }
 
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
+	alert(excelGeneral);
+	alert(excelEspecifico);
+	alert(excelDetallado);
+	alert(ventana);
+
 	if(excelGeneral=="True"){
 		$("#linkgeneral").addClass("hidden");
 		$("#descargargeneral").removeClass("hidden")
