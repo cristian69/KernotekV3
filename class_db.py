@@ -887,36 +887,36 @@ def canales_billetero():
     matar_conexion()
     return data
 
-#########################################################
-#                                                       #
-#                   MONEDERO                            #
-#                                                       #
-#########################################################
+# #########################################################
+# #                                                       #
+# #                   MONEDERO                            #
+# #                                                       #
+# #########################################################
 
-def cambioMonedero(m05, m1, m2, m5, m10):
-    query = "UPDATE canales_hopper set estado = '"+ m05 +"' WHERE canal = 0.5;"
-    query2 = "UPDATE canales_hopper set estado = '"+ m1 +"' WHERE canal = 1;"
-    query3 = "UPDATE canales_hopper set estado = '"+ m2 +"' WHERE canal = 2;"
-    query4 = "UPDATE canales_hopper set estado = '"+ m5 +"' WHERE canal = 5;"
-    query5 = "UPDATE canales_hopper set estado = '"+ m10 +"' WHERE canal = 10;"
+# def cambioMonedero(m05, m1, m2, m5, m10):
+#     query = "UPDATE canales_hopper set estado = '"+ m05 +"' WHERE canal = 0.5;"
+#     query2 = "UPDATE canales_hopper set estado = '"+ m1 +"' WHERE canal = 1;"
+#     query3 = "UPDATE canales_hopper set estado = '"+ m2 +"' WHERE canal = 2;"
+#     query4 = "UPDATE canales_hopper set estado = '"+ m5 +"' WHERE canal = 5;"
+#     query5 = "UPDATE canales_hopper set estado = '"+ m10 +"' WHERE canal = 10;"
 
-    queryBanderaCambio = "UPDATE config set cambio_canales_hopper = '1'"   # Indica al socket que hay un cambio en los canales
+#     queryBanderaCambio = "UPDATE config set cambio_canales_hopper = '1'"   # Indica al socket que hay un cambio en los canales
 
-    crear_conexion()
+#     crear_conexion()
     
-    cursor.execute(query)
-    db.commit()
-    cursor.execute(query2)
-    db.commit()
-    cursor.execute(query3)
-    db.commit()
-    cursor.execute(query4)
-    db.commit()
-    cursor.execute(query5)
-    db.commit()
-    cursor.execute(queryBanderaCambio)
-    db.commit()
-    matar_conexion()
+#     cursor.execute(query)
+#     db.commit()
+#     cursor.execute(query2)
+#     db.commit()
+#     cursor.execute(query3)
+#     db.commit()
+#     cursor.execute(query4)
+#     db.commit()
+#     cursor.execute(query5)
+#     db.commit()
+#     cursor.execute(queryBanderaCambio)
+#     db.commit()
+#     matar_conexion()
 
 
 # Consulta si hay un cambio en los canales del monedero
@@ -941,30 +941,30 @@ def desactivarCambioMonedero():
     matar_conexion()
 
 
-#########################################################
-#                                                       #
-#                      BILLETERO                        #
-#                                                       #
-#########################################################
+# #########################################################
+# #                                                       #
+# #                      BILLETERO                        #
+# #                                                       #
+# #########################################################
 
-def cambioBilletero(b20, b50, b100, b200, b500):
-    query = "UPDATE canales_payout set estado = '"+ b20 +"' WHERE canal = 20;"
-    query2 = "UPDATE canales_payout set estado = '"+ b50 +"' WHERE canal = 50;"
-    query3 = "UPDATE canales_payout set estado = '"+ b100 +"' WHERE canal = 100;"
-    query4 = "UPDATE canales_payout set estado = '"+ b200 +"' WHERE canal = 200;"
-    query5 = "UPDATE canales_payout set estado = '"+ b500 +"' WHERE canal = 500;"
-    crear_conexion()
-    cursor.execute(query)
-    db.commit()
-    cursor.execute(query2)
-    db.commit()
-    cursor.execute(query3)
-    db.commit()
-    cursor.execute(query4)
-    db.commit()
-    cursor.execute(query5)
-    db.commit()
-    matar_conexion()
+# def cambioBilletero(b20, b50, b100, b200, b500):
+#     query = "UPDATE canales_payout set estado = '"+ b20 +"' WHERE canal = 20;"
+#     query2 = "UPDATE canales_payout set estado = '"+ b50 +"' WHERE canal = 50;"
+#     query3 = "UPDATE canales_payout set estado = '"+ b100 +"' WHERE canal = 100;"
+#     query4 = "UPDATE canales_payout set estado = '"+ b200 +"' WHERE canal = 200;"
+#     query5 = "UPDATE canales_payout set estado = '"+ b500 +"' WHERE canal = 500;"
+#     crear_conexion()
+#     cursor.execute(query)
+#     db.commit()
+#     cursor.execute(query2)
+#     db.commit()
+#     cursor.execute(query3)
+#     db.commit()
+#     cursor.execute(query4)
+#     db.commit()
+#     cursor.execute(query5)
+#     db.commit()
+#     matar_conexion()
 
 #########################################################
 #                                                       #
