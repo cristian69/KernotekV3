@@ -64,10 +64,16 @@ function llavesSistema(){
 function mostrarVentanas(parametro){
 	this.nombreVentana=parametro;
 	$("#"+nombreVentana).removeClass("hidden");
+	if(parametro!=""){
+		$(".contentAlerttas").removeClass("hidden");
+	}
 	if(nombreVentana=="UsuarioInvalido"){
 		$("#contenidoLogin").addClass("errorLogin");
 	}
 }
+$(".close").click(function(){
+	$(".contentAlerttas").addClass("hidden");
+});
 
 $("#cerrarAlertaLogin").click(function(){
 	$("#contenidoLogin").removeClass("errorLogin");
