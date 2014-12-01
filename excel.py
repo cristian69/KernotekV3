@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 __author__ = 'aramirez'
-import class_db
+import classdb
 import xlsxwriter
 import datetime
 from flask import session
@@ -23,7 +23,7 @@ def export_excel(data, date_start, date_end):
     total_registros = 10  # Indica donde comenzar
 
    
-    columns = class_db.columnas_habilitadas()
+    columns = classdb.columnas_habilitadas()
 
     rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
 
@@ -241,7 +241,7 @@ def reporteGeneral(data, date_start, date_end):
                                 'data': data,
                                 'columns': format_columns})
 
-    totales = class_db.totales(date_start, date_end)
+    totales = classdb.totales(date_start, date_end)
 
     sheet.merge_range('C' + str(len(data) + 12) + ':D' + str(len(data) + 12), 'TOTAL', header_format)
     sheet.write('C' + str(len(data) + 13), 'Total de Ventas', header_format)
@@ -391,8 +391,8 @@ def reporteDetallado(data, date_start, date_end):
             sells[0]) + ";"
         queryCambio = "SELECT denomination, quantity from panel_srv_det_den WHERE panelservicesid = " + str(
             sells[0]) + ";"
-        totalDeposito = class_db.ejecutar(queryDeposito)  # Guarda la denominacion del deposito de la venta
-        totalCambio = class_db.ejecutar(queryCambio)    # Guarda la denominacion del cambio de la venta
+        totalDeposito = classdb.ejecutar(queryDeposito)  # Guarda la denominacion del deposito de la venta
+        totalCambio = classdb.ejecutar(queryCambio)    # Guarda la denominacion del cambio de la venta
 
         row += 1  # Indica el numero de la fila
 
@@ -597,7 +597,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
                                 'data': data,
                                 'columns': format_columns})
 
-    montos = class_db.montosTurno(numTurno)
+    montos = classdb.montosTurno(numTurno)
 
     sheet.merge_range('C' + str(len(data) + 12) + ':E' + str(len(data) + 12), 'INFO. MONTO', header_format)
     sheet.merge_range('C' + str(len(data) + 13) + ':D' + str(len(data) + 13), 'Monto Inicial', header_format)

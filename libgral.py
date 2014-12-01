@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 import datetime
-import class_db
+import classdb
 from datetime import date
 from flask import session
 import os
@@ -212,7 +212,7 @@ def FechaHora():
 
 
 def generar_tabla(datos, modal, bandera):
-    columnas = str(class_db.consultaColumnas()).split('-')
+    columnas = str(classdb.consultaColumnas()).split('-')
     bandera_tarifa = False
     bandera_deposito = False
     switch = True
@@ -265,7 +265,7 @@ def generar_tabla(datos, modal, bandera):
 
 def tabla_usuarios(indice, modal):
     bandera = True                  # Indica que si se quiere cambiar el 0 por inactiva o 1 por activa
-    datos = class_db.ver_usuarios(indice)
+    datos = classdb.ver_usuarios(indice)
     tabla = generar_tabla(datos, modal, bandera)
     return tabla
 
@@ -318,7 +318,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion, e
             '&num_pagina='+ str(previousPage) +'">'\
             '<i class="fa fa-angle-left"></i></a></li>')
 
-    sales = int(class_db.total_registros(startDate, endDate, startRange))
+    sales = int(classdb.total_registros(startDate, endDate, startRange))
     restSales = sales
     countPage = 0
     startPage = actualPage
@@ -366,7 +366,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion, e
     nextPage = actualPage + 1
     rangeNextPage = startRange + 50
 
-    salesNextPage = class_db.total_registros(startDate, endDate, startRange + 50)
+    salesNextPage = classdb.total_registros(startDate, endDate, startRange + 50)
 
     if salesNextPage == 0:
         codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
@@ -382,7 +382,7 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion, e
                     '<i class="fa fa-angle-right"></i></a></li>')
     
     # Simbolo >>
-    salesNextBlock = class_db.total_registros(startDate, endDate, startRange + 500)
+    salesNextBlock = classdb.total_registros(startDate, endDate, startRange + 500)
     nextBlock = actualPage + 10
     rangeNextBlock = startRange + 500
     if salesNextBlock == 0:
@@ -407,13 +407,13 @@ def paginacion(pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA 
     indice_back = int(indice) - registros_pagina
 
     if direccion == "bitacora":
-        total_registro = class_db.bitacora()
+        total_registro = classdb.bitacora()
     elif direccion == "usuarios" or direccion == "borrar-usuario":
-        total_registro = class_db.totalUsuarios()
+        total_registro = classdb.totalUsuarios()
     elif direccion == "activar-cuentas":
-        total_registro = class_db.usuarioInacticvos()
+        total_registro = classdb.usuarioInacticvos()
     elif direccion == "editar-llave":
-        total_registro = class_db.totalLlaves()
+        total_registro = classdb.totalLlaves()
     count = 0
     num_pagina = 1
     if int(pag_activa) != 1:

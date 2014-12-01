@@ -2,10 +2,10 @@
 
 import flask
 from flask import render_template, redirect, url_for, session, request
-import class_db
+import classdb
 from libgral import numeracion_paginas
-from reporte_especifico import cod_tabla
-from reporte_general import tablaReporte
+from reporteespecifico import cod_tabla
+from reportegeneral import tablaReporte
 import excel
 
 NONE = 66
@@ -27,9 +27,9 @@ class Reportes(flask.views.MethodView):
 			print excelGeneral, excelEspecifico, excelDetallado
 
 			if typeReport == "detallado":
-				sellsReport = class_db.reportDetallado(startDate, endDate)
+				sellsReport = classdb.reportDetallado(startDate, endDate)
 				excel.reporteDetallado(sellsReport, startDate, endDate)
-				sells = class_db.reporte_general(startDate, endDate)
+				sells = classdb.reporte_general(startDate, endDate)
 				excelDetallado = "True"
 				tableHTML,codeOperations = tablaReporte(sells, startDate, endDate, excelDetallado, excelGeneral, excelEspecifico)
 				return render_template('reporteFechas.html', indexHTML="", 
@@ -47,7 +47,7 @@ class Reportes(flask.views.MethodView):
 			
 			if typeReport == "generarEspecifico":
 				excelEspecifico = "True"
-				sellsReport = class_db.reporte_especifico(startDate, endDate)
+				sellsReport = classdb.reporte_especifico(startDate, endDate)
 				objExcel.export_excel(sellsReport, startDate, endDate)
 				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes', excelDetallado , excelGeneral, excelEspecifico)
 				tableHTML, codeOperations = cod_tabla(startDate, endDate, 0, excelDetallado, excelGeneral, "True")
@@ -56,14 +56,14 @@ class Reportes(flask.views.MethodView):
 					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico=excelEspecifico)
 
 			if typeReport == "general":
-				sells = class_db.reporte_general(startDate, endDate)
+				sells = classdb.reporte_general(startDate, endDate)
 				tableHTML, codeOperations = tablaReporte(sells, startDate, endDate, excelDetallado, excelGeneral, excelEspecifico)
 				return render_template('reporteFechas.html', tableHTML=tableHTML, 
 					tablaFechas=flagTableDate, excel=False, detallado=False, reporte="General", acciones=codeOperations,
 					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico=excelEspecifico)
 
 			if typeReport == "generarGeneral":
-				sellsReport = class_db.reporte_general(startDate, endDate)
+				sellsReport = classdb.reporte_general(startDate, endDate)
 				objExcel.reporteGeneral(sellsReport, startDate, endDate)
 				tableHTML, codeOperations = tablaReporte(sellsReport, startDate, endDate, excelDetallado, "True", excelEspecifico)
 				return render_template('reporteFechas.html', tableHTML=tableHTML, 
@@ -87,7 +87,7 @@ class Reportes(flask.views.MethodView):
 	def post(self):
 		startDate = request.form['fecha_inicio'] + ' ' + request.form['hora_inicio']
 		endDate = request.form['fecha_fin'] + ' ' + request.form['hora_fin']
-		sells = class_db.reporte_general(startDate, endDate)
+		sells = classdb.reporte_general(startDate, endDate)
 		tableHTML, codeOperations = tablaReporte(sells, startDate, endDate, "False", "False", "False")
 		if len(tableHTML) == 75:
 			return render_template('reporteFechas.html', tableHTML=tableHTML, tablaFechas=False, excel=False)

@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 import flask
 from flask import render_template, redirect, url_for, session, request
-import class_db
+import classdb
 import libgral
 import time
+
 
 class Turnos(flask.views.MethodView):
 	def get(self):
 		if len(session) > 1:
-			typeCut = class_db.tipoCorte()
+			typeCut = classdb.tipoCorte()
 			if typeCut == "manual":
 				typeCut = "Manual"
 			else:
@@ -20,79 +21,85 @@ class Turnos(flask.views.MethodView):
 
 	def post(self):
 		stateC, statePython = libgral.revisarProceso()
-		typeCut = class_db.tipoCorte()
-		option = request.form.getlist('seleccionarAccion2')
-		option = option[0]
+		typeCut = classdb.tipoCorte()
+		option = request.form['submit']
+		print option
 		dicTurno = valuesAutomaticShift()
-		if option == "cambiar":
-			typeCut = request.form.getlist('tiposCortes2')
-			typeCut = typeCut[0]
-			if typeCut == 'automatico':
-				typeCut = '1'
-			else:
-				typeCut = '0'
+		if option == "cortemanual":
+			classdb.cambiarTipoCorte('0')
+			typeCut = classdb.tipoCorte()
+			dicTurno = valuesAutomaticShift()
+			return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
+		# if option == "cambiar":
+		# 	typeCut = request.form.getlist('tiposCortes2')
+		# 	typeCut = typeCut[0]
+		# 	if typeCut == 'automatico':
+		# 		typeCut = '1'
+		# 	else:
+		# 		typeCut = '0'
 
-			if typeCut is not "1":
-				class_db.cambiarTipoCorte(typeCut)
-				typeCut = class_db.tipoCorte()
-				return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
-			else:
-				option = "configurar"
+		# 	if typeCut is not "1":
+		# 		classdb.cambiarTipoCorte(typeCut)
+		# 		typeCut = classdb.tipoCorte()
+		# 		return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
+		# 	else:
+		# 		option = "configurar"
 
-		if option == "configurar":
+		if option == "corteautomatico":
 			typeLapse = request.form.getlist('tipoLapso')
 			typeLapse = typeLapse[0]
 			if typeLapse == "cadaDia":
 				timeAutoCut = request.form['hora']
-				class_db.registroProxCorteAuto("")
+				classdb.registroProxCorteAuto("")
 			if typeLapse == "cadaSemana":
 				dayWeek = request.form.getlist('diaSem')
 				dayWeek = dayWeek[0]
 				timeCut = request.form['hora']
 				timeAutoCut = dayWeek + '|' + timeCut
-				class_db.registroProxCorteAuto("")
+				classdb.registroProxCorteAuto("")
 			if typeLapse == 'cadaMes':
 				dayMonth = request.form.getlist('diaMes')
 				dayMonth = dayMonth[0]
 				timeCut = request.form['hora']
 				timeAutoCut = dayMonth + '|' + timeCut
-				class_db.registroProxCorteAuto("")
+				classdb.registroProxCorteAuto("")
 			if typeLapse == 'cadaDetHora':
 				timeAutoCut = request.form['hora']
 				nextCut = libgral.generarProximoCorte(timeAutoCut)
-				class_db.registroProxCorteAuto(nextCut)
+				classdb.registroProxCorteAuto(nextCut)
 
 			bandera = "configuracionExitosa"
-			class_db.cambiarTipoCorte('1')
-			class_db.tipoTiempoAutomatico(typeLapse)
-			class_db.tiempoCorteAuto(timeAutoCut)
+			classdb.cambiarTipoCorte('1')
+			classdb.tipoTiempoAutomatico(typeLapse)
+			classdb.tiempoCorteAuto(timeAutoCut)
 			dicTurno = valuesAutomaticShift()
+			typeCut = classdb.tipoCorte()
 			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno=dicTurno)
 
 		if option == "corte":
-			class_db.activarCorteTurno()
+			classdb.activarCorteTurno()
 			time.sleep(2)  # Espera a que el corte de turno se ejecute
 			bandera = "corteExitoso"
-
+			return render_template('corteDeTurno.html', bandera="corteturno", tipoCorte=typeCut, dicTurno=dicTurno)
 		return render_template('corteDeTurno.html', bandera=bandera)
 
 def valuesAutomaticShift():
-	banderaTiempo = class_db.consultarTipoTiempo()
+	banderaTiempo = classdb.consultarTipoTiempo()
 	dicTurno = {}
 	dicTurno['tipoTiempo'] = banderaTiempo
 	if banderaTiempo == "cadaDia":
-		horaCorte = class_db.consultarTiempo()
+		horaCorte = classdb.consultarTiempo()
 		dicTurno['automaticoHora'] = horaCorte
 		dicTurno['automaticoDia'] = ""
 		dicTurno['tipoTiempo'] = "Diario"
 	if banderaTiempo == "cadaSemana":
-		diaHora = class_db.consultarTiempo()
+		diaHora = classdb.consultarTiempo()
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]
 		dicTurno['tipoTiempo'] = "Semanal"
 	if banderaTiempo == "cadaMes":
-		diaHora = class_db.consultarTiempo()
+		diaHora = classdb.consultarTiempo()
 		diaHora = diaHora.split('|')
 		dicTurno['automaticoDia'] = diaHora[0]
 		dicTurno['automaticoHora']= diaHora[1]

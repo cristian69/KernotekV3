@@ -3,7 +3,7 @@ from flask import request, session
 from flaskext.mysql import MySQL
 
 import flask
-import class_db
+import classdb
 import datetime
 import os
 
@@ -19,7 +19,7 @@ class Login(flask.views.MethodView):
         if request.method == 'POST':
             usuario = request.form['username']
             password = request.form['password']
-            data = class_db.validar_usuario(usuario, password)
+            data = classdb.validar_usuario(usuario, password)
             if data is None:
                 session.clear()
                 return flask.render_template('login.html', bandera="UsuarioInvalido")
@@ -28,7 +28,7 @@ class Login(flask.views.MethodView):
                 session['username'] = usuario
                 session['typeuser'] = typeuser
                 session['startsession'] = str(datetime.datetime.today())
-                session['fullname'] = class_db.nombre_completo_usuario(usuario)
+                session['fullname'] = classdb.nombre_completo_usuario(usuario)
                 carpetaPersonal = "/var/www/kernotekv3/static/download/"+session['username']+"/"
                 if not os.path.exists(carpetaPersonal):
                     os.makedirs(carpetaPersonal)

@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 # from xhtml2pdf import pisa
-import class_db
+import classdb
 import datetime
 from flask import session
 from weasyprint import HTML

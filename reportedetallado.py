@@ -2,7 +2,7 @@
 __author__ = 'aramirez'
 import flask
 from flask import render_template, redirect, session, request
-import class_db
+import classdb
 import excel
 
 

@@ -3,15 +3,15 @@ __author__ = 'aramirez'
 
 import flask
 from flask import render_template, redirect, url_for, session, request
-import class_db
+import classdb
 from libgral import numeracion_paginas, ObtenerFecha, revisarProceso, obtenerDia, obtenerNombreDia, nombreMes, nombreDias
 import logger
 import time 
 import datetime 
 from calendar import monthrange
 from datetime import date, timedelta
-from reporteTurno import turnosDisponibles
-from reporte_general import tablaReporte
+from reporteturno import turnosDisponibles
+from reportegeneral import tablaReporte
 
 
 REPORT = "reporte"
@@ -76,7 +76,7 @@ class Home(flask.views.MethodView):
                 return render_template('reportesTurno.html', htmlTurnos=codeShifts, tablaFechas=tablaFechas, excel=False, PDF=False)
 
             if typeReport == DATES_REPORT:
-                sells = class_db.reporte_general(startDate, endDate)
+                sells = classdb.reporte_general(startDate, endDate)
                 tableHTML, codeOperations = tablaReporte(sells,startDate, endDate, "False", "False", "False")
 
                 if len(tableHTML) == 66:
@@ -87,7 +87,7 @@ class Home(flask.views.MethodView):
         if operation == CHANGE_RATE:
             if stateC and statePython:
                 newRate = request.form['nuevaTarifa']
-                class_db.cambiarTarifa(newRate)
+                classdb.cambiarTarifa(newRate)
                 flag = "tarifaExitosa"
             else:
                 flag = "error"
@@ -95,7 +95,7 @@ class Home(flask.views.MethodView):
         if operation == CHANGE_TIME_OPEN:
             if stateC and statePython:
                 newTime = request.form['nuevoTiempo']
-                class_db.cambiarTiempoApertura(newTime)
+                classdb.cambiarTiempoApertura(newTime)
                 flag = "tiempoExitoso"
             else:
                 flag = "error"
@@ -109,7 +109,7 @@ class Home(flask.views.MethodView):
         #         flag = "error"
 
         if operation == "cambiarManual":
-            class_db.cambiarTipoCorte('0')
+            classdb.cambiarTipoCorte('0')
             flag = "cambioExitoso"
         
         if operation == "modalTurno":
@@ -132,8 +132,8 @@ class Home(flask.views.MethodView):
                 #     flag = "error"
                 #     
             if modalOperation == '4':
-                class_db.activarCorteTurno()
-                time.sleep(2)   
+                classdb.activarCorteTurno()
+                time.sleep(4)   
                 # if stateC and statePython:
                 #     class_db.activarCorteTurno()
                 #     time.sleep(2)  # Espera a que el corte de turno se ejecute
@@ -146,28 +146,28 @@ class Home(flask.views.MethodView):
                 typeLapse = typeLapse[0]
                 if typeLapse == "cadaDia":
                     timeAutoCut = request.form['hora']
-                    class_db.registroProxCorteAuto("")
+                    classdb.registroProxCorteAuto("")
                 if typeLapse == "cadaSemana":
                     dayWeek = request.form.getlist('diaSem')
                     dayWeek = dayWeek[0]
                     timeCut = request.form['hora']
                     timeAutoCut = dayWeek + '|' + timeCut
-                    class_db.registroProxCorteAuto("")
+                    classdb.registroProxCorteAuto("")
                 if typeLapse == 'cadaMes':
                     dayMonth = request.form.getlist('diaMes')
                     dayMonth = dayMonth[0]
                     timeCut = request.form['hora']
                     timeAutoCut = dayMonth + '|' + timeCut
-                    class_db.registroProxCorteAuto("")
+                    classdb.registroProxCorteAuto("")
                 # if typeLapse == 'cadaDetHora':
                 #     timeAutoCut = request.form['hora']
                 #     nextCut = libgral.generarProximoCorte(timeAutoCut)
                 #     class_db.registroProxCorteAuto(nextCut)
 
                 flag = "configuracionExitosa"
-                class_db.cambiarTipoCorte('1')
-                class_db.tipoTiempoAutomatico(typeLapse)
-                class_db.tiempoCorteAuto(timeAutoCut)   
+                classdb.cambiarTipoCorte('1')
+                classdb.tipoTiempoAutomatico(typeLapse)
+                classdb.tiempoCorteAuto(timeAutoCut)   
 
             
 
@@ -195,7 +195,7 @@ def inicioSemana(year, numSemana):
 
 
 def graficaMes():
-    datos = class_db.ventasMes()
+    datos = classdb.ventasMes()
     mesActual = datetime.date.today()
     mesActual = mesActual.strftime('%m')
     mesActual = int(mesActual)
@@ -231,7 +231,7 @@ def graficaSemana():
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
     listaSemanas = []
     listaVentas = []
-    datos = class_db.ventasSemana()
+    datos = classdb.ventasSemana()
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
 
     listaPibote = []
@@ -257,7 +257,7 @@ def graficaSemana():
     return semanas, ventas
 
 def graficaDia():
-    datos = class_db.ventasDia()
+    datos = classdb.ventasDia()
     fecha = str(ObtenerFecha()).split('-')
     year = int(fecha[0])
     mes = int(fecha[1])
@@ -307,10 +307,10 @@ def graficaDia():
 def datos_home():
  
     dic_home = {
-                't_apertura': int(class_db.tiempo_apertura()), 
-                'tarifa': class_db.tarifa(),
-                'turno': int(class_db.turnoActual()),
-                'tipoCorte': str(class_db.tipoCorte()),
+                't_apertura': int(classdb.tiempo_apertura()), 
+                'tarifa': classdb.tarifa(),
+                'turno': int(classdb.turnoActual()),
+                'tipoCorte': str(classdb.tipoCorte()),
                 'valoresMes':'',
                 'meses': '',
                 'valoresSemana': '',
@@ -322,8 +322,8 @@ def datos_home():
                 'acumuladoTurno': "",
                 'ventasTurno': "",
                 'etiqueta':" Hrs.",
-                'ultimoTurno': str(class_db.ultimoTurno()),
-                'cerradura': class_db.consultarCerradura()
+                'ultimoTurno': str(classdb.ultimoTurno()),
+                'cerradura': classdb.consultarCerradura()
                 }
 
     if dic_home['ultimoTurno'] != "":
@@ -333,11 +333,11 @@ def datos_home():
         dateShift = date + " " +dateShift[1] + ' hrs.'
         dic_home['ultimoTurno'] = dateShift
 
-    datosTurno = class_db.datosTurnoActual()
+    datosTurno = classdb.datosTurnoActual()
     numTurno = datosTurno[0]
 
-    dic_home['acumuladoTurno'] = class_db.acumuladoTurno(str(numTurno))
-    dic_home['ventasTurno'] = class_db.ventasTurno(str(numTurno))
+    dic_home['acumuladoTurno'] = classdb.acumuladoTurno(str(numTurno))
+    dic_home['ventasTurno'] = classdb.ventasTurno(str(numTurno))
     dic_home['meses'], dic_home['valoresMes'] = graficaMes()
     dic_home['semanas'], dic_home['valoresSemana'] = graficaSemana()
     dic_home['dias'], dic_home['valoresDia'] = graficaDia()
@@ -356,21 +356,21 @@ def datos_home():
         dic_home['socketC'] = "Desactivo"
 
     if dic_home['tipoCorte'] == 'automatico':
-        banderaTiempo = class_db.consultarTipoTiempo()
+        banderaTiempo = classdb.consultarTipoTiempo()
         dic_home['tipoTiempo'] = banderaTiempo
         if banderaTiempo == "cadaDia":
-            horaCorte = class_db.consultarTiempo()
+            horaCorte = classdb.consultarTiempo()
             dic_home['automaticoHora'] = horaCorte
             dic_home['automaticoDia'] = ""
             dic_home['tipoTiempo'] = "Diario"
         if banderaTiempo == "cadaSemana":
-            diaHora = class_db.consultarTiempo()
+            diaHora = classdb.consultarTiempo()
             diaHora = diaHora.split('|')
             dic_home['automaticoDia'] = diaHora[0]
             dic_home['automaticoHora']= diaHora[1] 
             dic_home['tipoTiempo'] = "Semanal"
         if banderaTiempo == "cadaMes":
-            diaHora = class_db.consultarTiempo()
+            diaHora = classdb.consultarTiempo()
             diaHora = diaHora.split('|')
             dic_home['automaticoDia'] = diaHora[0]
             dic_home['automaticoHora']= diaHora[1]

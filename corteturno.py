@@ -4,7 +4,7 @@ __autor__ = 'aramirez'
 
 import flask
 from flask import render_template, redirect, session, url_for, request
-import class_db
+import classdb
 import time
 import libgral
 

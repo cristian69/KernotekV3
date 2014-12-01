@@ -2,11 +2,11 @@
 __author__ = 'aramirez'
 import flask
 from flask import render_template, redirect, session, request, url_for
-import class_db
+import classdb
 from libgral import generar_tabla, numeracion_paginas
 import excel
 import pdf
-from reporte_especifico import cod_tabla
+from reporteespecifico import cod_tabla
 
 
 class reporteTurno(flask.views.MethodView):
@@ -26,7 +26,7 @@ class reporteTurno(flask.views.MethodView):
             numTurno = request.form['turnoSeleccionado']
             fechaInicioTurno = request.form['fechaInicial']
             fechaFinTurno = request.form['fechaFinal']
-            registrosTurno = class_db.reporteTurnoPaginacion(numTurno, 0)
+            registrosTurno = classdb.reporteTurnoPaginacion(numTurno, 0)
             htmlTabla, codeOpertations = tablaReporte(registrosTurno, numTurno, fechaInicioTurno, fechaFinTurno, "False", "False")
             if len(htmlTabla) == 89:
                 return render_template('reportesTurno.html', htmlTurnos=htmlTabla, tablaFechas=False, excel=False, PDF=False)
@@ -55,15 +55,15 @@ class reporteTurno(flask.views.MethodView):
             if index != 'None' and date1 != 'None' and date2 != 'None':
                 codepagination = paginacion(date1, date2, actualpage, index,
                                                        'reporte-turno', numShift, stateExcel, statePDF)
-                registrosTurno = class_db.reporteTurnoPaginacion(numShift, index)
+                registrosTurno = classdb.reporteTurnoPaginacion(numShift, index)
                 htmlTabla, codeOpertations = tablaReporte(registrosTurno, numShift, date1, date2, stateExcel, statePDF)
                 return render_template('reportesTurno.html', htmlTurnos=htmlTabla,
                                        indexHtml=codepagination, tablaFechas= True, excel=stateExcel)
 
 
             if typeReport == "excel":
-                sellShift = class_db.reporteTurno(numShift)
-                salespagination = class_db.reporteTurnoPaginacion(numShift, 0)
+                sellShift = classdb.reporteTurno(numShift)
+                salespagination = classdb.reporteTurnoPaginacion(numShift, 0)
                 excel.reporteTurno(sellShift, startDate, endDate, numShift)
                 tableHTML, codeOpertations = tablaReporte(salespagination, numShift, startDate, endDate, stateExcel="True", statePDF=statePDF)
                 stateExcel = "True"
@@ -82,7 +82,7 @@ class reporteTurno(flask.views.MethodView):
                                                             indexHtml=codepagination)
             
             elif typeReport == "PDF":
-                sellShift = class_db.reporteTurno(numShift)
+                sellShift = classdb.reporteTurno(numShift)
                 pdf.reporteTurno(sellShift, startDate, endDate, numShift)
                 tableHTML, codeOpertations = tablaReporte(sellShift, numShift, startDate, endDate, stateExcel=stateExcel, statePDF="True")
                 statePDF = "True"
@@ -103,7 +103,7 @@ class reporteTurno(flask.views.MethodView):
 
 
 def turnosDisponibles(startDate, endDate):
-    turnos = class_db.turnosDisponibles(startDate, endDate)
+    turnos = classdb.turnosDisponibles(startDate, endDate)
     htmlTurnos = ""
     if len(turnos) == 0:
         htmlTurnos += '<h1  style="line-height:1.1 !important;" align="center"><strong>No se encontraron turnos en esas fechas.</strong></h1>'
@@ -259,7 +259,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
             '&num_pagina='+ str(previousPage) +'">'\
             '<i class="fa fa-angle-left"></i></a></li>')
 
-    sales = int(class_db.total_registros(startDate, endDate, startRange))
+    sales = int(classdb.total_registros(startDate, endDate, startRange))
     restSales = sales
     countPage = 0
     startPage = actualPage
@@ -307,7 +307,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
     nextPage = actualPage + 1
     rangeNextPage = startRange + 50
 
-    salesNextPage = class_db.total_registros(startDate, endDate, startRange + 50)
+    salesNextPage = classdb.total_registros(startDate, endDate, startRange + 50)
 
     if salesNextPage == 0:
         codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
@@ -323,7 +323,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
                     '<i class="fa fa-angle-right"></i></a></li>')
     
     # Simbolo >>
-    salesNextBlock = class_db.total_registros(startDate, endDate, startRange + 500)
+    salesNextBlock = classdb.total_registros(startDate, endDate, startRange + 500)
     nextBlock = actualPage + 10
     rangeNextBlock = startRange + 500
     if salesNextBlock == 0:
