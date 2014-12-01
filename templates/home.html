@@ -230,7 +230,7 @@
                     <article class="modal-footer">
                       <button type="submit" class="btn blue hidden" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
                       <button type="button" class="btn blue btnAceptarCambioTarifa" onclick=" validarNumeros();">Aceptar</button>
-                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTarifa" onclick="cancelarTarifa();">Cancelar</button>
+                      <button type="button" class="btn btn-default hidden btnCancelarrCambioTarifa" onclick="cancelarTarifa();">Cancelar</button><!--data-dismiss="modal"-->
                     </article>
                   </form>
                 </article>
@@ -378,7 +378,16 @@
                                   </article>
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn blue" type="button" id="btnConfigurar">Configurar</button>
-                                    <button class="btn blue" type="submit" name="btnCorte" value="btnCorte" id="btnCorte">Corte</button>
+                                    <button class="btn blue" type="button" id="btnCorte">Corte</button>
+                                  </article>
+                                </article>
+                              </article>  
+                            </article>
+                            <article class="tab-pane" id="Turno2b">
+                              <article class="row">
+                                <article class="col-md-12 group-form">
+                                  <article class="col-md-12 text-center">
+                                    <h4>¿Seguro que deseas realizar el corte de turno?</h4>
                                   </article>
                                 </article>
                               </article>  
@@ -614,8 +623,8 @@
                                 </article>
                                 <article class="row">
                                   <article class="details text-left col-md-8 ">
-                                    <article class="number"><strong>automatico</strong></article>
-                                    <article class="detalles">semanal domingo 23:59:59</article>
+                                    <article class="number"><strong>{{dic_home['tipoCorte']}}</strong></article>
+                                    <article class="detalles">{{dic_home['automaticoDia']}} {{dic_home['automaticoHora']}}</article>
                                   </article>
                                   <article class="col-md-4  visual conent"><i class="fa fa-calendar"></i>
                                   </article>
