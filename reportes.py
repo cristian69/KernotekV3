@@ -24,6 +24,7 @@ class Reportes(flask.views.MethodView):
 			excelGeneral = request.args.get("excelGeneral")
 			excelEspecifico = request.args.get("excelEspecifico")
 			excelDetallado = request.args.get("excelDetallado")
+			print excelGeneral, excelEspecifico, excelDetallado
 
 			if typeReport == "detallado":
 				sellsReport = class_db.reportDetallado(startDate, endDate)
@@ -36,7 +37,7 @@ class Reportes(flask.views.MethodView):
 					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico=excelEspecifico)
 
 			if typeReport == "especifico":
-				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
+				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes', excelDetallado , excelGeneral, excelEspecifico)
 				if len(indexHTML) == 589:
 					indexHTML = ""
 				tableHTML, codeOperations = cod_tabla(startDate, endDate, 0, excelDetallado, excelGeneral, excelEspecifico)
@@ -45,13 +46,14 @@ class Reportes(flask.views.MethodView):
 					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico=excelEspecifico)
 			
 			if typeReport == "generarEspecifico":
+				excelEspecifico = "True"
 				sellsReport = class_db.reporte_especifico(startDate, endDate)
 				objExcel.export_excel(sellsReport, startDate, endDate)
-				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes')
+				indexHTML = numeracion_paginas(startDate, endDate, 1, 0, 'reportes', excelDetallado , excelGeneral, excelEspecifico)
 				tableHTML, codeOperations = cod_tabla(startDate, endDate, 0, excelDetallado, excelGeneral, "True")
 				return render_template('reporteFechas.html', indexHTML=indexHTML, 
 					tableHTML=tableHTML, tablaFechas=flagTableDate, excel=True, detallado=False, reporte="Específico", acciones=codeOperations,
-					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico="True")
+					excelDetallado=excelDetallado, excelGeneral=excelGeneral, excelEspecifico=excelEspecifico)
 
 			if typeReport == "general":
 				sells = class_db.reporte_general(startDate, endDate)
@@ -69,11 +71,11 @@ class Reportes(flask.views.MethodView):
 					excelDetallado=excelDetallado, excelGeneral="True", excelEspecifico=excelEspecifico)
 			
 			if index != 'None' and startDate != 'None' and endDate != 'None':
-				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes')
+				indexHTML = numeracion_paginas(startDate, endDate, actualPage, index,'reportes',excelDetallado, excelGeneral, excelEspecifico)
 				if len(indexHTML) == 589:
 					indexHTML = ""
-				tableHTML = cod_tabla(startDate, endDate, index, excelDetallado, excelGeneral, excelEspecifico)
-				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate)
+				tableHTML, codeOperations = cod_tabla(startDate, endDate, index, excelDetallado, excelGeneral, excelEspecifico)
+				return render_template('reporteFechas.html', indexHTML=indexHTML, tableHTML=tableHTML, tablaFechas=flagTableDate, excelDetallado=excelDetallado, excelGeneral=excelGeneral,excelEspecifico=excelEspecifico)
 
 			else:
 				flagTableDate = False

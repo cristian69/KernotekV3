@@ -270,17 +270,15 @@ def tabla_usuarios(indice, modal):
     return tabla
 
 
-def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN
+def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion, excelDetallado, excelGeneral, excelEspecifico):  # REGRESA EL CÓDIGO HTML DE LA PAGINACIÓN
     startDate = fecha_inicio
     endDate = fecha_fin
     actualPage = int(pag_activa)
     startRange = int(indice)
     link = direccion
     codeIndex = ""
-
     codeIndex = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
     codeIndex += str('<ul class="pagination">')
-
     # Simbolo <<
     if actualPage == 1:
         codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
@@ -298,6 +296,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
             'indice=' + str(rangePreviousBlock) +\
             '&fecha1=' + startDate + \
             '&fecha2='  + endDate + \
+            '&excelDetallado='+ excelDetallado + \
+            '&excelEspecifico='+ excelEspecifico + \
+            '&excelGeneral=' + excelGeneral + \
             '&num_pagina=' + str(pagePreviousBlock) + '">'\
             '<i class="fa fa-angle-double-left"></i></a></li>') 
 
@@ -311,6 +312,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
             'indice='+ str(rengePreviousPage) + \
             '&fecha1='+ startDate + \
             '&fecha2='+ endDate + \
+            '&excelDetallado='+ excelDetallado +\
+            '&excelEspecifico='+ excelEspecifico +\
+            '&excelGeneral=' + excelGeneral +\
             '&num_pagina='+ str(previousPage) +'">'\
             '<i class="fa fa-angle-left"></i></a></li>')
 
@@ -331,6 +335,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
                     'indice='+ str(rangePage) + \
                     '&fecha1='+ startDate + \
                     '&fecha2='+ endDate + \
+                    '&excelDetallado='+ excelDetallado +\
+                    '&excelEspecifico='+ excelEspecifico +\
+                    '&excelGeneral=' + excelGeneral +\
                     '&num_pagina='+ str(startPage) + '">'\
                     +str(startPage)+
                     '</a></li>')
@@ -348,6 +355,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
                     'indice='+ str(rangePage) + \
                     '&fecha1='+ startDate + \
                     '&fecha2='+ endDate + \
+                    '&excelDetallado='+ excelDetallado +\
+                    '&excelEspecifico='+ excelEspecifico +\
+                    '&excelGeneral=' + excelGeneral +\
                     '&num_pagina='+ str(startPage) + '">'\
                     +str(startPage)+
                     '</a></li>')
@@ -365,6 +375,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
                     'indice='+str(rangeNextPage)+\
                     '&fecha1=' + startDate +\
                     '&fecha2=' + endDate +\
+                    '&excelDetallado='+ excelDetallado +\
+                    '&excelEspecifico='+ excelEspecifico +\
+                    '&excelGeneral=' + excelGeneral +\
                     '&num_pagina=' + str(nextPage) + '">'
                     '<i class="fa fa-angle-right"></i></a></li>')
     
@@ -379,6 +392,9 @@ def numeracion_paginas(fecha_inicio, fecha_fin, pag_activa, indice, direccion): 
                     'indice='+ str(rangeNextBlock)+\
                     '&fecha1=' + startDate +\
                     '&fecha2=' + endDate +\
+                    '&excelDetallado='+ excelDetallado +\
+                    '&excelEspecifico='+ excelEspecifico +\
+                    '&excelGeneral=' + excelGeneral +\
                     '&num_pagina=' + str(nextBlock) +'">'\
                     '<i class="fa fa-angle-double-right"></i></a></li>')
     return codeIndex
