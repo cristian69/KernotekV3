@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from itertools import count
 
 __author__ = 'aramirez'
 import class_db
@@ -26,7 +25,7 @@ def export_excel(data, date_start, date_end):
    
     columns = class_db.columnas_habilitadas()
 
-    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte Específico.xlsx"
+    rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte de Ventas.xlsx"
 
     book = xlsxwriter.Workbook(rute_and_name)
 
@@ -69,9 +68,9 @@ def export_excel(data, date_start, date_end):
     sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
-    sheet.merge_range('A4:C4', 'ICT Consulting', string_format)
+    sheet.merge_range('A4:C4', 'KERNOTEK', string_format)
     sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
-    sheet.merge_range('B6:F6', 'Reporte especifico', string_format)
+    sheet.merge_range('B6:F6', 'Reporte específico', string_format)
     sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
 
 
@@ -104,7 +103,7 @@ def export_excel(data, date_start, date_end):
                  'datetimesell': 'Fecha',
                  'no_detalle': 'Número de Detalle',
                  'rate': 'Tarifa',
-                 'deposit': 'Deposito'}
+                 'deposit': 'Depósito'}
 
     headers = []
     format_columns = []
@@ -196,7 +195,7 @@ def reporteGeneral(data, date_start, date_end):
     sheet.insert_image('A1', 'static/img/reporte.png', {'x_scale': 0.5, 'y_scale': 0.5})
 
     # DATOS DE LA HOJA
-    sheet.merge_range('A4:C4', 'SERVICIO SECA S.A DE C.V', string_format)
+    sheet.merge_range('A4:C4', 'KERNOTEK', string_format)
     sheet.merge_range('E4:F4', 'Fecha: ' + str(dateReport), string_format)
     sheet.merge_range('B6:F6', 'REPORTE GENERAL.', string_format)
     sheet.merge_range('B8:F8', 'Del ' + startDateReport + ' hrs. AL ' + endDateReport + ' hrs.', string_format)
@@ -267,7 +266,7 @@ def reporteDetallado(data, date_start, date_end):
     dateReport = datetime.date.today()
     dateReport = str(dateReport).split('-')
     dateReport = dateReport[2] +'/'+ dateReport[1] +'/'+ dateReport[0] 
-    columns = ['Ticket', 'Turno', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
+    columns = ['Ticket', 'Turno', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Depósito']
 
     rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte Detallado.xlsx"
 
@@ -334,7 +333,7 @@ def reporteDetallado(data, date_start, date_end):
                     'Tarifa': {'format': cash_format},
                     'Multiplicador': {'format': num_format},
                     'Total': {'format': cash_format},
-                    'Deposito': {'format': cash_format}}
+                    'Depósito': {'format': cash_format}}
 
     headers = []
     format_columns = []
@@ -498,7 +497,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
     total_registros = 10
     date_report = datetime.date.today()
 
-    columns = ['Ticket', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Deposito']
+    columns = ['Ticket', 'Fecha', 'Tarifa', 'Multiplicador', 'Total', 'Depósito']
 
     rute_and_name = "/var/www/kernotekv3/static/download/" + session['username'] + "/Reporte por turno.xlsx"
 
@@ -546,7 +545,7 @@ def reporteTurno(data, date_start, date_end, numTurno):
     # DATOS DE LA HOJA
     sheet.merge_range('C4:D4', 'SERVICIO SECA S.A DE C.V', string_format)
     sheet.merge_range('G4:H4', 'Fecha: ' + str(dateReport), string_format)
-    sheet.merge_range('C6:H6', 'REPORTE DEL TURNO NÚMERO '+str(numTurno)+'', string_format)
+    sheet.merge_range('C6:H6', 'REPORTE DEL TURNO NUMERO '+str(numTurno)+'', string_format)
     sheet.merge_range('C8:H8', 'Del ' + startDateReport + ' hrs. AL  ' + endDateReport + ' hrs.', string_format)
 
 
