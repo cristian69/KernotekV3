@@ -266,8 +266,16 @@ def graficaDia():
     listaDias = []
     listaVentas = []
     listaPibote = []
-
+    diasmes = 0
     for dia in range(7):
+	diapibote = diaActual - dia
+	print dia
+	if diapibote == 0:
+		mes = mes -1
+		diasmes = monthrange(year, mes)
+		diasmes = diasmes[1]
+		diaActual = diasmes
+	print diaActual
 	i = [diaActual - dia, 0]
 	listaPibote.append(i)
     
@@ -276,9 +284,10 @@ def graficaDia():
 	    if int(dia[0]) == int(x[0]):
 		dia[1] = int(x[1])
 
-    
+    print listaPibote  
     for dia in listaPibote:
 	d = datetime.datetime(year,mes, int(dia[0]))
+	print d
 	listaDias.append(str(d.strftime('%b')) +' '+  str(d.strftime('%d')))
 	listaVentas.append(float(dia[1]))
 
