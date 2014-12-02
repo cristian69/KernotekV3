@@ -63,6 +63,7 @@ def revisarProceso():
                         socketC = True
                     if valor2 == "server.py":
                         socketPython = True
+    print socketC, socketPython 
     return socketC, socketPython
 
 
