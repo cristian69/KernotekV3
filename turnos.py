@@ -24,6 +24,7 @@ class Turnos(flask.views.MethodView):
 		typeCut = classdb.tipoCorte()
 		option = request.form['submit']
 		dicTurno = valuesAutomaticShift()
+		bandera = ""
 		if option == "cortemanual":
 			classdb.cambiarTipoCorte('0')
 			typeCut = classdb.tipoCorte()
