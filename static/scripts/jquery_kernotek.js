@@ -1,7 +1,9 @@
 $('#modalTarifa').on('shown.bs.modal', function () {
+    $('#nuevaTarifa').val("");
     $('#nuevaTarifa').focus();
 })
 $('#modalAcceso').on('shown.bs.modal', function () {
+    $('#nuevoTiempo').val("");
     $('#nuevoTiempo').focus();
 })
 

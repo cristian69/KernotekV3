@@ -103,8 +103,8 @@
                                     <button class="btn blue" type="button"id="btnCambiarCorte">Cambiar</button>
                                   </article>
                                   <article class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <button class="btn blue" type="button" id="btnConfigurar">Configurar</button>
-                                    <button class="btn blue" type="button" id="btnCorte">Corte</button>
+                                    <button class="btn blue hidden" type="button" id="btnConfigurar">Configurar</button>
+                                    <button class="btn blue hidden" type="button" id="btnCorte">Corte</button>
                                   </article>
                                 </article>
                               </article>  
@@ -137,8 +137,8 @@
                                       <option value="cadaMes">Mensual</option>
                                     </select>
                                   </article>
-                                  <article class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-group group-form text-right">
-                                    <article class="col-lg-6 col-md-6  col-sm-6 col-xs-6 contenedorFecha text-center">
+                                  <article class="col-lg-8 col-md-8 col-sm-8 col-xs-8 form-group group-form">
+                                    <article class="col-lg-6 col-md-6  col-sm-6 col-xs-6 contenedorFecha hidden">
                                       <select class="form-control hidden" name="diaSem" id="semana" >
                                         <option value="Lunes">Lunes</option>
                                         <option value="Martes">Martes</option>
@@ -214,13 +214,13 @@
                       </article>
                     </article>
                   <article class="form-actions text-right  footerCorteTurno hidden">
-                   <ul class="pager" id="">
-                    <input type="text" class="control-form" id="valorPestaña" value="1">
-                    <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
-                    <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="corte"></i>Aceptar</button></li>
-                    <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Regresar</button></li>
-                    <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="corteautomatico">Aceptar</button></li>
-                  </ul>
+                    <article class="text-right">
+                      <input type="text" class="control-form hidden" id="valorPestaña" value="1">
+                    <button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="corte"></i>Aceptar</button>
+                    <button type="button" class="btn hidden" id="anteriorCorte">Regresar</button>
+                    <button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="corteautomatico">Aceptar</button>
+                    <button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button>
+                    </article>
                   </article>
                 </form>
                 </article>

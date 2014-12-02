@@ -181,9 +181,11 @@ function tablasReportes(parametro){
 function corteValores(parametro){
 	if(parametro=='Manual'){
 		$('#btnConfigurar').addClass("hidden");
+		$("#btnCorte").removeClass("hidden");
 	}
 	if(parametro=="Automático"){
-		$("#btnCorte").addClass("hidden")
+		$('#btnConfigurar').removeClass("hidden");
+		$("#btnCorte").addClass("hidden");
 	}
 }
 
@@ -393,18 +395,21 @@ $(".configuracionCortes").mouseover(function(){
 		document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").addClass("hidden");
+		$(".contenedorFecha").addClass("hidden");
 		$(".contenedorFecha").removeClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaSemana"){
 		document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno";
 		$("#semana").removeClass("hidden");
 		$("#mes").addClass("hidden");
+		$(".contenedorFecha").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 	if($("#Lapso").val()=="cadaMes"){
 		document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno";
 		$("#semana").addClass("hidden");
 		$("#mes").removeClass("hidden");
+		$(".contenedorFecha").removeClass("hidden");
 		$(".contenedorFecha").addClass("col-md-6");
 	}
 });

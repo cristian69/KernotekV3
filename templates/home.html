@@ -92,7 +92,7 @@
               </article>
               <article class="col-md-12 alert alert-info hidden" id="cambioExitoso">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <span>El se cambio de tipo de corte de turno realizó exitosamente</span>
+                <span>El cambio de tipo de corte de turno realizó exitosamente</span>
               </article>
               <article class="col-md-12 alert alert-info hidden" id="configuracionExitosa">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -173,11 +173,11 @@
                       </article>
                     </article>
                     <article class="modal-footer hidden footerModalReporte">
-                      <ul class="pager" id="btnReportes">
+                      <article class="text-right" id="btnReportes">
                         <input class="hidden"type="text" id="inpTipoReporte" value="" name="inpTipoReporte">
-                        <li><button type="button" class="btn" id="regresarReporte" name="regresarReporte"><i class="fa fa-angle-double-left"></i>Regresar</button></li>
-                        <li><button type="submit" class="btn blue" id="aceptarReporte" name="submit" value="reporte">Aceptar</button></li>
-                      </ul>
+                        <button type="button" class="btn" id="regresarReporte" name="regresarReporte"></i>Regresar</button>
+                        <button type="submit" class="btn blue" id="aceptarReporte" name="submit" value="reporte">Aceptar</button>
+                      </article>
                     </article>
                   </form>
                 </article>
@@ -222,7 +222,7 @@
                         </article>
                       </article>
                     </article>
-                    <article class="modal-footer">
+                    <article class="modal-footer text-right">
                       <button type="submit" class="btn blue hidden" name="submit" id="aceptarCambioTarifa" value="tarifa">Aceptar</button>
                       <button type="button" class="btn blue btnAceptarCambioTarifa" onclick=" validarNumeros();">Aceptar</button>
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button><!--data-dismiss="modal"-->
@@ -270,7 +270,7 @@
                         </article>
                       </article>
                     </article>
-                    <article class="modal-footer">
+                    <article class="modal-footer text-right">
                       <button type="submit" class="btn blue hidden" id="aceptarCambioTiempo" name="submit" value="tiempoApertura">Aceptar</button>
                       <button type="button" class="btn blue btnAceptarCambioTiempo" onclick="validarApertura();">Aceptar</button>
                       <button type="button" class="btn btn-default  btnCancelarrCambioTiempo" data-dismiss="modal">Cancelar</button>
@@ -332,9 +332,9 @@
                       </article>
                     </article>
                     <article class="modal-footer">
-                      <ul class="pager" id="btnReporteTurno">
-                        <li><button type="submit" class="btn blue " id="reporteTurnoAceptar" value="reporteTurno" name="submit">Aceptar</button></li>
-                      </ul>
+                      <article class="text-right" id="btnReporteTurno">
+                        <button type="submit" class="btn blue " id="reporteTurnoAceptar" value="reporteTurno" name="submit">Aceptar</button>
+                      </article>
                     </article>
                   </form>
                 </article>
@@ -378,6 +378,15 @@
                                 <article class="col-md-12 group-form">
                                   <article class="col-md-12 text-center">
                                     <h4>¿Seguro que deseas realizar el corte de turno?</h4>
+                                  </article>
+                                </article>
+                              </article>  
+                            </article>
+                            <article class="tab-pane" id="Turno2c">
+                              <article class="row">
+                                <article class="col-md-12 group-form">
+                                  <article class="col-md-12 text-center">
+                                    <h4>¿Seguro que deseas cambiar el tipo de corte de turno?</h4>
                                   </article>
                                 </article>
                               </article>  
@@ -477,15 +486,13 @@
                         </article>
                       </article>
                     </article>
-                    <article class="modal-footer footerCorteTurno hidden">
-                      <ul class="pager" id="">
-                        <input type="text" class="control-form hidden" id="accion" value="" name="accion">
-                        <input type="text" class="control-form hidden" id="valorPestaña" value="1" name="seleccionarAccion">
-                        <li><button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button></li>
-                        <li><button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="modalTurno"></i>Aceptar</button></li>
-                        <li><button type="button" class="btn hidden" id="anteriorCorte"><i class="fa fa-angle-double-left"></i>Regresar</button></li>
-                        <li><button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button></li>
-                      </ul>
+                    <article class="modal-footer footerCorteTurno hidden text-right">
+                      <input type="text" class="control-form hidden" id="accion" value="" name="accion">
+                      <input type="text" class="control-form hidden" id="valorPestaña" value="1" name="seleccionarAccion">
+                      <button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="modalTurno">Aceptar</button>
+                      <button type="button" class="btn hidden" id="anteriorCorte">Regresar</button>
+                      <button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button>
+                      <button type="button" class="btn hidden" id="CancelarCorte">Cancelar</button>
                     </article>
                   </form>
                 </article>
