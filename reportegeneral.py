@@ -64,35 +64,34 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
                      """
     codigoTabla = """
                     <article class="portlet light bordered">
-            <article class="portlet-title">
-              <article class="caption">
-                <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
-              </article>
-              <article class="actions">
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkgeneral" onclick="loading();"><i class="fa fa-file-excel-o"></i> General </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkdetallado" onclick="loading();"><i class="fa fa-file-excel-o"></i> Detallado </a>
-                <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="descargargeneral"><i class="fa fa-download"></i>  General </a>
-                <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="descargarespecifico"><i class="fa fa-download"></i>  Específico </a>
-                <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="descargardetallado"><i class="fa fa-download"></i>  Detallado </a>
-                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkespecifico"><i class="fa fa-arrow-right"></i> Específico </a>
-              </article>
-              </article>
-            </article>
-            <article class="portlet-body">
-              <table class="table table-responsive table-condensed">
-                <thead class="flip-content text-center">
-                  <tr style='border-bottom:1px solid #E1E1E1;'>
-                    <th class="text-center">
-                       Tarifa
-                    </th>
-                    <th class="text-center">
-                       Número de Ventas
-                    </th>
-                    <th class="text-center">
-                       Total
-                    </th>
-                  </tr>
-                </thead>
+                        <article class="portlet-title">
+                            <article class="caption">
+                                <i class="fa fa-bar-chart-o"></i> De """+startDateReport+""" hrs. a """+endDateReport+""" hrs.
+                            </article>
+                            <article class="actions">
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=generarGeneral&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkgeneral" onclick="loading();"><i class="fa fa-file-excel-o"></i> General </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=detallado&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkdetallado" onclick="loading();"><i class="fa fa-file-excel-o"></i> Detallado </a>
+                                <a href=" """+linkExcelGeneral+""" " class=" hidden btn blue-sunglo" id="descargargeneral"><i class="fa fa-download"></i>  General </a>
+                                <a href=" """+linkExcelEspecifico+""" " class=" hidden btn blue-sunglo" id="descargarespecifico"><i class="fa fa-download"></i>  Específico </a>
+                                <a href=" """+linkDetallado+""" " class=" hidden btn blue-sunglo" id="descargardetallado"><i class="fa fa-download"></i>  Detallado </a>
+                                <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkespecifico"><i class="fa fa-arrow-right"></i> Específico </a>
+                            </article>
+                        </article>
+                        <article class="portlet-body">
+                            <table class="table table-responsive table-condensed">
+                                <thead class="flip-content text-center">
+                                    <tr style='border-bottom:1px solid #E1E1E1;'>
+                                        <th class="text-center">
+                                            Tarifa
+                                        </th>
+                                        <th class="text-center">
+                                            Número de Ventas
+                                        </th>
+                                        <th class="text-center">
+                                            Total
+                                        </th>
+                                    </tr>
+                                </thead>
                     """
     codigoTabla += str('<tbody class="text-center">') # Inicio del contenido de la tabla
     codigoTabla += cuerpoTabla # Cuerpo de la tabla
