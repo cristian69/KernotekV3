@@ -197,7 +197,7 @@
                       <article class="form-wizard">
                         <article class="form-body">
                           <article class="row modCambiarTarifa">
-                            <article class="col-md-12">
+                            <article class="col-md-12 modalAlertas">
                               <article class=" hidden col-md-12 alert alert-danger " id="tarifaIncorrecta">
                                 <button type="button" class="close" onclick="alertasiOcultar('tarifaIncorrecta');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 El formato introducido es incorrecto
@@ -242,7 +242,7 @@
                   </article>
                   <form action="{{ url_for('home') }}" class="form-horizontal" method="post" onSubmit="javascript:return validarApertura()">
                     <article class="modal-body">
-                      <article class="col-md-12">
+                      <article class="col-md-12 modalAlertas">
                         <article class="alert alert-danger hidden" id="tiempoIncorrecto">
                           <button type="button" class="close" onclick="alertasiOcultar('tiempoIncorrecto');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                           <span>El formato del número ingresado es incorrecto</span>

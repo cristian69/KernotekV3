@@ -11,10 +11,17 @@
 
 .scrolbarr{
 }
+.modalAlertas{
+
+}
 @media (max-width: 992px) { 
   .alert{
   	margin-top:47px;
   	margin-bottom: -15px;
+  }
+  .modalAlertas .alert{
+  	margin-top: 0px;
+  	margin-bottom: 0px;
   }
 
 }
