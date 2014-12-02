@@ -27,6 +27,10 @@ class Turnos(flask.views.MethodView):
 		if option == "cortemanual":
 			classdb.cambiarTipoCorte('0')
 			typeCut = classdb.tipoCorte()
+			if typeCut == "manual":
+				typeCut = "Manual"
+			else:
+				typeCut = "Automático"
 			dicTurno = valuesAutomaticShift()
 			return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
 		if option == "corteautomatico":
@@ -58,6 +62,10 @@ class Turnos(flask.views.MethodView):
 			classdb.tiempoCorteAuto(timeAutoCut)
 			dicTurno = valuesAutomaticShift()
 			typeCut = classdb.tipoCorte()
+			if typeCut == "manual":
+				typeCut = "Manual"
+			else:
+				typeCut = "Automático"
 			return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno=dicTurno)
 
 		if option == "corte":
