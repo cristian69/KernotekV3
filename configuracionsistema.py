@@ -17,9 +17,9 @@ class Configuracion(flask.views.MethodView):
 			stateSystem = sistema()
 			socketC, socketPython = revisarProceso()
 			if socketC and socketPython:
-				botonSistema = True	
+				botonSystem = True	
 			else:
-				botonSistema = False
+				botonSystem = False
 			return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)
 
 		else:
