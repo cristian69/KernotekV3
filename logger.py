@@ -9,7 +9,7 @@ import threading
 import time
 
 
-__PATH__ = "/var/log/KERNOTEK"
+__PATH__ = "/var/log/kernotek"
 
 __FORMAT__ = '%(asctime)s| %(lineno)4s| %(message)-s'
 __DATE_FMT__ = '%y-%m-%d %H:%M:%S'
@@ -21,15 +21,15 @@ MAXLOGFILES = 2
 def cerradura(msg):
     if validatePath(__PATH__):
         __FORMAT__ = '%(asctime)s| %(message)-s'
-        logger = logging.getLogger('/var/log/KERNOTEK/cerradura.log')
+        logger = logging.getLogger('/var/log/kernotek/cerradura.log')
         logger.setLevel(logging.ERROR)
-        handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/cerradura.log', mode='a', maxBytes=LOGFILESIZE,
+        handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/cerradura.log', mode='a', maxBytes=LOGFILESIZE,
                                                        backupCount=MAXLOGFILES)
         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         logger.error(msg)
-	pathCerradura = '/var/log/KERNOTEK/cerradura.log'
+	pathCerradura = '/var/log/kernotek/cerradura.log'
 	try:
             hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args=( pathCerradura, ) )
             hilo.start()
@@ -39,15 +39,15 @@ def cerradura(msg):
 
 def error(msg):
     if validatePath(__PATH__):
-        logger = logging.getLogger('/var/log/KERNOTEK/error.log')
+        logger = logging.getLogger('/var/log/kernotek/error.log')
         logger.setLevel(logging.ERROR)
-        handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/error.log', mode='a', maxBytes=LOGFILESIZE,
+        handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/error.log', mode='a', maxBytes=LOGFILESIZE,
                                                        backupCount=MAXLOGFILES)
         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         logger.error(msg)
-	pathError = '/var/log/KERNOTEK/error.log'
+	pathError = '/var/log/kernotek/error.log'
 	try:
             hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args= (pathError, ) )
             hilo.start()
@@ -57,24 +57,24 @@ def error(msg):
 
 def warning(msg):
     if validatePath(__PATH__):
-        logger = logging.getLogger('/var/log/KERNOTEK/warning.log')
+        logger = logging.getLogger('/var/log/kernotek/warning.log')
         logger.setLevel(logging.WARNING)
-        handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/warning.log', mode='a', maxBytes=LOGFILESIZE,
+        handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/warning.log', mode='a', maxBytes=LOGFILESIZE,
                                                        backupCount=MAXLOGFILES)
         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         logger.error(msg)
-	pathWarning = '/var/log/KERNOTEK/warning.log'
+	pathWarning = '/var/log/kernotek/warning.log'
         hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args= ( pathWarning, ) )
         hilo.start()
 
 
 # def critical(msg):
 #     if validatePath(__PATH__):
-#         logger = logging.getLogger('/var/log/KERNOTEK/CRITICAL')
+#         logger = logging.getLogger('/var/log/kernotek/CRITICAL')
 #         logger.setLevel(logging.CRITICAL)
-#         handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/CRITICAL', mode='a', maxBytes=LOGFILESIZE,
+#         handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/CRITICAL', mode='a', maxBytes=LOGFILESIZE,
 #                                                        backupCount=MAXLOGFILES)
 #         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
 #         handler.setFormatter(formatter)
@@ -84,31 +84,31 @@ def warning(msg):
 
 def debug(msg):
     if validatePath(__PATH__):
-        logger = logging.getLogger('/var/log/KERNOTEK/debug.log')
+        logger = logging.getLogger('/var/log/kernotek/debug.log')
 	
         logger.setLevel(logging.DEBUG)
-        handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/debug.log', mode='a', maxBytes=LOGFILESIZE,
+        handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/debug.log', mode='a', maxBytes=LOGFILESIZE,
                                                        backupCount=MAXLOGFILES)
         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         logger.error(msg)
-	pathDebug = "/var/log/KERNOTEK/debug.log"
+	pathDebug = "/var/log/kernotek/debug.log"
         hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args= (pathDebug, ) )
         hilo.start()
 
 
 def seguridad(msg):
     if validatePath(__PATH__):
-        logger = logging.getLogger('/var/log/KERNOTEK/seguridad.log')
+        logger = logging.getLogger('/var/log/kernotek/seguridad.log')
         logger.setLevel(logging.WARNING)
-        handler = logging.handlers.RotatingFileHandler(filename='/var/log/KERNOTEK/seguridad.log', mode='a', maxBytes=LOGFILESIZE,
+        handler = logging.handlers.RotatingFileHandler(filename='/var/log/kernotek/seguridad.log', mode='a', maxBytes=LOGFILESIZE,
                                                        backupCount=MAXLOGFILES)
         formatter = logging.Formatter(__FORMAT__, __DATE_FMT__)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
         logger.error(msg)
-	pathSeguridad = '/var/log/KERNOTEK/seguridad.log'
+	pathSeguridad = '/var/log/kernotek/seguridad.log'
         hilo = threading.Thread(target=limpiarLog, name="Hilo_limpiar_log", args=( pathSeguridad, ) )
         hilo.start()
 
