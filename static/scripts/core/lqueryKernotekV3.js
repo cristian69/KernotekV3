@@ -284,6 +284,23 @@ $("#CancelarCorte").click(function(){
 	}
 });
 
+$("#cambiarManual").click(function(){
+	$("#Turno2c").addClass("active");
+	$("#Turno2a").removeClass("active");
+	$("#AceptarCorte").removeClass("hidden");
+	$("#anteriorCorte").addClass("hidden");
+	$("#CancelarCorte").removeClass("hidden");
+});
+
+$("#CancelarCorte").click(function(){
+	if($("#valorPestaña").val()==="2"){
+		$("#Turno2c").removeClass("active");
+		$("#Turno2a").addClass("active");
+		$("#AceptarCorte").addClass("hidden");
+		$("#anteriorCorte").removeClass("hidden");
+		$("#CancelarCorte").addClass("hidden");
+		}
+});
 
 $("#btnConfigurar").click(function(){
 	$("#turno2").addClass("active");
