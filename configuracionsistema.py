@@ -35,7 +35,7 @@ class Configuracion(flask.views.MethodView):
 			return redirect(url_for('login'))
 		time.sleep(1)	
 		stateSystem = sistema()
-		botonSystem = configsistema.estadoSistema()
+		botonSystem = revisarProceso()
 		return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)		
 
 

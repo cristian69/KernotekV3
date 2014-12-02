@@ -46,6 +46,7 @@ class Home(flask.views.MethodView):
             logger.seguridad('INTENTO DE BURLAR LA SEGURIDAD| IP RESPONSABLE: ' + ip)
             return redirect(url_for('login'))
 
+
     def post(self):
         if len(session) > 1:
             operation = request.form['submit']
@@ -225,6 +226,7 @@ def graficaMes():
     
     return meses, ventas
 
+
 def graficaSemana():
     year = datetime.date.today()
     year = int(year.strftime('%Y'))
@@ -256,6 +258,7 @@ def graficaSemana():
         semanas.append(listaSemanas[indice])
     
     return semanas, ventas
+
 
 def graficaDia():
     datos = classdb.ventasDia()
@@ -305,6 +308,7 @@ def graficaDia():
    
     return dias, ventas
 
+
 def datos_home():
  
     dic_home = {
@@ -323,8 +327,7 @@ def datos_home():
                 'acumuladoTurno': "",
                 'ventasTurno': "",
                 'etiqueta':" Hrs.",
-                'ultimoTurno': str(classdb.ultimoTurno()),
-                'cerradura': classdb.consultarCerradura()
+                'ultimoTurno': str(classdb.ultimoTurno())
                 }
 
     if dic_home['ultimoTurno'] != "":
