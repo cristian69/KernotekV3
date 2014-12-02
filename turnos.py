@@ -34,6 +34,7 @@ class Turnos(flask.views.MethodView):
 				typeCut = "Automático"
 			dicTurno = valuesAutomaticShift()
 			return render_template('corteDeTurno.html', bandera="cambioTipoCorte", tipoCorte=typeCut, dicTurno=dicTurno)
+
 		if option == "corteautomatico":
 			typeLapse = request.form.getlist('tipoLapso')
 			typeLapse = typeLapse[0]
@@ -78,7 +79,8 @@ class Turnos(flask.views.MethodView):
 			else:
 				bandera="error"
 				return render_template('corteDeTurno.html', bandera=bandera, tipoCorte=typeCut, dicTurno= dicTurno)
-		return render_template('corteDeTurno.html', bandera=bandera)
+		dicTurno = valuesAutomaticShift()
+		return render_template('corteDeTurno.html', bandera=bandera, dicTurno = dicTurno)
 
 def valuesAutomaticShift():
 	banderaTiempo = classdb.consultarTipoTiempo()
