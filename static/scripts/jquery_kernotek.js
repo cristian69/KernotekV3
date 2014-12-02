@@ -64,6 +64,7 @@ function llavesSistema(){
 
 
 function mostrarVentanas(parametro){
+	alert(parametro);
 	this.nombreVentana=parametro;
 	$("#"+nombreVentana).removeClass("hidden");
 	if(parametro!=""){
