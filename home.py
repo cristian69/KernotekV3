@@ -323,8 +323,7 @@ def datos_home():
                 'acumuladoTurno': "",
                 'ventasTurno': "",
                 'etiqueta':" Hrs.",
-                'ultimoTurno': str(classdb.ultimoTurno()),
-                'cerradura': classdb.consultarCerradura()
+                'ultimoTurno': str(classdb.ultimoTurno())
                 }
 
     if dic_home['ultimoTurno'] != "":
