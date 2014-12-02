@@ -29,7 +29,7 @@ class Configuracion(flask.views.MethodView):
 		operation = request.form['submit']
 		if operation == STOP:
 			terminarProceso()
-			InhibirMDB.main()
+			inhibirMDB.main()
 		elif operation == START:
 			iniciarProceso()
 			time.sleep(1)	
@@ -37,14 +37,13 @@ class Configuracion(flask.views.MethodView):
 			reiniciarProceso()
 		else:
 			return redirect(url_for('login'))
-		time.sleep(1)	
+		time.sleep(6)	
 		stateSystem = sistema()
 		socketC, socketPython = revisarProceso()
 		if socketC and socketPython:
                 	botonSystem = True
                 else:
                 	botonSystem = False
-
 		return render_template('configuracionSistema.html', estado_sistema = stateSystem, botonSistema=botonSystem)		
 
 
