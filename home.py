@@ -133,15 +133,13 @@ class Home(flask.views.MethodView):
                     # else:
                     #     flag = "error"
                     #     
-                if modalOperation == '4':
-                    classdb.activarCorteTurno()
-                    time.sleep(4)   
-                    # if stateC and statePython:
-                    #     class_db.activarCorteTurno()
-                    #     time.sleep(2)  # Espera a que el corte de turno se ejecute
-                    #     flag = "corteExitoso"
-                    # else:
-                    #     flag = "error"
+                if modalOperation == '4': 
+                    if stateC and statePython:
+                        classdb.activarCorteTurno()
+                        time.sleep(4)  # Espera a que el corte de turno se ejecute
+                        flag = "corteExitoso"
+                    else:
+                        flag = "error"
 
                 if modalOperation == "3" or modalOperation == "1":
                     typeLapse = request.form.getlist('tipoLapso')
