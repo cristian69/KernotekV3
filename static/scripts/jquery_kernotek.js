@@ -166,11 +166,11 @@ function graficasHome(parametro, labels, datos){
 		$("#graficaenSemanas").removeClass("active");
 		$("#mensual").removeClass("active");
 		$("#graficaenMeses").removeClass("active");
-		var lineChartData1 = {
+		var data1 = {
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "$",
+				label: "Ganancias en pesos",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",
@@ -181,8 +181,8 @@ function graficasHome(parametro, labels, datos){
 			}
 			]
 		}
-		var ctx1 = document.getElementById("graficaDia").getContext("2d");
-		window.myPie = new Chart(ctx1).Line(lineChartData1, {responsive:true});
+		var lineChartData1 = new Chart(document.getElementById("graficaDia").getContext("2d")).Line(data1,{responsive:true});
+		document.getElementById("labelDias").innerHTML = lineChartData1.generateLegend();
 	}
 	if(parametro=="graficaSemana"){
 		$("#diaria").removeClass("active");
@@ -191,11 +191,11 @@ function graficasHome(parametro, labels, datos){
 		$("#graficaenSemanas").addClass("active");
 		$("#mensual").removeClass("active");
 		$("#graficaenMeses").removeClass("active");
-		var lineChartData2 = {
+		var data2 = {
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "$",
+				label: "Ganancias en pesos",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",
@@ -206,8 +206,8 @@ function graficasHome(parametro, labels, datos){
 			}
 			]
 		}
-		var ctx2 = document.getElementById("graficaSemana").getContext("2d");
-		window.myPie = new Chart(ctx2).Line(lineChartData2, {responsive:true});
+		var lineChartData2 = new Chart(document.getElementById("graficaSemana").getContext("2d")).Line(data2,{responsive:true});
+		document.getElementById("labelSemana").innerHTML = lineChartData2.generateLegend();
 	}
 	if(parametro=="graficaMes"){
 		$("#diaria").removeClass("active");
@@ -216,11 +216,11 @@ function graficasHome(parametro, labels, datos){
 		$("#graficaenSemanas").removeClass("active");
 		$("#mensual").addClass("active");
 		$("#graficaenMeses").addClass("active");
-		var lineChartData3 = {
+		var data3 = {
 			labels : [labels[0],labels[1],labels[2],labels[3],labels[4],labels[5],labels[6]],
 			datasets : [
 			{
-				label: "$",
+				label: "Ganancias en pesos",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "#009DE0",
 				pointColor : "rgba(151,187,205,1)",
@@ -231,7 +231,7 @@ function graficasHome(parametro, labels, datos){
 			}
 			]
 		}
-		var ctx3 = document.getElementById("graficaMes").getContext("2d");
-		window.myPie = new Chart(ctx3).Line(lineChartData3, {responsive:true});
+		var lineChartData1 = new Chart(document.getElementById("graficaMes").getContext("2d")).Line(data3,{responsive:true});
+		document.getElementById("labelMes").innerHTML = lineChartData1.generateLegend();
 	}
 }

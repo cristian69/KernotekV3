@@ -10,6 +10,20 @@ function loading(){
 
 
 
+$(document).keypress(function(e) {
+    if(e.which === 13) {
+    	if($("#modalTarifa").hasClass("in")){
+    		$(".btnAceptarCambioTarifa").click();
+    		return false;
+    	}
+    	if($("#modalAcceso").hasClass("in")){
+    		$("#aceptarCambioTarifa").click();
+    		return false;
+    	}
+    }
+});
+
+
 function validarNumeros(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
@@ -30,6 +44,7 @@ function tarifaValida(){
 	$("#tiempoIncorrecto").addClass("hidden");
 	$("#aceptarCambioTarifa").click();
 }
+
 
 
 
@@ -74,17 +89,6 @@ function apagadoSistema(parametro){
 		$("#btnEncender").removeClass("hidden");
 	}
 }
-
-$(document).keypress(function(e) {
-    if(e.which === 13) {
-    	if($("#modalTarifa").hasClass("in")){
-    		$(".btnAceptarCambioTarifa").click();
-    	}
-    	if($("#modalAcceso").hasClass("in")){
-    		$("#aceptarCambioTarifa").click();
-    	}
-    }
-});
 
 function home(){
 	$("#accionRealizar").select2({

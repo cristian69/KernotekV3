@@ -41,6 +41,14 @@ body {
   font-size:13px; 
   direction: ltr;
 }
+.labelGrafica ul{
+  list-style:none;
+  font-family: arial;
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: -5px;
+  margin-top: -10px;
+}
 .loading {
 height: 100px;
 position: fixed;
@@ -4575,7 +4583,7 @@ UI Loading
 }
 @media (min-width: 1890px) and (max-width: 1900px) { 
   .valorSistema{
-    height: 362px;
+    height: 364px;
   }
   .tituloTarjeta{
   height: 256px;
@@ -4585,7 +4593,7 @@ UI Loading
 
 @media (min-width: 1880px) and (max-width: 1890px) { 
   .valorSistema{
-    height: 360px;
+    height: 362px;
   }
   .tituloTarjeta{
   height: 254px;
@@ -4594,7 +4602,7 @@ UI Loading
 }
 @media (min-width: 1870px) and (max-width: 1880px) { 
   .valorSistema{
-    height: 358px;
+    height: 360px;
   }
   .tituloTarjeta{
   height: 252px;
@@ -4603,7 +4611,7 @@ UI Loading
 }
 @media (min-width: 1860px) and (max-width: 1870px) { 
   .valorSistema{
-    height: 357px;
+    height: 359px;
   }
   .tituloTarjeta{
   height: 251px;
@@ -4612,7 +4620,7 @@ UI Loading
 }
 @media (min-width: 1850px) and (max-width: 1860px) { 
   .valorSistema{
-    height: 355px;
+    height: 357px;
   }
   .tituloTarjeta{
   height: 249px;
@@ -4621,7 +4629,7 @@ UI Loading
 }
 @media (min-width: 1840px) and (max-width: 1850px) { 
   .valorSistema{
-    height: 354px;
+    height: 356px;
   }
   .tituloTarjeta{
   height: 248px;
@@ -4630,7 +4638,7 @@ UI Loading
 }
 @media (min-width: 1830px) and (max-width: 1840px) { 
   .valorSistema{
-    height: 352px;
+    height: 354px;
   }
   .tituloTarjeta{
   height: 246px;
@@ -4639,7 +4647,7 @@ UI Loading
 }
 @media (min-width: 1820px) and (max-width: 1830px) { 
   .valorSistema{
-    height: 351px;
+    height: 353px;
   }
   .tituloTarjeta{
   height: 245px;
@@ -4648,7 +4656,7 @@ UI Loading
 }
 @media (min-width: 1810px) and (max-width: 1820px) { 
   .valorSistema{
-    height: 349px;
+    height: 351px;
   }
   .tituloTarjeta{
   height: 243px;
@@ -4657,7 +4665,7 @@ UI Loading
 }
 @media (min-width: 1800px) and (max-width: 1810px) { 
   .valorSistema{
-    height: 348px;
+    height: 350px;
   }
   .tituloTarjeta{
   height: 242px;
@@ -4671,7 +4679,7 @@ UI Loading
 
 @media (min-width: 1790px) and (max-width: 1800px) { 
   .valorSistema{
-    height: 346px;
+    height: 348px;
   }
   .tituloTarjeta{
   height: 240px;
@@ -4681,7 +4689,7 @@ UI Loading
 
 @media (min-width: 1780px) and (max-width: 1790px) { 
   .valorSistema{
-    height: 344px;
+    height: 346px;
   }
   .tituloTarjeta{
   height: 238px;
@@ -4690,7 +4698,7 @@ UI Loading
 }
 @media (min-width: 1770px) and (max-width: 1780px) { 
   .valorSistema{
-    height: 342px;
+    height: 344px;
   }
   .tituloTarjeta{
   height: 236px;
@@ -4699,7 +4707,7 @@ UI Loading
 }
 @media (min-width: 1760px) and (max-width: 1770px) { 
   .valorSistema{
-    height: 341px;
+    height: 343px;
   }
   .tituloTarjeta{
   height: 235px;
@@ -4708,7 +4716,7 @@ UI Loading
 }
 @media (min-width: 1750px) and (max-width: 1760px) { 
   .valorSistema{
-    height: 339px;
+    height: 341px;
   }
   .tituloTarjeta{
   height: 233px;
@@ -4717,7 +4725,7 @@ UI Loading
 }
 @media (min-width: 1740px) and (max-width: 1750px) { 
   .valorSistema{
-    height: 337px;
+    height: 339px;
   }
   .tituloTarjeta{
   height: 231px;
@@ -4726,7 +4734,7 @@ UI Loading
 }
 @media (min-width: 1730px) and (max-width: 1740px) { 
   .valorSistema{
-    height: 335px;
+    height: 337px;
   }
   .tituloTarjeta{
   height: 229px;
@@ -4735,7 +4743,7 @@ UI Loading
 }
 @media (min-width: 1720px) and (max-width: 1730px) { 
   .valorSistema{
-    height: 333px;
+    height: 335px;
   }
   .tituloTarjeta{
   height: 227px;
@@ -4744,7 +4752,7 @@ UI Loading
 }
 @media (min-width: 1710px) and (max-width: 1720px) { 
   .valorSistema{
-    height: 331px;
+    height: 333px;
   }
   .tituloTarjeta{
   height: 225px;
@@ -4753,7 +4761,7 @@ UI Loading
 }
 @media (min-width: 1700px) and (max-width: 1710px) { 
   .valorSistema{
-    height: 329px;
+    height: 331px;
   }
   .tituloTarjeta{
   height: 223px;
@@ -4765,7 +4773,7 @@ UI Loading
 
 @media (min-width: 1690px) and (max-width: 1700px) { 
   .valorSistema{
-    height: 328px;
+    height: 330px;
   }
   .tituloTarjeta{
   height: 222px;
@@ -4778,7 +4786,7 @@ UI Loading
 
 @media (min-width: 1680px) and (max-width: 1690px) { 
   .valorSistema{
-    height: 326px;
+    height: 328px;
   }
   .tituloTarjeta{
   height: 220px;
@@ -4793,7 +4801,7 @@ UI Loading
 }
 @media (min-width: 1670px) and (max-width: 1680px) { 
   .valorSistema{
-    height: 324px;
+    height: 326px;
   }
   .tituloTarjeta{
   height: 219px;
@@ -4808,7 +4816,7 @@ UI Loading
 }
 @media (min-width: 1660px) and (max-width: 1670px) { 
   .valorSistema{
-    height: 322px;
+    height: 324px;
   }
   .tituloTarjeta{
   height: 217px;
@@ -4823,7 +4831,7 @@ UI Loading
 }
 @media (min-width: 1650px) and (max-width: 1660px) { 
   .valorSistema{
-    height: 320px;
+    height: 322px;
   }
   .tituloTarjeta{
   height: 215px;
@@ -4838,7 +4846,7 @@ UI Loading
 }
 @media (min-width: 1640px) and (max-width: 1650px) { 
   .valorSistema{
-    height: 318px;
+    height: 320px;
   }
   .tituloTarjeta{
   height: 213px;
@@ -4853,7 +4861,7 @@ UI Loading
 }
 @media (min-width: 1630px) and (max-width: 1640px) { 
   .valorSistema{
-    height: 316px;
+    height: 318px;
   }
   .tituloTarjeta{
   height: 211px;
@@ -4868,7 +4876,7 @@ UI Loading
 }
 @media (min-width: 1620px) and (max-width: 1630px) { 
   .valorSistema{
-    height: 314px;
+    height: 316px;
   }
   .tituloTarjeta{
   height: 209px;
@@ -4883,7 +4891,7 @@ UI Loading
 }
 @media (min-width: 1610px) and (max-width: 1620px) { 
   .valorSistema{
-    height: 312px;
+    height: 314px;
   }
   .tituloTarjeta{
   height: 207px;
@@ -4898,7 +4906,7 @@ UI Loading
 }
 @media (min-width: 1600px) and (max-width: 1610px) { 
   .valorSistema{
-    height: 310px;
+    height: 312px;
   }
   .tituloTarjeta{
   height: 205px;
@@ -4920,7 +4928,7 @@ UI Loading
 
 @media (min-width: 1590px) and (max-width: 1600px) { 
   .valorSistema{
-    height: 308px;
+    height: 310px;
   }
   .tituloTarjeta{
   height: 203px;
@@ -4936,7 +4944,7 @@ UI Loading
 
 @media (min-width: 1580px) and (max-width: 1590px) { 
   .valorSistema{
-    height: 306px;
+    height: 308px;
   }
   .tituloTarjeta{
   height: 201px;
@@ -4951,7 +4959,7 @@ UI Loading
 }
 @media (min-width: 1570px) and (max-width: 1580px) { 
   .valorSistema{
-    height: 304px;
+    height: 306px;
   }
   .tituloTarjeta{
   height: 199px;
@@ -4966,7 +4974,7 @@ UI Loading
 }
 @media (min-width: 1560px) and (max-width: 1570px) { 
   .valorSistema{
-    height: 302px;
+    height: 304px;
   }
   .tituloTarjeta{
   height: 197px;
@@ -4981,7 +4989,7 @@ UI Loading
 }
 @media (min-width: 1550px) and (max-width: 1560px) { 
   .valorSistema{
-    height: 300px;
+    height: 302px;
   }
   .tituloTarjeta{
   height: 195px;
@@ -4996,7 +5004,7 @@ UI Loading
 }
 @media (min-width: 1540px) and (max-width: 1550px) { 
   .valorSistema{
-    height: 298px;
+    height: 300px;
   }
   .tituloTarjeta{
   height: 193px;
@@ -5011,7 +5019,7 @@ UI Loading
 }
 @media (min-width: 1530px) and (max-width: 1540px) { 
   .valorSistema{
-    height: 296px;
+    height: 298px;
   }
   .tituloTarjeta{
   height: 191px;
@@ -5026,7 +5034,7 @@ UI Loading
 }
 @media (min-width: 1520px) and (max-width: 1530px) { 
   .valorSistema{
-    height: 294px;
+    height: 296px;
   }
   .tituloTarjeta{
   height: 189px;
@@ -5041,7 +5049,7 @@ UI Loading
 }
 @media (min-width: 1510px) and (max-width: 1520px) { 
   .valorSistema{
-    height: 292px;
+    height: 294px;
   }
   .tituloTarjeta{
   height: 187px;
@@ -5056,7 +5064,7 @@ UI Loading
 }
 @media (min-width: 1500px) and (max-width: 1510px) { 
   .valorSistema{
-    height: 290px;
+    height: 292px;
   }
   .tituloTarjeta{
   height: 185px;
@@ -5079,7 +5087,7 @@ UI Loading
 
 @media (min-width: 1490px) and (max-width: 1500px) { 
   .valorSistema{
-    height: 288px;
+    height: 290px;
   }
   .tituloTarjeta{
   height: 183px;
@@ -5095,7 +5103,7 @@ UI Loading
 
 @media (min-width: 1480px) and (max-width: 1490px) { 
   .valorSistema{
-    height: 286px;
+    height: 288px;
   }
   .tituloTarjeta{
   height: 181px;
@@ -5110,7 +5118,7 @@ UI Loading
 }
 @media (min-width: 1470px) and (max-width: 1480px) { 
   .valorSistema{
-    height: 284px;
+    height: 286px;
   }
   .tituloTarjeta{
   height: 179px;
@@ -5125,7 +5133,7 @@ UI Loading
 }
 @media (min-width: 1460px) and (max-width: 1470px) { 
   .valorSistema{
-    height: 282px;
+    height: 284px;
   }
   .tituloTarjeta{
   height: 177px;
@@ -5140,7 +5148,7 @@ UI Loading
 }
 @media (min-width: 1450px) and (max-width: 1460px) { 
   .valorSistema{
-    height: 280px;
+    height: 282px;
   }
   .tituloTarjeta{
   height: 175px;
@@ -5155,7 +5163,7 @@ UI Loading
 }
 @media (min-width: 1440px) and (max-width: 1450px) { 
   .valorSistema{
-    height: 278px;
+    height: 280px;
   }
   .tituloTarjeta{
   height: 173px;
@@ -5170,7 +5178,7 @@ UI Loading
 }
 @media (min-width: 1430px) and (max-width: 1440px) { 
   .valorSistema{
-    height: 276px;
+    height: 278px;
   }
   .tituloTarjeta{
   height: 171px;
@@ -5185,7 +5193,7 @@ UI Loading
 }
 @media (min-width: 1420px) and (max-width: 1430px) { 
   .valorSistema{
-    height: 274px;
+    height: 276px;
   }
   .tituloTarjeta{
   height: 169px;
@@ -5201,7 +5209,7 @@ UI Loading
 }
 @media (min-width: 1410px) and (max-width: 1420px) { 
   .valorSistema{
-    height: 272px;
+    height: 274px;
   }
 .tituloTarjeta{
   height: 167px;
@@ -5216,7 +5224,7 @@ UI Loading
 }
 @media (min-width: 1400px) and (max-width: 1410px) { 
   .valorSistema{
-    height: 270px;
+    height: 272px;
   }
 .tituloTarjeta{
   height: 165px;
@@ -5237,7 +5245,7 @@ UI Loading
 
 @media (min-width: 1390px) and (max-width: 1400px) { 
   .valorSistema{
-    height: 268px;
+    height: 270px;
   }
   .tituloTarjeta{
   height: 163px;
@@ -5257,7 +5265,7 @@ UI Loading
 
 @media (min-width: 1380px) and (max-width: 1390px) { 
   .valorSistema{
-    height: 266px;
+    height: 268px;
   }
   .tituloTarjeta{
   height: 161px;
@@ -5277,7 +5285,7 @@ UI Loading
 }
 @media (min-width: 1370px) and (max-width: 1380px) { 
   .valorSistema{
-    height: 264px;
+    height: 266px;
   }
   .tituloTarjeta{
   height: 159px;
@@ -5297,7 +5305,7 @@ UI Loading
 }
 @media (min-width: 1360px) and (max-width: 1370px) { 
   .valorSistema{
-    height: 262px;
+    height: 264px;
   }
   .tituloTarjeta{
   height: 157px;
@@ -5317,7 +5325,7 @@ UI Loading
 }
 @media (min-width: 1350px) and (max-width: 1360px) { 
   .valorSistema{
-    height: 260px;
+    height: 262px;
   }
   .tituloTarjeta{
   height: 155px;
@@ -5340,7 +5348,7 @@ UI Loading
 }
 @media (min-width: 1340px) and (max-width: 1350px) { 
   .valorSistema{
-    height: 258px;
+    height: 260px;
   }
   .tituloTarjeta{
   height: 153px;
@@ -5363,7 +5371,7 @@ UI Loading
 }
 @media (min-width: 1330px) and (max-width: 1340px) { 
   .valorSistema{
-    height: 256px;
+    height: 258px;
   }
   .tituloTarjeta{
   height: 151px;
@@ -5386,7 +5394,7 @@ UI Loading
 }
 @media (min-width: 1320px) and (max-width: 1330px) { 
   .valorSistema{
-    height: 254px;
+    height: 256px;
   }
   .tituloTarjeta{
   height: 149px;
@@ -5409,7 +5417,7 @@ UI Loading
 }
 @media (min-width: 1310px) and (max-width: 1320px) { 
   .valorSistema{
-    height: 252px;
+    height: 254px;
   }
   .tituloTarjeta{
   height: 147px;
@@ -5432,7 +5440,7 @@ UI Loading
 }
 @media (min-width: 1300px) and (max-width: 1310px) { 
   .valorSistema{
-    height: 250px;
+    height: 252px;
   }
   .tituloTarjeta{
   height: 145px;
@@ -5458,7 +5466,7 @@ UI Loading
 
 @media (min-width: 1290px) and (max-width: 1300px) { 
   .valorSistema{
-    height: 248px;
+    height: 250px;
   }
    .tituloTarjeta{
   height: 160px;
@@ -5482,7 +5490,7 @@ UI Loading
 
 @media (min-width: 1280px) and (max-width: 1290px) { 
   .valorSistema{
-    height: 246px;
+    height: 248px;
   }
    .tituloTarjeta{
   height: 158px;
@@ -5505,7 +5513,7 @@ UI Loading
 }
 @media (min-width: 1270px) and (max-width: 1280px) { 
   .valorSistema{
-    height: 244px;
+    height: 246px;
   }
    .tituloTarjeta{
   height: 156px;
@@ -5528,7 +5536,7 @@ UI Loading
 }
 @media (min-width: 1260px) and (max-width: 1270px) { 
   .valorSistema{
-    height: 242px;
+    height: 244px;
   }
    .tituloTarjeta{
   height: 154px;
@@ -5551,7 +5559,7 @@ UI Loading
 }
 @media (min-width: 1250px) and (max-width: 1260px) { 
   .valorSistema{
-    height: 240px;
+    height: 242px;
   }
    .tituloTarjeta{
   height: 152px;
@@ -5574,7 +5582,7 @@ UI Loading
 }
 @media (min-width: 1240px) and (max-width: 1250px) { 
   .valorSistema{
-    height: 238px;
+    height: 240px;
   }
    .tituloTarjeta{
   height: 150px;
@@ -5597,7 +5605,7 @@ UI Loading
 }
 @media (min-width: 1230px) and (max-width: 1240px) { 
   .valorSistema{
-    height: 236px;
+    height: 238px;
   }
    .tituloTarjeta{
   height: 148px;
@@ -5620,7 +5628,7 @@ UI Loading
 }
 @media (min-width: 1220px) and (max-width: 1230px) { 
   .valorSistema{
-    height: 234px;
+    height: 236px;
   }
    .tituloTarjeta{
   height: 146px;
@@ -5643,7 +5651,7 @@ UI Loading
 }
 @media (min-width: 1210px) and (max-width: 1220px) { 
   .valorSistema{
-    height: 232px;
+    height: 234px;
   }
    .tituloTarjeta{
   height: 144px;
@@ -5666,7 +5674,7 @@ UI Loading
 }
 @media (min-width: 1200px) and (max-width: 1210px) { 
   .valorSistema{
-    height: 230px;
+    height: 232px;
   }
    .tituloTarjeta{
   height: 142px;
