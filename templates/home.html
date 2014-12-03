@@ -37,7 +37,7 @@
               </a>
             </li>
             <li class="dropdown-submenu">
-              <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
+              <a tabindex="-1"><i class="fa fa-bar-chart-o"></i>Reportes</a>
               <ul class="dropdown-menu">
                  <li class="tooltips">
                   <a href="{{ url_for('reportes') }}">
@@ -479,8 +479,8 @@
                       </article>
                     </article>
                     <article class="modal-footer footerCorteTurno hidden text-right">
-                      <input type="text" class="control-form " id="accion" value="" name="accion">
-                      <input type="text" class="control-form " id="valorPestaña" value="1" name="seleccionarAccion">
+                      <input type="text" class="control-form hidden" id="accion" value="" name="accion">
+                      <input type="text" class="control-form hidden" id="valorPestaña" value="1" name="seleccionarAccion">
                       <button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="modalTurno">Aceptar</button>
                       <button type="button" class="btn hidden" id="anteriorCorte">Regresar</button>
                       <button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="modalTurno">Aceptar</button>

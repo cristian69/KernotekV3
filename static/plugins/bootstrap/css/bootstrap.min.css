@@ -14,6 +14,9 @@
 .modalAlertas{
 
 }
+.nuevoReporte{
+	margin-bottom:27px;
+}
 @media (max-width: 992px) { 
   .alert{
   	margin-top:47px;
@@ -23,6 +26,11 @@
   	margin-top: 0px;
   	margin-bottom: 0px;
   }
+
+.nuevoReporte{
+	margin-top: 47px;
+	margin-bottom: -27px;	
+}
 
 }
 

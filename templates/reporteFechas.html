@@ -158,12 +158,21 @@
             </article>
             <article class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></article>
           </article>
-          <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
-          <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
-            {{tableHTML|safe}}
-            {{indexHTML|safe}}
+          <article class="row">
+            <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0 "></article>
+            <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12  text-right nuevoReporte">
+              <a href="{{ url_for('reportes') }}" class="btn blue">nuevo reporte</a>
+            </article>
+             <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0 "></article>
           </article>
-          <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
+          <article class="row">
+            <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
+            <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
+              {{tableHTML|safe}}
+              {{indexHTML|safe}}
+            </article>
+            <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
+          </article>  
         </article>
       </article>
     </section>
