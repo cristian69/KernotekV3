@@ -17,7 +17,7 @@ $(document).keypress(function(e) {
     		return false;
     	}
     	if($("#modalAcceso").hasClass("in")){
-    		$("#aceptarCambioTarifa").click();
+    		$(".btnAceptarCambioTiempo").click();
     		return false;
     	}
     }
@@ -169,8 +169,8 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 function tablasReportes(parametro){
 	if(parametro=="True"){
-		$(".nuevoReporte").removeClass("hidden");
 		$("#moduloFechas").addClass("hidden");
+		$(".nuevoReporte").removeClass("hidden");
 	}
 	else{
 		$("#moduloFechas").removeClass("hidden");
@@ -226,8 +226,12 @@ $("#aceptarReporte").click(function(){
 	}
 });
 
-
-
+$("#reporteTurnoAceptar").click(function(){
+	if($("#hora_inicio2").val()=="" || $("#fecha_inicio2").val()==""){
+		$("#errorFechasTurno").removeClass("hidden");
+		return false;
+	}
+});
 
 
 $("#reporteTurnoSiguiente").click(function(){
