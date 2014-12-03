@@ -186,6 +186,13 @@
             <article class="col-lg-4 col-md-3 col-sm-2 col-xs-0"></article>
           </article>
           <article class="row">
+            <article class="col-lg-2 col-md-1 col-sm-12 col-xs-12 "></article>
+            <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12  text-right nuevoReporte  hidden">
+              <a href="{{ url_for('reportes') }}" class="btn blue">nuevo reporte</a>
+            </article>
+             <article class="col-lg-2 col-md-1 col-sm-12 col-xs-12 "></article>
+          </article>
+          <article class="row">
             <article class="col-lg-2 col-md-1 col-sm-12 col-xs-12"></article>
             <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12">
             {{htmlTurnos|safe}}
@@ -197,7 +204,7 @@
       </article>
     </section>
     <section class="footer">
-      <article class="footer-inner">2014 &copy; KERNOTEK</article>
+      <article class="footer-inner">2014 &copy; KERNOTEK{{tablaFechas}}</article>
       <article class="footer-tools">
         <span class="go-top">
         <i class="fa fa-angle-up"></i>

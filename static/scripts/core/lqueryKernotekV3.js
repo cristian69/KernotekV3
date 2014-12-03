@@ -169,6 +169,7 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 function tablasReportes(parametro){
 	if(parametro=="True"){
+		$(".nuevoReporte").removeClass("hidden");
 		$("#moduloFechas").addClass("hidden");
 	}
 	else{
