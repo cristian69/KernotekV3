@@ -219,7 +219,6 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
     codeIndex = ""
     codeIndex = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
     codeIndex += str('<ul class="pagination">')
-    #print classdb.totalRegistrosTurno(turno, indice)
     # Simbolo <<
     if actualPage == 1:
         codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
@@ -258,8 +257,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
             '&pdf=' +str(statepdf)+\
             '&num_pagina='+ str(previousPage) +'">'\
             '<i class="fa fa-angle-left"></i></a></li>')
-
-    sales = int(classdb.total_registros(startDate, endDate, startRange))
+    sales = int(classdb.totalRegistrosTurno(turno, startRange))
     restSales = sales
     countPage = 0
     startPage = actualPage
@@ -287,7 +285,6 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
             rangePage += 50
             countPage = 0
             restSales -= 50
-    print restSales
     if restSales > 0:
         if startPage is actualPage:
             codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')
@@ -307,8 +304,9 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
     # Simbolo >
     nextPage = actualPage + 1
     rangeNextPage = startRange + 50
-
-    salesNextPage = classdb.total_registros(startDate, endDate, startRange + 50)
+    salesNextPage = int(classdb.totalRegistrosTurno(turno, startRange + 50))
+	
+    #salesNextPage = classdb.total_registros(startDate, endDate, startRange + 50)
 
     if salesNextPage == 0:
         codeIndex += str('<li class="disabled"><a href="#"><i class="fa fa-angle-right"></i></a></li>')
@@ -324,7 +322,8 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
                     '<i class="fa fa-angle-right"></i></a></li>')
     
     # Simbolo >>
-    salesNextBlock = classdb.total_registros(startDate, endDate, startRange + 500)
+    salesNextBlock = int(classdb.totalRegistrosTurno(turno, startRange + 500))
+    #salesNextBlock = classdb.total_registros(startDate, endDate, startRange + 500)
     nextBlock = actualPage + 10
     rangeNextBlock = startRange + 500
     if salesNextBlock == 0:

@@ -54,7 +54,7 @@ from configuracionsistema import Configuracion
 app = flask.Flask(__name__)
 ######### Inicializacion del servidor ####################
 __SERVER__ = '0.0.0.0'
-__PORT__ = 8000
+__PORT__ = 5000
 app.debug = True
 
 #fin de los parametros para la inicializacion del servidor

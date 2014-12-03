@@ -84,8 +84,6 @@ def total_registros(dateStart, dateEnd, inicio):
     makeConnection()
     query = "SELECT count(*) FROM (SELECT ticket FROM panelservices "\
             "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") order by datetimesell DESC LIMIT "+str(inicio)+", 500) as alias;"
-    # query = "SELECT ticket FROM panelservices " \
-    #             "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500;"
     cursor.execute(query)
     num_registros = cursor.fetchall()
     closeConnection()
@@ -207,6 +205,7 @@ def montosTurno(numTurno):
     closeConnection()
     return data
 
+
 def reporteTurnoPaginacion(turno, index):
     makeConnection()
     query = "SELECT ticket, datetimesell, rate, multiplier, servicesdetail.cost, deposit " \
@@ -217,14 +216,21 @@ def reporteTurnoPaginacion(turno, index):
     closeConnection()
     return data
 
+
 def totalRegistrosTurno(turno, inicio):
     makeConnection()
+    query = "SELECT count(*) FROM (SELECT ticket FROM panelservices "\
+            "WHERE localshift = "+str(turno)+" ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500) AS alias;"
+    """
     query = "SELECT COUNT(ticket) FROM panelservices " \
     	    "INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
     	    "WHERE localshift = "+str(turno)+" order by datetimesell desc limit "+str(inicio)+",500;"
+    """
     cursor.execute(query)
     data = cursor.fetchall()
     closeConnection()
+    if len(data) == 0:
+	return 0
     return data[0][0]
 
 #########################################################
