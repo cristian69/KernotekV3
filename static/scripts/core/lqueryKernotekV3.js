@@ -1,15 +1,26 @@
+/*
+
+*/
 function loadingPagina(parametro){
 	if(parametro!=""){
 		$("#paginaCargando").modal("show");
 	}
 }
 
+
+
+/*
+
+*/
 function loading(){
 	$("#paginaCargando").modal("show");
 }
 
 
 
+/*
+
+*/
 $(document).keypress(function(e) {
     if(e.which === 13) {
     	if($("#modalTarifa").hasClass("in")){
@@ -24,6 +35,10 @@ $(document).keypress(function(e) {
 });
 
 
+
+/*
+
+*/
 function validarNumeros(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
@@ -39,6 +54,11 @@ function validarNumeros(){
 	}
 }
 
+
+
+/*
+
+*/
 function tarifaValida(){
 	$("#tarifaIncorrecta").addClass("hidden");
 	$("#tiempoIncorrecto").addClass("hidden");
@@ -47,9 +67,9 @@ function tarifaValida(){
 
 
 
+/*
 
-
-
+*/
 function validarApertura(){
 	aperturaValidar=$("#nuevoTiempo").val();
 	var patron1=/\s/;
@@ -65,6 +85,11 @@ function validarApertura(){
 	}
 }
 
+
+
+/*
+
+*/
 function accesoValido(){
 	$("#tarifaIncorrecta").addClass("hidden");
 	$("#tiempoIncorrecto").addClass("hidden");
@@ -73,12 +98,18 @@ function accesoValido(){
 
 
 
+/*
 
+*/
 function alertasiOcultar(parametro){
 	$("#"+parametro).addClass("hidden");
 }
 
 
+
+/*
+
+*/
 function apagadoSistema(parametro){
 	if(parametro=="True"){
 		$("#btnApagar").removeClass("hidden");
@@ -90,6 +121,11 @@ function apagadoSistema(parametro){
 	}
 }
 
+
+
+/*
+
+*/
 function home(){
 	$("#accionRealizar").select2({
 		placeholder:"Tipo de reporte"
@@ -112,6 +148,10 @@ function home(){
 }
 
 
+
+/*
+
+*/
 function reporteTurnos(parametro1, parametro2){
 	if(parametro1=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
@@ -132,6 +172,11 @@ function reporteTurnos(parametro1, parametro2){
 
 }
 
+
+
+/*
+
+*/
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 	if(excelGeneral=="True"){
 		$("#linkgeneral").addClass("hidden");
@@ -167,6 +212,9 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 
 
+/*
+
+*/
 function tablasReportes(parametro){
 	if(parametro=="True"){
 		$("#moduloFechas").addClass("hidden");
@@ -178,6 +226,10 @@ function tablasReportes(parametro){
 }
 
 
+
+/*
+
+*/
 function corteValores(parametro){
 	if(parametro=='Manual'){
 		$('#btnConfigurar').addClass("hidden");
@@ -190,6 +242,10 @@ function corteValores(parametro){
 }
 
 
+
+/*
+
+*/
 $("#btnreporteFechas").click(function(){
 	$(".fechasReporte").removeClass("hidden");
 	$(".seleccionReporte").addClass("hidden");
@@ -219,6 +275,11 @@ $("#regresarReporte").click(function(){
 	$(".inputHoraFin").removeClass("hidden");
 });
 
+
+
+/*
+
+*/
 $("#aceptarReporte").click(function(){
 	if($("#hora_inicio").val()=="" || $("#fecha_inicio").val()=="" || $("#hora_fin").val()=="" || $("#fecha_fin").val()==""){
 		$("#errorFechas").removeClass("hidden");
@@ -226,6 +287,11 @@ $("#aceptarReporte").click(function(){
 	}
 });
 
+
+
+/*
+
+*/
 $("#reporteTurnoAceptar").click(function(){
 	if($("#hora_inicio2").val()=="" || $("#fecha_inicio2").val()==""){
 		$("#errorFechasTurno").removeClass("hidden");
@@ -234,6 +300,10 @@ $("#reporteTurnoAceptar").click(function(){
 });
 
 
+
+/*
+
+*/
 $("#reporteTurnoSiguiente").click(function(){
 	if($("#hora_inicio2").val()=="" || $("#fecha_inicio2").val()=="" || $("#hora_fin2").val()=="" || $("#fecha_fin2").val()==""){
 		$("#errorFechas2").removeClass("hidden");
@@ -250,6 +320,11 @@ $("#reporteTurnoSiguiente").click(function(){
 	}
 });
 
+
+
+/*
+
+*/
 $("#reporteTurnoAnterior").click(function(){
 	$("#reporteTurno1").addClass("active");
 		$("#reportetabTurno1").addClass("active");
@@ -259,7 +334,6 @@ $("#reporteTurnoAnterior").click(function(){
 		$("#reporteTurnoSiguiente").removeClass("hidden");
 		$("#reporteTurnoAceptar").addClass("hidden");
 });
-
 
 
 
@@ -296,6 +370,20 @@ $("#btnConfigurar").click(function(){
 	$("#AceptarCorte").removeClass("hidden");
 	$("#CancelarCorte").removeClass("hidden");
 	$("#accion").val("configurar");
+});
+
+$("#AceptarCorte").click(function(){
+	if($("#horaC").val()==="" && $("#accion").val()==="configurar" ){
+		$("#errorHora").removeClass("hidden");
+		return false;
+	}
+});
+
+$("#ConfirmarAccionT").click(function(){
+	if($("#horaC").val()==="" && $("#accion").val()==="automatico" ){
+		$("#errorHora").removeClass("hidden");
+		return false;
+	}
 });
 
 
@@ -340,6 +428,8 @@ $("#anteriorCorte").click(function(){
 		$("#accion").val("");
 	}
 
+}); 
+
 
 $("#anteriorCorte").click(function(){
 	if($("#valorPestaña").val()!="1" && $("#valorPestaña").val()!="2"){
@@ -366,7 +456,7 @@ $("#anteriorCorte").click(function(){
 
 
 
-});
+
 
 
 

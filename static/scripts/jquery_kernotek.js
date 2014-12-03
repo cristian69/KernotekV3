@@ -1,13 +1,19 @@
+//Estos eventos identifican si alguna de las modales con los id
+//especificados se encuentran visibles para poner el foco en e
+//input situado en alguna de estas modales.
 $('#modalTarifa').on('shown.bs.modal', function () {
-    $('#nuevaTarifa').val("");
+	$('#nuevaTarifa').val("");
     $('#nuevaTarifa').focus();
 })
+
 $('#modalAcceso').on('shown.bs.modal', function () {
     $('#nuevoTiempo').val("");
     $('#nuevoTiempo').focus();
 })
 
 
+
+//evento que identifica el tipo de lapso de un selct
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
 		$("#semana").addClass("hidden");
@@ -28,7 +34,9 @@ $("#configCorte").mouseover(function(){
 
 
 
+/*
 
+*/
 $("#ReportesAceptar").click(function(){
 	if($("#valorticket").val()==0 && $("#valorturno").val()==0 && $("#valorfecha").val()==0 && $("#valortarifa").val()==0 && $("#valortotal").val()==0){
 		$("#MensajeReportes").addClass("hidden");
@@ -39,18 +47,31 @@ $("#ReportesAceptar").click(function(){
 
 
 
+
+/*
+
+*/
 function reporteTurno(sa){
 	$("#valorTurno").select2();
 }
 
 
 
+/*
+
+*/
 function tipoReporte(){
 	$("#tipoReporte").select2({
 		placeholder:"Tipo de reporte"
 	});
 }
 
+
+
+
+/*
+
+*/
 function llavesSistema(){
 	$("#estadoLlave").select2({
 		placeholder: "Estado llave"
@@ -62,7 +83,9 @@ function llavesSistema(){
 
 
 
+/*
 
+*/
 function mostrarVentanas(parametro){
 	this.nombreVentana=parametro;
 	$("#"+nombreVentana).removeClass("hidden");
@@ -82,6 +105,10 @@ $("#cerrarAlertaLogin").click(function(){
 });
 
 
+
+/*
+
+*/
 function corteActual(entrada){
 	this.estado=entrada;
 	$("#tipoDate").select2();
@@ -104,6 +131,10 @@ function corteActual(entrada){
 
 
 
+
+/*
+
+*/
 $("#enviarConfiguracion").click(function(){
 	var numerosValidacion=$("#numeroMedida").val();
 	if(!/^[0-9]{1,4}?$/.test(numerosValidacion)){
@@ -115,11 +146,22 @@ $("#enviarConfiguracion").click(function(){
 });
 
 
+
+
+/*
+
+*/
 $("#cambioConfiguracion").mouseover(function(){
 	valorRadio=$('input:radio[name=valor]:checked').val();
 	$("#cambiarCorte").val(valorRadio);
 });
 
+
+
+
+/*
+
+*/
 $("#cambiarCortetuerno").click(function(){
 	if($("#valor1").attr("checked")){
 		$("#cambiarCorteturno").modal("show");
@@ -134,6 +176,11 @@ $("#cambiarCortetuerno").click(function(){
 });
 
 
+
+
+/*
+
+*/
 function cambiarEstado(parametro){
 	this.respuesta=parametro;
 	if(respuesta=='cambioTipo'){
@@ -160,6 +207,12 @@ function cambiarEstado(parametro){
 
 }
 
+
+
+
+/*
+
+*/
 function graficasHome(parametro, labels, datos){
 	if(parametro=="graficaDia"){
 		$("#diaria").addClass("active");

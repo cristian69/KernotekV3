@@ -1,3 +1,6 @@
+/*
+
+*/
 var fechaSistema=function(){
     var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
@@ -11,11 +14,23 @@ var fechaSistema=function(){
     $("#fecha_fin2").val(f);
 }
 
+
+
+
+/*
+
+*/
 var __alertas__=function(estado){
     nombre=estado;
     $("article."+nombre).show();
 }
 
+
+
+
+/*
+
+*/
 var problemasEquipo =function(estadoPython, estadoC){
     if(estadoPython=="Activo"){
         var params = {
@@ -89,21 +104,21 @@ var App = function () {
 
     var responsiveHandlers = [];
 
+
+
+
+/*
+
+*/
 var ValidarReporteG= function(){
     $("#AceptarReporte").click(function(e){
         if($("#fecha_inicio").val()=="" && $("#fecha_fin").val()=="" && $("#hora_inicio").val()=="" && $("#hora_fin").val()==""){
-            alert("Ingresa los valores correspondientes");
+            $("#fechasIncorrectas").removeClass("hidden");
             return e.preventDefault();
         }
         if($("#fecha_inicio").val()=="" || $("#fecha_fin").val()=="" || $("#hora_inicio").val()=="" || $("#hora_fin").val()==""){
-            alert("Verifica que ningun campo requerido este vacio");
+            $("#fechasIncorrectas").removeClass("hidden");
             return e.preventDefault();
-        }
-        else{
-            document.getElementById("cargando").innerHTML="<img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>"
-            $("#cargando").removeClass("hidden");
-            $("#apartadoReporteGeneral").addClass("hidden");
-            $("#apartadoReporteEspecifico").addClass("hidden");
         }
     });
     $("#generarReporteTurno").click(function(){
@@ -116,6 +131,10 @@ var ValidarReporteG= function(){
 
 
 
+
+/*
+
+*/
 $(function(){
     $('table#tablaTurno tbody tr').bind('click',function(){
         id=""
