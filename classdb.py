@@ -87,18 +87,10 @@ def total_registros(dateStart, dateEnd, inicio):
     # query = "SELECT ticket FROM panelservices " \
     #             "WHERE datetimesell BETWEEN STR_TO_DATE('"+dateStart+"', \"%Y-%m-%d %H:%i:%s\") AND STR_TO_DATE('"+dateEnd+"', \"%Y-%m-%d %H:%i:%s\") ORDER BY datetimesell DESC LIMIT "+str(inicio)+", 500;"
     cursor.execute(query)
-    # print "-" * 40
-    # print query
-    # print "-" * 40
     num_registros = cursor.fetchall()
     closeConnection()
     return num_registros[0][0]
 
-"""
-def totalRegistrosTurno(turno, inicio):
-    makeConnection()
-    query = "SELECT COUNT(*)FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid WHERE localshift = '1' order by datetimesell desc limit 0,20;"
-"""
 def paginacion(dateStart, dateEnd, inicio):
     makeConnection()
     query = "SELECT "
@@ -217,16 +209,24 @@ def montosTurno(numTurno):
 
 def reporteTurnoPaginacion(turno, index):
     makeConnection()
-    query = "SELECT ticket, datetimesell, rate, multiplier, servicesdetail.cost, deposit"\
-    " FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid "\
+    query = "SELECT ticket, datetimesell, rate, multiplier, servicesdetail.cost, deposit " \
+    "FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
     "WHERE localshift = '"+str(turno)+"' order by datetimesell desc limit "+str(index)+",50;"
     cursor.execute(query)
     data = cursor.fetchall()
     closeConnection()
     return data
-
-
-
+"""
+def totalRegistrosTurno(turno, inicio):
+    makeConnection()
+    query = "SELECT COUNT(ticket) FROM panelservices " \ 
+    	    "INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid "\ 
+    	    "WHERE localshift = "+str(turno)+" order by datetimesell desc limit "+str(inicio)+",500;"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    closeConnection()
+    return data[0][0]
+"""
 #########################################################
 #                                                       #
 #                     TURNOS                            #

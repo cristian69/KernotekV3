@@ -219,7 +219,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
     codeIndex = ""
     codeIndex = str('<article class="text-right dataTables_paginate paging_bootstrap_full_number">')
     codeIndex += str('<ul class="pagination">')
-
+    #print classdb.totalRegistrosTurno(turno, indice)
     # Simbolo <<
     if actualPage == 1:
         codeIndex += str('<li class="disabled prev"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>')
