@@ -94,7 +94,11 @@ def total_registros(dateStart, dateEnd, inicio):
     closeConnection()
     return num_registros[0][0]
 
-
+"""
+def totalRegistrosTurno(turno, inicio):
+    makeConnection()
+    query = "SELECT COUNT(*)FROM panelservices INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid WHERE localshift = '1' order by datetimesell desc limit 0,20;"
+"""
 def paginacion(dateStart, dateEnd, inicio):
     makeConnection()
     query = "SELECT "

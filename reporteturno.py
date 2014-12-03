@@ -287,6 +287,7 @@ def paginacion(fecha_inicio, fecha_fin, pag_activa, indice, direccion, turno, st
             rangePage += 50
             countPage = 0
             restSales -= 50
+    print restSales
     if restSales > 0:
         if startPage is actualPage:
             codeIndex += str('<li class="active" id="pag'+str(startPage)+'">')

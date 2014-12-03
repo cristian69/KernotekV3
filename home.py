@@ -80,8 +80,7 @@ class Home(flask.views.MethodView):
                 if typeReport == DATES_REPORT:
                     sells = classdb.reporte_general(startDate, endDate)
                     tableHTML, codeOperations = tablaReporte(sells,startDate, endDate, "False", "False", "False")
-
-                    if len(tableHTML) == 66:
+                    if len(tableHTML) == 75:
                         return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=False, reporte="General", acciones=codeOperations)
                     else:
                         return render_template('reporteFechas.html', tableHTML=tableHTML, bandera=1, tablaFechas=True, reporte="General", acciones=codeOperations)
