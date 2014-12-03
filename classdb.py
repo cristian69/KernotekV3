@@ -216,17 +216,17 @@ def reporteTurnoPaginacion(turno, index):
     data = cursor.fetchall()
     closeConnection()
     return data
-"""
+
 def totalRegistrosTurno(turno, inicio):
     makeConnection()
-    query = "SELECT COUNT(ticket) FROM panelservices " \ 
-    	    "INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid "\ 
+    query = "SELECT COUNT(ticket) FROM panelservices " \
+    	    "INNER JOIN servicesdetail ON panelservices.panelservicesid = servicesdetail.servicesdetailid " \
     	    "WHERE localshift = "+str(turno)+" order by datetimesell desc limit "+str(inicio)+",500;"
     cursor.execute(query)
     data = cursor.fetchall()
     closeConnection()
     return data[0][0]
-"""
+
 #########################################################
 #                                                       #
 #                     TURNOS                            #
