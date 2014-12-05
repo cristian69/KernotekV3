@@ -26,6 +26,11 @@ class Turnos(flask.views.MethodView):
 		dicTurno = valuesAutomaticShift()
 		bandera = ""
 
+		if typeCut == "manual":
+			typeCut = "Manual"
+		else:
+			typeCut = "Automático"
+			
 		if option == "cortemanual":
 			classdb.cambiarTipoCorte('0')
 			typeCut = classdb.tipoCorte()
