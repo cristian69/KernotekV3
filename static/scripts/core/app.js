@@ -1,5 +1,12 @@
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 var fechaSistema=function(){
     var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
@@ -16,79 +23,20 @@ var fechaSistema=function(){
 
 
 
-
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 var __alertas__=function(estado){
     nombre=estado;
     $("article."+nombre).show();
 }
-
-
-
-
-/*
-
-*/
-var problemasEquipo =function(estadoPython, estadoC){
-    if(estadoPython=="Activo"){
-        var params = {
-        life: 10000,
-        theme: 'lime',
-        sticky: false,
-        horizontalEdge: 'bottom',
-        verticalEdge: 'right'
-    },
-    text = "",
-    $heading = "";
-    params.heading = "Socket";
-    $.notific8($('#pythonActivo').val(), params);
-    }
-    else{
-        var params = {
-        life: 10000,
-        theme: 'ruby',
-        sticky: false,
-        horizontalEdge: 'bottom',
-        verticalEdge: 'right'
-    },
-    text = "",
-    $heading = "";
-    params.heading = "Error Socket";
-    $.notific8($('#socketPython').val(), params);
-    }
-
-    if(estadoC=="Activo"){
-        var params = {
-        life: 10000,
-        theme: 'lime',
-        sticky: false,
-        horizontalEdge: 'bottom',
-        verticalEdge: 'right'
-    },
-    text = "",
-    $heading = "";
-    params.heading = "Socket";
-    $.notific8($('#cActivo').val(), params);
-    }
-    else{
-        var params = {
-        life: 10000,
-        theme: 'ruby',
-        sticky: false,
-        horizontalEdge: 'bottom',
-        verticalEdge: 'right'
-    },
-    text = "",
-    $heading = "";
-    params.heading = "Socket";
-    $.notific8($('#socketC').val(), params);
-    }
-    
-
-}
-
 
 var Tablas="";
 var App = function () {
@@ -108,7 +56,14 @@ var App = function () {
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 var ValidarReporteG= function(){
     $("#AceptarReporte").click(function(e){
@@ -133,7 +88,14 @@ var ValidarReporteG= function(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $(function(){
     $('table#tablaTurno tbody tr').bind('click',function(){

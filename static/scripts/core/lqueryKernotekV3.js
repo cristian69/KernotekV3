@@ -1,16 +1,12 @@
 /*
-
-*/
-function loadingPagina(parametro){
-	if(parametro!=""){
-		$("#paginaCargando").modal("show");
-	}
-}
-
-
-
-/*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function loading(){
 	$("#paginaCargando").modal("show");
@@ -19,7 +15,14 @@ function loading(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $(document).keypress(function(e) {
     if(e.which === 13) {
@@ -37,7 +40,14 @@ $(document).keypress(function(e) {
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function validarNumeros(){
 	numeroValidar=$("#nuevaTarifa").val();
@@ -57,7 +67,14 @@ function validarNumeros(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function tarifaValida(){
 	$("#tarifaIncorrecta").addClass("hidden");
@@ -68,7 +85,14 @@ function tarifaValida(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function validarApertura(){
 	aperturaValidar=$("#nuevoTiempo").val();
@@ -88,7 +112,14 @@ function validarApertura(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function accesoValido(){
 	$("#tarifaIncorrecta").addClass("hidden");
@@ -99,7 +130,14 @@ function accesoValido(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function alertasiOcultar(parametro){
 	$("#"+parametro).addClass("hidden");
@@ -108,7 +146,14 @@ function alertasiOcultar(parametro){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function apagadoSistema(parametro){
 	if(parametro=="True"){
@@ -124,7 +169,14 @@ function apagadoSistema(parametro){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function home(){
 	$("#accionRealizar").select2({
@@ -150,7 +202,14 @@ function home(){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function reporteTurnos(parametro1, parametro2){
 	if(parametro1=="True"){
@@ -175,7 +234,14 @@ function reporteTurnos(parametro1, parametro2){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 	if(excelGeneral=="True"){
@@ -213,7 +279,14 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function tablasReportes(parametro){
 	if(parametro=="True"){
@@ -228,7 +301,14 @@ function tablasReportes(parametro){
 
 
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function corteValores(parametro){
 	if(parametro=='Manual'){

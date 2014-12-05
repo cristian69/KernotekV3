@@ -1,6 +1,13 @@
-//Estos eventos identifican si alguna de las modales con los id
-//especificados se encuentran visibles para poner el foco en e
-//input situado en alguna de estas modales.
+/*
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
+*/
 $('#modalTarifa').on('shown.bs.modal', function () {
 	$('#nuevaTarifa').val("");
     $('#nuevaTarifa').focus();
@@ -12,8 +19,16 @@ $('#modalAcceso').on('shown.bs.modal', function () {
 })
 
 
-
-//evento que identifica el tipo de lapso de un selct
+/*
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
+*/
 $("#configCorte").mouseover(function(){
 	if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
 		$("#semana").addClass("hidden");
@@ -33,9 +48,15 @@ $("#configCorte").mouseover(function(){
 });
 
 
-
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $("#ReportesAceptar").click(function(){
 	if($("#valorticket").val()==0 && $("#valorturno").val()==0 && $("#valorfecha").val()==0 && $("#valortarifa").val()==0 && $("#valortotal").val()==0){
@@ -46,45 +67,15 @@ $("#ReportesAceptar").click(function(){
 });
 
 
-
-
 /*
-
-*/
-function reporteTurno(sa){
-	$("#valorTurno").select2();
-}
-
-
-
-/*
-
-*/
-function tipoReporte(){
-	$("#tipoReporte").select2({
-		placeholder:"Tipo de reporte"
-	});
-}
-
-
-
-
-/*
-
-*/
-function llavesSistema(){
-	$("#estadoLlave").select2({
-		placeholder: "Estado llave"
-	});
-	$("#tipoLlave").select2({
-		placeholder: "Tipo De Llave"
-	});
-}
-
-
-
-/*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function mostrarVentanas(parametro){
 	this.nombreVentana=parametro;
@@ -96,6 +87,18 @@ function mostrarVentanas(parametro){
 		$("#contenidoLogin").addClass("errorLogin");
 	}
 }
+
+
+/*
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
+*/
 $(".close").click(function(){
 	$(".contentAlerttas").addClass("hidden");
 });
@@ -107,33 +110,14 @@ $("#cerrarAlertaLogin").click(function(){
 
 
 /*
-
-*/
-function corteActual(entrada){
-	this.estado=entrada;
-	$("#tipoDate").select2();
-	$("#Lapso").select2();
-	$("#mes").select2();
-	$("#semana").select2();
-	if(estado=='manual'){
-		$("#hacerCorte").removeClass("hidden");
-		$("#cambiarCorte").val('0');
-		$(".valorCorte").val('0');
-	}
-	if(estado=='automatico'){
-		$("#cambiarCorte").val('1');
-		$("#configurarCorte").removeClass("hidden");
-		$(".valorCorte").val('1');
-		$("#izquierdo").removeClass("col-md-3");
-		$("#derecho").removeClass("col-md-3");		
-	}
-}
-
-
-
-
-/*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $("#enviarConfiguracion").click(function(){
 	var numerosValidacion=$("#numeroMedida").val();
@@ -146,10 +130,15 @@ $("#enviarConfiguracion").click(function(){
 });
 
 
-
-
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $("#cambioConfiguracion").mouseover(function(){
 	valorRadio=$('input:radio[name=valor]:checked').val();
@@ -157,10 +146,15 @@ $("#cambioConfiguracion").mouseover(function(){
 });
 
 
-
-
 /*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 $("#cambiarCortetuerno").click(function(){
 	if($("#valor1").attr("checked")){
@@ -176,42 +170,15 @@ $("#cambiarCortetuerno").click(function(){
 });
 
 
-
-
 /*
-
-*/
-function cambiarEstado(parametro){
-	this.respuesta=parametro;
-	if(respuesta=='cambioTipo'){
-		$(".thead1").addClass("hidden");
-		$("#hacerCorte").addClass("hidden");
-		$("#configTurno").removeClass("hidden");
-		$("#seleccionTurno").removeClass("hidden");
-		$("#enlaceConfigurar").addClass("hidden");
-	}
-	if(respuesta=='configAutomatico'){
-	$(".tituloCambioConfig").removeClass('hidden');
-	$(".tituloConfigActual").addClass('hidden');
-	$(".lblIngresarValores").removeClass('hidden');
-	$("#Lapso").removeAttr('disabled');
-	$("#semana").removeAttr('disabled');
-	$("#mes").removeAttr('disabled');
-	$("#horaC").removeAttr('disabled');	
-	$("#configAutomatico").addClass('hidden');
-	$(".btnConfigurar").removeClass('hidden');	
-	}
-	if(respuesta=="cancelar"){
-		window.location.reload(true);
-	}
-
-}
-
-
-
-
-/*
-
+     @method
+     Indicates that the block describes a method for the current class.
+     @description
+     The method description.
+     @param
+     Defines a parameter for an ordinary @method.
+     @return
+     Specifies a method's return value.
 */
 function graficasHome(parametro, labels, datos){
 	if(parametro=="graficaDia"){
