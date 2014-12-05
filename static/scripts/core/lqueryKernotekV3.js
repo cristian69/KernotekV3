@@ -60,7 +60,9 @@ function validarNumeros(){
 		return false;
 	}
 	else{
-		tarifaValida();
+		$("#tarifaIncorrecta").addClass("hidden");
+		$("#tiempoIncorrecto").addClass("hidden");
+		$("#aceptarCambioTarifa").click();
 	}
 }
 
@@ -77,9 +79,7 @@ function validarNumeros(){
      Specifies a method's return value.
 */
 function tarifaValida(){
-	$("#tarifaIncorrecta").addClass("hidden");
-	$("#tiempoIncorrecto").addClass("hidden");
-	$("#aceptarCambioTarifa").click();
+	
 }
 
 
