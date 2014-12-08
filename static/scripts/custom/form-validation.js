@@ -1,5 +1,10 @@
 var FormValidation = function () {
 
+    /**
+     * Description
+     * @method handleValidation1
+     * @return 
+     */
     var handleValidation1 = function() {
         // for more info visit the official plugin documentation: 
             // http://docs.jquery.com/Plugins/Validation
@@ -46,27 +51,58 @@ var FormValidation = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method invalidHandler
+                 * @param {} event
+                 * @param {} validator
+                 * @return 
+                 */
                 invalidHandler: function (event, validator) { //display error alert on form submit              
                     success1.hide();
                     error1.show();
                     App.scrollTo(error1, -200);
                 },
 
+                /**
+                 * Description
+                 * @method highlight
+                 * @param {} element
+                 * @return 
+                 */
                 highlight: function (element) { // hightlight error inputs
                     $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method unhighlight
+                 * @param {} element
+                 * @return 
+                 */
                 unhighlight: function (element) { // revert the change done by hightlight
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method success
+                 * @param {} label
+                 * @return 
+                 */
                 success: function (label) {
                     label
                         .closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method submitHandler
+                 * @param {} form
+                 * @return 
+                 */
                 submitHandler: function (form) {
                     success1.show();
                     error1.hide();
@@ -75,6 +111,11 @@ var FormValidation = function () {
 
     }
 
+    /**
+     * Description
+     * @method handleValidation2
+     * @return 
+     */
     var handleValidation2 = function() {
         // for more info visit the official plugin documentation: 
             // http://docs.jquery.com/Plugins/Validation
@@ -119,33 +160,72 @@ var FormValidation = function () {
                     },
                 },
 
+                /**
+                 * Description
+                 * @method invalidHandler
+                 * @param {} event
+                 * @param {} validator
+                 * @return 
+                 */
                 invalidHandler: function (event, validator) { //display error alert on form submit              
                     success2.hide();
                     error2.show();
                     App.scrollTo(error2, -200);
                 },
 
+                /**
+                 * Description
+                 * @method errorPlacement
+                 * @param {} error
+                 * @param {} element
+                 * @return 
+                 */
                 errorPlacement: function (error, element) { // render error placement for each input type
                     var icon = $(element).parent('.input-icon').children('i');
                     icon.removeClass('fa-check').addClass("fa-warning");  
                     icon.attr("data-original-title", error.text()).tooltip({'container': 'body'});
                 },
 
+                /**
+                 * Description
+                 * @method highlight
+                 * @param {} element
+                 * @return 
+                 */
                 highlight: function (element) { // hightlight error inputs
                     $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group   
                 },
 
+                /**
+                 * Description
+                 * @method unhighlight
+                 * @param {} element
+                 * @return 
+                 */
                 unhighlight: function (element) { // revert the change done by hightlight
                     
                 },
 
+                /**
+                 * Description
+                 * @method success
+                 * @param {} label
+                 * @param {} element
+                 * @return 
+                 */
                 success: function (label, element) {
                     var icon = $(element).parent('.input-icon').children('i');
                     $(element).closest('.form-group').removeClass('has-error').addClass('has-success'); // set success class to the control group
                     icon.removeClass("fa-warning").addClass("fa-check");
                 },
 
+                /**
+                 * Description
+                 * @method submitHandler
+                 * @param {} form
+                 * @return 
+                 */
                 submitHandler: function (form) {
                     success2.show();
                     error2.hide();
@@ -155,6 +235,11 @@ var FormValidation = function () {
 
     }
 
+    /**
+     * Description
+     * @method handleValidation3
+     * @return 
+     */
     var handleValidation3 = function() {
         // for more info visit the official plugin documentation: 
         // http://docs.jquery.com/Plugins/Validation
@@ -224,6 +309,13 @@ var FormValidation = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method errorPlacement
+                 * @param {} error
+                 * @param {} element
+                 * @return 
+                 */
                 errorPlacement: function (error, element) { // render error placement for each input type
                     if (element.parent(".input-group").size() > 0) {
                         error.insertAfter(element.parent(".input-group"));
@@ -242,27 +334,58 @@ var FormValidation = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method invalidHandler
+                 * @param {} event
+                 * @param {} validator
+                 * @return 
+                 */
                 invalidHandler: function (event, validator) { //display error alert on form submit   
                     success3.hide();
                     error3.show();
                     App.scrollTo(error3, -200);
                 },
 
+                /**
+                 * Description
+                 * @method highlight
+                 * @param {} element
+                 * @return 
+                 */
                 highlight: function (element) { // hightlight error inputs
                    $(element)
                         .closest('.form-group').addClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method unhighlight
+                 * @param {} element
+                 * @return 
+                 */
                 unhighlight: function (element) { // revert the change done by hightlight
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method success
+                 * @param {} label
+                 * @return 
+                 */
                 success: function (label) {
                     label
                         .closest('.form-group').removeClass('has-error'); // set success class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method submitHandler
+                 * @param {} form
+                 * @return 
+                 */
                 submitHandler: function (form) {
                     success3.show();
                     error3.hide();
@@ -276,6 +399,11 @@ var FormValidation = function () {
             });
     }
 
+    /**
+     * Description
+     * @method handleWysihtml5
+     * @return 
+     */
     var handleWysihtml5 = function() {
         if (!jQuery().wysihtml5) {
             
@@ -291,6 +419,11 @@ var FormValidation = function () {
 
     return {
         //main function to initiate the module
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
 
             handleWysihtml5();

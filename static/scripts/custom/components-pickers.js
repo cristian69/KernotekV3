@@ -1,5 +1,10 @@
 var ComponentsPickers = function () {
 
+    /**
+     * Description
+     * @method handleDatePickers
+     * @return 
+     */
     var handleDatePickers = function () {
 
         if (jQuery().datepicker) {
@@ -11,6 +16,11 @@ var ComponentsPickers = function () {
         }
     }
 
+    /**
+     * Description
+     * @method handleTimePickers
+     * @return 
+     */
     var handleTimePickers = function () {
 
         if (jQuery().timepicker) {
@@ -40,6 +50,11 @@ var ComponentsPickers = function () {
         }
     }
 
+    /**
+     * Description
+     * @method handleDateRangePickers
+     * @return 
+     */
     var handleDateRangePickers = function () {
         if (!jQuery().daterangepicker) {
             return;
@@ -128,6 +143,11 @@ var ComponentsPickers = function () {
         $('#reportrange span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
     }
 
+    /**
+     * Description
+     * @method handleDatetimePicker
+     * @return 
+     */
     var handleDatetimePicker = function () {
 
         $(".form_datetime").datetimepicker({
@@ -159,6 +179,11 @@ var ComponentsPickers = function () {
         $('body').removeClass("modal-open"); // fix bug when inline picker is used in modal
     }
 
+    /**
+     * Description
+     * @method handleClockfaceTimePickers
+     * @return 
+     */
     var handleClockfaceTimePickers = function () {
 
         if (!jQuery().clockface) {
@@ -192,6 +217,11 @@ var ComponentsPickers = function () {
         }).clockface('show', '14:30');
     }
 
+    /**
+     * Description
+     * @method handleColorPicker
+     * @return 
+     */
     var handleColorPicker = function () {
         if (!jQuery().colorpicker) {
             return;
@@ -205,6 +235,11 @@ var ComponentsPickers = function () {
 
     return {
         //main function to initiate the module
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
             handleDatePickers();
             handleTimePickers();

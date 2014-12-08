@@ -1,5 +1,10 @@
 var Login = function () {
 
+	/**
+	 * Description
+	 * @method handleLogin
+	 * @return 
+	 */
 	var handleLogin = function() {
 		$('.login-form').validate({
 	            errorElement: 'span', //default input error message container
@@ -26,25 +31,57 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            /**
+            	 * Description
+            	 * @method invalidHandler
+            	 * @param {} event
+            	 * @param {} validator
+            	 * @return 
+            	 */
+            	invalidHandler: function (event, validator) { //display error alert on form submit   
 	                $('.alert-danger', $('.login-form')).show();
 	            },
 
-	            highlight: function (element) { // hightlight error inputs
+	            /**
+            	 * Description
+            	 * @method highlight
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	highlight: function (element) { // hightlight error inputs
 	                $(element)
 	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
 	            },
 
-	            success: function (label) {
+	            /**
+            	 * Description
+            	 * @method success
+            	 * @param {} label
+            	 * @return 
+            	 */
+            	success: function (label) {
 	                label.closest('.form-group').removeClass('has-error');
 	                label.remove();
 	            },
 
-	            errorPlacement: function (error, element) {
+	            /**
+            	 * Description
+            	 * @method errorPlacement
+            	 * @param {} error
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	errorPlacement: function (error, element) {
 	                error.insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
+	            /**
+            	 * Description
+            	 * @method submitHandler
+            	 * @param {} form
+            	 * @return 
+            	 */
+            	submitHandler: function (form) {
 	                form.submit();
 	            }
 	        });
@@ -59,6 +96,11 @@ var Login = function () {
 	        });
 	}
 
+	/**
+	 * Description
+	 * @method handleForgetPassword
+	 * @return 
+	 */
 	var handleForgetPassword = function () {
 		$('.forget-form').validate({
 	            errorElement: 'span', //default input error message container
@@ -78,25 +120,57 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            /**
+            	 * Description
+            	 * @method invalidHandler
+            	 * @param {} event
+            	 * @param {} validator
+            	 * @return 
+            	 */
+            	invalidHandler: function (event, validator) { //display error alert on form submit   
 
 	            },
 
-	            highlight: function (element) { // hightlight error inputs
+	            /**
+            	 * Description
+            	 * @method highlight
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	highlight: function (element) { // hightlight error inputs
 	                $(element)
 	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
 	            },
 
-	            success: function (label) {
+	            /**
+            	 * Description
+            	 * @method success
+            	 * @param {} label
+            	 * @return 
+            	 */
+            	success: function (label) {
 	                label.closest('.form-group').removeClass('has-error');
 	                label.remove();
 	            },
 
-	            errorPlacement: function (error, element) {
+	            /**
+            	 * Description
+            	 * @method errorPlacement
+            	 * @param {} error
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	errorPlacement: function (error, element) {
 	                error.insertAfter(element.closest('.input-icon'));
 	            },
 
-	            submitHandler: function (form) {
+	            /**
+            	 * Description
+            	 * @method submitHandler
+            	 * @param {} form
+            	 * @return 
+            	 */
+            	submitHandler: function (form) {
 	                form.submit();
 	            }
 	        });
@@ -122,8 +196,19 @@ var Login = function () {
 
 	}
 
+	/**
+	 * Description
+	 * @method handleRegister
+	 * @return 
+	 */
 	var handleRegister = function () {
 
+		/**
+		 * Description
+		 * @method format
+		 * @param {} state
+		 * @return BinaryExpression
+		 */
 		function format(state) {
             if (!state.id) return state.text; // optgroup
             return "<img class='flag' src='assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
@@ -135,6 +220,12 @@ var Login = function () {
             allowClear: true,
             formatResult: format,
             formatSelection: format,
+            /**
+             * Description
+             * @method escapeMarkup
+             * @param {} m
+             * @return m
+             */
             escapeMarkup: function (m) {
                 return m;
             }
@@ -192,21 +283,47 @@ var Login = function () {
 	                }
 	            },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
+	            /**
+            	 * Description
+            	 * @method invalidHandler
+            	 * @param {} event
+            	 * @param {} validator
+            	 * @return 
+            	 */
+            	invalidHandler: function (event, validator) { //display error alert on form submit   
 
 	            },
 
-	            highlight: function (element) { // hightlight error inputs
+	            /**
+            	 * Description
+            	 * @method highlight
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	highlight: function (element) { // hightlight error inputs
 	                $(element)
 	                    .closest('.form-group').addClass('has-error'); // set error class to the control group
 	            },
 
-	            success: function (label) {
+	            /**
+            	 * Description
+            	 * @method success
+            	 * @param {} label
+            	 * @return 
+            	 */
+            	success: function (label) {
 	                label.closest('.form-group').removeClass('has-error');
 	                label.remove();
 	            },
 
-	            errorPlacement: function (error, element) {
+	            /**
+            	 * Description
+            	 * @method errorPlacement
+            	 * @param {} error
+            	 * @param {} element
+            	 * @return 
+            	 */
+            	errorPlacement: function (error, element) {
 	                if (element.attr("name") == "tnc") { // insert checkbox errors after the container                  
 	                    error.insertAfter($('#register_tnc_error'));
 	                } else if (element.closest('.input-icon').size() === 1) {
@@ -216,7 +333,13 @@ var Login = function () {
 	                }
 	            },
 
-	            submitHandler: function (form) {
+	            /**
+            	 * Description
+            	 * @method submitHandler
+            	 * @param {} form
+            	 * @return 
+            	 */
+            	submitHandler: function (form) {
 	                form.submit();
 	            }
 	        });
@@ -243,6 +366,11 @@ var Login = function () {
     
     return {
         //main function to initiate the module
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
         	
             handleLogin();

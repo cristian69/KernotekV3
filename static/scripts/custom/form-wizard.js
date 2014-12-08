@@ -3,11 +3,22 @@ var FormWizard = function () {
 
     return {
         //main function to initiate the module
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
             if (!jQuery().bootstrapWizard) {
                 return;
             }
 
+            /**
+             * Description
+             * @method format
+             * @param {} state
+             * @return BinaryExpression
+             */
             function format(state) {
                 if (!state.id) return state.text; // optgroup
                 return "<img class='flag' src='assets/img/flags/" + state.id.toLowerCase() + ".png'/>&nbsp;&nbsp;" + state.text;
@@ -91,6 +102,13 @@ var FormWizard = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method errorPlacement
+                 * @param {} error
+                 * @param {} element
+                 * @return 
+                 */
                 errorPlacement: function (error, element) { // render error placement for each input type
                     if (element.attr("name") == "gender") { // for uniform radio buttons, insert the after the given container
                         error.insertAfter("#form_gender_error");
@@ -101,22 +119,47 @@ var FormWizard = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method invalidHandler
+                 * @param {} event
+                 * @param {} validator
+                 * @return 
+                 */
                 invalidHandler: function (event, validator) { //display error alert on form submit   
                     success.hide();
                     error.show();
                     App.scrollTo(error, -200);
                 },
 
+                /**
+                 * Description
+                 * @method highlight
+                 * @param {} element
+                 * @return 
+                 */
                 highlight: function (element) { // hightlight error inputs
                     $(element)
                         .closest('.form-group').removeClass('has-success').addClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method unhighlight
+                 * @param {} element
+                 * @return 
+                 */
                 unhighlight: function (element) { // revert the change done by hightlight
                     $(element)
                         .closest('.form-group').removeClass('has-error'); // set error class to the control group
                 },
 
+                /**
+                 * Description
+                 * @method success
+                 * @param {} label
+                 * @return 
+                 */
                 success: function (label) {
                     if (label.attr("for") == "gender" || label.attr("for") == "payment[]") { // for checkboxes and radio buttons, no need to show OK icon
                         label
@@ -129,6 +172,12 @@ var FormWizard = function () {
                     }
                 },
 
+                /**
+                 * Description
+                 * @method submitHandler
+                 * @param {} form
+                 * @return 
+                 */
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
@@ -137,6 +186,11 @@ var FormWizard = function () {
 
             });
 
+            /**
+             * Description
+             * @method displayConfirm
+             * @return 
+             */
             var displayConfirm = function() {
                 $('#tab4 .form-control-static', form).each(function(){
                     var input = $('[name="'+$(this).attr("data-display")+'"]', form);
@@ -159,6 +213,14 @@ var FormWizard = function () {
                 });
             }
 
+            /**
+             * Description
+             * @method handleTitle
+             * @param {} tab
+             * @param {} navigation
+             * @param {} index
+             * @return 
+             */
             var handleTitle = function(tab, navigation, index) {
                 var total = navigation.find('li').length;
                 var current = index + 1;
@@ -192,6 +254,15 @@ var FormWizard = function () {
             $('#form_wizard_1').bootstrapWizard({
                 'nextSelector': '.button-next',
                 'previousSelector': '.button-previous',
+                /**
+                 * Description
+                 * @method onTabClick
+                 * @param {} tab
+                 * @param {} navigation
+                 * @param {} index
+                 * @param {} clickedIndex
+                 * @return 
+                 */
                 onTabClick: function (tab, navigation, index, clickedIndex) {
                     success.hide();
                     error.hide();
@@ -200,6 +271,14 @@ var FormWizard = function () {
                     }
                     handleTitle(tab, navigation, clickedIndex);
                 },
+                /**
+                 * Description
+                 * @method onNext
+                 * @param {} tab
+                 * @param {} navigation
+                 * @param {} index
+                 * @return 
+                 */
                 onNext: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
@@ -210,12 +289,28 @@ var FormWizard = function () {
 
                     handleTitle(tab, navigation, index);
                 },
+                /**
+                 * Description
+                 * @method onPrevious
+                 * @param {} tab
+                 * @param {} navigation
+                 * @param {} index
+                 * @return 
+                 */
                 onPrevious: function (tab, navigation, index) {
                     success.hide();
                     error.hide();
 
                     handleTitle(tab, navigation, index);
                 },
+                /**
+                 * Description
+                 * @method onTabShow
+                 * @param {} tab
+                 * @param {} navigation
+                 * @param {} index
+                 * @return 
+                 */
                 onTabShow: function (tab, navigation, index) {
                     var total = navigation.find('li').length;
                     var current = index + 1;

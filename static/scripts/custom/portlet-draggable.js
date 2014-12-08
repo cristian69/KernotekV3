@@ -2,6 +2,11 @@ var PortletDraggable = function () {
 
     return {
         //main function to initiate the module
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
 
             if (!jQuery().sortable) {
