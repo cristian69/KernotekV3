@@ -38,12 +38,12 @@
             <li class="dropdown-submenu">
               <a tabindex="-1"><i class="fa fa-bar-chart-o"></i>Reportes</a>
               <ul class="dropdown-menu">
-                 <li class="tooltips">
+                <li class="tooltips">
                   <a href="{{ url_for('reportes') }}">
                   <i class="fa fa fa-history"></i>Por fechas
                   </a>
                 </li>
-                 <li class="tooltips">
+                <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
                   <i class="fa fa-ticket"></i>Por turno
                   </a>
@@ -89,7 +89,8 @@
                       <article class="form-body">
                         <article class="row">
                           <article class="col-md-12 text-center" id="cargando">
-                            <p style='text-align:center;'><strong>Cargando...</strong></p><img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>
+                            <p style='text-align:center;'><strong>Cargando...</strong></p>
+                            <img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>
                           </article>
                         </article>
                       </article>
@@ -168,7 +169,7 @@
             <article class="col-lg-8 col-md-10 col-sm-12 col-xs-12  text-right nuevoReporte hidden">
               <a href="{{ url_for('reportes') }}" class="btn blue">Nuevo reporte</a>
             </article>
-             <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0 "></article>
+            <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0 "></article>
           </article>
           <article class="row">
             <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
@@ -177,7 +178,7 @@
               {{indexHTML|safe}}
             </article>
             <article class="col-lg-2 col-md-1 col-sm-0 col-xs-0"></article>
-          </article>  
+          </article>
         </article>
       </article>
     </section>

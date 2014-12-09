@@ -38,12 +38,12 @@
             <li class="dropdown-submenu">
               <a tabindex="-1" href="#"><i class="fa fa-bar-chart-o"></i>Reportes</a>
               <ul class="dropdown-menu">
-                 <li class="tooltips">
+                <li class="tooltips">
                   <a href="{{ url_for('reportes') }}">
                   <i class="fa fa fa-history"></i>Por fechas
                   </a>
                 </li>
-                 <li class="tooltips">
+                <li class="tooltips">
                   <a href="{{ url_for('reporteTurno') }}">
                   <i class="fa fa-ticket"></i>Por turno
                   </a>
@@ -107,7 +107,8 @@
                       <article class="form-body">
                         <article class="row">
                           <article class="col-md-12 text-center" id="cargando">
-                            <p style='text-align:center;'><strong>Cargando...</strong></p><img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>
+                            <p style='text-align:center;'><strong>Cargando...</strong></p>
+                            <img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>
                           </article>
                         </article>
                       </article>
@@ -149,7 +150,7 @@
                                     <button class="btn blue hidden" type="button" id="btnCorte">Corte</button>
                                   </article>
                                 </article>
-                              </article>  
+                              </article>
                             </article>
                             <article class="tab-pane" id="Turno2b">
                               <article class="row">
@@ -158,7 +159,7 @@
                                     <h4>¿Seguro que deseas realizar el corte de turno?</h4>
                                   </article>
                                 </article>
-                              </article>  
+                              </article>
                             </article>
                             <article class="tab-pane valorAutom" id="turno2">
                               <article class="row">
@@ -227,13 +228,13 @@
                                       <article class="input-group col-md-12">
                                         <input style="cursor:pointer;"type="text" class="form-control timepicker timepicker-24" name="hora" id="horaC" value="23:59:59" > 
                                         <span class="input-group-btn">
-                                          <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
+                                        <button class="btn default" type="button"><i class="fa fa-clock-o"></i></button>
                                         </span>
                                       </article>
                                     </article>
                                   </article>
                                 </article>
-                              </article>  
+                              </article>
                             </article>
                             <article class="tab-pane valorAutom" id="Turno2a">
                               <article class="row">
@@ -251,23 +252,23 @@
                                     <button class="btn blue" type="button" id="btnAutomaticoCorte">Automático</button>
                                   </article>
                                 </article>
-                              </article>  
+                              </article>
                             </article>
                           </article>
                         </article>
                       </article>
                     </article>
-                  <article class="form-actions text-right  footerCorteTurno hidden">
-                    <article class="text-right">
-                      <input type="text" class="control-form hidden" id="valorPestaña" value="1">
-                      <input type="text" class="control-form hidden" id="accion" value="" name="accion">
-                    <button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="corte"></i>Aceptar</button>
-                    <button type="button" class="btn hidden" id="anteriorCorte">Regresar</button>
-                    <button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="corteautomatico">Aceptar</button>
-                    <button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button>
+                    <article class="form-actions text-right  footerCorteTurno hidden">
+                      <article class="text-right">
+                        <input type="text" class="control-form hidden" id="valorPestaña" value="1">
+                        <input type="text" class="control-form hidden" id="accion" value="" name="accion">
+                        <button type="submit" class="btn blue  hidden" id="AceptarCorte" name="submit" value="corte"></i>Aceptar</button>
+                        <button type="button" class="btn hidden" id="anteriorCorte">Regresar</button>
+                        <button type="submit" class="btn blue hidden" id="ConfirmarAccionT" name="submit" value="corteautomatico">Aceptar</button>
+                        <button type="button" class="btn hidden" id="CancelarCorte"></i>Cancelar</button>
+                      </article>
                     </article>
-                  </article>
-                </form>
+                  </form>
                 </article>
               </article>
             </article>
