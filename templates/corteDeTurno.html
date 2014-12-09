@@ -19,7 +19,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload="mostrarVentanas('{{bandera}}'), home(), corteValores('{{tipoCorte}}');">
+  <body class="page-header-fixed" onload="mostrarVentanas('{{bandera}}'), home(), corteValores('{{tipoCorte}}'),valoresTurnoh();">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -99,12 +99,31 @@
             </article>
           </article>
           <article class="col-md-12">
+            <article id="paginaCargando" class="modal fade" tabindex="0" style="margin-top:15% !important;" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-hidden="false">
+              <article class="modal-dialog">
+                <article class="modal-content">
+                  <article class="modal-body row">
+                    <article class="form-wizard">
+                      <article class="form-body">
+                        <article class="row">
+                          <article class="col-md-12 text-center" id="cargando">
+                            <p style='text-align:center;'><strong>Cargando...</strong></p><img class='img-responsive' src='../static/img/file.gif' alt='Cargando...'>
+                          </article>
+                        </article>
+                      </article>
+                    </article>
+                  </article>
+                </article>
+              </article>
+            </article>
+          </article>
+          <article class="col-md-12">
             <article class="col-lg-3 col-md-2 col-sm-1 col-xs-0"></article>
             <article class="col-lg-6 col-md-8 col-sm-10 col-xs-12 configuracionCortes">
               <article class="portlet light bordered">
                 <article class="portlet-title">
                   <article class="caption">
-                    <i class="fa fa-calendar-o"></i>Turnos{{tipoCorte}}
+                    <i class="fa fa-calendar-o"></i>Turnos
                   </article>
                 </article>
                 <article class="portlet-body form text-center ">
@@ -268,7 +287,7 @@
     <script src="../static/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
     <script src="../static/plugins/bootstrap/js/bootstrap.js" type="text/javascript"></script>
     <script src="../static/plugins/bootstrap/js/bootstrap2-typeahead.min.js" type="text/javascript"></script>
-    <script src="../static/scripts/jquery_kernotek.js" type="text/javascript"></script>
+    <script src="../static/scripts/core/jquery_kernotek.js" type="text/javascript"></script>
     <script src="../static/plugins/select2/select2.min.js" type="text/javascript" ></script>
     <script src="../static/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
     <script src="../static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript" ></script>

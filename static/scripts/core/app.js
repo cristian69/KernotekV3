@@ -1,13 +1,15 @@
-/*
-     @method
-     Indicates that the block describes a method for the current class.
-     @description
-     The method description.
-     @param
-     Defines a parameter for an ordinary @method.
-     @return
-     Specifies a method's return value.
-*/
+/**
+ * @method
+ * Indicates that the block describes a method for the current class.
+ * @description
+ * The method description.
+ * @param
+ * Defines a parameter for an ordinary @method.
+ * @return
+ * Specifies a method's return value.
+ * @method fechaSistema
+ * @return 
+ */
 var fechaSistema=function(){
     var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
@@ -22,20 +24,243 @@ var fechaSistema=function(){
 }
 
 
+/**
+ * Description
+ * @method tipoReporte
+ * @return 
+ */
+var tipoReporte=function(){
+    $("#btnreporteFechas").click(function(){
+        $(".fechasReporte").removeClass("hidden");
+        $(".seleccionReporte").addClass("hidden");
+        $("#inpTipoReporte").val("fechas");
+        $(".footerModalReporte").removeClass("hidden");
+    })
+    $("#btnreporteTurno").click(function(){
+        $(".fechasReporte").removeClass("hidden");
+        $(".seleccionReporte").addClass("hidden");
+        $("#inpTipoReporte").val("turno");
+        $(".footerModalReporte").removeClass("hidden");
+        $(".labelHoraInicio").addClass("hidden");
+        $(".inputHoraInicio").addClass("hidden");
+        $(".labelHoraFin").addClass("hidden");
+        $(".inputHoraFin").addClass("hidden");
+    })
+    $("#regresarReporte").click(function(){
+        $(".fechasReporte").addClass("hidden");
+        $(".seleccionReporte").removeClass("hidden");
+        $("#inpTipoReporte").val("");
+        $(".footerModalReporte").addClass("hidden");
+        $(".labelHoraInicio").removeClass("hidden");
+        $(".inputHoraInicio").removeClass("hidden");
+        $(".labelHoraFin").removeClass("hidden");
+        $(".inputHoraFin").removeClass("hidden");
+    })
+}
 
-/*
-     @method
-     Indicates that the block describes a method for the current class.
-     @description
-     The method description.
-     @param
-     Defines a parameter for an ordinary @method.
-     @return
-     Specifies a method's return value.
-*/
-var __alertas__=function(estado){
-    nombre=estado;
-    $("article."+nombre).show();
+/**
+ * Description
+ * @method generarReporte
+ * @return 
+ */
+var generarReporte = function(){
+    $("#aceptarReporte").click(function(){
+        if($("#hora_inicio").val()=="" || $("#fecha_inicio").val()=="" || $("#hora_fin").val()=="" || $("#fecha_fin").val()==""){
+            $("#errorFechas").removeClass("hidden");
+            return false;
+        }
+    });
+
+    $("#reporteTurnoAceptar").click(function(){
+        if($("#hora_inicio2").val()=="" || $("#fecha_inicio2").val()==""){
+            $("#errorFechasTurno").removeClass("hidden");
+            return false;
+        }
+    });
+
+}
+
+/**
+ * Description
+ * @method configAutomatico
+ * @return 
+ */
+var configAutomatico = function(){
+    $(".configuracionCortes").mouseover(function(){
+        if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
+            document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
+            $("#semana").addClass("hidden");
+            $("#mes").addClass("hidden");
+            $(".contenedorFecha").addClass("hidden");
+            $(".contenedorFecha").removeClass("col-md-6");
+        }
+        if($("#Lapso").val()=="cadaSemana"){
+            document.getElementById("labelTipoCorte").innerHTML = "Día de la semana y hora para la realización del corte de turno";
+            $("#semana").removeClass("hidden");
+            $("#mes").addClass("hidden");
+            $(".contenedorFecha").removeClass("hidden");
+            $(".contenedorFecha").addClass("col-md-6");
+        }
+        if($("#Lapso").val()=="cadaMes"){
+            document.getElementById("labelTipoCorte").innerHTML = "Día del mes y hora para la realización del corte de turno";
+            $("#semana").addClass("hidden");
+            $("#mes").removeClass("hidden");
+            $(".contenedorFecha").removeClass("hidden");
+            $(".contenedorFecha").addClass("col-md-6");
+        }
+        if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="manual" && $("#banderaPosicion").val()=="2"){
+            $("#cancelarAccion").removeClass("hidden");
+            $("#aceptarAccion").removeClass("hidden");
+            $("#nextTurno").addClass("hidden");
+            $("#backTurno").addClass("hidden");
+        }
+        if($("#seleccionarAccion").val()=="cambiar" && $("#tiposCortes").val()=="automatico"){
+            $("#cancelarAccion").addClass("hidden");
+            $("#aceptarAccion").addClass("hidden");
+            $("#nextTurno").removeClass("hidden");  
+            $("#backTurno").removeClass("hidden");
+        }
+    });
+}
+
+/**
+ * Description
+ * @method tipodeCorte
+ * @return 
+ */
+var tipodeCorte = function(){
+    $("#btnCorte").click(function(){
+        $("#Turno1").removeClass("active")
+        $("#Turno2b").addClass("active")
+        $(".footerCorteTurno").removeClass("hidden");
+        $("#AceptarCorte").removeClass("hidden");
+        $("#CancelarCorte").removeClass("hidden");
+        $("#valorPestaña").val("4");
+    });
+
+    $("#CancelarCorte").click(function(){
+        if($("#valorPestaña").val()=="1" || $("#valorPestaña").val()=="4"){
+            $("#Turno2b").removeClass("active");
+            $("#Turno1").addClass("active");
+            $(".footerCorteTurno").addClass("hidden");
+            $("#CancelarCorte").addClass("hidden");
+            $("#ConfirmarAccionT").addClass("hidden");
+            $("#turno2").removeClass("active");
+            $("#AceptarCorte").addClass("hidden");
+            $("#valorPestaña").val("1");
+            $("#accion").val("");
+        }
+    });
+    $("#btnConfigurar").click(function(){
+        $("#turno2").addClass("active");
+        $("#Turno1").removeClass("active");
+        $(".footerCorteTurno").removeClass("hidden");
+        $("#AceptarCorte").removeClass("hidden");
+        $("#CancelarCorte").removeClass("hidden");
+        $("#accion").val("configurar");
+    });
+
+    $("#btnCambiarCorte").click(function(){
+        if($("#valorPestaña").val()=="1"){
+            $("#pasoTurno2a").addClass("active");
+            $("#pasoTurno2a").removeClass("hidden");
+            $("#Turno2a").addClass("active");
+            $("#pasoTurno1").removeClass("active");
+            $("#Turno1").removeClass("active"); 
+            $("#anteriorCorte").removeClass("hidden");
+            $(".footerCorteTurno").removeClass("hidden");
+            $("#valorPestaña").val("2");
+            $("#accion").val("manual"); 
+        }
+    });
+
+    $("#btnAutomaticoCorte").click(function(){
+        $("#pasoTurno2a").removeClass("active");
+        $("#Turno2a").removeClass("active");        
+        $("#pasoTurno3a").addClass("active");
+        $("#pasoTurno3a").removeClass("hidden");
+        $("#turno2").addClass("active");
+        $("#siguienteCorte").addClass("hidden");
+        $("#ConfirmarAccionT").removeClass("hidden");
+        $("#valorPestaña").val("3");
+        $("#accion").val("automatico");
+    });
+
+    $("#anteriorCorte").click(function(){
+        if($("#valorPestaña").val()=="2"){
+            $("#pasoTurno2a").removeClass("active");
+            $("#pasoTurno2a").addClass("hidden");
+            $("#Turno2a").removeClass("active");
+            $("#pasoTurno1").addClass("active");
+            $("#Turno1").addClass("active");    
+            $("#anteriorCorte").addClass("hidden");
+            $(".footerCorteTurno").addClass("hidden");
+            $("#valorPestaña").val("1");
+            $("#accion").val("");
+        }
+
+    }); 
+
+
+    $("#anteriorCorte").click(function(){
+        if($("#valorPestaña").val()!="1" && $("#valorPestaña").val()!="2"){
+            $("#pasoTurno2a").addClass("active");
+            $("#pasoTurno2a").removeClass("hidden");
+            $("#Turno2a").addClass("active");
+            $("#pasoTurno1").removeClass("active");
+            $("#Turno1").removeClass("active"); 
+            $("#anteriorCorte").removeClass("hidden");
+            $(".footerCorteTurno").removeClass("hidden");
+            $("#valorPestaña").val("2");
+            $("#pasoTurno2a").addClass("active");
+            $("#Turno2a").addClass("active");       
+            $("#pasoTurno3a").removeClass("active");
+            $("#pasoTurno3a").addClass("hidden");
+            $("#turno2").removeClass("active");
+            $("#siguienteCorte").removeClass("hidden");
+            $("#ConfirmarAccionT").addClass("hidden");
+            $("#accion").val("manual");
+        }
+    });
+
+
+}
+
+/**
+ * Description
+ * @method cerrarVentanas
+ * @return 
+ */
+var cerrarVentanas = function(){
+    $(".close").click(function(){
+        $(".contentAlerttas").addClass("hidden");
+    });
+
+    $("#cerrarAlertaLogin").click(function(){
+        $("#contenidoLogin").removeClass("errorLogin");
+    });
+
+}
+
+/**
+ * Description
+ * @method configurarCorte
+ * @return 
+ */
+var configurarCorte = function(){
+    $("#AceptarCorte").click(function(){
+        if($("#horaC").val()==="" && $("#accion").val()==="configurar" ){
+            $("#errorHora").removeClass("hidden");
+            return false;
+        }
+    });
+
+    $("#ConfirmarAccionT").click(function(){
+        if($("#horaC").val()==="" && $("#accion").val()==="automatico" ){
+            $("#errorHora").removeClass("hidden");
+            return false;
+        }
+    });
 }
 
 var Tablas="";
@@ -55,16 +280,18 @@ var App = function () {
 
 
 
-/*
-     @method
-     Indicates that the block describes a method for the current class.
-     @description
-     The method description.
-     @param
-     Defines a parameter for an ordinary @method.
-     @return
-     Specifies a method's return value.
-*/
+/**
+ * @method
+ * Indicates that the block describes a method for the current class.
+ * @description
+ * The method description.
+ * @param
+ * Defines a parameter for an ordinary @method.
+ * @return
+ * Specifies a method's return value.
+ * @method ValidarReporteG
+ * @return 
+ */
 var ValidarReporteG= function(){
     $("#AceptarReporte").click(function(e){
         if($("#fecha_inicio").val()=="" && $("#fecha_fin").val()=="" && $("#hora_inicio").val()=="" && $("#hora_fin").val()==""){
@@ -138,6 +365,11 @@ $(function(){
 
 
     // initializes main settings
+    /**
+     * Description
+     * @method handleInit
+     * @return 
+     */
     var handleInit = function () {
 
         if ($('body').css('direction') === 'rtl') {
@@ -174,6 +406,11 @@ $(function(){
         }
     }
 
+    /**
+     * Description
+     * @method handleSidebarState
+     * @return 
+     */
     var handleSidebarState = function () {
         // remove sidebar toggler if window width smaller than 992(for tablet and phone mode)
         var viewport = _getViewPort();
@@ -183,6 +420,11 @@ $(function(){
     }
 
     // runs callback functions set by App.addResponsiveHandler().
+    /**
+     * Description
+     * @method runResponsiveHandlers
+     * @return 
+     */
     var runResponsiveHandlers = function () {
         // reinitialize other subscribed elements
         for (var i = 0; i < responsiveHandlers.length; i++) {
@@ -192,6 +434,11 @@ $(function(){
     }
 
     // reinitialize the laypot on window resize
+    /**
+     * Description
+     * @method handleResponsive
+     * @return 
+     */
     var handleResponsive = function () {
         handleSidebarState();
         handleSidebarAndContentHeight();
@@ -200,12 +447,22 @@ $(function(){
     }
 
     // initialize the layout on page load
+    /**
+     * Description
+     * @method handleResponsiveOnInit
+     * @return 
+     */
     var handleResponsiveOnInit = function () {
         handleSidebarState();
         handleSidebarAndContentHeight();
     }
 
     // handle the layout reinitialization on window resize
+    /**
+     * Description
+     * @method handleResponsiveOnResize
+     * @return 
+     */
     var handleResponsiveOnResize = function () {
         var resize;
         if (isIE8) {
@@ -238,6 +495,11 @@ $(function(){
     // this function handles responsive layout on screen size resize or mobile device rotate.
 
     // Set proper height for sidebar and content. The content and sidebar height must be synced always.
+    /**
+     * Description
+     * @method handleSidebarAndContentHeight
+     * @return 
+     */
     var handleSidebarAndContentHeight = function () {
         var content = $('.page-content');
         var sidebar = $('.page-sidebar');
@@ -267,6 +529,11 @@ $(function(){
     }
 
     // Handle sidebar menu
+    /**
+     * Description
+     * @method handleSidebarMenu
+     * @return 
+     */
     var handleSidebarMenu = function () {
         jQuery('.page-sidebar').on('click', 'li > a', function (e) {
             if ($(this).next().hasClass('sub-menu') == false) {
@@ -355,12 +622,26 @@ $(function(){
                 cache: false,
                 url: url,
                 dataType: "html",
+                /**
+                 * Description
+                 * @method success
+                 * @param {} res
+                 * @return 
+                 */
                 success: function (res) {
                     App.stopPageLoading();
                     pageContentBody.html(res);
                     App.fixContentHeight(); // fix content height
                     App.initAjax(); // initialize core stuff
                 },
+                /**
+                 * Description
+                 * @method error
+                 * @param {} xhr
+                 * @param {} ajaxOptions
+                 * @param {} thrownError
+                 * @return 
+                 */
                 error: function (xhr, ajaxOptions, thrownError) {
                     pageContentBody.html('<h4>Could not load the requested content.</h4>');
                     App.stopPageLoading();
@@ -388,12 +669,26 @@ $(function(){
                 cache: false,
                 url: url,
                 dataType: "html",
+                /**
+                 * Description
+                 * @method success
+                 * @param {} res
+                 * @return 
+                 */
                 success: function (res) {
                     App.stopPageLoading();
                     pageContentBody.html(res);
                     App.fixContentHeight(); // fix content height
                     App.initAjax(); // initialize core stuff
                 },
+                /**
+                 * Description
+                 * @method error
+                 * @param {} xhr
+                 * @param {} ajaxOptions
+                 * @param {} thrownError
+                 * @return 
+                 */
                 error: function (xhr, ajaxOptions, thrownError) {
                     pageContentBody.html('<h4>Could not load the requested content.</h4>');
                     App.stopPageLoading();
@@ -413,6 +708,11 @@ $(function(){
     }
 
     // Handles fixed sidebar
+    /**
+     * Description
+     * @method handleFixedSidebar
+     * @return 
+     */
     var handleFixedSidebar = function () {
         var menu = $('.page-sidebar-menu');
 
@@ -447,6 +747,11 @@ $(function(){
     }
 
     // Handles the sidebar menu hover effect for fixed sidebar.
+    /**
+     * Description
+     * @method handleFixedSidebarHoverable
+     * @return 
+     */
     var handleFixedSidebarHoverable = function () {
         if ($('body').hasClass('page-sidebar-fixed') === false) {
             return;
@@ -496,6 +801,11 @@ $(function(){
     }
 
     // Handles sidebar toggler to close/hide the sidebar.
+    /**
+     * Description
+     * @method handleSidebarToggler
+     * @return 
+     */
     var handleSidebarToggler = function () {
         var viewport = _getViewPort();
         if ($.cookie && $.cookie('sidebar_closed') === '1' && viewport.width >= 992) {
@@ -588,6 +898,11 @@ $(function(){
     }
 
     // Handles the horizontal menu
+    /**
+     * Description
+     * @method handleHorizontalMenu
+     * @return 
+     */
     var handleHorizontalMenu = function () {
         //handle hor menu search form toggler click
         $('.header').on('click', '.hor-menu .hor-menu-search-form-toggler', function (e) {
@@ -629,6 +944,11 @@ $(function(){
     }
 
     // Handles the go to top button at the footer
+    /**
+     * Description
+     * @method handleGoTop
+     * @return 
+     */
     var handleGoTop = function () {
         /* set variables locally for increased performance */
         jQuery('.footer').on('click', '.go-top', function (e) {
@@ -638,6 +958,11 @@ $(function(){
     }
 
     // Handles portlet tools & actions
+    /**
+     * Description
+     * @method handlePortletTools
+     * @return 
+     */
     var handlePortletTools = function () {
         jQuery('body').on('click', '.portlet > .portlet-title > .tools > a.remove', function (e) {
             e.preventDefault();
@@ -656,11 +981,25 @@ $(function(){
                     cache: false,
                     url: url,
                     dataType: "html",
+                    /**
+                     * Description
+                     * @method success
+                     * @param {} res
+                     * @return 
+                     */
                     success: function(res) 
                     {                        
                         App.unblockUI(el);
                         el.html(res);
                     },
+                    /**
+                     * Description
+                     * @method error
+                     * @param {} xhr
+                     * @param {} ajaxOptions
+                     * @param {} thrownError
+                     * @return 
+                     */
                     error: function(xhr, ajaxOptions, thrownError)
                     {
                         App.unblockUI(el);
@@ -701,6 +1040,11 @@ $(function(){
     }
 
     // Handles custom checkboxes & radios using jQuery Uniform plugin
+    /**
+     * Description
+     * @method handleUniform
+     * @return 
+     */
     var handleUniform = function () {
         if (!jQuery().uniform) {
             return;
@@ -716,6 +1060,11 @@ $(function(){
         }
     }
 
+    /**
+     * Description
+     * @method handleBootstrapSwitch
+     * @return 
+     */
     var handleBootstrapSwitch = function () {
         if (!jQuery().bootstrapSwitch) {
             return;
@@ -724,6 +1073,11 @@ $(function(){
     }
 
     // Handles Bootstrap Accordions.
+    /**
+     * Description
+     * @method handleAccordions
+     * @return 
+     */
     var handleAccordions = function () {
         jQuery('body').on('shown.bs.collapse', '.accordion.scrollable', function (e) {
             App.scrollTo($(e.target));
@@ -731,6 +1085,11 @@ $(function(){
     }
 
     // Handles Bootstrap Tabs.
+    /**
+     * Description
+     * @method handleTabs
+     * @return 
+     */
     var handleTabs = function () {
         // fix content height on tab click
         $('body').on('shown.bs.tab', '.nav.nav-tabs', function () {
@@ -749,6 +1108,11 @@ $(function(){
     }
 
     // Handles Bootstrap Modals.
+    /**
+     * Description
+     * @method handleModals
+     * @return 
+     */
     var handleModals = function () {
         // fix stackable modal issue: when 2 or more modals opened, closing one of modal will remove .modal-open class. 
         $('body').on('hide.bs.modal', function () {
@@ -771,11 +1135,21 @@ $(function(){
     }
 
     // Handles Bootstrap Tooltips.
+    /**
+     * Description
+     * @method handleTooltips
+     * @return 
+     */
     var handleTooltips = function () {
        jQuery('.tooltips').tooltip();
     }
 
     // Handles Bootstrap Dropdowns
+    /**
+     * Description
+     * @method handleDropdowns
+     * @return 
+     */
     var handleDropdowns = function () {
         /*
           Hold dropdown on click  
@@ -786,10 +1160,20 @@ $(function(){
     }
 
     // Handle Hower Dropdowns
+    /**
+     * Description
+     * @method handleDropdownHover
+     * @return 
+     */
     var handleDropdownHover = function () {
         $('[data-hover="dropdown"]').dropdownHover();
     }
 
+    /**
+     * Description
+     * @method handleAlerts
+     * @return 
+     */
     var handleAlerts = function () {
         $('body').on('click', '[data-close="alert"]', function(e){
             $(this).parent('.alert').hide();
@@ -802,6 +1186,11 @@ $(function(){
     // last popep popover
     var lastPopedPopover;
 
+    /**
+     * Description
+     * @method handlePopovers
+     * @return 
+     */
     var handlePopovers = function () {
         jQuery('.popovers').popover();
 
@@ -815,6 +1204,11 @@ $(function(){
     }
 
     // Handles scrollable contents using jQuery SlimScroll plugin.
+    /**
+     * Description
+     * @method handleScrollers
+     * @return 
+     */
     var handleScrollers = function () {
         $('.scroller').each(function () {
             var height;
@@ -838,6 +1232,11 @@ $(function(){
     }
 
     // Handles Image Preview using jQuery Fancybox plugin
+    /**
+     * Description
+     * @method handleFancybox
+     * @return 
+     */
     var handleFancybox = function () {
         if (!jQuery.fancybox) {
             return;
@@ -859,6 +1258,11 @@ $(function(){
     }
 
     // Fix input placeholder issue for IE8 and IE9
+    /**
+     * Description
+     * @method handleFixInputPlaceholderForIE
+     * @return 
+     */
     var handleFixInputPlaceholderForIE = function () {
         //fix html5 placeholder attribute for ie7 & ie8
         if (isIE8 || isIE9) { // ie8 & ie9
@@ -887,10 +1291,20 @@ $(function(){
     }
 
     // Handle full screen mode toggle
+    /**
+     * Description
+     * @method handleFullScreenMode
+     * @return 
+     */
     var handleFullScreenMode = function() {
         // mozfullscreenerror event handler
        
         // toggle full screen
+        /**
+         * Description
+         * @method toggleFullScreen
+         * @return 
+         */
         function toggleFullScreen() {
           if (!document.fullscreenElement &&    // alternative standard method
               !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
@@ -918,6 +1332,11 @@ $(function(){
     }
 
     // Handle Select2 Dropdowns
+    /**
+     * Description
+     * @method handleSelect2
+     * @return 
+     */
     var handleSelect2 = function() {
         if (jQuery().select2) {
             $('.select2me').select2({
@@ -928,6 +1347,11 @@ $(function(){
     }
 
     // Handle Theme Settings
+    /**
+     * Description
+     * @method handleTheme
+     * @return 
+     */
     var handleTheme = function () {
 
         var panel = $('.theme-panel');
@@ -944,6 +1368,11 @@ $(function(){
         }
         
         //handle theme layout
+        /**
+         * Description
+         * @method resetLayout
+         * @return 
+         */
         var resetLayout = function () {
             $("body").
             removeClass("page-boxed").
@@ -969,6 +1398,11 @@ $(function(){
 
         var lastSelectedLayout = '';
 
+        /**
+         * Description
+         * @method setLayout
+         * @return 
+         */
         var setLayout = function () {
 
             var layoutOption = $('.layout-option', panel).val();
@@ -1061,6 +1495,12 @@ $(function(){
         }
 
         // handle theme colors
+        /**
+         * Description
+         * @method setColor
+         * @param {} color
+         * @return 
+         */
         var setColor = function (color) {
             var color_ = (App.isRTL() ? color + '-rtl' : color);
             $('#style_color').attr("href", "assets/css/themes/" + color_ + ".css");
@@ -1100,13 +1540,23 @@ $(function(){
     return {
 
         //main function to initiate the theme
+        /**
+         * Description
+         * @method init
+         * @return 
+         */
         init: function () {
 
             //IMPORTANT!!!: Do not modify the core handlers call order.
 
             //core handlers
+            cerrarVentanas();
+            configurarCorte();
+            tipodeCorte();
+            configAutomatico();
+            generarReporte();
+            tipoReporte();
             fechaSistema();//inicializa el metodo para obtener la fecha actual del sistema
-            __alertas__();//inicializa el metodo para modtrar alertas en la pagina
             ValidarReporteG();//inicializa el metodo para
             handleInit(); // initialize core variables
             handleResponsiveOnResize(); // set and handle responsive    
@@ -1140,6 +1590,11 @@ $(function(){
         },
 
         //main function to initiate core javascript after ajax complete
+        /**
+         * Description
+         * @method initAjax
+         * @return 
+         */
         initAjax: function () {
             handleScrollers(); // handles slim scrolling contents 
             handleSelect2(); // handle custom Select2 dropdowns
@@ -1153,21 +1608,44 @@ $(function(){
         },
 
         //public function to fix the sidebar and content height accordingly
+        /**
+         * Description
+         * @method fixContentHeight
+         * @return 
+         */
         fixContentHeight: function () {
             handleSidebarAndContentHeight();
         },
 
         //public function to remember last opened popover that needs to be closed on click
+        /**
+         * Description
+         * @method setLastPopedPopover
+         * @param {} el
+         * @return 
+         */
         setLastPopedPopover: function (el) {
             lastPopedPopover = el;
         },
 
         //public function to add callback a function which will be called on window resize
+        /**
+         * Description
+         * @method addResponsiveHandler
+         * @param {} func
+         * @return 
+         */
         addResponsiveHandler: function (func) {
             responsiveHandlers.push(func);
         },
 
         // useful function to make equal height for contacts stand side by side
+        /**
+         * Description
+         * @method setEqualHeight
+         * @param {} els
+         * @return 
+         */
         setEqualHeight: function (els) {
             var tallestEl = 0;
             els = jQuery(els);
@@ -1181,6 +1659,13 @@ $(function(){
         },
 
         // wrapper function to scroll(focus) to an element
+        /**
+         * Description
+         * @method scrollTo
+         * @param {} el
+         * @param {} offeset
+         * @return 
+         */
         scrollTo: function (el, offeset) {
             var pos = (el && el.size() > 0) ? el.offset().top : 0;
 
@@ -1197,11 +1682,22 @@ $(function(){
         },
 
         // function to scroll to the top
+        /**
+         * Description
+         * @method scrollTop
+         * @return 
+         */
         scrollTop: function () {
             App.scrollTo();
         },
 
         // wrapper function to  block element(indicate loading)
+        /**
+         * Description
+         * @method blockUI
+         * @param {} options
+         * @return 
+         */
         blockUI: function (options) {
             var options = $.extend(true, {}, options);
             var html = '';
@@ -1253,9 +1749,20 @@ $(function(){
         },
 
         // wrapper function to  un-block element(finish loading)
+        /**
+         * Description
+         * @method unblockUI
+         * @param {} target
+         * @return 
+         */
         unblockUI: function (target) {
             if (target) {
                 jQuery(target).unblock({
+                    /**
+                     * Description
+                     * @method onUnblock
+                     * @return 
+                     */
                     onUnblock: function () {
                         jQuery(target).css('position', '');
                         jQuery(target).css('zoom', '');
@@ -1266,16 +1773,33 @@ $(function(){
             }
         },
 
+        /**
+         * Description
+         * @method startPageLoading
+         * @param {} message
+         * @return 
+         */
         startPageLoading: function(message) {
             $('.page-loading').remove();
             $('body').append('<div class="page-loading"><img src="assets/img/loading-spinner-grey.gif"/>&nbsp;&nbsp;<span>' + (message ? message : 'Loading...') + '</span></div>');
         },
 
+        /**
+         * Description
+         * @method stopPageLoading
+         * @return 
+         */
         stopPageLoading: function() {
             $('.page-loading').remove();
         },
 
         // initializes uniform elements
+        /**
+         * Description
+         * @method initUniform
+         * @param {} els
+         * @return 
+         */
         initUniform: function (els) {
             if (els) {
                 jQuery(els).each(function () {
@@ -1290,16 +1814,33 @@ $(function(){
         },
 
         //wrapper function to update/sync jquery uniform checkbox & radios
+        /**
+         * Description
+         * @method updateUniform
+         * @param {} els
+         * @return 
+         */
         updateUniform: function (els) {
             $.uniform.update(els); // update the uniform checkbox & radios UI after the actual input control state changed
         },
 
         //public function to initialize the fancybox plugin
+        /**
+         * Description
+         * @method initFancybox
+         * @return 
+         */
         initFancybox: function () {
             handleFancybox();
         },
 
         //public helper function to get actual input value(used in IE9 and IE8 due to placeholder attribute not supported)
+        /**
+         * Description
+         * @method getActualVal
+         * @param {} el
+         * @return CallExpression
+         */
         getActualVal: function (el) {
             var el = jQuery(el);
             if (el.val() === el.attr("placeholder")) {
@@ -1309,6 +1850,12 @@ $(function(){
         },
 
         //public function to get a paremeter by name from URL
+        /**
+         * Description
+         * @method getURLParameter
+         * @param {} paramName
+         * @return Literal
+         */
         getURLParameter: function (paramName) {
             var searchString = window.location.search.substring(1),
                 i, val, params = searchString.split("&");
@@ -1323,6 +1870,11 @@ $(function(){
         },
 
         // check for device touch support
+        /**
+         * Description
+         * @method isTouchDevice
+         * @return 
+         */
         isTouchDevice: function () {
             try {
                 document.createEvent("TouchEvent");
@@ -1332,10 +1884,22 @@ $(function(){
             }
         },
 
+        /**
+         * Description
+         * @method getUniqueID
+         * @param {} prefix
+         * @return BinaryExpression
+         */
         getUniqueID: function(prefix) {
             return 'prefix_' + Math.floor(Math.random() * (new Date()).getTime());
         },
 
+        /**
+         * Description
+         * @method alert
+         * @param {} options
+         * @return 
+         */
         alert: function(options) {
 
             options = $.extend(true, {
@@ -1380,21 +1944,42 @@ $(function(){
         },
 
         // check IE8 mode
+        /**
+         * Description
+         * @method isIE8
+         * @return isIE8
+         */
         isIE8: function () {
             return isIE8;
         },
 
         // check IE9 mode
+        /**
+         * Description
+         * @method isIE9
+         * @return isIE9
+         */
         isIE9: function () {
             return isIE9;
         },
 
         //check RTL mode
+        /**
+         * Description
+         * @method isRTL
+         * @return isRTL
+         */
         isRTL: function () {
             return isRTL;
         },
 
         // get layout color code by color name
+        /**
+         * Description
+         * @method getLayoutColorCode
+         * @param {} name
+         * @return 
+         */
         getLayoutColorCode: function (name) {
             if (layoutColorCodes[name]) {
                 return layoutColorCodes[name];
