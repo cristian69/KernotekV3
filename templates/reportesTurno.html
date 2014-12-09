@@ -19,7 +19,7 @@
     <link href="../static/css/plugins.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="../static/img/favicon.ico"/>
   </head>
-  <body class="page-header-fixed" onload=" tablasReportes('{{tablaFechas}}'), reporteTurnos('{{excel}}', '{{PDF}}');">
+  <body class="page-header-fixed" onload=" chartReports('{{tablaFechas}}'), turnsReport('{{excel}}', '{{PDF}}');">
     <section class="header navbar navbar-fixed-top">
       <article class="header-inner">
         <article class="dropdown">
@@ -75,7 +75,7 @@
           <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <article class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modalAlertas">
               <article class="alert alert-danger hidden" id="fechasIncorrectas">
-                <button type="button" class="close" onclick="alertasiOcultar('fechasIncorrectas');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" onclick="hideAlerts('fechasIncorrectas');"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <span>Ingresa los valores correspondienes</span>
               </article>
             </article>

@@ -20,11 +20,11 @@ function viewModals(){
 /**
  * Muestra las alertas cuyo ID sea idéntico al valor del
  * parámetro dado a la funcion.
- * @method mostrarVentanas
+ * @method showWindow
  * @param {String} idventana
  * @return 
  */
-function mostrarVentanas(idventana){
+function showWindow(idventana){
 	this.nombreVentana=idventana;
 	$("#"+nombreVentana).removeClass("hidden");
 	if(nombreVentana!=""){
@@ -42,13 +42,13 @@ function mostrarVentanas(idventana){
  * a generar, y dos parámetros tipo arreglo, uno que contiene
  * las cantidades a graficar y otro que contiene las etiquetas
  * de la gráfica.
- * @method graficasHome
+ * @method startGraphics
  * @param {String} grafica
  * @param {array} labels
  * @param {array} datos
  * @return 
  */
-function graficasHome(grafica, labels, datos){
+function startGraphics(grafica, labels, datos){
 	if(grafica=="graficaDia"){
 		$("#diaria").addClass("active");
 		$("#graficaenDias").addClass("active");
@@ -167,10 +167,10 @@ $(document).keypress(function(e) {
  * mandarlo al servidor, identifica que sea número, que no tenga
  * espacios en blanco y que el formato sea correcto, si es
  * incorrecto detendrá el SUBMIT y mandara manda una alerta.
- * @method validarNumeros
- * @return false
+ * @method validateRate
+ * @return 
  */
-function validarNumeros(){
+function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
@@ -193,10 +193,10 @@ function validarNumeros(){
  * antes de mandarlo al servidor, identifica que sea número, que no
  * tenga espacios en blanco y que el formato sea correcto, si es
  * incorrecto detendrá el SUBMIT y mandara manda una alerta.
- * @method validarApertura
+ * @method validateTime
  * @return 
  */
-function validarApertura(){
+function validateTime(){
 	aperturaValidar=$("#nuevoTiempo").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+$/;
@@ -217,11 +217,11 @@ function validarApertura(){
 /**
  * Oculta las alertas cuyo ID sea idéntico al parámetro dado en
  * la función.
- * @method alertasiOcultar
+ * @method hideAlerts
  * @param {String} idAlerta
  * @return 
  */
-function alertasiOcultar(idAlerta){
+function hideAlerts(idAlerta){
 	$("#"+idAlerta).addClass("hidden");
 }
 
@@ -232,12 +232,12 @@ function alertasiOcultar(idAlerta){
  * parámetro introducido en la función, recibe un parámetro booleano,
  * si es TRUE es que el sistema está encendido y se mostrará el
  * botón de apagar, de lo contrario se mostrará el botón de  encender.
- * @method apagadoSistema
- * @param {} parametro
+ * @method stateSystem
+ * @param {} estado
  * @return 
  */
-function apagadoSistema(parametro){
-	if(parametro=="True"){
+function stateSystem(estado){
+	if(estado=="True"){
 		$("#btnApagar").removeClass("hidden");
 		$("#btnEncender").addClass("hidden");
 	}
@@ -279,25 +279,25 @@ function home(){
  * Recibe dos parámetros, dependiendo de ellos se mostrará
  * la opción de descargar el reporte, de lo contrario se
  * visualiza la opción para generarlo.
- * @method reporteTurnos
- * @param {boolean} parametro1
- * @param {boolean} parametro2
+ * @method turnsReport
+ * @param {} reporteExcel
+ * @param {} reportePDF
  * @return 
  */
-function reporteTurnos(parametro1, parametro2){
-	if(parametro1=="True"){
+function turnsReport(reporteExcel, reportePDF){
+	if(reporteExcel=="True"){
 		$("#descargarTurnoExcel").removeClass("hidden");
 		$("#generarTurnoExcel").addClass("hidden");
 	}
-	if(parametro2=="True"){
+	if(reportePDF=="True"){
 		$("#descargarTurnoPdf").removeClass("hidden");
 		$("#generarTurnoPdf").addClass("hidden");
 	}
-	if(parametro1=="False"){
+	if(reporteExcel=="False"){
 		$("#descargarTurnoExcel").addClass("hidden");
 		$("#generarTurnoExcel").removeClass("hidden");
 	}
-	if(parametro2=="False"){
+	if(reportePDF=="False"){
 		$("#descargarTurnoPdf").addClass("hidden");
 		$("#generarTurnoPdf").removeClass("hidden");
 	}
@@ -306,15 +306,17 @@ function reporteTurnos(parametro1, parametro2){
 
 
 /**
- * Description
- * @method generarExcel
+ * Dependiendo del valor de los parámetros, depende si se mostrara
+ * la opcion para descargar el reporte o generar el reporte. Ademas
+ * el parámetro ventana no indica el reporte que estará visible. 
+ * @method generateExcel
  * @param {} excelGeneral
  * @param {} excelEspecifico
  * @param {} excelDetallado
  * @param {} ventana
  * @return 
  */
-function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
+function generateExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 	if(excelGeneral=="True"){
 		$("#linkgeneral").addClass("hidden");
 		$("#descargargeneral").removeClass("hidden")
@@ -349,13 +351,16 @@ function generarExcel(excelGeneral, excelEspecifico, excelDetallado, ventana){
 
 
 /**
- * Description
- * @method tablasReportes
- * @param {} parametro
+ * Nos ayuda a identificar si en el módulo de reportes
+ * se estará visualizando el reporte o el módulo de
+ * fechas para generarlo, dependiendo de ello se visualiza
+ * u oculta el módulo de las fechas.
+ * @method chartReports
+ * @param {} ventanaFechas
  * @return 
  */
-function tablasReportes(parametro){
-	if(parametro=="True"){
+function chartReports(ventanaFechas){
+	if(ventanaFechas=="True"){
 		$("#moduloFechas").addClass("hidden");
 		$(".nuevoReporte").removeClass("hidden");
 	}
@@ -366,17 +371,20 @@ function tablasReportes(parametro){
 
 
 /**
- * Description
- * @method corteValores
- * @param {} parametro
+ * Identifica que tipo de corte de turno es el actual dependiendo
+ * del parámetro dado, dependiendo del tipo de corte se visualizarán
+ * las opciones de corte de turno (cuando es manual) o configurar
+ * (cuando es automático).
+ * @method cuttingType
+ * @param {} tipoCorte
  * @return 
  */
-function corteValores(parametro){
-	if(parametro=='Manual'){
+function cuttingType(tipoCorte){
+	if(tipoCorte=='Manual'){
 		$('#btnConfigurar').addClass("hidden");
 		$("#btnCorte").removeClass("hidden");
 	}
-	if(parametro=="Automático"){
+	if(tipoCorte=="Automático"){
 		$('#btnConfigurar').removeClass("hidden");
 		$("#btnCorte").addClass("hidden");
 	}
@@ -384,11 +392,12 @@ function corteValores(parametro){
 
 
 /**
- * Description
- * @method valoresTurnoh
+ * Se asignan los valores actual del corte de turno
+ * automático a los campo de los modulos.
+ * @method configAutomatic
  * @return 
  */
-var valoresTurnoh=function(){
+var configAutomatic=function(){
 		valorLapso=$(".tipoLapsoh").val();
     	valorSemana=$(".diaCorteh").val();
     	valorHora=$(".horaCorteh").val();

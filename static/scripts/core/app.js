@@ -1,16 +1,10 @@
 /**
- * @method
- * Indicates that the block describes a method for the current class.
- * @description
- * The method description.
- * @param
- * Defines a parameter for an ordinary @method.
- * @return
- * Specifies a method's return value.
- * @method fechaSistema
+ * Obtiene la fecha del sistema (cliente) y le asigna
+ * el valor a los campos de fechas de la aplicación web
+ * @method dateSystem
  * @return 
  */
-var fechaSistema=function(){
+var dateSystem=function(){
     var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
     var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
     var f = new Date();
@@ -25,11 +19,13 @@ var fechaSistema=function(){
 
 
 /**
- * Description
- * @method tipoReporte
+ * Itera en los eventos de los botones para saber que
+ * reporte se quiere generar, asi mostrar la ventana
+ * correspondiente a la opción seleccionada.
+ * @method reportType
  * @return 
  */
-var tipoReporte=function(){
+var reportType=function(){
     $("#btnreporteFechas").click(function(){
         $(".fechasReporte").removeClass("hidden");
         $(".seleccionReporte").addClass("hidden");
@@ -59,11 +55,14 @@ var tipoReporte=function(){
 }
 
 /**
- * Description
- * @method generarReporte
+ * Verifica que las fechas introducidas para generar el
+ * reporte por fechas o el reporte por turno, no tienen
+ * un formato adecuado, de ser así evita mandar la peticion
+ * al servidor.
+ * @method generateReoprt
  * @return 
  */
-var generarReporte = function(){
+var generateReoprt = function(){
     $("#aceptarReporte").click(function(){
         if($("#hora_inicio").val()=="" || $("#fecha_inicio").val()=="" || $("#hora_fin").val()=="" || $("#fecha_fin").val()==""){
             $("#errorFechas").removeClass("hidden");
@@ -81,11 +80,12 @@ var generarReporte = function(){
 }
 
 /**
- * Description
- * @method configAutomatico
+ * Identifica el valor de un SELECT para poder visualizar
+ * u ocultar las opciones de configuración disponibles.
+ * @method changeSettings
  * @return 
  */
-var configAutomatico = function(){
+var changeSettings = function(){
     $(".configuracionCortes").mouseover(function(){
         if($("#Lapso").val()!="cadaSemana" && $("#Lapso").val()!="cadaMes"){
             document.getElementById("labelTipoCorte").innerHTML = "Hora del día para la realización del corte de turno";
@@ -124,11 +124,14 @@ var configAutomatico = function(){
 }
 
 /**
- * Description
- * @method tipodeCorte
+ * Itera con los pasos a seguir para la
+ * realizacióndel corte o cambio de turno
+ * dependiendo de los botones que el usuario
+ * presiona.
+ * @method changeCut
  * @return 
  */
-var tipodeCorte = function(){
+var changeCut = function(){
     $("#btnCorte").click(function(){
         $("#Turno1").removeClass("active")
         $("#Turno2b").addClass("active")
@@ -227,11 +230,13 @@ var tipodeCorte = function(){
 }
 
 /**
- * Description
- * @method cerrarVentanas
+ * Oculta las alertas o ventanas con la clase
+ * “contentAlerttas” al presionar un elemento
+ * con la clase “close”
+ * @method closeWindows
  * @return 
  */
-var cerrarVentanas = function(){
+var closeWindows = function(){
     $(".close").click(function(){
         $(".contentAlerttas").addClass("hidden");
     });
@@ -243,11 +248,13 @@ var cerrarVentanas = function(){
 }
 
 /**
- * Description
- * @method configurarCorte
+ * Nos ayuda a guardar la configuración del corte o
+ * cambiar el tipo de corte por automático dependiendo
+ * de los botón que el usuario presione.
+ * @method configurationCut
  * @return 
  */
-var configurarCorte = function(){
+var configurationCut = function(){
     $("#AceptarCorte").click(function(){
         if($("#horaC").val()==="" && $("#accion").val()==="configurar" ){
             $("#errorHora").removeClass("hidden");
@@ -279,16 +286,10 @@ var App = function () {
 
 
 
-
 /**
- * @method
- * Indicates that the block describes a method for the current class.
- * @description
- * The method description.
- * @param
- * Defines a parameter for an ordinary @method.
- * @return
- * Specifies a method's return value.
+ * Valida las fechas para generar el reporte, en caso
+ * de no contener un formato adecuado se evita mandar el
+ * formulario.
  * @method ValidarReporteG
  * @return 
  */
@@ -314,16 +315,14 @@ var ValidarReporteG= function(){
 
 
 
-/*
-     @method
-     Indicates that the block describes a method for the current class.
-     @description
-     The method description.
-     @param
-     Defines a parameter for an ordinary @method.
-     @return
-     Specifies a method's return value.
-*/
+/**
+ * Obtenemos los identificadores de los elementos de la tablaTurnos
+ * para poder generar el reporte del turno seleccionado, despues nos
+ * muestra una modal para afirmar que es ese turno donde queremos 
+ * obtener el reporte.
+ * @method 
+ * @return 
+ */
 $(function(){
     $('table#tablaTurno tbody tr').bind('click',function(){
         id=""
@@ -1550,13 +1549,13 @@ $(function(){
             //IMPORTANT!!!: Do not modify the core handlers call order.
 
             //core handlers
-            cerrarVentanas();
-            configurarCorte();
-            tipodeCorte();
-            configAutomatico();
-            generarReporte();
-            tipoReporte();
-            fechaSistema();//inicializa el metodo para obtener la fecha actual del sistema
+            closeWindows();
+            configurationCut();
+            changeCut();
+            changeSettings();
+            generateReoprt();
+            reportType();
+            dateSystem();//inicializa el metodo para obtener la fecha actual del sistema
             ValidarReporteG();//inicializa el metodo para
             handleInit(); // initialize core variables
             handleResponsiveOnResize(); // set and handle responsive    
