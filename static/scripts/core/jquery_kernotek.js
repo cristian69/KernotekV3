@@ -168,7 +168,7 @@ $(document).keypress(function(e) {
  * espacios en blanco y que el formato sea correcto, si es
  * incorrecto detendrá el SUBMIT y mandara manda una alerta.
  * @method validateRate
- * @return 
+ * @return false
  */
 function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
@@ -194,7 +194,7 @@ function validateRate(){
  * tenga espacios en blanco y que el formato sea correcto, si es
  * incorrecto detendrá el SUBMIT y mandara manda una alerta.
  * @method validateTime
- * @return 
+ * @return false
  */
 function validateTime(){
 	aperturaValidar=$("#nuevoTiempo").val();
