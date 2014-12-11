@@ -26,7 +26,7 @@ function viewModals(){
  */
 function showWindow(idventana){
 	this.nombreVentana=idventana;
-	$("#"+nombreVentana).removeClass("hidden");
+	$("#UsuarioInvalido").removeClass("hidden");
 	if(nombreVentana!=""){
 		$(".contentAlerttas").removeClass("hidden");
 	}
@@ -238,10 +238,12 @@ function hideAlerts(idAlerta){
  */
 function stateSystem(estado){
 	if(estado=="True"){
+		document.getElementById("pestadoSistema").innerHTML="Estado actual del sistema: Encendido";
 		$("#btnApagar").removeClass("hidden");
 		$("#btnEncender").addClass("hidden");
 	}
 	else{
+		document.getElementById("pestadoSistema").innerHTML="Estado actual del sistema: Apagado";
 		$("#btnApagar").addClass("hidden");
 		$("#btnEncender").removeClass("hidden");
 	}
