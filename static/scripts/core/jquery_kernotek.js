@@ -26,7 +26,7 @@ function viewModals(){
  */
 function showWindow(idventana){
 	this.nombreVentana=idventana;
-	$("#UsuarioInvalido").removeClass("hidden");
+	$("#"+nombreVentana).removeClass("hidden");
 	if(nombreVentana!=""){
 		$(".contentAlerttas").removeClass("hidden");
 	}
