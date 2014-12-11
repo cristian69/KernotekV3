@@ -471,7 +471,7 @@ def ventasDia():
 
 def ventasSemana():
     makeConnection()
-    query = "select week(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 week) group by {fn week(datetimesell)} desc;" 
+    query = "select week(datetimesell),sum(cost)from panelservices where not deposit=0 and datetimesell > date_sub(curdate(), interval 7 week) group by {fn week(datetimesell, 1)} desc;" 
     cursor.execute(query)
     data = cursor.fetchall()
     closeConnection()

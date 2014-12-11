@@ -301,10 +301,44 @@ def graficaDia():
     ventas = []
     for indice in range(len(listaDias)-1, -1, -1):
         ventas.append(listaVentas[indice])
-        dias.append(str(listaDias[indice]))
-   
+	day = str(listaDias[indice]).split(" ")
+	namemonth = monthToSpanish(day[0])
+	if day[1].startswith('0'):
+		formatday = day[1].split('0')
+		formatday = formatday[1]
+		dias.append(namemonth + formatday)
+	else:
+		dias.append(namemonth + day[1])
+        #dias.append(str(listaDias[indice]))
+    
     return dias, ventas
 
+
+def monthToSpanish(mes):
+    if mes == "Jan":
+        return "En."
+    elif mes == "Feb":
+        return "Febr."
+    elif mes == "Mar":
+        return "Mzo."
+    elif mes == "Apr":
+        return "Abr."
+    elif mes == "May":
+        return "May."
+    elif mes == "Jun":
+        return "Jun."
+    elif mes == "Jul":
+        return "Jul."
+    elif mes == "Aug":
+        return "Agto."
+    elif mes == "Sep":
+        return "Sept."
+    elif mes == "Oct":
+        return "Oct."
+    elif mes == "Nov":
+        return "Nov."
+    elif mes == "Dec":
+        return "Dic."
 
 def datos_home():
  
