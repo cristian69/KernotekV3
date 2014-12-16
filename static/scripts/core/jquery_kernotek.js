@@ -181,7 +181,7 @@ function validateRate(){
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(numeroValidar<=validacion){
+	if(numeroValidar<=validacion || numeroValidar>=1000){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
