@@ -174,13 +174,14 @@ function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
+	validacion=parseFloat(".5");
 	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(numeroValidar=="0" || numeroValidar=="0.0"){
+	if(numeroValidar<=validacion){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
