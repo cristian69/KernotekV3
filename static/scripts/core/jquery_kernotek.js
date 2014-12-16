@@ -174,38 +174,27 @@ function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
+	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
+		return false;
+	}
+	if(numeroValidar=="0"){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
+		return false;
+	}
 	if(numeroValidar==".5"){
 		$("#tarifaIncorrecta").addClass("hidden");
 		$("#tiempoIncorrecto").addClass("hidden");
 		$("#aceptarCambioTarifa").click();
 	}
 	else{
-	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar) || numeroValidar!=".5"){
-		alert("entra");
-		$("#tarifaIncorrecta").removeClass("hidden");
-		$("#nuevaTarifa").val("");
-		$('#nuevaTarifa').focus();
-		return false;
-	}
-	else{
-		if(numeroValidar=="0"){
-			$("#tarifaIncorrecta").removeClass("hidden");
-			$("#nuevaTarifa").val("");
-			$('#nuevaTarifa').focus();
-			return false;
-		}	
-		if(numeroValidar<=.4){
-			$("#tarifaIncorrecta").removeClass("hidden");
-			$("#nuevaTarifa").val("");
-			$('#nuevaTarifa').focus();
-			return false;
-		}
-		else{
-			$("#tarifaIncorrecta").addClass("hidden");
-			$("#tiempoIncorrecto").addClass("hidden");
-			$("#aceptarCambioTarifa").click();
-		}
-	}
+		$("#tarifaIncorrecta").addClass("hidden");
+		$("#tiempoIncorrecto").addClass("hidden");
+		$("#aceptarCambioTarifa").click();
 	}
 }
 
