@@ -174,23 +174,29 @@ function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
 	var patron2=/^([0-9]{1,3})?([\.]?([0,5]{0,1}))?$/;
-		validacion=parseFloat(".5");
+	if(numeroValidar==="."){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
+		return false;
+	}
 	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(numeroValidar<=validacion || numeroValidar>=1000){
+	if(numeroValidar=="0"){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
 		return false;
-	}
-	if(numeroValidar==".5"){
-		$("#tarifaIncorrecta").addClass("hidden");
-		$("#tiempoIncorrecto").addClass("hidden");
-		$("#aceptarCambioTarifa").click();
+	}	
+	if(numeroValidar<=.4){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
+		return false;
 	}
 	else{
 		$("#tarifaIncorrecta").addClass("hidden");
@@ -198,7 +204,6 @@ function validateRate(){
 		$("#aceptarCambioTarifa").click();
 	}
 }
-
 
 /**
  * Valida el número de la modal de cambio de tiempo en el acceso
