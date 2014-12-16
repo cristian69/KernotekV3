@@ -174,14 +174,19 @@ function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+(\.[0,5]{0,1})?$/;
-	var patron3=/^[\.+[5]{0,1}?$/;
-	if(!patron3.test(numeroValidar) || numeroValidar=="0"){
+	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar)){
+	if(numeroValidar=="0"){
+		$("#tarifaIncorrecta").removeClass("hidden");
+		$("#nuevaTarifa").val("");
+		$('#nuevaTarifa').focus();
+		return false;
+	}	
+	if(numeroValidar<=.4){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
@@ -207,7 +212,7 @@ function validateTime(){
 	aperturaValidar=$("#nuevoTiempo").val();
 	var patron1=/\s/;
 	var patron2=/^[0-9]+$/;
-	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar) || aperturaValidar=="0"){
+	if(!patron2.test(aperturaValidar) || $("#nuevoTiempo").val()=="" || patron1.test(aperturaValidar)){
 		$("#tiempoIncorrecto").removeClass("hidden");
 		$("#nuevoTiempo").val("");
 		$('#nuevoTiempo').focus();
