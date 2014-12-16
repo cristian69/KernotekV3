@@ -180,7 +180,7 @@ function validateRate(){
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(numeroValidar=="0"){
+	if(numeroValidar=="0" || numeroValidar=="0.0"){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
