@@ -173,7 +173,7 @@ $(document).keypress(function(e) {
 function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
-	var patron2=/^([0-9]{1,3})?([\.]?([0,5]{0,1}))?$/;
+	var patron2=/^([0-9]{1,3})?([\.]?([0,5]{0,1}))?([0]{0,1})?$/;
 	if(numeroValidar==="."){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
