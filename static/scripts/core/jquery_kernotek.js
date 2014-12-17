@@ -173,14 +173,15 @@ $(document).keypress(function(e) {
 function validateRate(){
 	numeroValidar=$("#nuevaTarifa").val();
 	var patron1=/\s/;
-	var patron2=/^([0-6]{0,1})?([0-4]{0,1})?([0-9]{0,1})?([\.]?([0,5]{0,1}))?([0]{0,1})?$/;
+	var patron2=/^([0-9]{1,3})?([0-9]{1,3})?([\.]?([0,5]{0,1}))?([0]{0,1})?$/;
+	var limiteTarifa=parseFloat("650.50");
 	if(numeroValidar==="."){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
 		return false;
 	}
-	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar) || numeroValidar >= 651){
+	if(!patron2.test(numeroValidar) || $("#nuevaTarifa").val()=="" || patron1.test(numeroValidar) || numeroValidar >=limiteTarifa){
 		$("#tarifaIncorrecta").removeClass("hidden");
 		$("#nuevaTarifa").val("");
 		$('#nuevaTarifa').focus();
