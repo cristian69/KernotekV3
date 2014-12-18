@@ -16,7 +16,6 @@ function viewModals(){
 	})
 }
 
-
 /**
  * Muestra las alertas cuyo ID sea idéntico al valor del
  * parámetro dado a la funcion.
@@ -35,7 +34,6 @@ function showWindow(idventana){
 	}
 }
 
-
 /**
  * Esta función se encuentra vinculada al plugin chart.js,
  * recibe tres parámetros, uno es el nombre de la gráfica
@@ -48,6 +46,7 @@ function showWindow(idventana){
  * @param {array} datos
  * @return 
  */
+
 function startGraphics(grafica, labels, datos){
 	if(grafica=="graficaDia"){
 		$("#diaria").addClass("active");

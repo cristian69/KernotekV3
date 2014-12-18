@@ -18,12 +18,11 @@
   <link href="../static/img/favicon.ico" rel="shortcut icon"/>
   <script>
    function goodBye(){
-    window.location.href="/home/";
+    setTimeout(window.location.href="/home/",5000);
   }
-  window.onbeforeunload = goodBye();
 </script>
 </head>
-<body class="page-404-3"  onload="redireccionar('si', {{url_for('login')}}), window.location.reload(true);">
+<body class="page-404-3"  onload="goodBye();">
 <section class="page-inner">
   <img src="../static/img/Sin nombre.png" class="img-responsive" alt="">
 </section>
