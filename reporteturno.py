@@ -116,8 +116,8 @@ def turnosDisponibles(startDate, endDate):
               </article>
 
             </article>
-            <article class="portlet-body ">
-              <table class="table table-responsive table-condensed" id="tablaTurno">
+            <article class="portlet-body" style="overflow-x: auto;">
+              <table class="table table-responsive table-condensed" id="tablaTurno"  style="overflow-x: auto;">
                 <thead class=" text-center">
                   <tr style="border-bottom:1px solid #E1E1E1;">
                     <th class="text-center">
@@ -163,7 +163,7 @@ def tablaReporte(registros,  numTurno, fechaInicioTurno, fechaFinTurno, stateExc
                     <a href="javascript:;" class="collapse"></a>
               </article>
             </article>
-            <article class="portlet-body">
+            <article class="portlet-body"  style="overflow-x: auto;">
               <table class="table table-responsive table-condensed">
                 <thead class="text-center ">
                   <tr style="border-bottom:1px solid #E1E1E1;">

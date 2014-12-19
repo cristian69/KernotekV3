@@ -77,7 +77,7 @@ def tablaReporte(datos, startDate, endDate, excelDetallado, excelGeneral, excelE
                                 <a href=" /reportes/?fecha1="""+startDate+"""&fecha2="""+endDate+"""&reporte=especifico&excelDetallado="""+excelDetallado+"""&excelGeneral="""+excelGeneral+"""&excelEspecifico="""+excelEspecifico+""" " class="btn btn-default" id="linkespecifico"><i class="fa fa-arrow-right"></i> Específico </a>
                             </article>
                         </article>
-                        <article class="portlet-body">
+                        <article class="portlet-body"  style="overflow-x: auto;">
                             <table class="table table-responsive table-condensed">
                                 <thead class="flip-content text-center">
                                     <tr style='border-bottom:1px solid #E1E1E1;'>

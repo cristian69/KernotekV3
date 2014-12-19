@@ -91,7 +91,7 @@ def cod_tabla(startDate, endDate, inicio, excelDetallado, excelGeneral, excelEsp
                 <a href=" """+linkDetallado+""" " class="btn blue-sunglo hidden" id="descargardetallado"><i class="fa fa-download"></i>  Detallado </a>
             </div>
           </div>
-          <div class="portlet-body" >
+          <div class="portlet-body"  style="overflow-x: auto;">
             <table class="table table-responsive  table-condensed ">""")
 
     codigo_tabla += str('<thead class="text-center ">')  # Etiqueta de head para la tabla
