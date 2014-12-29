@@ -233,6 +233,10 @@ def graficaSemana():
     listaVentas = []
     datos = classdb.ventasSemana()
     semanaActual = int(datetime.date.today().isocalendar()[1]) - 1
+   
+    # Comparaci√n de la semana 0 es la ultima semana del a√o 
+    if semanaActual == 0:
+	semanaActual = 52
 
     listaPibote = []
     for semana in range(7):
@@ -243,6 +247,7 @@ def graficaSemana():
 	for d in datos:
 	    if int(semana[0]) == int(d[0]):
 		semana[1] = d[1]
+
     # Format 
     for semana in listaPibote:
 	listaSemanas.append(inicioSemana(year, semana[0] + 1))
@@ -253,7 +258,6 @@ def graficaSemana():
     for indice in range(len(listaSemanas)-1, -1, -1):
         ventas.append(listaVentas[indice])
         semanas.append(listaSemanas[indice])
-    
     return semanas, ventas
 
 

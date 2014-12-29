@@ -8,10 +8,13 @@
     * sudo apt-get install python-mysqldb
     * pip install flask-mysql
     * pip install xlsxwriter
-    * apt-get install python-dev
+    * apt-get install python-dev build-essential
     * pip install xhtml2pdf
     * apt-get install uwsgi-plugin-python    
-
+    * apt-get install uwsgi
+    * apt-get install nginx
+    * apt-get isntall mariadb-server
+    * apt-get install procname
     NUEVA LIBRERIA PARA EXPORTAR A PDF
     
     * urpmi libffi-devel   - mageia
