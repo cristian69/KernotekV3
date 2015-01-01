@@ -202,12 +202,17 @@ def graficaMes():
     listaVentas = []
     listaPibote = []
     for mes in range(7):
-	m = [mesActual- mes, 0]
+	if mesActual == 0:
+	    mesActual = 12
+	m = [mesActual, 0]
+	    #m = [mesActual- mes, 0]
 	listaPibote.append(m)
+	mesActual -= 1
     for mes in listaPibote:
 	for d in datos:
 	    if int(mes[0]) == int(d[0]):
 		mes[1] = float(d[1])
+
     # Format
     for mes in listaPibote:
 	m = datetime.datetime(2014,mes[0],1)
@@ -274,7 +279,9 @@ def graficaDia():
     for dia in range(7):
 	diapibote = diaActual - dia
 	if diapibote == 0:
-		mespibote = mes -1
+		mespibote = mes - 1
+		if mespibote == 0:
+		    mespibote = 12
 		diasmes = monthrange(year, mespibote)
 		diasmes = diasmes[1]
 		diaActual = diasmes
@@ -296,6 +303,8 @@ def graficaDia():
 	if banderames:
 		if dia[0] > ultimodia:
 			mes = mes -1
+			if mes == 0:
+			    mes = 12
 			banderames = False
 	d = datetime.datetime(year,mes, int(dia[0]))
 	listaDias.append(str(d.strftime('%b')) +' '+  str(d.strftime('%d')))
