@@ -332,11 +332,11 @@ def graficaDia():
 
 def monthToSpanish(mes):
     if mes == "Jan":
-        return "En."
+        return "Ene."
     elif mes == "Feb":
         return "Febr."
     elif mes == "Mar":
-        return "Mzo."
+        return "Mar."
     elif mes == "Apr":
         return "Abr."
     elif mes == "May":
@@ -346,9 +346,9 @@ def monthToSpanish(mes):
     elif mes == "Jul":
         return "Jul."
     elif mes == "Aug":
-        return "Agto."
+        return "Ago."
     elif mes == "Sep":
-        return "Sept."
+        return "Sep."
     elif mes == "Oct":
         return "Oct."
     elif mes == "Nov":
