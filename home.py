@@ -245,9 +245,12 @@ def graficaSemana():
 
     listaPibote = []
     for semana in range(7):
-	i = [semanaActual - semana, 0]
+	#i = [semanaActual - semana, 0]
+	i = [semanaActual, 0]
 	listaPibote.append(i)
-    
+	semanaActual -= 1
+	if semanaActual == 0:
+		semanaActual = 52
     for semana in listaPibote:
 	for d in datos:
 	    if int(semana[0]) == int(d[0]):
