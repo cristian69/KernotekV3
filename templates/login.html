@@ -29,7 +29,7 @@
     <section class="logo">
       <img class="img-responsive" src="../static/img/Kernotek.png" alt=""/>
     </section>
-    <section class="content" id="contenidoLogin">
+    <section class="content" id="contenidoLogin" style="height:317px;">
       <form class="login-form" action="{{ url_for('login') }}" method="post">
         <article class="alert alert-danger hidden " id="UsuarioInvalido">
           <button id="cerrarAlertaLogin" class="close" data-close="alert"></button>
@@ -45,11 +45,11 @@
         <article class="form-group" style="padding-bottom:15px;">
           <article class="input-icon">
             <i class="fa fa-lock"></i>
-            <input class="form-control txtBox" type="password" autocomplete="off" placeholder="Contraseña" name="password" onfocus="this.value=''"/>
+            <input class="form-control txtBox" type="password" autocomplete="off" placeholder="Contraseña" name="password" id="password" onfocus="this.value=''"/>
           </article>
         </article>
         <article class="form-actions text-center">
-          <button type="submit" class="btn blue btn-block">Aceptar</i></button>
+          <button type="submit" class="btn blue btn-block" >Aceptar</i></button>
         </article>
       </form>
     </section>

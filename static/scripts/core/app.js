@@ -229,6 +229,9 @@ var changeCut = function(){
 
 }
 
+
+
+
 /**
  * Oculta las alertas o ventanas con la clase
  * “contentAlerttas” al presionar un elemento

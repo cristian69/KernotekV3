@@ -34,6 +34,8 @@ function showWindow(idventana){
 	}
 }
 
+
+
 /**
  * Esta función se encuentra vinculada al plugin chart.js,
  * recibe tres parámetros, uno es el nombre de la gráfica
